@@ -26,6 +26,16 @@ public class ReglementFournisseurCheque extends ReglementFournisseur {
         this.factureAchat = factureAchat;
     }
 
+    public ReglementFournisseurCheque(Date dateCheque, int numeroCheque, FactureAchat factureAchat, double montant, Date dateCreation) {
+        super(montant, dateCreation);
+        this.dateCheque = dateCheque;
+        this.numeroCheque = numeroCheque;
+        this.factureAchat = factureAchat;
+    }
+    
+    
+    
+
     public int getId() {
         return id;
     }
@@ -56,6 +66,11 @@ public class ReglementFournisseurCheque extends ReglementFournisseur {
 
     public void setFactureAchat(FactureAchat factureAchat) {
         this.factureAchat = factureAchat;
+    }
+
+    @Override
+    public String toString() {
+        return "ReglementFournisseurCheque{" + "id=" + id + ", dateCheque=" + dateCheque + ", numeroCheque=" + numeroCheque + ", factureAchat=" + factureAchat.getNumeroF()+" "+super.toString() + '}';
     }
     
     

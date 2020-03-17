@@ -22,6 +22,11 @@ public class ReglementFournisseurEspece extends ReglementFournisseur {
         this.factureAchat = factureAchat;
     }
 
+    public ReglementFournisseurEspece(FactureAchat factureAchat, double montant, Date dateCreation) {
+        super(montant, dateCreation);
+        this.factureAchat = factureAchat;
+    }
+
     
     
     
@@ -41,6 +46,12 @@ public class ReglementFournisseurEspece extends ReglementFournisseur {
     public void setFactureAchat(FactureAchat factureAchat) {
         this.factureAchat = factureAchat;
     }
+
+    @Override
+    public String toString() {
+        return "ReglementFournisseurEspece{" + "id=" + id + ", factureAchat=" + factureAchat.getNumeroF()+" " + super.toString()+'}';
+    }
+    
     
     
     

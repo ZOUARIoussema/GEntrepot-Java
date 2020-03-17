@@ -36,6 +36,10 @@ public class CommandeDApprovisionnement {
         this.ligneCommandeDApprovisionnements= new ArrayList<>();
     }
 
+    public CommandeDApprovisionnement(int numeroC) {
+        this.numeroC = numeroC;
+    }
+
     
     
     

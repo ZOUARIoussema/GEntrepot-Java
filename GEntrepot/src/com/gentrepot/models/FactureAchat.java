@@ -37,6 +37,12 @@ public class FactureAchat {
         this.commandeDApprovisionnement = commandeDApprovisionnement;
     }
 
+    public FactureAchat(int numeroF) {
+        this.numeroF = numeroF;
+    }
+    
+    
+
     public int getNumeroF() {
         return numeroF;
     }
@@ -115,6 +121,11 @@ public class FactureAchat {
 
     public void setCommandeDApprovisionnement(CommandeDApprovisionnement commandeDApprovisionnement) {
         this.commandeDApprovisionnement = commandeDApprovisionnement;
+    }
+
+    @Override
+    public String toString() {
+        return "FactureAchat{" + "numeroF=" + numeroF + ", dateCreation=" + dateCreation + ", dateEchaillancePaiement=" + dateEchaillancePaiement + ", totalTTC=" + totalTTC + ", etat=" + etat + ", totalPaye=" + totalPaye + ", restePaye=" + restePaye + ", timbreFiscale=" + timbreFiscale + ", fraisTransport=" + fraisTransport + ", commandeDApprovisionnement=" + commandeDApprovisionnement.getNumeroC() + '}';
     }
     
     
