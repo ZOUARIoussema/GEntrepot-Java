@@ -14,6 +14,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -87,7 +88,7 @@ public class ServiceReglementFournisseurCheque implements IService<ReglementFour
             PreparedStatement pst = cnx.prepareStatement(requete);
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
-                list.add(new ReglementFournisseurCheque(rs.getInt(rs.getInt(1)), rs.getDate(4), rs.getInt(5), new FactureAchat(rs.getInt(6)), rs.getDouble(2), rs.getDate(3)));
+                list.add(new ReglementFournisseurCheque(rs.getInt(1), rs.getDate(4), rs.getInt(5), new FactureAchat(rs.getInt(6)), rs.getDouble(2), rs.getDate(3)));
             }
 
         } catch (SQLException ex) {
@@ -96,5 +97,31 @@ public class ServiceReglementFournisseurCheque implements IService<ReglementFour
 
         return list;
     }
+    
+    
+    
+      public double totalCheque(){
+        
+        double total =0;
+        
+        try {
+            String requete = "SELECT sum(montant) FROM reglement_fournisseur_cheque where date_creation=?";
+            PreparedStatement pst = cnx.prepareStatement(requete);
+            pst.setDate(1, new java.sql.Date(new Date().getTime()));
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                
+                total=rs.getDouble(1);
+            }
+
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+       
+        
+        return total;
+    }
+    
+    
 
 }

@@ -27,6 +27,15 @@ public class RecouvrementClientCheque extends RecouvrementClient {
         this.factureVente = factureVente;
     }
 
+    public RecouvrementClientCheque(Date dateCheque, int numeroCheque, FactureVente factureVente, double montant, Date dateCreation) {
+        super(montant, dateCreation);
+        this.dateCheque = dateCheque;
+        this.numeroCheque = numeroCheque;
+        this.factureVente = factureVente;
+    }
+    
+    
+
     public int getId() {
         return id;
     }
@@ -58,6 +67,14 @@ public class RecouvrementClientCheque extends RecouvrementClient {
     public void setFactureVente(FactureVente factureVente) {
         this.factureVente = factureVente;
     }
+
+    @Override
+    public String toString() {
+        return "RecouvrementClientCheque{" + "id=" + id + ", dateCheque=" + dateCheque + ", numeroCheque=" + numeroCheque + ", factureVente=" + factureVente.getNumeroF()
+              + "   "+ super.toString()+ '}';
+    }
+    
+    
     
     
 

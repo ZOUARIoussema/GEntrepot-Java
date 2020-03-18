@@ -24,6 +24,13 @@ public class LettreDeRelance {
         this.factureVente = factureVente;
     }
 
+    public LettreDeRelance(Date date, FactureVente factureVente) {
+        this.date = date;
+        this.factureVente = factureVente;
+    }
+    
+    
+
     public int getId() {
         return id;
     }
@@ -46,6 +53,11 @@ public class LettreDeRelance {
 
     public void setFactureVente(FactureVente factureVente) {
         this.factureVente = factureVente;
+    }
+
+    @Override
+    public String toString() {
+        return "LettreDeRelance{" + "id=" + id + ", date=" + date + ", factureVente=" + factureVente.getNumeroF() + '}';
     }
     
     

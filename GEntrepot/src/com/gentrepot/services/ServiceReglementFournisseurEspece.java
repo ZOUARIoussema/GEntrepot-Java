@@ -107,4 +107,28 @@ public class ServiceReglementFournisseurEspece implements IService<ReglementFour
         return list;
     }
     
+    
+    
+     public double totalEspece(){
+        
+        double total =0;
+        
+        try {
+            String requete = "SELECT sum(montant) FROM reglement_fournisseur_espece where date_creation=?";
+            PreparedStatement pst = cnx.prepareStatement(requete);
+            pst.setDate(1, new java.sql.Date(new java.util.Date().getTime()));
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                
+                total=rs.getDouble(1);
+            }
+
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+       
+        
+        return total;
+    }
+    
 }

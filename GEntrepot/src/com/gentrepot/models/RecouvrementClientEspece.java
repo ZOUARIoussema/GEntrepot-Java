@@ -22,6 +22,13 @@ public class RecouvrementClientEspece extends RecouvrementClient{
         this.factureVente = factureVente;
     }
 
+    public RecouvrementClientEspece(FactureVente factureVente, double montant, Date dateCreation) {
+        super(montant, dateCreation);
+        this.factureVente = factureVente;
+    }
+
+    
+    
     public int getId() {
         return id;
     }
@@ -37,6 +44,14 @@ public class RecouvrementClientEspece extends RecouvrementClient{
     public void setFactureVente(FactureVente factureVente) {
         this.factureVente = factureVente;
     }
+
+    @Override
+    public String toString() {
+        return "RecouvrementClientEspece{" + "id=" + id + ", factureVente=" + factureVente.getNumeroF()+
+             "  "+   super.toString()+ '}';
+    }
+    
+    
     
     
     

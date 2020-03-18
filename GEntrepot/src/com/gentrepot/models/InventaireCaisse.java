@@ -31,6 +31,19 @@ public class InventaireCaisse {
         this.ecart = ecart;
     }
 
+    public InventaireCaisse(Date dateCreation, double soldeCalculer, double soldeTheorique, double soldeCheque, double soldeEspece, double ecart) {
+        this.dateCreation = dateCreation;
+        this.soldeCalculer = soldeCalculer;
+        this.soldeTheorique = soldeTheorique;
+        this.soldeCheque = soldeCheque;
+        this.soldeEspece = soldeEspece;
+        this.ecart = ecart;
+    }
+    
+    
+    
+    
+
     public int getId() {
         return id;
     }
@@ -85,6 +98,11 @@ public class InventaireCaisse {
 
     public void setEcart(double ecart) {
         this.ecart = ecart;
+    }
+
+    @Override
+    public String toString() {
+        return "InventaireCaisse{" + "id=" + id + ", dateCreation=" + dateCreation + ", soldeCalculer=" + soldeCalculer + ", soldeTheorique=" + soldeTheorique + ", soldeCheque=" + soldeCheque + ", soldeEspece=" + soldeEspece + ", ecart=" + ecart + '}';
     }
     
     

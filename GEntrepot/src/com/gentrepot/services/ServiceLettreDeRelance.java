@@ -5,10 +5,92 @@
  */
 package com.gentrepot.services;
 
+import com.gentrepot.models.FactureVente;
+ 
+import com.gentrepot.models.LettreDeRelance;
+import com.gentrepot.utils.DataSource;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author oussema
  */
-public class ServiceLettreDeRelance {
+public class ServiceLettreDeRelance  implements IService<LettreDeRelance>{
+
+    
+    Connection cnx = DataSource.getInstance().getCnx();
+    
+    @Override
+    public void ajouter(LettreDeRelance l) {
+         try {
+            String requete = "INSERT INTO lettre_de_relance (date_creation,idF_factureVente) VALUES (?,?)";
+            PreparedStatement pst = cnx.prepareStatement(requete);
+            pst.setDate(1, new java.sql.Date(l.getDate().getTime()));
+            pst.setInt(2, l.getFactureVente().getNumeroF());
+            
+            pst.executeUpdate();
+            System.out.println("Lettre de relance ajoutée !");
+
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+
+    }
+
+    @Override
+    public void supprimer(LettreDeRelance l) {
+        
+         try {
+            String requete = "DELETE FROM lettre_de_relance WHERE id=?";
+            PreparedStatement pst = cnx.prepareStatement(requete);
+            pst.setInt(1, l.getId());
+            pst.executeUpdate();
+            System.out.println("Lettre de relance supprimée !");
+
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+         
+    }
+
+    @Override
+    public void modifier(LettreDeRelance t) {
+        
+        
+        
+        
+    }
+
+    @Override
+    public List<LettreDeRelance> afficher() {
+        
+         List<LettreDeRelance> list = new ArrayList<>();
+
+        try {
+            String requete = "SELECT * FROM lettre_de_relance";
+            PreparedStatement pst = cnx.prepareStatement(requete);
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                
+                
+                
+                
+                list.add( new LettreDeRelance(rs.getInt(1), rs.getDate(2), new FactureVente(rs.getInt(3))));
+            }
+
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+
+        return list;
+        
+        
+        
+    }
     
 }

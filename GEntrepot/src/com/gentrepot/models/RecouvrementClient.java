@@ -36,6 +36,11 @@ public class RecouvrementClient {
     public void setDateCreation(Date dateCreation) {
         this.dateCreation = dateCreation;
     }
+
+    @Override
+    public String toString() {
+        return  "montant=" + montant + ", dateCreation=" + dateCreation + '}';
+    }
     
     
     

@@ -38,6 +38,13 @@ public class FactureVente {
         this.bonLivraison = bonLivraison;
     }
 
+    public FactureVente(int numeroF) {
+        this.numeroF = numeroF;
+    }
+    
+    
+    
+
     public int getNumeroF() {
         return numeroF;
     }
