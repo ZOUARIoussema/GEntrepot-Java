@@ -31,19 +31,16 @@
             <RowConstraints maxHeight="29.0" minHeight="10.0" prefHeight="22.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <JFXTextField fx:id="soldeTTheorique" GridPane.columnIndex="2" />
             <Label alignment="CENTER_RIGHT" text="Solde total">
                <GridPane.margin>
                   <Insets top="25.0" />
                </GridPane.margin>
             </Label>
-            <JFXTextField fx:id="soldeTCheque" GridPane.columnIndex="2" GridPane.rowIndex="1" />
             <Label fx:id="soldeTC" text="Solde en cheque" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets top="25.0" />
                </GridPane.margin>
             </Label>
-            <JFXTextField fx:id="soldeTEspece" GridPane.columnIndex="2" GridPane.rowIndex="2" />
             <Label fx:id="soldeTE" text="Solde en espece" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets top="25.0" />
@@ -54,15 +51,19 @@
                   <Insets top="25.0" />
                </padding>
             </Label>
-            <JFXTextField fx:id="soldeCheque" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-            <JFXTextField fx:id="ecart" GridPane.columnIndex="2" GridPane.rowIndex="4" />
             <Label fx:id="ecart" text="Ecart" GridPane.rowIndex="4">
                <padding>
                   <Insets top="25.0" />
                </padding>
             </Label>
+            <JFXTextField fx:id="totalTheorique" editable="false" GridPane.columnIndex="2" />
+            <JFXTextField fx:id="totalCheque" editable="false" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <JFXTextField fx:id="totalEspece" editable="false" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <JFXTextField fx:id="soldeTCalculer" onKeyReleased="#calculerEcart" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+            <JFXTextField fx:id="ecartC" GridPane.columnIndex="2" GridPane.rowIndex="4" />
          </children>
       </GridPane>
-      <JFXButton fx:id="btnAjouter" layoutX="301.0" layoutY="299.0" onAction="#Ajouter" text="Ajouter" />
+      <JFXButton fx:id="btntAjouter" layoutX="290.0" layoutY="299.0" onAction="#ajouterInventaire" text="Valider" />
+      <JFXButton fx:id="btnAnnuler" layoutX="359.0" layoutY="299.0" onAction="#anuuler" text="Annuler" />
    </children>
 </AnchorPane>

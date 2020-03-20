@@ -165,7 +165,7 @@ public class TestConsole {
         System.out.println("*********  Ajouter Recouvrement Client cheque  *********");
 
         RecouvrementClientCheque recouvrementClientCheque = new RecouvrementClientCheque(new Date("2020/03/18"), 1125, factureVente, 25, new Date());
-        // serviceRecouvrementClientCheque.ajouter(recouvrementClientCheque);
+         serviceRecouvrementClientCheque.ajouter(recouvrementClientCheque);
 
         System.out.println("*********  Modfier Recouvrement Client cheque  *********");
 
