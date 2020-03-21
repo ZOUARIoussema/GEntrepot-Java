@@ -6,6 +6,7 @@
 package com.gentrepot.models;
 
 import java.util.Date;
+import javafx.scene.control.CheckBox;
 
 /**
  *
@@ -20,6 +21,10 @@ public class InventaireCaisse {
     private double soldeCheque;
     private double soldeEspece;
     private double ecart;
+    
+    
+    private CheckBox checkBox = new CheckBox();
+    
 
     public InventaireCaisse(int id, Date dateCreation, double soldeCalculer, double soldeTheorique, double soldeCheque, double soldeEspece, double ecart) {
         this.id = id;
@@ -103,6 +108,14 @@ public class InventaireCaisse {
     @Override
     public String toString() {
         return "InventaireCaisse{" + "id=" + id + ", dateCreation=" + dateCreation + ", soldeCalculer=" + soldeCalculer + ", soldeTheorique=" + soldeTheorique + ", soldeCheque=" + soldeCheque + ", soldeEspece=" + soldeEspece + ", ecart=" + ecart + '}';
+    }
+
+    public CheckBox getCheckBox() {
+        return checkBox;
+    }
+
+    public void setCheckBox(CheckBox checkBox) {
+        this.checkBox = checkBox;
     }
     
     

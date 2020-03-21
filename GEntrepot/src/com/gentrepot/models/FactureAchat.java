@@ -6,6 +6,7 @@
 package com.gentrepot.models;
 
 import java.util.Date;
+import javafx.scene.control.Button;
 
 /**
  *
@@ -23,6 +24,9 @@ public class FactureAchat {
     private double timbreFiscale;
     private double fraisTransport;
     private CommandeDApprovisionnement commandeDApprovisionnement;
+    
+    
+   
 
     public FactureAchat(int numeroF, Date dateCreation, Date dateEchaillancePaiement, double totalTTC, String etat, double totalPaye, double restePaye, double timbreFiscale, double fraisTransport, CommandeDApprovisionnement commandeDApprovisionnement) {
         this.numeroF = numeroF;
@@ -127,6 +131,10 @@ public class FactureAchat {
     public String toString() {
         return "FactureAchat{" + "numeroF=" + numeroF + ", dateCreation=" + dateCreation + ", dateEchaillancePaiement=" + dateEchaillancePaiement + ", totalTTC=" + totalTTC + ", etat=" + etat + ", totalPaye=" + totalPaye + ", restePaye=" + restePaye + ", timbreFiscale=" + timbreFiscale + ", fraisTransport=" + fraisTransport + ", commandeDApprovisionnement=" + commandeDApprovisionnement.getNumeroC() + '}';
     }
+
+   
+
+     
     
     
     

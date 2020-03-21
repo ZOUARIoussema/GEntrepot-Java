@@ -6,6 +6,7 @@
 package com.gentrepot.models;
 
 import java.util.Date;
+import javafx.scene.control.CheckBox;
 
 /**
  *
@@ -17,16 +18,21 @@ public class LettreDeRelance {
     private int id;
     private Date date;
     private FactureVente factureVente;
+    private int numeroFacture;
+    
+    private CheckBox chekBox = new CheckBox();
 
     public LettreDeRelance(int id, Date date, FactureVente factureVente) {
         this.id = id;
         this.date = date;
         this.factureVente = factureVente;
+        numeroFacture=factureVente.getNumeroF();
     }
 
     public LettreDeRelance(Date date, FactureVente factureVente) {
         this.date = date;
         this.factureVente = factureVente;
+        numeroFacture=factureVente.getNumeroF();
     }
     
     
@@ -58,6 +64,22 @@ public class LettreDeRelance {
     @Override
     public String toString() {
         return "LettreDeRelance{" + "id=" + id + ", date=" + date + ", factureVente=" + factureVente.getNumeroF() + '}';
+    }
+
+    public int getNumeroFacture() {
+        return numeroFacture;
+    }
+
+    public void setNumeroFacture(int numeroFacture) {
+        this.numeroFacture = numeroFacture;
+    }
+
+    public CheckBox getChekBox() {
+        return chekBox;
+    }
+
+    public void setChekBox(CheckBox chekBox) {
+        this.chekBox = chekBox;
     }
     
     

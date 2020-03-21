@@ -29,6 +29,10 @@ public class Fournisseur {
         this.matriuleFiscale = matriuleFiscale;
         this.codePostale = codePostale;
     }
+
+    public Fournisseur(int id) {
+        this.id = id;
+    }
     
     
     

@@ -93,4 +93,31 @@ public class ServiceLettreDeRelance  implements IService<LettreDeRelance>{
         
     }
     
+    
+    public List<FactureVente> chargerFacture() {
+        
+         List<FactureVente> list = new ArrayList<>();
+
+        try {
+            String requete = "SELECT * FROM facture_vente";
+            PreparedStatement pst = cnx.prepareStatement(requete);
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                
+                
+                
+                
+                list.add(new FactureVente(rs.getInt(1), rs.getDate(2), rs.getDate(3), rs.getDouble(4), rs.getString(5)));
+            }
+
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+
+        return list;
+        
+        
+        
+    }
+    
 }

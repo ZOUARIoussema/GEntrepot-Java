@@ -5,7 +5,9 @@
  */
 package com.gentrepot.models;
 
+
 import java.util.Date;
+import javafx.scene.control.CheckBox;
 
 /**
  *
@@ -24,6 +26,9 @@ public class FactureVente {
     private double fraisTransport;
     
     private BonLivraison bonLivraison;
+    
+    private  CheckBox checkBoxLettreRelance =new CheckBox();
+    
 
     public FactureVente(int numeroF, Date dateCreation, Date dateEchaillancePaiement, double totalTTC, String etat, double totalPaye, double restePaye, double timbreFiscale, double fraisTransport, BonLivraison bonLivraison) {
         this.numeroF = numeroF;
@@ -37,6 +42,16 @@ public class FactureVente {
         this.fraisTransport = fraisTransport;
         this.bonLivraison = bonLivraison;
     }
+
+    public FactureVente(int numeroF, Date dateCreation, Date dateEchaillancePaiement, double totalTTC, String etat) {
+        this.numeroF = numeroF;
+        this.dateCreation = dateCreation;
+        this.dateEchaillancePaiement = dateEchaillancePaiement;
+        this.totalTTC = totalTTC;
+        this.etat = etat;
+    }
+    
+    
 
     public FactureVente(int numeroF) {
         this.numeroF = numeroF;
@@ -124,7 +139,16 @@ public class FactureVente {
     public void setBonLivraison(BonLivraison bonLivraison) {
         this.bonLivraison = bonLivraison;
     }
-    
+
+    public CheckBox getCheckBoxLettreRelance() {
+        return checkBoxLettreRelance;
+    }
+
+    public void setCheckBoxLettreRelance(CheckBox checkBoxLettreRelance) {
+        this.checkBoxLettreRelance = checkBoxLettreRelance;
+    }
+
+   
     
     
 

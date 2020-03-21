@@ -8,6 +8,7 @@ package com.gentrepot.models;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import javafx.scene.control.Button;
 
 /**
  *
@@ -24,6 +25,9 @@ public class CommandeDApprovisionnement {
     private double totalTva;
     private Fournisseur fournisseur;
     private List<LigneCommandeDApprovisionnement>ligneCommandeDApprovisionnements;
+    
+    
+    
 
     public CommandeDApprovisionnement(int numeroC, double totalC, Date dateCreation, String etat, double tauxRemise, double totalTva, Fournisseur fournisseur) {
         this.numeroC = numeroC;
@@ -109,6 +113,8 @@ public class CommandeDApprovisionnement {
     public void setLigneCommandeDApprovisionnements(List<LigneCommandeDApprovisionnement> ligneCommandeDApprovisionnements) {
         this.ligneCommandeDApprovisionnements = ligneCommandeDApprovisionnements;
     }
+
+    
     
     
     

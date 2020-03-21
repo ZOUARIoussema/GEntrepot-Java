@@ -7,6 +7,7 @@ package com.gentrepot.services;
 
 import com.gentrepot.models.CommandeDApprovisionnement;
 import com.gentrepot.models.FactureAchat;
+import com.gentrepot.models.Fournisseur;
 import com.gentrepot.utils.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -84,5 +85,28 @@ public class ServiceFactureAchat implements IService<FactureAchat>{
 
         return list;
     }
+    
+    
+     public List<CommandeDApprovisionnement> chargerCommande() {
+        
+        List<CommandeDApprovisionnement> list = new ArrayList<>();
+
+        try {
+            String requete = "SELECT * FROM commande_d_aprovisionnement";
+            PreparedStatement pst = cnx.prepareStatement(requete);
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                list.add(new CommandeDApprovisionnement(rs.getInt(2), rs.getDouble(3), rs.getDate(4), rs.getString(5), rs.getDouble(6), rs.getDouble(7), new Fournisseur(rs.getInt(1))));
+            }
+
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+
+        return list;
+    }
+    
+    
+    
     
 }
