@@ -50,6 +50,18 @@ public class FactureVente {
         this.totalTTC = totalTTC;
         this.etat = etat;
     }
+
+    public FactureVente(int numeroF, Date dateCreation, Date dateEchaillancePaiement, double totalTTC, String etat, double totalPaye, double restePaye) {
+        this.numeroF = numeroF;
+        this.dateCreation = dateCreation;
+        this.dateEchaillancePaiement = dateEchaillancePaiement;
+        this.totalTTC = totalTTC;
+        this.etat = etat;
+        this.totalPaye = totalPaye;
+        this.restePaye = restePaye;
+    }
+    
+    
     
     
 
