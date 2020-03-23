@@ -6,6 +6,7 @@
 package com.gentrepot.models;
 
 import java.util.Date;
+import javafx.scene.control.CheckBox;
 
 /**
  *
@@ -17,6 +18,8 @@ public class ReglementFournisseurCheque extends ReglementFournisseur {
     private Date dateCheque;
     private int numeroCheque;
     private FactureAchat factureAchat;
+    private int numeroF;
+    private CheckBox checkBox = new CheckBox();
 
     public ReglementFournisseurCheque(int id, Date dateCheque, int numeroCheque, FactureAchat factureAchat, double montant, Date dateCreation) {
         super(montant, dateCreation);
@@ -24,6 +27,7 @@ public class ReglementFournisseurCheque extends ReglementFournisseur {
         this.dateCheque = dateCheque;
         this.numeroCheque = numeroCheque;
         this.factureAchat = factureAchat;
+        this.numeroF=factureAchat.getNumeroF();
     }
 
     public ReglementFournisseurCheque(Date dateCheque, int numeroCheque, FactureAchat factureAchat, double montant, Date dateCreation) {
@@ -31,6 +35,7 @@ public class ReglementFournisseurCheque extends ReglementFournisseur {
         this.dateCheque = dateCheque;
         this.numeroCheque = numeroCheque;
         this.factureAchat = factureAchat;
+        this.numeroF=factureAchat.getNumeroF();
     }
     
     
@@ -71,6 +76,22 @@ public class ReglementFournisseurCheque extends ReglementFournisseur {
     @Override
     public String toString() {
         return "ReglementFournisseurCheque{" + "id=" + id + ", dateCheque=" + dateCheque + ", numeroCheque=" + numeroCheque + ", factureAchat=" + factureAchat.getNumeroF()+" "+super.toString() + '}';
+    }
+
+    public int getNumeroF() {
+        return numeroF;
+    }
+
+    public void setNumeroF(int numeroF) {
+        this.numeroF = numeroF;
+    }
+
+    public CheckBox getCheckBox() {
+        return checkBox;
+    }
+
+    public void setCheckBox(CheckBox checkBox) {
+        this.checkBox = checkBox;
     }
     
     

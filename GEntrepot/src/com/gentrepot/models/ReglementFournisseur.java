@@ -6,6 +6,7 @@
 package com.gentrepot.models;
 
 import java.util.Date;
+import javafx.scene.control.CheckBox;
 
 /**
  *
@@ -15,6 +16,8 @@ public class ReglementFournisseur {
 
     private double montant;
     private Date dateCreation;
+    
+     
 
     public ReglementFournisseur(double montant, Date dateCreation) {
         this.montant = montant;
@@ -41,7 +44,8 @@ public class ReglementFournisseur {
     public String toString() {
         return   "montant=" + montant + ", dateCreation=" + dateCreation + '}';
     }
-    
+
+     
     
     
 
