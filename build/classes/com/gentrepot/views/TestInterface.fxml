@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="519.0" prefWidth="733.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gentrepot.controllers.TestInterfaceController">
+   <children>
+      <TableView prefHeight="527.0" prefWidth="727.0" style="-fx-background-color: #ffff;" stylesheets="@testinterface.css">
+        <columns>
+          <TableColumn fx:id="col_produit" prefWidth="75.0" text="Produit" />
+          <TableColumn fx:id="col_prix" prefWidth="75.0" text="Prix" />
+            <TableColumn fx:id="col_quantite" minWidth="0.0" prefWidth="84.0" text="quantite" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>
