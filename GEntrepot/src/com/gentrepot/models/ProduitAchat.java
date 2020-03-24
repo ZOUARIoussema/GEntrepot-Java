@@ -49,6 +49,13 @@ public class ProduitAchat {
         this.sousCategorieAchat = sousCategorieAchat;
     }
 
+    public ProduitAchat(String reference) {
+        this.reference = reference;
+    }
+    
+    
+    
+
     public String getReference() {
         return reference;
     }

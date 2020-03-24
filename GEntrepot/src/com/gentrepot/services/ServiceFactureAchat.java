@@ -8,6 +8,8 @@ package com.gentrepot.services;
 import com.gentrepot.models.CommandeDApprovisionnement;
 import com.gentrepot.models.FactureAchat;
 import com.gentrepot.models.Fournisseur;
+import com.gentrepot.models.LigneCommandeDApprovisionnement;
+import com.gentrepot.models.ProduitAchat;
 import com.gentrepot.utils.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -76,7 +78,7 @@ public class ServiceFactureAchat implements IService<FactureAchat>{
             PreparedStatement pst = cnx.prepareStatement(requete);
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
-                list.add(new FactureAchat(rs.getInt(1),rs.getDate(2), rs.getDate(3), rs.getDouble(4), rs.getString(5),  rs.getDouble(6),  rs.getDouble(7),  rs.getDouble(8),  rs.getDouble(9), new CommandeDApprovisionnement(rs.getInt(10))));
+                list.add(new FactureAchat(rs.getInt(1),rs.getDate(2), rs.getDate(3), rs.getDouble(4), rs.getString(5),  rs.getDouble(6),  rs.getDouble(7),  rs.getDouble(8),  rs.getDouble(9), getById(rs.getInt(10))));
             }
 
         } catch (SQLException ex) {
@@ -84,6 +86,25 @@ public class ServiceFactureAchat implements IService<FactureAchat>{
         }
 
         return list;
+    }
+    
+    
+    public CommandeDApprovisionnement getById(int id){
+        
+        CommandeDApprovisionnement commande =null;
+        
+        for(CommandeDApprovisionnement c :chargerCommande()){
+            
+            if(c.getNumeroC()==id){
+                
+                commande =c;
+                return commande;
+                
+            }
+        }
+        
+        return commande;
+        
     }
     
     
@@ -96,7 +117,12 @@ public class ServiceFactureAchat implements IService<FactureAchat>{
             PreparedStatement pst = cnx.prepareStatement(requete);
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
-                list.add(new CommandeDApprovisionnement(rs.getInt(2), rs.getDouble(3), rs.getDate(4), rs.getString(5), rs.getDouble(6), rs.getDouble(7), new Fournisseur(rs.getInt(1))));
+                
+                CommandeDApprovisionnement c =new CommandeDApprovisionnement(rs.getInt(2), rs.getDouble(3), rs.getDate(4), rs.getString(5), rs.getDouble(6), rs.getDouble(7), new Fournisseur(rs.getInt(1)));
+                
+                list.add(c);
+                
+                c.getLigneCommandeDApprovisionnements().addAll(this.chargerLigne(c));
             }
 
         } catch (SQLException ex) {
@@ -106,6 +132,24 @@ public class ServiceFactureAchat implements IService<FactureAchat>{
         return list;
     }
     
+      public List<LigneCommandeDApprovisionnement> chargerLigne(CommandeDApprovisionnement c) {
+        
+        List<LigneCommandeDApprovisionnement> list = new ArrayList<>();
+
+        try {
+            String requete = "SELECT * FROM ligne_commande_d_approvisionnement";
+            PreparedStatement pst = cnx.prepareStatement(requete);
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                list.add(new LigneCommandeDApprovisionnement(rs.getInt(1), c, new ProduitAchat(rs.getString(2)), rs.getDouble(3), rs.getInt(4), rs.getDouble(5), rs.getDouble(6)));
+            }
+
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+
+        return list;
+    }
     
     
     

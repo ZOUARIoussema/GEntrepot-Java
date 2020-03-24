@@ -361,77 +361,6 @@
                   <Separator layoutX="746.0" layoutY="200.0" orientation="VERTICAL" prefHeight="200.0" />
                </children>
             </Pane>
-            <Pane fx:id="paneAjouterFacture" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #fff;">
-               <children>
-                  <Label layoutX="68.0" layoutY="79.0" text="Liste des commande d'approvisionnement" />
-                  <TableView fx:id="paneAjouterFactureTableVListeCommande" layoutX="68.0" layoutY="139.0" prefHeight="220.0" prefWidth="536.0">
-                    <columns>
-                      <TableColumn fx:id="paneAjouterFactureTableVListeCommandeNumeroC" prefWidth="137.0" text="Numero Commande" />
-                      <TableColumn fx:id="paneAjouterFactureTableVListeCommandeDateC" prefWidth="90.0" text="Date Creation" />
-                        <TableColumn fx:id="paneAjouterFactureTableVListeCommandeEtatC" prefWidth="75.0" text="Etat" />
-                        <TableColumn fx:id="paneAjouterFactureTableVListeCommandeTotalC" prefWidth="75.0" text="Total" />
-                        <TableColumn fx:id="paneAjouterFactureTableVListeCommandeFournisseur" prefWidth="75.0" text="Fournisseur" />
-                    </columns>
-                  </TableView>
-               </children>
-            </Pane>
-            <Pane fx:id="paneEnregistrerFacture" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #fff;">
-               <children>
-                  <Label layoutX="34.0" layoutY="63.0" text="Ajouter facture" />
-                  <GridPane layoutX="91.0" layoutY="121.0" prefHeight="337.0" prefWidth="316.0">
-                     <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="130.0" minWidth="10.0" prefWidth="130.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="85.0" minWidth="10.0" prefWidth="37.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
-                     </columnConstraints>
-                     <rowConstraints>
-                        <RowConstraints maxHeight="59.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="53.0" minHeight="10.0" prefHeight="39.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                     </rowConstraints>
-                     <children>
-                        <Label alignment="CENTER" text="Numero Facture">
-                           <GridPane.margin>
-                              <Insets top="20.0" />
-                           </GridPane.margin>
-                        </Label>
-                        <Label text="Date Echaillance" GridPane.rowIndex="2">
-                           <GridPane.margin>
-                              <Insets top="20.0" />
-                           </GridPane.margin>
-                        </Label>
-                        <Label text="Frais transport" GridPane.rowIndex="4">
-                           <GridPane.margin>
-                              <Insets top="20.0" />
-                           </GridPane.margin>
-                        </Label>
-                        <Label text="Timbre fiscale" GridPane.rowIndex="6">
-                           <GridPane.margin>
-                              <Insets top="20.0" />
-                           </GridPane.margin>
-                        </Label>
-                        <Label text="Total TTC" GridPane.rowIndex="8">
-                           <GridPane.margin>
-                              <Insets top="20.0" />
-                           </GridPane.margin>
-                        </Label>
-                        <JFXTextField fx:id="textFNumeroF" GridPane.columnIndex="2" />
-                        <JFXTextField fx:id="textFFraisTransport" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-                        <JFXTextField fx:id="textFTimbreFiscale" GridPane.columnIndex="2" GridPane.rowIndex="6" />
-                        <JFXTextField fx:id="textFTTC" GridPane.columnIndex="2" GridPane.rowIndex="8" />
-                        <JFXDatePicker fx:id="textFDateEchaillanceFacture" prefHeight="25.0" prefWidth="159.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                     </children>
-                  </GridPane>
-                  <JFXButton fx:id="btnValiderAjouterFactureAchat" layoutX="423.0" layoutY="458.0" onAction="#validerAjouterFactureAchat" text="Ajouter" />
-               </children>
-            </Pane>
             <Pane fx:id="paneGRecouvrementClient" prefHeight="579.0" prefWidth="979.0" style="-fx-background-color: #fff;">
                <children>
                   <Label layoutX="38.0" layoutY="47.0" text="Recouvrement Client" />
@@ -912,61 +841,6 @@
                                           <JFXDatePicker fx:id="dateChequeAjouterReglCheque" layoutX="718.0" layoutY="187.0" prefHeight="25.0" prefWidth="126.0" />
                                        </children>
                                     </Pane>
-                                    <Pane fx:id="paneModifierReglementCheque" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #fff;">
-                                       <children>
-                                          <TableView fx:id="tableViewListeFactureModifierRegCheque" layoutX="40.0" layoutY="67.0" onMouseClicked="#paneModiiferRegSelectionnerFacture" prefHeight="264.0" prefWidth="562.0">
-                                             <columns>
-                                                <TableColumn fx:id="tableViewListeFactureModifierRegChequeNF" prefWidth="113.0" text="Numero Facture" />
-                                                <TableColumn fx:id="tableViewListeFactureModifierRegChequeDC" text="Date creation" />
-                                                <TableColumn fx:id="tableViewListeFactureModifierRegChequeEtat" prefWidth="75.0" text="Etat" />
-                                                <TableColumn fx:id="tableViewListeFactureModifierRegChequeTTC" prefWidth="75.0" text="Total TTC" />
-                                                <TableColumn fx:id="tableViewListeFactureModifierRegChequeTP" prefWidth="75.0" text="Total Payer" />
-                                                <TableColumn fx:id="tableViewListeFactureModifierRegChequeRP" prefWidth="109.0" text="Reste A Payer" />
-                                             </columns>
-                                          </TableView>
-                                          <Label layoutX="40.0" layoutY="34.0" text="Liste des facture client" />
-                                          <GridPane layoutX="664.0" layoutY="108.0" prefHeight="100.0" prefWidth="224.0">
-                                             <columnConstraints>
-                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
-                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
-                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
-                                             </columnConstraints>
-                                             <rowConstraints>
-                                                <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                                                <RowConstraints maxHeight="25.0" minHeight="10.0" prefHeight="15.0" vgrow="SOMETIMES" />
-                                                <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
-                                                <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="13.0" vgrow="SOMETIMES" />
-                                                <RowConstraints maxHeight="52.0" minHeight="10.0" prefHeight="52.0" vgrow="SOMETIMES" />
-                                             </rowConstraints>
-                                             <children>
-                                                <JFXTextField fx:id="textMontantModifierRegCheque" prefHeight="25.0" prefWidth="100.0" GridPane.columnIndex="2" />
-                                                <Label text="Montant" />
-                                                <JFXTextField fx:id="textFNumeroModiferRegCheque" prefHeight="25.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                                                <Label text="Numero Cheque" GridPane.rowIndex="2" />
-                                                <Label text="Date" GridPane.rowIndex="4" />
-                                                <JFXDatePicker fx:id="dateChequeModifierRegCheque" prefHeight="25.0" prefWidth="126.0" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-                                             </children>
-                                          </GridPane>
-                                          <JFXButton fx:id="btnModifierRegCheque" layoutX="710.0" layoutY="227.0" onAction="#validerModifierRegCheque" text="Modifier Recouvrement ">
-                                             <graphic>
-                                                <ImageView fitHeight="30.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
-                                                   <image>
-                                                      <Image url="@ImageMenueCaisse/images%20(1).jpg" />
-                                                   </image>
-                                                </ImageView>
-                                             </graphic>
-                                          </JFXButton>
-                                          <JFXButton fx:id="btnAnnulerModifierRegCheque" layoutX="718.0" layoutY="281.0" onAction="#annulerModifierRegCheque" text="Annuler">
-                                             <graphic>
-                                                <ImageView fx:id="btnAnnulerAjouterRecouvrementClientCheque11" fitHeight="30.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
-                                                   <image>
-                                                      <Image url="@ImageMenueCaisse/images%20(1).png" />
-                                                   </image>
-                                                </ImageView>
-                                             </graphic>
-                                          </JFXButton>
-                                       </children>
-                                    </Pane>
                                     <Pane fx:id="paneGReglementCheque" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #fff;">
                                        <children>
                                           <Label layoutX="33.0" layoutY="38.0" text="Liste des reglements fournisseur en cheque" />
@@ -1023,12 +897,238 @@
                                           </GridPane>
                                        </children>
                                     </Pane>
+                                    <Pane fx:id="paneModifierReglementCheque" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #fff;">
+                                       <children>
+                                          <TableView fx:id="tableViewListeFactureModifierRegCheque" layoutX="40.0" layoutY="67.0" onMouseClicked="#paneModiiferRegSelectionnerFacture" prefHeight="264.0" prefWidth="562.0">
+                                             <columns>
+                                                <TableColumn fx:id="tableViewListeFactureModifierRegChequeNF" prefWidth="113.0" text="Numero Facture" />
+                                                <TableColumn fx:id="tableViewListeFactureModifierRegChequeDC" text="Date creation" />
+                                                <TableColumn fx:id="tableViewListeFactureModifierRegChequeEtat" prefWidth="75.0" text="Etat" />
+                                                <TableColumn fx:id="tableViewListeFactureModifierRegChequeTTC" prefWidth="75.0" text="Total TTC" />
+                                                <TableColumn fx:id="tableViewListeFactureModifierRegChequeTP" prefWidth="75.0" text="Total Payer" />
+                                                <TableColumn fx:id="tableViewListeFactureModifierRegChequeRP" prefWidth="109.0" text="Reste A Payer" />
+                                             </columns>
+                                          </TableView>
+                                          <Label layoutX="40.0" layoutY="34.0" text="Liste des facture client" />
+                                          <GridPane layoutX="664.0" layoutY="108.0" prefHeight="100.0" prefWidth="224.0">
+                                             <columnConstraints>
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                             </columnConstraints>
+                                             <rowConstraints>
+                                                <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="25.0" minHeight="10.0" prefHeight="15.0" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="13.0" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="52.0" minHeight="10.0" prefHeight="52.0" vgrow="SOMETIMES" />
+                                             </rowConstraints>
+                                             <children>
+                                                <JFXTextField fx:id="textMontantModifierRegCheque" prefHeight="25.0" prefWidth="100.0" GridPane.columnIndex="2" />
+                                                <Label text="Montant" />
+                                                <JFXTextField fx:id="textFNumeroModiferRegCheque" prefHeight="25.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                                                <Label text="Numero Cheque" GridPane.rowIndex="2" />
+                                                <Label text="Date" GridPane.rowIndex="4" />
+                                                <JFXDatePicker fx:id="dateChequeModifierRegCheque" prefHeight="25.0" prefWidth="126.0" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                                             </children>
+                                          </GridPane>
+                                          <JFXButton fx:id="btnModifierRegCheque" layoutX="710.0" layoutY="227.0" onAction="#validerModifierRegCheque" text="Modifier Recouvrement ">
+                                             <graphic>
+                                                <ImageView fitHeight="30.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@ImageMenueCaisse/images%20(1).jpg" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </JFXButton>
+                                          <JFXButton fx:id="btnAnnulerModifierRegCheque" layoutX="718.0" layoutY="281.0" onAction="#annulerModifierRegCheque" text="Annuler">
+                                             <graphic>
+                                                <ImageView fx:id="btnAnnulerAjouterRecouvrementClientCheque11" fitHeight="30.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@ImageMenueCaisse/images%20(1).png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </JFXButton>
+                                       </children>
+                                    </Pane>
                                  </children>
                               </StackPane>
                            </content>
                         </Tab>
                      </tabs>
                   </TabPane>
+               </children>
+            </Pane>
+            <Pane fx:id="paneAjouterFacture" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #fff;">
+               <children>
+                  <Label layoutX="68.0" layoutY="79.0" text="Liste des commande d'approvisionnement" />
+                  <TableView fx:id="paneAjouterFactureTableVListeCommande" layoutX="68.0" layoutY="139.0" prefHeight="335.0" prefWidth="658.0">
+                    <columns>
+                      <TableColumn fx:id="paneAjouterFactureTableVListeCommandeNumeroC" prefWidth="137.0" text="Numero Commande" />
+                      <TableColumn fx:id="paneAjouterFactureTableVListeCommandeDateC" prefWidth="103.0" text="Date Creation" />
+                        <TableColumn fx:id="paneAjouterFactureTableVListeCommandeEtatC" text="Etat" />
+                        <TableColumn fx:id="paneAjouterFactureTableVListeCommandeTotalC" prefWidth="97.0" text="Total" />
+                        <TableColumn fx:id="paneAjouterFactureTableVListeCommandeFournisseur" prefWidth="122.0" text="Fournisseur" />
+                    </columns>
+                  </TableView>
+                  <JFXButton fx:id="btnAnnulerAjouterFacture" layoutX="809.0" layoutY="248.0" onAction="#annulerAjouterFacture" text="Annuler">
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@ImageMenueCaisse/images%20(1).png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+               </children>
+            </Pane>
+            <Pane fx:id="paneEnregistrerFacture" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #fff;">
+               <children>
+                  <Label layoutX="35.0" layoutY="44.0" text="Ajouter facture" />
+                  <GridPane layoutX="564.0" layoutY="97.0" prefHeight="337.0" prefWidth="316.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="130.0" minWidth="10.0" prefWidth="130.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="85.0" minWidth="10.0" prefWidth="37.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints maxHeight="59.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="53.0" minHeight="10.0" prefHeight="39.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <Label alignment="CENTER" text="Numero Facture">
+                           <GridPane.margin>
+                              <Insets top="20.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label text="Date Echaillance" GridPane.rowIndex="2">
+                           <GridPane.margin>
+                              <Insets top="20.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label text="Frais transport" GridPane.rowIndex="4">
+                           <GridPane.margin>
+                              <Insets top="20.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label text="Timbre fiscale" GridPane.rowIndex="6">
+                           <GridPane.margin>
+                              <Insets top="20.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label text="Total TTC" GridPane.rowIndex="8">
+                           <GridPane.margin>
+                              <Insets top="20.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <JFXTextField fx:id="textFNumeroF" GridPane.columnIndex="2" />
+                        <JFXTextField fx:id="textFFraisTransport" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                        <JFXTextField fx:id="textFTimbreFiscale" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+                        <JFXTextField fx:id="textFTTC" GridPane.columnIndex="2" GridPane.rowIndex="8" />
+                        <JFXDatePicker fx:id="textFDateEchaillanceFacture" prefHeight="25.0" prefWidth="159.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                     </children>
+                  </GridPane>
+                  <JFXButton fx:id="btnValiderAjouterFactureAchat" layoutX="853.0" layoutY="448.0" onAction="#validerAjouterFactureAchat" text="Ajouter" />
+                  <TableView fx:id="tableViewListeLigneAjouterFacture" layoutX="58.0" layoutY="146.0" prefHeight="219.0" prefWidth="403.0">
+                    <columns>
+                      <TableColumn fx:id="tableViewListeLigneAjouterFactureProduit" prefWidth="75.0" text="Produit" />
+                      <TableColumn fx:id="tableViewListeLigneAjouterFacturePrix" prefWidth="75.0" text="Prix" />
+                        <TableColumn fx:id="tableViewListeLigneAjouterFactureQTe" prefWidth="75.0" text="Quantite" />
+                        <TableColumn fx:id="tableViewListeLigneAjouterFactureTVA" prefWidth="83.0" text="Tva" />
+                        <TableColumn fx:id="tableViewListeLigneAjouterFactureTotal" prefWidth="93.0" text="Total" />
+                    </columns>
+                  </TableView>
+                  <Label layoutX="58.0" layoutY="105.0" text="Liste des articles commandés" />
+                  <Label layoutX="260.0" layoutY="396.0" text="Total Commande" />
+                  <JFXTextField fx:id="textFTotalCommande" layoutX="373.0" layoutY="379.0" prefHeight="25.0" prefWidth="87.0" />
+                  <Separator layoutX="505.0" layoutY="87.0" orientation="VERTICAL" prefHeight="423.0" prefWidth="0.0" />
+               </children>
+            </Pane>
+            <Pane fx:id="paneDetailFacture" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #fff;">
+               <children>
+                  <Label layoutX="35.0" layoutY="44.0" text="Detail Facture" />
+                  <GridPane layoutX="564.0" layoutY="97.0" prefHeight="337.0" prefWidth="316.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="130.0" minWidth="10.0" prefWidth="130.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="85.0" minWidth="10.0" prefWidth="37.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints maxHeight="59.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="53.0" minHeight="10.0" prefHeight="39.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <Label alignment="CENTER" text="Numero Facture">
+                           <GridPane.margin>
+                              <Insets top="20.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label text="Date Echaillance" GridPane.rowIndex="2">
+                           <GridPane.margin>
+                              <Insets top="20.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label text="Frais transport" GridPane.rowIndex="4">
+                           <GridPane.margin>
+                              <Insets top="20.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label text="Timbre fiscale" GridPane.rowIndex="6">
+                           <GridPane.margin>
+                              <Insets top="20.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label text="Total TTC" GridPane.rowIndex="8">
+                           <GridPane.margin>
+                              <Insets top="20.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <JFXTextField fx:id="textFNumeroFD" editable="false" GridPane.columnIndex="2" />
+                        <JFXTextField fx:id="textFFraisTransportD" editable="false" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                        <JFXTextField fx:id="textFTimbreFiscaleD" editable="false" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+                        <JFXTextField fx:id="textFTTCD" editable="false" GridPane.columnIndex="2" GridPane.rowIndex="8" />
+                        <JFXDatePicker fx:id="textFDateEchaillanceFactureD" editable="false" prefHeight="25.0" prefWidth="159.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                     </children>
+                  </GridPane>
+                  <JFXButton fx:id="btnRetourDetailFacture" layoutX="809.0" layoutY="448.0" onAction="#retourDetailFacture" prefHeight="25.0" prefWidth="96.0" text="Retour">
+                     <graphic>
+                        <ImageView fitHeight="31.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@ImageMenueCaisse/images%20(1).png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <TableView fx:id="tableViewListeLigneAjouterFactureDetail" layoutX="58.0" layoutY="146.0" prefHeight="219.0" prefWidth="403.0">
+                     <columns>
+                        <TableColumn fx:id="tableViewListeLigneAjouterFactureProduitD" prefWidth="75.0" text="Produit" />
+                        <TableColumn fx:id="tableViewListeLigneAjouterFacturePrixD" prefWidth="75.0" text="Prix" />
+                        <TableColumn fx:id="tableViewListeLigneAjouterFactureQTeD" prefWidth="75.0" text="Quantite" />
+                        <TableColumn fx:id="tableViewListeLigneAjouterFactureTVAD" prefWidth="83.0" text="Tva" />
+                        <TableColumn fx:id="tableViewListeLigneAjouterFactureTotalD" prefWidth="93.0" text="Total" />
+                     </columns>
+                  </TableView>
+                  <Label layoutX="58.0" layoutY="105.0" text="Liste des articles commandés" />
+                  <Label layoutX="260.0" layoutY="396.0" text="Total Commande" />
+                  <JFXTextField fx:id="textFTotalCommandeDetail" editable="false" layoutX="373.0" layoutY="379.0" prefHeight="25.0" prefWidth="87.0" />
+                  <Separator layoutX="505.0" layoutY="87.0" orientation="VERTICAL" prefHeight="423.0" prefWidth="0.0" />
                </children>
             </Pane>
          </children>

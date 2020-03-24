@@ -18,6 +18,8 @@ public class LigneCommandeDApprovisionnement {
     private int quantite;
     private double total;
     private double tva;
+    
+    private String refP;
 
     public LigneCommandeDApprovisionnement(int id, CommandeDApprovisionnement commandeDApprovisionnement, ProduitAchat produitAchat, double prix, int quantite, double total, double tva) {
         this.id = id;
@@ -27,6 +29,7 @@ public class LigneCommandeDApprovisionnement {
         this.quantite = quantite;
         this.total = total;
         this.tva = tva;
+        this.refP=produitAchat.getReference();
     }
 
     
@@ -88,6 +91,14 @@ public class LigneCommandeDApprovisionnement {
 
     public void setTva(double tva) {
         this.tva = tva;
+    }
+
+    public String getRefP() {
+        return refP;
+    }
+
+    public void setRefP(String refP) {
+        this.refP = refP;
     }
     
     
