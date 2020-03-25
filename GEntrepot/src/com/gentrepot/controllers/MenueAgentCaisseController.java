@@ -28,6 +28,7 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.ResourceBundle;
@@ -39,6 +40,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
@@ -54,6 +57,11 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+import javafx.util.Duration;
+import javax.management.Notification;
+import tray.animations.AnimationType;
+import tray.notification.NotificationType;
+import tray.notification.TrayNotification;
 
 /**
  * FXML Controller class
@@ -61,7 +69,7 @@ import javafx.util.Callback;
  * @author oussema
  */
 public class MenueAgentCaisseController implements Initializable {
-    
+
     ObservableList<LigneCommandeDApprovisionnement> listeLigneCommandeDA = FXCollections.observableArrayList();
     ObservableList<InventaireCaisse> listInventaire = FXCollections.observableArrayList();
     ObservableList<LettreDeRelance> listeLettreDeRelance = FXCollections.observableArrayList();
@@ -78,11 +86,11 @@ public class MenueAgentCaisseController implements Initializable {
     ServiceRecouvrementClientEspece serviceRecouvrementClientEspece = new ServiceRecouvrementClientEspece();
     ServiceLettreDeRelance serviceLettreDeRelance = new ServiceLettreDeRelance();
     ServiceFactureAchat serviceFactureAchat = new ServiceFactureAchat();
-    
+
     ServiceReglementFournisseurCheque serviceReglementFournisseurCheque = new ServiceReglementFournisseurCheque();
     ServiceReglementFournisseurEspece serviceReglementFournisseurEspece = new ServiceReglementFournisseurEspece();
     double totalT = (serviceRecouvrementClientCheque.totalCheque() + serviceRecouvrementClientEspece.totalEspece());
-    
+
     private InventaireCaisse inventaireCaisseG = null;
     private LettreDeRelance lettreDeRelanceG = null;
     private CommandeDApprovisionnement commandeDApprovisionnementG = null;
@@ -92,7 +100,7 @@ public class MenueAgentCaisseController implements Initializable {
     private RecouvrementClientCheque recouvrementClientChequeG = null;
     private ReglementFournisseurCheque reglementFournisseurChequeG = null;
     private ReglementFournisseurEspece reglementFournisseurEspeceG = null;
-    
+
     @FXML
     private Button btnFactureF;
     @FXML
@@ -595,7 +603,7 @@ public class MenueAgentCaisseController implements Initializable {
         *table view liste ligne commande deatil facture
          */
         tableViewListeLigneAjouterFactureDetail.setItems(listeLigneCommandeDA);
-        
+
         tableViewListeLigneAjouterFactureProduitD.setCellValueFactory(new PropertyValueFactory<>("refP"));
         tableViewListeLigneAjouterFacturePrixD.setCellValueFactory(new PropertyValueFactory<>("prix"));
         tableViewListeLigneAjouterFactureQTeD.setCellValueFactory(new PropertyValueFactory<>("quantite"));
@@ -606,7 +614,7 @@ public class MenueAgentCaisseController implements Initializable {
         *table view liste ligne commande ajouter facture
          */
         tableViewListeLigneAjouterFacture.setItems(listeLigneCommandeDA);
-        
+
         tableViewListeLigneAjouterFactureProduit.setCellValueFactory(new PropertyValueFactory<>("refP"));
         tableViewListeLigneAjouterFacturePrix.setCellValueFactory(new PropertyValueFactory<>("prix"));
         tableViewListeLigneAjouterFactureQTe.setCellValueFactory(new PropertyValueFactory<>("quantite"));
@@ -617,7 +625,7 @@ public class MenueAgentCaisseController implements Initializable {
         *table view liste facture pane modifier reglement Reglement cheque
          */
         tableViewListeFactureModifierRegCheque.setItems(listeFactureAchat);
-        
+
         tableViewListeFactureModifierRegChequeNF.setCellValueFactory(new PropertyValueFactory<>("numeroF"));
         tableViewListeFactureModifierRegChequeDC.setCellValueFactory(new PropertyValueFactory<>("dateCreation"));
         tableViewListeFactureModifierRegChequeEtat.setCellValueFactory(new PropertyValueFactory<>("dateEchaillancePaiement"));
@@ -629,7 +637,7 @@ public class MenueAgentCaisseController implements Initializable {
         *table view pane ajouter reglement cheque liste facture
          */
         tableViewAjouterRegChequeListeFacture.setItems(listeFactureAchat);
-        
+
         tableViewAjouterRegChequeListeFactureNF.setCellValueFactory(new PropertyValueFactory<>("numeroF"));
         tableViewAjouterRegChequeListeFactureDC.setCellValueFactory(new PropertyValueFactory<>("dateCreation"));
         tableViewAjouterRegChequeListeFactureEtat.setCellValueFactory(new PropertyValueFactory<>("dateEchaillancePaiement"));
@@ -641,7 +649,7 @@ public class MenueAgentCaisseController implements Initializable {
         *table view pane modidifier reglement espece
          */
         tableViewModifierReglementEspeceListeFactureAchat.setItems(listeFactureAchat);
-        
+
         tableViewModifierReglementEspeceListeFactureAchatNF.setCellValueFactory(new PropertyValueFactory<>("numeroF"));
         tableViewModifierReglementEspeceListeFactureAchatDC.setCellValueFactory(new PropertyValueFactory<>("dateCreation"));
         tableViewModifierReglementEspeceListeFactureAchatEtat.setCellValueFactory(new PropertyValueFactory<>("dateEchaillancePaiement"));
@@ -653,7 +661,7 @@ public class MenueAgentCaisseController implements Initializable {
         *table view liste facture achat pane ajouter reglement fournisseur espece 
          */
         tableViewAjouterReglementEspeceListeFactureAchat.setItems(listeFactureAchat);
-        
+
         tableViewAjouterReglementEspeceListeFactureAchatNF.setCellValueFactory(new PropertyValueFactory<>("numeroF"));
         tableViewAjouterReglementEspeceListeFactureAchatDC.setCellValueFactory(new PropertyValueFactory<>("dateCreation"));
         tableViewAjouterReglementEspeceListeFactureAchatEtat.setCellValueFactory(new PropertyValueFactory<>("dateEchaillancePaiement"));
@@ -685,7 +693,7 @@ public class MenueAgentCaisseController implements Initializable {
         *tTable view liste facture pane modifier recouvrement client cheque
          */
         tableViewListeFactureModifierRecouvrementClientCheque.setItems(ListeFactureVente);
-        
+
         tableViewListeFactureModifierRecouvrementClientChequeNumeroF.setCellValueFactory(new PropertyValueFactory<>("numeroF"));
         tableViewListeFactureModifierRecouvrementClientChequeDC.setCellValueFactory(new PropertyValueFactory<>("dateCreation"));
         tableViewListeFactureModifierRecouvrementClientChequeEtat.setCellValueFactory(new PropertyValueFactory<>("dateEchaillancePaiement"));
@@ -697,7 +705,7 @@ public class MenueAgentCaisseController implements Initializable {
         *tabele view liste facture pane ajouter recouvrement client Cheque
          */
         tableViewListeFactureAjouterRecouvrementClientCheque.setItems(ListeFactureVente);
-        
+
         tableViewListeFactureAjouterRecouvrementClientChequeNumeroF.setCellValueFactory(new PropertyValueFactory<>("numeroF"));
         tableViewListeFactureAjouterRecouvrementClientChequeDateC.setCellValueFactory(new PropertyValueFactory<>("dateCreation"));
         tableViewListeFactureAjouterRecouvrementClientChequeEtat.setCellValueFactory(new PropertyValueFactory<>("dateEchaillancePaiement"));
@@ -734,7 +742,7 @@ public class MenueAgentCaisseController implements Initializable {
          * Inventaire caisse
          */
         chargerInventaire();
-        
+
         tableViewInventaire.setItems(listInventaire);
         cDateCreation.setCellValueFactory(new PropertyValueFactory<>("dateCreation"));
         cSoldeCalculer.setCellValueFactory(new PropertyValueFactory<>("soldeCalculer"));
@@ -755,14 +763,14 @@ public class MenueAgentCaisseController implements Initializable {
         cLettreDateCreation.setCellValueFactory(new PropertyValueFactory<>("date"));
         cLettreFactureClient.setCellValueFactory(new PropertyValueFactory<>("numeroFacture"));
         tableViewLettreDeRelanceCAction.setCellValueFactory(new PropertyValueFactory<>("chekBox"));
-        
+
         tableVLettreListeFactureClientNumeroF.setCellValueFactory(new PropertyValueFactory<>("numeroF"));
         tableVLettreListeFactureClientDateCreation.setCellValueFactory(new PropertyValueFactory<>("dateCreation"));
         tableVLettreListeFactureClientDatePay.setCellValueFactory(new PropertyValueFactory<>("dateEchaillancePaiement"));
         tableVLettreListeFactureClientEtat.setCellValueFactory(new PropertyValueFactory<>("etat"));
         tableVLettreListeFactureClientTotal.setCellValueFactory(new PropertyValueFactory<>("totalPaye"));
         tableVLettreListeFactureClientAction.setCellValueFactory(new PropertyValueFactory<>("checkBoxLettreRelance"));
-        
+
         tableVLettreListeFactureClient.setItems(listeFactureVenteLettre);
 
         /**
@@ -777,7 +785,7 @@ public class MenueAgentCaisseController implements Initializable {
         paneAjouterFactureTableVListeCommandeEtatC.setCellValueFactory(new PropertyValueFactory<>("etat"));
         paneAjouterFactureTableVListeCommandeTotalC.setCellValueFactory(new PropertyValueFactory<>("tauxRemise"));
         paneAjouterFactureTableVListeCommandeFournisseur.setCellValueFactory(new PropertyValueFactory<>("fournisseur"));
-        
+
         paneAjouterFactureTableVListeCommande.setItems(listeCommandeA);
 
         /**
@@ -794,7 +802,7 @@ public class MenueAgentCaisseController implements Initializable {
         tableVListeFactureFournisseurEtat.setCellValueFactory(new PropertyValueFactory<>("etat"));
         tableVListeFactureFournisseurTPayer.setCellValueFactory(new PropertyValueFactory<>("totalPaye"));
         tableVListeFactureFournisseurRestePayer.setCellValueFactory(new PropertyValueFactory<>("restePaye"));
-        
+
         tableVListeFactureFournisseur.setItems(listeFactureAchat);
 
         /**
@@ -804,7 +812,7 @@ public class MenueAgentCaisseController implements Initializable {
          * Facture vente pane ajouter recouvrement espece
          */
         tableViewAjouterRecouvrementCEListeFacture.setItems(ListeFactureVente);
-        
+
         tableViewAjouterRecouvrementCEListeFactureNumeroF.setCellValueFactory(new PropertyValueFactory<>("numeroF"));
         tableViewAjouterRecouvrementCEListeFactureDateC.setCellValueFactory(new PropertyValueFactory<>("dateCreation"));
         tableViewAjouterRecouvrementCEListeFactureEtat.setCellValueFactory(new PropertyValueFactory<>("dateEchaillancePaiement"));
@@ -817,7 +825,7 @@ public class MenueAgentCaisseController implements Initializable {
          * facture vente pane modifier recouvrement espece
          */
         tableViewModiferRecouvrementClientEspeceListeFacture.setItems(ListeFactureVente);
-        
+
         tableViewModiferRecouvrementClientEspeceListeFactureNumeroF.setCellValueFactory(new PropertyValueFactory<>("numeroF"));
         tableViewModiferRecouvrementClientEspeceListeFactureDC.setCellValueFactory(new PropertyValueFactory<>("dateCreation"));
         tableViewModiferRecouvrementClientEspeceListeFactureEtat.setCellValueFactory(new PropertyValueFactory<>("dateEchaillancePaiement"));
@@ -831,42 +839,43 @@ public class MenueAgentCaisseController implements Initializable {
          * ajouter button liste facture fournisseur
          */
         TableColumn<FactureAchat, Void> colBtn = new TableColumn("Button Column");
-        
+
         Callback<TableColumn<FactureAchat, Void>, TableCell<FactureAchat, Void>> cellFactory = new Callback<TableColumn<FactureAchat, Void>, TableCell<FactureAchat, Void>>() {
             @Override
             public TableCell<FactureAchat, Void> call(TableColumn<FactureAchat, Void> param) {
-                
+
                 final TableCell<FactureAchat, Void> cell = new TableCell<FactureAchat, Void>() {
-                    
+
                     private Button btn = new Button("Detail");
-                    
+
                     {
                         btn.setOnAction((ActionEvent event) -> {
-                            
+
                             FactureAchat facture = tableVListeFactureFournisseur.getSelectionModel().getSelectedItem();
-                            
+
                             if (facture != null) {
                                 System.out.println("***: " + facture.getNumeroF());
-                                
+
                                 textFNumeroFD.setText(String.valueOf(facture.getNumeroF()));
                                 textFDateEchaillanceFactureD.setValue(LocalDate.parse(facture.getDateEchaillancePaiement().toString()));
                                 textFFraisTransportD.setText(String.valueOf(facture.getFraisTransport()));
                                 textFTimbreFiscaleD.setText(String.valueOf(facture.getTimbreFiscale()));
                                 textFTTCD.setText(String.valueOf(facture.getTotalTTC()));
                                 textFTotalCommandeDetail.setText(String.valueOf(facture.getCommandeDApprovisionnement().getTotalC()));
-                                
+
                                 listeLigneCommandeDA.setAll(facture.getCommandeDApprovisionnement().getLigneCommandeDApprovisionnements());
-                                
-                                
+
                                 paneDetailFacture.setVisible(true);
                                 new ZoomIn(paneDetailFacture).play();
                                 paneDetailFacture.toFront();
-                                
+
+                            } else {
+                                creerAlerte("Selectionner une facture ! ", AlertType.WARNING).showAndWait();
                             }
-                            
+
                         });
                     }
-                    
+
                     @Override
                     public void updateItem(Void item, boolean empty) {
                         super.updateItem(item, empty);
@@ -876,21 +885,21 @@ public class MenueAgentCaisseController implements Initializable {
                             setGraphic(btn);
                         }
                     }
-                    
+
                 };
-                
+
                 return cell;
             }
         };
-        
+
         colBtn.setCellFactory(cellFactory);
-        
+
         tableVListeFactureFournisseur.getColumns().add(colBtn);
-        
+
         ajouterButonTabViewListeCommande();
-        
+
     }
-    
+
     public void ajouterButonTabViewListeCommande() {
 
         /**
@@ -899,34 +908,37 @@ public class MenueAgentCaisseController implements Initializable {
          * ajouter button
          */
         TableColumn<CommandeDApprovisionnement, Void> colBtn = new TableColumn("Action");
-        
+
         Callback<TableColumn<CommandeDApprovisionnement, Void>, TableCell<CommandeDApprovisionnement, Void>> cellFactory = new Callback<TableColumn<CommandeDApprovisionnement, Void>, TableCell<CommandeDApprovisionnement, Void>>() {
             @Override
             public TableCell<CommandeDApprovisionnement, Void> call(TableColumn<CommandeDApprovisionnement, Void> param) {
-                
+
                 final TableCell<CommandeDApprovisionnement, Void> cell = new TableCell<CommandeDApprovisionnement, Void>() {
-                    
+
                     private Button btn = new Button("Facturer");
-                    
+
                     {
                         btn.setOnAction((ActionEvent event) -> {
-                            
+
                             commandeDApprovisionnementG = paneAjouterFactureTableVListeCommande.getSelectionModel().getSelectedItem();
-                            
+
                             if (commandeDApprovisionnementG != null) {
-                                
+
                                 System.out.println("* id commande selectionner **: " + commandeDApprovisionnementG.getNumeroC());
-                                
+
                                 listeLigneCommandeDA.setAll(commandeDApprovisionnementG.getLigneCommandeDApprovisionnements());
                                 textFTotalCommande.setText(String.valueOf(commandeDApprovisionnementG.getTotalC()));
                                 paneEnregistrerFacture.setVisible(true);
                                 new ZoomIn(paneEnregistrerFacture).play();
                                 paneEnregistrerFacture.toFront();
-                                
+
+                            } else {
+
+                                creerAlerte("Selectionner une commande ! ", AlertType.WARNING).showAndWait();
                             }
                         });
                     }
-                    
+
                     @Override
                     public void updateItem(Void item, boolean empty) {
                         super.updateItem(item, empty);
@@ -936,850 +948,923 @@ public class MenueAgentCaisseController implements Initializable {
                             setGraphic(btn);
                         }
                     }
-                    
+
                 };
-                
+
                 return cell;
             }
         };
-        
+
         colBtn.setCellFactory(cellFactory);
-        
+
         paneAjouterFactureTableVListeCommande.getColumns().add(colBtn);
     }
-    
+
+    Alert creerAlerte(String text, AlertType type) {
+        Alert alert = new Alert(type);
+        alert.setHeaderText(null);
+        alert.setContentText(text);
+
+        return alert;
+    }
+
     public void chargerListeFactureAchat() {
-        
+
         listeFactureAchat.setAll(serviceFactureAchat.afficher());
     }
-    
+
     public void chargerReglementFournisseurEspece() {
-        
+
         listeReglementFournisseurEspece.setAll(serviceReglementFournisseurEspece.afficher());
     }
-    
+
     public void chargerReglementFournisseurCheque() {
-        
+
         listeReglementFournisseurCheque.setAll(serviceReglementFournisseurCheque.afficher());
     }
-    
+
     public void chargerListeRecouvrementClientCheque() {
         ListeRecouvrementClientCheque.setAll(serviceRecouvrementClientCheque.afficher());
     }
-    
+
     public void chargerListeRecouvrementClientEspece() {
-        
+
         ListeRecouvrementClientEspece.setAll(serviceRecouvrementClientEspece.afficher());
     }
-    
+
     public void chargerFactureVente() {
-        
+
         ListeFactureVente.setAll(serviceRecouvrementClientEspece.chargerFactureVente());
     }
-    
+
     public void chargerInventaire() {
-        
+
         listInventaire.setAll(serviceInventaireCaisse.afficher());
-        
+
     }
-    
+
     public void chargerLettreDeRelance() {
-        
+
         listeLettreDeRelance.setAll(serviceLettreDeRelance.afficher());
-        
+
     }
-    
+
     public void chargerCommandeDapprovisionnement() {
-        
+
         listeCommandeA.setAll(serviceFactureAchat.chargerCommande());
-        
+
     }
-    
+
     public void chargerFactureFournisseur() {
-        
+
         paneGFactureF.setVisible(true);
         new ZoomIn(paneGFactureF).play();
         paneGFactureF.toFront();
-        
+
         listeFactureAchat.setAll(serviceFactureAchat.afficher());
-        
+
     }
-    
+
     private void afficheFacture(ActionEvent event) {
-        
+
         if (event.getSource().equals(btnFactureF)) {
-            
+
             chargerFactureFournisseur();
         }
-        
+
     }
-    
+
     @FXML
     private void afficheReglementF(ActionEvent event) {
-        
+
         chargerReglementFournisseurCheque();
         chargerReglementFournisseurEspece();
         paneGReglementFournisseur.setVisible(true);
         new ZoomIn(paneGReglementFournisseur).play();
         paneGReglementFournisseur.toFront();
-        
+
+        for (FactureAchat facture : serviceFactureAchat.chargerParDateSysteme()) {
+
+            String title = " Reglement fournisseur ";
+            String message = " Echaillance reglment fature n° " + facture.getNumeroF();
+
+            TrayNotification tray = new TrayNotification();
+            AnimationType type = AnimationType.POPUP;
+
+            tray.setAnimationType(type);
+            tray.setTitle(title);
+            tray.setMessage(message);
+            tray.setNotificationType(NotificationType.INFORMATION);
+            tray.showAndDismiss(Duration.millis(3000));
+
+        }
+
     }
-    
+
     @FXML
     private void afficheRecouvrementC(ActionEvent event) {
-        
+
         chargerListeRecouvrementClientCheque();
         chargerListeRecouvrementClientEspece();
         paneGRecouvrementClient.setVisible(true);
         new ZoomIn(paneGRecouvrementClient).play();
         paneGRecouvrementClient.toFront();
+        
+        
+
+        for (FactureVente facture : serviceRecouvrementClientEspece.chargerFactureVenteParDateSysteme()) {
+
+            String title = " Recouvrement Client ";
+            String message = " Echaillance reglment fature n° " + facture.getNumeroF();
+
+            TrayNotification tray = new TrayNotification();
+            AnimationType type = AnimationType.POPUP;
+
+            tray.setAnimationType(type);
+            tray.setTitle(title);
+            tray.setMessage(message);
+            tray.setNotificationType(NotificationType.INFORMATION);
+            tray.showAndDismiss(Duration.millis(3000));
+
+        }
+        
+        
+        
+
     }
-    
+
     private void afficheInventaire(ActionEvent event) {
-        
+
     }
-    
+
     private void ajouterInventaire(ActionEvent event) {
-        
+
         Stage primaryStage = new Stage();
-        
+
         try {
-            
+
             primaryStage.setTitle("Ajouter Inventaire Caisse");
             AnchorPane root = (AnchorPane) FXMLLoader.load(getClass().getResource("/com/gentrepot/views/AjouterInventaire.fxml"));
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);
-            
+
             primaryStage.show();
-            
+
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-        
+
         chargerInventaire();
-        
+
     }
-    
+
     @FXML
     private void supprimerInventaire(ActionEvent event) {
-        
+
         for (InventaireCaisse inventaireCaisse : listInventaire) {
-            
+
             if (inventaireCaisse.getCheckBox().isSelected()) {
-                
+
                 serviceInventaireCaisse.supprimer(inventaireCaisse);
-                
+
             }
         }
-        
+
         chargerInventaire();
-        
+
     }
-    
+
     @FXML
     private void selectionner(MouseEvent event) {
-        
+
         inventaireCaisseG = tableViewInventaire.getSelectionModel().getSelectedItem();
-        
+
     }
-    
+
     @FXML
     private void calculerEcart(KeyEvent event) {
-        
+
         ecartC.setText(String.valueOf(Double.valueOf(soldeTCalculer.getText()) - totalT));
     }
-    
+
     @FXML
     private void afficherPaneAjouterInventaire(ActionEvent event) {
-        
+
         totalTheorique.setText(String.valueOf(totalT));
         totalCheque.setText(String.valueOf(serviceRecouvrementClientCheque.totalCheque()));
         totalEspece.setText(String.valueOf(serviceRecouvrementClientEspece.totalEspece()));
-        
+
         paneAjouterInventaire.setVisible(true);
         new ZoomIn(paneAjouterInventaire).play();
         paneAjouterInventaire.toFront();
-        
+
     }
-    
+
     public void chargerPaneGInventaire() {
-        
+
         chargerInventaire();
         paneGInvetaireC.setVisible(true);
         new ZoomIn(paneGInvetaireC).play();
         paneGInvetaireC.toFront();
-        
+
     }
-    
+
     @FXML
     private void afficheGInventaire(ActionEvent event) {
-        
+
         if (event.getSource().equals(btnGInventaire)) {
-            
+
             chargerPaneGInventaire();
-            
+
         }
-        
+
     }
-    
+
     public void clear() {
-        
+
         totalTheorique.setText(String.valueOf((serviceRecouvrementClientCheque.totalCheque() + serviceRecouvrementClientEspece.totalEspece())));
         totalCheque.setText(String.valueOf(serviceRecouvrementClientCheque.totalCheque()));
         totalEspece.setText(String.valueOf(serviceRecouvrementClientEspece.totalEspece()));
-        
+
         soldeTCalculer.setText("");
-        
+
         ecartC.setText("");
-        
+
     }
-    
+
     @FXML
     private void ajouterInventaireCaisse(ActionEvent event) {
-        
+
         InventaireCaisse inventaireCaisse = new InventaireCaisse(new Date(), Double.valueOf(soldeTCalculer.getText()), Double.valueOf(totalTheorique.getText()), Double.valueOf(totalCheque.getText()), Double.valueOf(totalEspece.getText()), Double.valueOf(ecartC.getText()));
-        
+
         serviceInventaireCaisse.ajouter(inventaireCaisse);
-        
+
         clear();
-        
+
         chargerPaneGInventaire();
     }
-    
+
     @FXML
     private void anuulerAjouterInventaireCaisse(ActionEvent event) {
-        
+
         clear();
     }
-    
+
     @FXML
     private void chargerPaneModifierInventaireCaisse(ActionEvent event) {
-        
+
         if (inventaireCaisseG != null) {
-            
+
             totalTheoriqueM.setText(String.valueOf(inventaireCaisseG.getSoldeTheorique()));
             totalChequeM.setText(String.valueOf(inventaireCaisseG.getSoldeCheque()));
             totalEspeceM.setText(String.valueOf(inventaireCaisseG.getSoldeEspece()));
             soldeTCalculerM.setText(String.valueOf(inventaireCaisseG.getSoldeCalculer()));
             ecartCM.setText(String.valueOf(inventaireCaisseG.getEcart()));
-            
+
             paneModiferInventaire.setVisible(true);
             new ZoomIn(paneModiferInventaire).play();
             paneModiferInventaire.toFront();
-            
+
+        } else {
+            creerAlerte("Selectionner un inventaire ! ", AlertType.WARNING).showAndWait();
         }
     }
-    
+
     @FXML
     private void calculerEcartM(KeyEvent event) {
-        
+
         ecartCM.setText(String.valueOf(Double.valueOf(soldeTCalculerM.getText()) - totalT));
-        
+
     }
-    
+
     @FXML
     private void EnregistrerModifierInventaire(ActionEvent event) {
-        
+
         inventaireCaisseG.setEcart(Double.valueOf(ecartCM.getText()));
         inventaireCaisseG.setSoldeCalculer(Double.valueOf(soldeTCalculerM.getText()));
         serviceInventaireCaisse.modifier(inventaireCaisseG);
         chargerPaneGInventaire();
         inventaireCaisseG = null;
-        
+
     }
-    
+
     @FXML
     private void annulerModiferInventaire(ActionEvent event) {
     }
-    
+
     @FXML
     private void afficherPaneAjouterLettre(ActionEvent event) {
-        
+
         listeFactureVenteLettre.setAll(serviceLettreDeRelance.chargerFacture());
         paneAjouterLettreDeRelance.setVisible(true);
         new ZoomIn(paneAjouterLettreDeRelance).play();
         paneAjouterLettreDeRelance.toFront();
-        
+
     }
-    
+
     @FXML
     private void supprimerLettre(ActionEvent event) {
-        
+
         for (LettreDeRelance lettre : listeLettreDeRelance) {
-            
+
             if (lettre.getChekBox().isSelected()) {
-                
+
                 serviceLettreDeRelance.supprimer(lettre);
-                
+
             }
-            
+
         }
-        
+
         chargerLettreDeRelance();
-        
+
     }
-    
+
     public void afficherPaneGLettre() {
-        
+
         chargerLettreDeRelance();
         paneGLettreR.setVisible(true);
         new ZoomIn(paneGLettreR).play();
         paneGLettreR.toFront();
     }
-    
+
     @FXML
     private void afficherPanelGLettreDeRelance(ActionEvent event) {
-        
+
         if (event.getSource().equals(btnLettreRelance)) {
-            
+
             afficherPaneGLettre();
         }
-        
+
     }
-    
+
     @FXML
     private void validerAjouterLettre(ActionEvent event) {
-        
+
         for (FactureVente factureVente : listeFactureVenteLettre) {
-            
+
             if (factureVente.getCheckBoxLettreRelance().isSelected()) {
-                
+
                 serviceLettreDeRelance.ajouter(new LettreDeRelance(new Date(), factureVente));
-                
+
             }
-            
+
         }
-        
+
         afficherPaneGLettre();
-        
+
     }
-    
+
     @FXML
     private void afficherPaneAjouterFactureFournisseur(ActionEvent event) {
-        
+
         chargerCommandeDapprovisionnement();
         paneAjouterFacture.setVisible(true);
         new ZoomIn(paneAjouterFacture).play();
         paneAjouterFacture.toFront();
-        
+
     }
-    
+
     @FXML
     private void affichePaneGFacture(ActionEvent event) {
-        
+
         if (event.getSource().equals(btnFactureF)) {
-            
+
             chargerFactureFournisseur();
-            
+
         }
     }
-    
+
     @FXML
     private void validerAjouterFactureAchat(ActionEvent event) {
-        
+
         LocalDate date = textFDateEchaillanceFacture.getValue();
-        
+
         FactureAchat factureAchat = new FactureAchat(Integer.valueOf(textFNumeroF.getText()), new Date(), java.sql.Date.valueOf(date), Double.valueOf(textFTTC.getText()), "non_paye", 0, Double.valueOf(textFTTC.getText()), Double.valueOf(textFTimbreFiscale.getText()), Double.valueOf(textFFraisTransport.getText()), commandeDApprovisionnementG);
-        
+
         textFNumeroF.setText("");
         textFTTC.setText("");
         textFTimbreFiscale.setText("");
         textFFraisTransport.setText("");
         textFDateEchaillanceFacture.setValue(null);
-        
+
         serviceFactureAchat.ajouter(factureAchat);
         chargerFactureFournisseur();
-        
+
     }
-    
+
     @FXML
     private void chargerPaneAjouterRecouvrementCEspece(ActionEvent event) {
-        
+
         chargerFactureVente();
         paneAjouterRecouvrementClientEspece.setVisible(true);
         new ZoomIn(paneAjouterRecouvrementClientEspece).play();
         paneAjouterRecouvrementClientEspece.toFront();
     }
-    
+
     @FXML
     private void chargerPaneModifierRecouvrementCEspece(ActionEvent event) {
-        
+
         if (recouvrementClientEspeceG != null) {
-            
+
             chargerFactureVente();
             paneModifierRecouvrementCEspece.setVisible(true);
             new ZoomIn(paneModifierRecouvrementCEspece).play();
             paneModifierRecouvrementCEspece.toFront();
-            
+
             textFModifierRecouvrementCEspece.setText(String.valueOf(recouvrementClientEspeceG.getMontant()));
-            
+
+        } else {
+            creerAlerte("Selectionner un recouvrement ! ", AlertType.WARNING).showAndWait();
         }
-        
+
     }
-    
+
     @FXML
     private void supprimerRecouvrementClientEspece(ActionEvent event) {
-        
+
         for (RecouvrementClientEspece r : ListeRecouvrementClientEspece) {
-            
+
             if (r.getCheckBox().isSelected()) {
-                
+
                 serviceRecouvrementClientEspece.supprimer(r);
-                
+
             }
-            
+
         }
-        
+
         chargerListeRecouvrementClientEspece();
-        
+
     }
-    
+
     @FXML
     private void paneAjouterRecouvrementCESelectionnerFacture(MouseEvent event) {
-        
+
         factureVenteG = tableViewAjouterRecouvrementCEListeFacture.getSelectionModel().getSelectedItem();
     }
-    
+
     @FXML
     private void validerAjouterRecouvrementCEspece(ActionEvent event) {
-        
+
         if (factureVenteG != null) {
-            
+
             RecouvrementClientEspece recouvrementClientEspece = new RecouvrementClientEspece(factureVenteG, Double.valueOf(textFAjouterRCEMontant.getText()), new Date());
-            
+
             serviceRecouvrementClientEspece.ajouter(recouvrementClientEspece);
-            
+
             factureVenteG = null;
             chargerListeRecouvrementClientEspece();
             paneGRecouvrementClientEspece.setVisible(true);
             new ZoomIn(paneGRecouvrementClientEspece).play();
             paneGRecouvrementClientEspece.toFront();
-            
+
+        } else {
+
+            creerAlerte("Selectionner une facture ! ", AlertType.WARNING).showAndWait();
         }
-        
+
     }
-    
+
     @FXML
     private void AnnulerAjouterRecouvrementCEspece(ActionEvent event) {
-        
+
         chargerListeRecouvrementClientEspece();
         paneGRecouvrementClientEspece.setVisible(true);
         new ZoomIn(paneGRecouvrementClientEspece).play();
         paneGRecouvrementClientEspece.toFront();
     }
-    
+
     @FXML
     private void selectListeRecouvrementCEspece(MouseEvent event) {
-        
+
         recouvrementClientEspeceG = tableVGRecouvrementClientEspece.getSelectionModel().getSelectedItem();
     }
-    
+
     private void paneModifierRecouvrementClientEspeceSelectionnerFature(MouseEvent event) {
-        
+
         factureVenteG = tableViewAjouterRecouvrementCEListeFacture.getSelectionModel().getSelectedItem();
     }
-    
+
     @FXML
     private void validerModifierRecouvrementCEspece(ActionEvent event) {
-        
+
         if (factureVenteG != null) {
-            
+
             recouvrementClientEspeceG.setMontant(Double.valueOf(textFModifierRecouvrementCEspece.getText()));
             recouvrementClientEspeceG.setFactureVente(factureVenteG);
-            
+
             serviceRecouvrementClientEspece.modifier(recouvrementClientEspeceG);
-            
+
             recouvrementClientEspeceG = null;
             factureVenteG = null;
-            
+
             chargerListeRecouvrementClientEspece();
             paneGRecouvrementClientEspece.setVisible(true);
             new ZoomIn(paneGRecouvrementClientEspece).play();
             paneGRecouvrementClientEspece.toFront();
-            
+
+        } else {
+            creerAlerte("Selectionner une facture ! ", AlertType.WARNING).showAndWait();
         }
-        
+
     }
-    
+
     @FXML
     private void modifierRecouvrementClientEspeceSelectFacture(MouseEvent event) {
-        
+
         factureVenteG = tableViewModiferRecouvrementClientEspeceListeFacture.getSelectionModel().getSelectedItem();
     }
-    
+
     @FXML
     private void ChargerPaneAjouterRecouvrementCheque(ActionEvent event) {
-        
+
         chargerFactureVente();
         paneAjouterRecouvrementClientCheque.setVisible(true);
         new ZoomIn(paneAjouterRecouvrementClientCheque).play();
         paneAjouterRecouvrementClientCheque.toFront();
-        
+
     }
-    
+
     @FXML
     private void chargerPaneModiferRecouvrementCheque(ActionEvent event) {
-        
+
         if (recouvrementClientChequeG != null) {
-            
+
             dateChequeModifierRecouvrementClientCheque.setValue(LocalDate.parse(recouvrementClientChequeG.getDateCheque().toString()));
             textFModifierRecouvrementClientChequeNumeroCheque.setText(String.valueOf(recouvrementClientChequeG.getNumeroCheque()));
             textFModiiferRecouvrementChequeMontant.setText(String.valueOf(recouvrementClientChequeG.getMontant()));
-            
+
             chargerFactureVente();
             paneModifierRecouvrementCheque.setVisible(true);
             new ZoomIn(paneModifierRecouvrementCheque).play();
             paneModifierRecouvrementCheque.toFront();
+        } else {
+            creerAlerte("Selectionner un recouvrement ! ", AlertType.WARNING).showAndWait();
         }
-        
+
     }
-    
+
     @FXML
     private void supprimerRecouvrementClientCheque(ActionEvent event) {
-        
+
         for (RecouvrementClientCheque r : ListeRecouvrementClientCheque) {
-            
+
             if (r.getCheckBox().isSelected()) {
-                
+
                 serviceRecouvrementClientCheque.supprimer(r);
-                
+
             }
         }
-        
+
         chargerListeRecouvrementClientCheque();
-        
+
     }
-    
+
     @FXML
     private void paneAjouterRecouvrementClientChequeSelectionner(MouseEvent event) {
-        
+
         factureVenteG = tableViewListeFactureAjouterRecouvrementClientCheque.getSelectionModel().getSelectedItem();
     }
-    
+
     @FXML
     private void validerAjouterRecouvrementClientCheque(ActionEvent event) {
-        
+
         if (factureVenteG != null) {
-            
+
             LocalDate date = dateChequeAjouterRecouvrementClientCheque.getValue();
-            
+
             RecouvrementClientCheque recouvrementClientCheque = new RecouvrementClientCheque(java.sql.Date.valueOf(date), Integer.valueOf(textFAjouterRecouvrementClientChequeNumeroCheque.getText()), factureVenteG, Double.valueOf(textFAjouterRecouvrementChequeMontant.getText()), new Date());
             serviceRecouvrementClientCheque.ajouter(recouvrementClientCheque);
             factureVenteG = null;
-            
+
             dateChequeAjouterRecouvrementClientCheque.setValue(null);
             textFAjouterRecouvrementClientChequeNumeroCheque.setText("");
             textFAjouterRecouvrementChequeMontant.setText("");
-            
+
             chargerListeRecouvrementClientCheque();
             paneGrecouvrementClientcheque.setVisible(true);
             new ZoomIn(paneGrecouvrementClientcheque).play();
             paneGrecouvrementClientcheque.toFront();
-            
+
+        } else {
+            creerAlerte("Selectionner une facture ! ", AlertType.WARNING).showAndWait();
         }
-        
+
     }
-    
+
     @FXML
     private void AnnulerAjouterRecouvrementCCheque(ActionEvent event) {
-        
+
         chargerListeRecouvrementClientCheque();
         paneGrecouvrementClientcheque.setVisible(true);
         new ZoomIn(paneGrecouvrementClientcheque).play();
         paneGrecouvrementClientcheque.toFront();
     }
-    
+
     @FXML
     private void paneGRecouvrementChequeSelectionner(MouseEvent event) {
-        
+
         recouvrementClientChequeG = tableViewGRecouvrementClientCheque.getSelectionModel().getSelectedItem();
-        
+
     }
-    
+
     @FXML
     private void validerModifierRecouvrementClientCheque(ActionEvent event) {
-        
+
         if (factureVenteG != null) {
-            
+
             recouvrementClientChequeG.setFactureVente(factureVenteG);
             recouvrementClientChequeG.setNumeroCheque(Integer.valueOf(textFModifierRecouvrementClientChequeNumeroCheque.getText()));
             recouvrementClientChequeG.setDateCheque(java.sql.Date.valueOf(dateChequeModifierRecouvrementClientCheque.getValue()));
             recouvrementClientChequeG.setMontant(Double.valueOf(textFModiiferRecouvrementChequeMontant.getText()));
-            
+
             serviceRecouvrementClientCheque.modifier(recouvrementClientChequeG);
-            
+
             textFModifierRecouvrementClientChequeNumeroCheque.setText("");
             dateChequeModifierRecouvrementClientCheque.setValue(null);
             textFModiiferRecouvrementChequeMontant.setText("");
-            
+
             chargerListeRecouvrementClientCheque();
             paneGrecouvrementClientcheque.setVisible(true);
             new ZoomIn(paneGrecouvrementClientcheque).play();
             paneGrecouvrementClientcheque.toFront();
-            
+
             recouvrementClientChequeG = null;
+        } else {
+            creerAlerte("Selectionner une facture ! ", AlertType.WARNING).showAndWait();
         }
-        
+
     }
-    
+
     @FXML
     private void paneModifierRecouvrementClientChequeSelectionner(MouseEvent event) {
-        
+
         factureVenteG = tableViewListeFactureModifierRecouvrementClientCheque.getSelectionModel().getSelectedItem();
-        
+
     }
-    
+
     @FXML
     private void AnnulerModifierRecouvrementCCheque(ActionEvent event) {
-        
+
         chargerListeRecouvrementClientCheque();
         paneGrecouvrementClientcheque.setVisible(true);
         new ZoomIn(paneGrecouvrementClientcheque).play();
         paneGrecouvrementClientcheque.toFront();
     }
-    
+
     @FXML
     private void selectListReglementEspece(MouseEvent event) {
         reglementFournisseurEspeceG = tableViewGreglementEspece.getSelectionModel().getSelectedItem();
-        
+
     }
-    
+
     @FXML
     private void chargerPaneAjouterReglementEspece(ActionEvent event) {
-        
+
         chargerListeFactureAchat();
         paneajouterReglementEspece.setVisible(true);
         new ZoomIn(paneajouterReglementEspece).play();
         paneajouterReglementEspece.toFront();
     }
-    
+
     @FXML
     private void chargerPaneModifierReglementEspece(ActionEvent event) {
-        
+
         if (reglementFournisseurEspeceG != null) {
-            
+
             textFModifierReglementEspece.setText(String.valueOf(reglementFournisseurEspeceG.getMontant()));
             chargerListeFactureAchat();
             paneModifierReglementEspece.setVisible(true);
             new ZoomIn(paneModifierReglementEspece).play();
             paneModifierReglementEspece.toFront();
+        } else {
+            creerAlerte("Selectionner un reglement ! ", AlertType.WARNING).showAndWait();
         }
     }
-    
+
     @FXML
     private void selectListeReglementCheque(MouseEvent event) {
-        
+
         reglementFournisseurChequeG = tableViewGReglementCheque.getSelectionModel().getSelectedItem();
-        
+
     }
-    
+
     @FXML
     private void chargerPaneAjouterReglementCheque(ActionEvent event) {
-        
+
         chargerListeFactureAchat();
         paneAjouterReglementCheque.setVisible(true);
         new ZoomIn(paneAjouterReglementCheque).play();
         paneAjouterReglementCheque.toFront();
-        
+
     }
-    
+
     @FXML
     private void chargerPaneModiiferReglementCheque(ActionEvent event) {
-        
+
         if (reglementFournisseurChequeG != null) {
-            
+
             dateChequeModifierRegCheque.setValue(LocalDate.parse(reglementFournisseurChequeG.getDateCheque().toString()));
             textFNumeroModiferRegCheque.setText(String.valueOf(reglementFournisseurChequeG.getNumeroCheque()));
             textMontantModifierRegCheque.setText(String.valueOf(reglementFournisseurChequeG.getMontant()));
-            
+
             chargerListeFactureAchat();
             paneModifierReglementCheque.setVisible(true);
             new ZoomIn(paneModifierReglementCheque).play();
             paneModifierReglementCheque.toFront();
+        } else {
+            creerAlerte("Selectionner une reglement ! ", AlertType.WARNING).showAndWait();
         }
-        
+
     }
-    
+
     @FXML
     private void supprimerReglementCheque(ActionEvent event) {
-        
+
         for (ReglementFournisseurCheque r : listeReglementFournisseurCheque) {
-            
+
             if (r.getCheckBox().isSelected()) {
-                
+
                 serviceReglementFournisseurCheque.supprimer(r);
             }
-            
+
         }
-        
+
         chargerReglementFournisseurCheque();
-        
+
     }
-    
+
     @FXML
     private void paneAjouterReglementEspceSelectionner(MouseEvent event) {
-        
+
         factureAchatG = tableViewAjouterReglementEspeceListeFactureAchat.getSelectionModel().getSelectedItem();
     }
-    
+
     @FXML
     private void AnnulerAjouterReglementEspece(ActionEvent event) {
-        
+
         chargerReglementFournisseurEspece();
         paneGReglementFournisseurEspece.setVisible(true);
         new ZoomIn(paneGReglementFournisseurEspece).play();
         paneGReglementFournisseurEspece.toFront();
     }
-    
+
     @FXML
     private void validerAjouterReglementEspece(ActionEvent event) {
-        
+
         if (factureAchatG != null) {
-            
+
             ReglementFournisseurEspece r = new ReglementFournisseurEspece(factureAchatG, Double.valueOf(textFAjouterReglementEspece.getText()), new Date());
-            
+
             serviceReglementFournisseurEspece.ajouter(r);
-            
+
             factureAchatG = null;
             textFAjouterReglementEspece.setText("");
-            
+
             chargerReglementFournisseurEspece();
             paneGReglementFournisseurEspece.setVisible(true);
             new ZoomIn(paneGReglementFournisseurEspece).play();
             paneGReglementFournisseurEspece.toFront();
-            
+
+        } else {
+            creerAlerte("Selectionner une facture ! ", AlertType.WARNING).showAndWait();
         }
-        
+
     }
-    
+
     @FXML
     private void supprimerReglementEspece(ActionEvent event) {
-        
+
         for (ReglementFournisseurEspece r : listeReglementFournisseurEspece) {
-            
+
             if (r.getCheckBox().isSelected()) {
-                
+
                 serviceReglementFournisseurEspece.supprimer(r);
             }
         }
-        
+
         chargerReglementFournisseurEspece();
-        
+
     }
-    
+
     @FXML
     private void validerModifierReglementEspece(ActionEvent event) {
-        
+
         if (factureAchatG != null) {
-            
+
             reglementFournisseurEspeceG.setMontant(Double.valueOf(textFModifierReglementEspece.getText()));
             reglementFournisseurEspeceG.setFactureAchat(factureAchatG);
-            
+
             serviceReglementFournisseurEspece.modifier(reglementFournisseurEspeceG);
-            
+
             reglementFournisseurEspeceG = null;
             factureAchatG = null;
-            
+
             chargerReglementFournisseurEspece();
             paneGReglementFournisseurEspece.setVisible(true);
             new ZoomIn(paneGReglementFournisseurEspece).play();
             paneGReglementFournisseurEspece.toFront();
-            
+
+        } else {
+            creerAlerte("Selectionner une facture ! ", AlertType.WARNING).showAndWait();
         }
-        
+
     }
-    
+
     @FXML
     private void AnuulerModiferReglementEspece(ActionEvent event) {
-        
+
         chargerReglementFournisseurEspece();
         paneGReglementFournisseurEspece.setVisible(true);
         new ZoomIn(paneGReglementFournisseurEspece).play();
         paneGReglementFournisseurEspece.toFront();
     }
-    
+
     @FXML
     private void modifierReglementEspeceListeFactureAchatSelection(MouseEvent event) {
-        
+
         factureAchatG = tableViewModifierReglementEspeceListeFactureAchat.getSelectionModel().getSelectedItem();
     }
-    
+
     @FXML
     private void validerAjouterReglementCheque(ActionEvent event) {
-        
+
         if (factureAchatG != null) {
-            
+
             LocalDate date = dateChequeAjouterReglCheque.getValue();
-            
+
             ReglementFournisseurCheque r = new ReglementFournisseurCheque(java.sql.Date.valueOf(date), Integer.valueOf(textfAjouterNumeroReglementCheque.getText()), factureAchatG, Double.valueOf(textAjouterRegChequeMontant.getText()), new Date());
-            
+
             serviceReglementFournisseurCheque.ajouter(r);
             factureAchatG = null;
-            
+
             dateChequeAjouterReglCheque.setValue(null);
             textfAjouterNumeroReglementCheque.setText("");
             textAjouterRegChequeMontant.setText("");
-            
+
             chargerReglementFournisseurCheque();
             paneGReglementCheque.setVisible(true);
             new ZoomIn(paneGReglementCheque).play();
             paneGReglementCheque.toFront();
-            
+
+        } else {
+            creerAlerte("Selectionner une facture ! ", AlertType.WARNING).showAndWait();
         }
-        
+
     }
-    
+
     @FXML
     private void anuulerAjouterReglementCheque(ActionEvent event) {
-        
+
         chargerReglementFournisseurCheque();
         paneGReglementCheque.setVisible(true);
         new ZoomIn(paneGReglementCheque).play();
         paneGReglementCheque.toFront();
-        
+
     }
-    
+
     @FXML
     private void paneAjouterReglementChequeSelectionnerFacture(MouseEvent event) {
-        
+
         factureAchatG = tableViewAjouterRegChequeListeFacture.getSelectionModel().getSelectedItem();
-        
+
     }
-    
+
     @FXML
     private void paneModiiferRegSelectionnerFacture(MouseEvent event) {
-        
+
         factureAchatG = tableViewListeFactureModifierRegCheque.getSelectionModel().getSelectedItem();
     }
-    
+
     @FXML
     private void validerModifierRegCheque(ActionEvent event) {
-        
+
         if (factureAchatG != null) {
-            
+
             reglementFournisseurChequeG.setFactureAchat(factureAchatG);
             reglementFournisseurChequeG.setNumeroCheque(Integer.valueOf(textFNumeroModiferRegCheque.getText()));
             reglementFournisseurChequeG.setDateCheque(java.sql.Date.valueOf(dateChequeModifierRegCheque.getValue()));
             reglementFournisseurChequeG.setMontant(Double.valueOf(textMontantModifierRegCheque.getText()));
-            
+
             serviceReglementFournisseurCheque.modifier(reglementFournisseurChequeG);
-            
+
             textFNumeroModiferRegCheque.setText("");
             dateChequeModifierRegCheque.setValue(null);
             textMontantModifierRegCheque.setText("");
-            
+
             chargerReglementFournisseurCheque();
             paneGReglementCheque.setVisible(true);
             new ZoomIn(paneGReglementCheque).play();
             paneGReglementCheque.toFront();
-            
+
             reglementFournisseurChequeG = null;
             factureAchatG = null;
-            
+
+        } else {
+            creerAlerte("Selectionner une facture ! ", AlertType.WARNING).showAndWait();
         }
-        
+
     }
-    
+
     @FXML
     private void annulerModifierRegCheque(ActionEvent event) {
         chargerReglementFournisseurCheque();
@@ -1787,17 +1872,17 @@ public class MenueAgentCaisseController implements Initializable {
         new ZoomIn(paneGReglementCheque).play();
         paneGReglementCheque.toFront();
     }
-    
+
     @FXML
     private void annulerAjouterFacture(ActionEvent event) {
-        
+
         chargerFactureFournisseur();
     }
-    
+
     @FXML
     private void retourDetailFacture(ActionEvent event) {
-        
+
         chargerFactureFournisseur();
     }
-    
+
 }

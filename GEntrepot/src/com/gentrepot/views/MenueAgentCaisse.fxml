@@ -85,7 +85,6 @@
    <center>
       <StackPane prefHeight="579.0" prefWidth="709.0" BorderPane.alignment="CENTER">
          <children>
-            <Pane fx:id="paneReglemntF" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #fff;" />
             <Pane fx:id="paneAjouterInventaire" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #fff;">
                <children>
                   <GridPane alignment="CENTER" layoutX="151.0" layoutY="122.0" prefHeight="244.0" prefWidth="421.0">
@@ -1131,6 +1130,7 @@
                   <Separator layoutX="505.0" layoutY="87.0" orientation="VERTICAL" prefHeight="423.0" prefWidth="0.0" />
                </children>
             </Pane>
+            <Pane fx:id="paneReglemntF" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #fff;" />
          </children>
       </StackPane>
    </center>

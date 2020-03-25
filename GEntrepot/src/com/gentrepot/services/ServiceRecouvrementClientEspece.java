@@ -15,6 +15,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -120,6 +121,26 @@ public class ServiceRecouvrementClientEspece implements IService<RecouvrementCli
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
                 list.add(new  FactureVente(rs.getInt(1), rs.getDate(2), rs.getDate(3), rs.getDouble(4), rs.getString(5), rs.getDouble(6), rs.getDouble(7)));
+            }
+
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+
+        return list;
+    }
+    
+      public List<FactureVente> chargerFactureVenteParDateSysteme() {
+        
+        List<FactureVente> list = new ArrayList<>();
+
+        try {
+            String requete = "SELECT * FROM facture_vente where date_echaillance_paiement=?";
+            PreparedStatement pst = cnx.prepareStatement(requete);
+            pst.setDate(1,new java.sql.Date(new Date().getTime()));
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+            list.add(new  FactureVente(rs.getInt(1), rs.getDate(2), rs.getDate(3), rs.getDouble(4), rs.getString(5), rs.getDouble(6), rs.getDouble(7)));
             }
 
         } catch (SQLException ex) {
