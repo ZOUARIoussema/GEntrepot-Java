@@ -15,6 +15,7 @@ import com.gentrepot.models.RecouvrementClientCheque;
 import com.gentrepot.models.RecouvrementClientEspece;
 import com.gentrepot.models.ReglementFournisseurCheque;
 import com.gentrepot.models.ReglementFournisseurEspece;
+import com.gentrepot.models.User;
 import com.gentrepot.services.ServiceCommandeDApprovisionnment;
 import com.gentrepot.services.ServiceFactureAchat;
 import com.gentrepot.services.ServiceInventaireCaisse;
@@ -23,6 +24,7 @@ import com.gentrepot.services.ServiceRecouvrementClientCheque;
 import com.gentrepot.services.ServiceRecouvrementClientEspece;
 import com.gentrepot.services.ServiceReglementFournisseurCheque;
 import com.gentrepot.services.ServiceReglementFournisseurEspece;
+import com.gentrepot.services.ServiceUser;
 import java.util.Date;
 import static javafx.application.Application.launch;
 
@@ -34,14 +36,14 @@ public class TestConsole {
 
     public static void main(String[] args) {
 
-        ServiceFactureAchat serviceFactureAchat = new ServiceFactureAchat();
+      /*  ServiceFactureAchat serviceFactureAchat = new ServiceFactureAchat();
         ServiceCommandeDApprovisionnment serviceCommandeDApprovisionnment = new ServiceCommandeDApprovisionnment();
 
         Fournisseur fournisseur = new Fournisseur(1, "fournissseur1", 24812689, "tunis", "fournisseur1@gmail.com", "2", 0);
 
         CommandeDApprovisionnement commande = new CommandeDApprovisionnement(789, 0, new Date(), "non paye", 0, 0, fournisseur);
 
-        FactureAchat factureAchat = new FactureAchat(3, new Date(), new Date(), 0, "non paye", 0, 0, 0, 0, commande);
+        FactureAchat factureAchat = new FactureAchat(20, new Date(), new Date(), 0, "non paye", 0, 0, 0, 0, commande);
 
         System.out.println("***********  facture achat *********** ");
         System.out.println("*********** Ajouter facture achat *********** ");
@@ -251,15 +253,23 @@ public class TestConsole {
             
         }
         
-        System.out.println("********* *******  *******");
+        System.out.println("********* *******  *******");*/
         
         
         
-       
+        System.out.println("********* User  *******");
         
         
+        ServiceUser serviceUser = new ServiceUser();
+        
+        User user = new User(0, "bb", "bb", "bb", "bb","bb","a:1:{i:0;s:10:\"ROLE_CLIEN\";}");
+        serviceUser.ajouter(user);
       
         
+        for(User u:serviceUser.afficher())
+        {
+            System.out.println(u);
+        }
         
         
 
