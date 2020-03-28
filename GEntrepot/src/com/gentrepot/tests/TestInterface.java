@@ -28,10 +28,10 @@ public class TestInterface extends Application {
 
         try {
 
-            BorderPane root = (BorderPane) FXMLLoader.load(getClass().getResource("/com/gentrepot/views/MenueAdmin.fxml"));
+            HBox root = (HBox) FXMLLoader.load(getClass().getResource("/com/gentrepot/views/Authentification.fxml"));
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);
-
+            primaryStage.setTitle("Authentification");
             primaryStage.show();
         } catch (Exception e) {
             System.out.println(e.getMessage());

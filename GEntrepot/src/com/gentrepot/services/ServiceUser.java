@@ -87,7 +87,8 @@ public class ServiceUser implements IService<User> {
             pst.setString(3, u.getPassword());
             pst.setString(4, u.getRole());
             pst.setString(5, u.getUsernamCanonical());
-            pst.setString(1, u.getEmailCanonical());
+            pst.setString(6, u.getEmailCanonical());
+            pst.setInt(7, u.getId());
 
             pst.executeUpdate();
             System.out.println("user modifiée !");

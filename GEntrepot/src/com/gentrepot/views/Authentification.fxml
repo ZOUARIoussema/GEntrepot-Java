@@ -26,17 +26,6 @@
       </Pane>
       <StackPane prefHeight="400.0" prefWidth="353.0">
          <children>
-            <Pane fx:id="paneConnection" prefHeight="400.0" prefWidth="361.0" style="-fx-background-color: #fff;">
-               <children>
-                  <Label layoutX="36.0" layoutY="124.0" text="Non d'utilisateur" />
-                  <Label layoutX="36.0" layoutY="192.0" text="Mot de passe" />
-                  <JFXTextField fx:id="paneConnectionNUser" layoutX="155.0" layoutY="107.0" />
-                  <JFXPasswordField fx:id="paneConnectionMotPasse" layoutX="155.0" layoutY="175.0" />
-                  <JFXButton fx:id="btnValider" layoutX="172.0" layoutY="250.0" onAction="#validerConnecter" text="Valder" />
-                  <JFXButton fx:id="btnAnnuler" layoutX="247.0" layoutY="250.0" onAction="#annulerConnecter" text="Annuler" />
-                  <JFXButton fx:id="btnCreerCompte" layoutX="72.0" layoutY="330.0" onAction="#creerCompte" prefHeight="25.0" prefWidth="200.0" text="Creer compte" />
-               </children>
-            </Pane>
             <Pane fx:id="paneAjouterUser" prefHeight="400.0" prefWidth="361.0" style="-fx-background-color: #fff;">
                <children>
                   <GridPane layoutX="37.0" layoutY="58.0" prefHeight="166.0" prefWidth="259.0">
@@ -62,8 +51,33 @@
                         <JFXPasswordField fx:id="paneAjouterUsertextAdresseMail" GridPane.columnIndex="2" GridPane.rowIndex="4" />
                      </children>
                   </GridPane>
-                  <JFXButton fx:id="btnValider" layoutX="172.0" layoutY="250.0" onAction="#validerajouterUser" text="Valder" />
-                  <JFXButton fx:id="btnAnnuler" layoutX="247.0" layoutY="250.0" onAction="#annulerAjouterUser" text="Annuler" />
+                  <JFXButton fx:id="btnValider" layoutX="89.0" layoutY="243.0" onAction="#validerajouterUser" text="Valder">
+                     <graphic>
+                        <ImageView fitHeight="24.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@ImageMenueCaisse/pngtree-add-vector-icon-png-image_3791307.jpg" />
+                           </image>
+                        </ImageView>
+                     </graphic></JFXButton>
+                  <JFXButton fx:id="btnAnnuler" layoutX="223.0" layoutY="246.0" onAction="#annulerAjouterUser" text="Annuler">
+                     <graphic>
+                        <ImageView fitHeight="19.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@ImageMenueCaisse/images%20(1).png" />
+                           </image>
+                        </ImageView>
+                     </graphic></JFXButton>
+               </children>
+            </Pane>
+            <Pane fx:id="paneConnection" prefHeight="400.0" prefWidth="361.0" style="-fx-background-color: #fff;">
+               <children>
+                  <Label layoutX="36.0" layoutY="124.0" text="Non d'utilisateur" />
+                  <Label layoutX="36.0" layoutY="192.0" text="Mot de passe" />
+                  <JFXTextField fx:id="paneConnectionNUser" layoutX="155.0" layoutY="107.0" />
+                  <JFXPasswordField fx:id="paneConnectionMotPasse" layoutX="155.0" layoutY="175.0" />
+                  <JFXButton fx:id="btnValider" layoutX="172.0" layoutY="250.0" onAction="#validerConnecter" text="Valder" />
+                  <JFXButton fx:id="btnAnnuler" layoutX="247.0" layoutY="250.0" onAction="#annulerConnecter" text="Annuler" />
+                  <JFXButton fx:id="btnCreerCompte" layoutX="72.0" layoutY="330.0" onAction="#creerCompte" prefHeight="25.0" prefWidth="200.0" text="Creer compte" />
                </children>
             </Pane>
          </children>

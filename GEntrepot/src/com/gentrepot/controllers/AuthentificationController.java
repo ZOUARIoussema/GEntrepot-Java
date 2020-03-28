@@ -61,8 +61,11 @@ public class AuthentificationController implements Initializable {
     @FXML
     private void validerConnecter(ActionEvent event) {
         
+     
         
+        User user = new User(paneConnectionNUser.getText(),paneConnectionMotPasse.getText());
         
+        System.out.println(serviceUser.afficher().contains(user));
         
         
         

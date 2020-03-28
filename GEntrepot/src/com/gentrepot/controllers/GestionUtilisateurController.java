@@ -58,8 +58,6 @@ public class GestionUtilisateurController implements Initializable {
     private JFXTextField textFAdresseMail;
     private JFXTextField textFRole;
     @FXML
-    private JFXButton btnAjouterUser;
-    @FXML
     private JFXButton btnAnnuler;
     @FXML
     private JFXTextField textMotPAsse;
@@ -79,6 +77,12 @@ public class GestionUtilisateurController implements Initializable {
     private JFXButton btnAjouterUserM;
     @FXML
     private JFXButton btnAnnulerM;
+    @FXML
+    private JFXButton paneAjouterBtnAjouterUser;
+    @FXML
+    private TableColumn<?, ?> tableViewAction;
+    @FXML
+    private JFXButton btnEnvoyerMail;
 
     /**
      * Initializes the controller class.
@@ -94,6 +98,7 @@ public class GestionUtilisateurController implements Initializable {
         tableNonUser.setCellValueFactory(new PropertyValueFactory<>("username"));
         tableAdresseMailUser.setCellValueFactory(new PropertyValueFactory<>("email"));
         tableViewRole.setCellValueFactory(new PropertyValueFactory<>("role"));
+        tableViewAction.setCellValueFactory(new PropertyValueFactory<>("checkBox"));
 
         chargerListeUser();
 
@@ -128,6 +133,19 @@ public class GestionUtilisateurController implements Initializable {
 
     @FXML
     private void supprimerUser(ActionEvent event) {
+
+        for (User u : listeUsers) {
+
+            if (u.getCheckBox().isSelected()) {
+
+                serviceUser.supprimer(u);
+
+            }
+
+        }
+
+        chargerListeUser();
+
     }
 
     @FXML
@@ -159,19 +177,6 @@ public class GestionUtilisateurController implements Initializable {
     }
 
     @FXML
-    private void validerAjouterUser(ActionEvent event) {
-
-        User user = new User(0, textFNonUtilisateur.getText(), textFAdresseMail.getText(), textFNonUtilisateur.getText(), textFAdresseMail.getText(), textMotPAsse.getText(), AjouterUserCombobox.getValue());
-
-        System.out.println(user);
-
-        serviceUser.ajouter(user);
-
-        chargerListeUser();
-
-    }
-
-    @FXML
     private void validerModifier(ActionEvent event) {
 
         userG.setEmail(textFAdresseMailM.getText());
@@ -180,6 +185,16 @@ public class GestionUtilisateurController implements Initializable {
         userG.setUsername(textFNonUtilisateurM.getText());
         userG.setUsernamCanonical(textFNonUtilisateurM.getText());
         userG.setRole(AjouterUserComboboxM.getValue());
+
+        serviceUser.modifier(userG);
+
+        userG = null;
+
+        chargerListeUser();
+
+        paneGuser.setVisible(true);
+        new ZoomIn(paneGuser).play();
+        paneGuser.toFront();
 
     }
 
@@ -195,6 +210,31 @@ public class GestionUtilisateurController implements Initializable {
     private void selectUser(MouseEvent event) {
 
         userG = tableViewListeUser.getSelectionModel().getSelectedItem();
+    }
+
+    @FXML
+    private void paneAjouterUserValiderAjouterUser(ActionEvent event) {
+
+        User user = new User(0, textFNonUtilisateur.getText(), textFAdresseMail.getText(), textFNonUtilisateur.getText(), textFAdresseMail.getText(), textMotPAsse.getText(), AjouterUserCombobox.getValue());
+
+        System.out.println(user);
+
+        serviceUser.ajouter(user);
+
+        textFNonUtilisateur.setText("");
+        textFAdresseMail.setText("");
+        textMotPAsse.setText("");
+
+        paneGuser.setVisible(true);
+        new ZoomIn(paneGuser).play();
+        paneGuser.toFront();
+
+        chargerListeUser();
+
+    }
+
+    @FXML
+    private void envoyerMail(ActionEvent event) {
     }
 
 }
