@@ -60,11 +60,12 @@ public class ServiceCommandeVente {
     //ajouter
      public void ajouterCommande(CommandeVente c) {
         try {
-            String requete = "INSERT INTO commande_vente (id,totalC,dateC) VALUES (?,?,?)";
+            String requete = "INSERT INTO commande_vente (id,totalC,dateC,etat) VALUES (?,?,?,?)";
             PreparedStatement pst = cnx.prepareStatement(requete);
             pst.setInt(1, c.getId());
             pst.setDouble(2, c.getTotalC());
             pst.setDate(3,new java.sql.Date(c.getDateC().getTime()));
+            pst.setString(4, c.getEtat());
 
             pst.executeUpdate();
             System.out.println("Commande  ajoutée !");
@@ -122,6 +123,12 @@ try {
             System.err.println(ex.getMessage());
           }  }
         
+ 
+ 
+ 
+ 
+ 
+ 
     public List<CommandeVente> afficherCommande(){
     List<CommandeVente> commande =new ArrayList<>();
     

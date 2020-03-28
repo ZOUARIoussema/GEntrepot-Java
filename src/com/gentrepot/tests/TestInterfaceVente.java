@@ -20,11 +20,11 @@ public class TestInterfaceVente extends Application {
     @Override
     public void start(Stage primaryStage)   {
         
-        
+     
         
         try {
 
-            AnchorPane root = (AnchorPane) FXMLLoader.load(getClass().getResource("/com/gentrepot/views/TestInterface.fxml"));
+            AnchorPane root = (AnchorPane) FXMLLoader.load(getClass().getResource("/com/gentrepot/views/AjouterBL.fxml"));
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);
 

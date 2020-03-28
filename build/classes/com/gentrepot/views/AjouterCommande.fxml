@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="891.0" prefWidth="1401.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gentrepot.controllers.AjouterCommandeController">
+    <stylesheets>
+        <URL value="@ajoutercommande.css" />
+    </stylesheets>
+   <children>
+      <TableView fx:id="tableViewProduit" layoutX="102.0" layoutY="58.0" onMouseClicked="#selectArticle" prefHeight="289.0" prefWidth="1051.0">
+        <columns>
+          <TableColumn fx:id="col_ref" prefWidth="150.0" text="Référence produit" />
+          <TableColumn minWidth="0.0" prefWidth="0.0" text="C2" />
+            <TableColumn fx:id="col_lib" prefWidth="150.0" text="Libelle" />
+            <TableColumn fx:id="col_prix" prefWidth="150.0" text="Prix" />
+        </columns>
+      </TableView>
+      <TextField fx:id="textqteC" layoutX="460.0" layoutY="403.0" />
+      <Button fx:id="btnAjouterLigne" layoutX="669.0" layoutY="412.0" mnemonicParsing="false" onAction="#ajouterLigne" text="Ajouter article" />
+      <TableView fx:id="tableViewLigne" layoutX="102.0" layoutY="549.0" onMouseClicked="#selectLigne" prefHeight="200.0" prefWidth="621.0">
+        <columns>
+          <TableColumn fx:id="tableViewLigneProduit" prefWidth="165.0" text="Produit" />
+          <TableColumn fx:id="tableViewLignePrix" prefWidth="113.0" text="Prix" />
+            <TableColumn fx:id="tableViewLigneQte" prefWidth="107.0" text="Quantite" />
+            <TableColumn fx:id="tableViewLigneTVA" prefWidth="122.0" text="TVA" />
+            <TableColumn fx:id="tableViewLigneTotal" prefWidth="111.0" text="Total" />
+        </columns>
+      </TableView>
+      <Label layoutX="127.0" layoutY="512.0" text="Liste des articles ajouees au panier" />
+      <Label layoutX="711.0" layoutY="797.0" text="Toatl commande" />
+      <TextField fx:id="textfTotalCommande" editable="false" layoutX="843.0" layoutY="785.0" />
+      <Button fx:id="btnAC" layoutX="1179.0" layoutY="837.0" mnemonicParsing="false" onAction="#validerAjouterCommande" text="Valider Commande" />
+      <Label layoutX="339.0" layoutY="407.0" text="Quantite commander" />
+      <Button fx:id="btnModifierLigne" layoutX="851.0" layoutY="593.0" mnemonicParsing="false" onAction="#modifierLigne" text="Modifier Quantite" />
+      <Button fx:id="btnSupprimerLigne" layoutX="851.0" layoutY="661.0" mnemonicParsing="false" onAction="#supprimerLigne" text="Supprimer Produit" />
+   </children>
+</AnchorPane>

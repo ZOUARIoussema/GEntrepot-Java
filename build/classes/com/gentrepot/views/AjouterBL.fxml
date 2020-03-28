@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="577.0" prefWidth="946.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="com.gentrepot.controllers.AjouterBLController">
+    <stylesheets>
+        <URL value="@ajouterbl.css" />
+    </stylesheets>
+   <children>
+      <TableView layoutX="108.0" layoutY="126.0" prefHeight="200.0" prefWidth="545.0">
+        <columns>
+          <TableColumn prefWidth="75.0" text="C1" />
+          <TableColumn prefWidth="75.0" text="C2" />
+        </columns>
+      </TableView>
+      <Button fx:id="btnLivrer" layoutX="747.0" layoutY="193.0" mnemonicParsing="false" onAction="#afficherInterfaceLivreer" text="Livreer" />
+      <Label layoutX="120.0" layoutY="80.0" text="Liste cmmande" />
+   </children>
+</AnchorPane>

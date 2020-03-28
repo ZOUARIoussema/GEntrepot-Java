@@ -46,6 +46,9 @@ public class CommandeVente {
     }
 
     public CommandeVente() {
+        
+         this.ligneCommande= new ArrayList<>();
+        
     }
 
     

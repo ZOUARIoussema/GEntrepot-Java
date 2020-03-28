@@ -7,7 +7,7 @@ package com.gentrepot.services;
 
 import com.gentrepot.models.CommandeVente;
 import com.gentrepot.models.LigneCommande;
-import com.gentrepot.models.Produit;
+import com.gentrepot.models.ProduitAchat;
 import com.gentrepot.utils.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -111,7 +111,7 @@ public class ServiceLigneCommande {
 
             while (res.next()) {
 
-                liste.add(new LigneCommande(c, new Produit(res.getString(8)), res.getDouble(3), res.getInt(5), res.getDouble(4), res.getDouble(6)));
+                liste.add(new LigneCommande(c, new ProduitAchat(res.getString(8)), res.getDouble(3), res.getInt(5), res.getDouble(4), res.getDouble(6)));
 
             }
         } catch (SQLException ex) {

@@ -5,6 +5,8 @@
  */
 package com.gentrepot.models;
 
+import java.util.Objects;
+
 /**
  *
  * @author oussema
@@ -13,14 +15,23 @@ public class LigneCommande {
     
     private int id;
     private CommandeVente commandeVente;
-    private Produit produit;
+    private ProduitAchat produit;
     private User user;
     private double prix;
     private int quantite;
     private double total;
     private double tva;
+    
+    
+    
+    
+    
+    
+    //affuche dans table view
+    
+    private String refp;
 
-    public LigneCommande( CommandeVente commandeVente, Produit produit, User user, double prix, int quantite, double total, double tva) {
+    public LigneCommande( CommandeVente commandeVente, ProduitAchat produit, User user, double prix, int quantite, double total, double tva) {
       
         this.commandeVente = commandeVente;
         this.produit = produit;
@@ -29,15 +40,29 @@ public class LigneCommande {
         this.quantite = quantite;
         this.total = total;
         this.tva = tva;
+        
+        
+        this.refp=produit.getReference();
     }
 
-    public LigneCommande(CommandeVente commandeVente, Produit produit, double prix, int quantite, double total, double tva) {
+    public LigneCommande(CommandeVente commandeVente, ProduitAchat produit, double prix, int quantite, double total, double tva) {
         this.commandeVente = commandeVente;
         this.produit = produit;
         this.prix = prix;
         this.quantite = quantite;
         this.total = total;
         this.tva = tva;
+        
+        
+        this.refp=produit.getReference();
+    }
+
+    public LigneCommande( double prix, int quantite, double total, double tva) {
+        this.prix = prix;
+        this.quantite = quantite;
+        this.total = total;
+        this.tva = tva;
+       
     }
 
     
@@ -63,13 +88,15 @@ public class LigneCommande {
         this.commandeVente = commandeVente;
     }
 
-    public Produit getProduit() {
+    public ProduitAchat getProduit() {
         return produit;
     }
 
-    public void setProduit(Produit produit) {
+    public void setProduit(ProduitAchat produit) {
         this.produit = produit;
     }
+
+  
 
     public User getUser() {
         return user;
@@ -114,6 +141,38 @@ public class LigneCommande {
     @Override
     public String toString() {
         return "LigneCommande{" + "id=" + id + ", produit=" + produit + ", user=" + user + ", prix=" + prix + ", quantite=" + quantite + ", total=" + total + ", tva=" + tva + '}';
+    }
+
+    public String getRefp() {
+        return refp;
+    }
+
+    public void setRefp(String refp) {
+        this.refp = refp;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final LigneCommande other = (LigneCommande) obj;
+        if (!Objects.equals(this.produit, other.produit)) {
+            return false;
+        }
+        return true;
     }
     
     
