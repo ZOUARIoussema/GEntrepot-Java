@@ -28,6 +28,13 @@ public class CommandeDApprovisionnement {
     
     
     
+    
+    //afficher dans table view
+    
+    private int idF;
+    
+    
+    
 
     public CommandeDApprovisionnement(int numeroC, double totalC, Date dateCreation, String etat, double tauxRemise, double totalTva, Fournisseur fournisseur) {
         this.numeroC = numeroC;
@@ -38,6 +45,7 @@ public class CommandeDApprovisionnement {
         this.totalTva = totalTva;
         this.fournisseur = fournisseur;
         this.ligneCommandeDApprovisionnements= new ArrayList<>();
+        this.idF=fournisseur.getId();
     }
 
     public CommandeDApprovisionnement(int numeroC) {
@@ -112,6 +120,14 @@ public class CommandeDApprovisionnement {
 
     public void setLigneCommandeDApprovisionnements(List<LigneCommandeDApprovisionnement> ligneCommandeDApprovisionnements) {
         this.ligneCommandeDApprovisionnements = ligneCommandeDApprovisionnements;
+    }
+
+    public int getIdF() {
+        return idF;
+    }
+
+    public void setIdF(int idF) {
+        this.idF = idF;
     }
 
     

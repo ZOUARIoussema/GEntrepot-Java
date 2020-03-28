@@ -21,19 +21,13 @@ import java.util.List;
  */
 public class ServiceUser implements IService<User> {
 
-     Connection cnx = DataSource.getInstance().getCnx();
-    
-    
-    
+    Connection cnx = DataSource.getInstance().getCnx();
+
     @Override
     public void ajouter(User u) {
 
-       
-
         try {
-            
-           
-            
+
             String requete = "INSERT INTO user (username,email,password,roles,username_canonical,email_canonical,enabled) VALUES (?,?,?,?,?,?,?)";
             PreparedStatement pst = cnx.prepareStatement(requete);
 
@@ -44,7 +38,6 @@ public class ServiceUser implements IService<User> {
             pst.setString(5, u.getUsernamCanonical());
             pst.setString(6, u.getEmailCanonical());
             pst.setInt(7, 1);
-            
 
             pst.executeUpdate();
             System.out.println("User ajoutée !");
@@ -57,8 +50,7 @@ public class ServiceUser implements IService<User> {
 
     @Override
     public void supprimer(User u) {
-        
-        
+
         try {
             String requete = "DELETE FROM user WHERE id=?";
             PreparedStatement pst = cnx.prepareStatement(requete);
@@ -74,10 +66,8 @@ public class ServiceUser implements IService<User> {
 
     @Override
     public void modifier(User u) {
-        
-        
-        
-         try {
+
+        try {
             String requete = "update user  set username=?,email=?,password=?,roles=?,username_canonical=?,email_canonical=? where id=?  ";
 
             PreparedStatement pst = cnx.prepareStatement(requete);
@@ -96,24 +86,20 @@ public class ServiceUser implements IService<User> {
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
         }
-        
-        
+
     }
 
     @Override
     public List<User> afficher() {
-        
-         List<User> list = new ArrayList<>();
+
+        List<User> list = new ArrayList<>();
 
         try {
             String requete = "SELECT * FROM user";
             PreparedStatement pst = cnx.prepareStatement(requete);
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
-                
-                
-                
-                
+
                 list.add(new User(rs.getInt(1), rs.getString(2), rs.getString(4), rs.getString(3), rs.getString(5), rs.getString(8), rs.getString(12)));
             }
 
@@ -122,6 +108,28 @@ public class ServiceUser implements IService<User> {
         }
 
         return list;
+    }
+
+    public User find(String nonU, String motPasse) {
+
+        User user = null;
+
+        try {
+            String requete = "SELECT * FROM user where username=? and password=? ";
+            PreparedStatement pst = cnx.prepareStatement(requete);
+            pst.setString(1, nonU);
+             pst.setString(2, motPasse);
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+
+                user = new User(rs.getInt(1), rs.getString(2), rs.getString(4), rs.getString(3), rs.getString(5), rs.getString(8), rs.getString(12));
+            }
+
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+
+        return user;
     }
 
 }

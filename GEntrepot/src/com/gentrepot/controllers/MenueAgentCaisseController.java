@@ -784,7 +784,7 @@ public class MenueAgentCaisseController implements Initializable {
         paneAjouterFactureTableVListeCommandeDateC.setCellValueFactory(new PropertyValueFactory<>("dateCreation"));
         paneAjouterFactureTableVListeCommandeEtatC.setCellValueFactory(new PropertyValueFactory<>("etat"));
         paneAjouterFactureTableVListeCommandeTotalC.setCellValueFactory(new PropertyValueFactory<>("tauxRemise"));
-        paneAjouterFactureTableVListeCommandeFournisseur.setCellValueFactory(new PropertyValueFactory<>("fournisseur"));
+        paneAjouterFactureTableVListeCommandeFournisseur.setCellValueFactory(new PropertyValueFactory<>("idF"));
 
         paneAjouterFactureTableVListeCommande.setItems(listeCommandeA);
 
@@ -838,7 +838,7 @@ public class MenueAgentCaisseController implements Initializable {
          *
          * ajouter button liste facture fournisseur
          */
-        TableColumn<FactureAchat, Void> colBtn = new TableColumn("Button Column");
+        TableColumn<FactureAchat, Void> colBtn = new TableColumn("Action");
 
         Callback<TableColumn<FactureAchat, Void>, TableCell<FactureAchat, Void>> cellFactory = new Callback<TableColumn<FactureAchat, Void>, TableCell<FactureAchat, Void>>() {
             @Override
@@ -1011,7 +1011,7 @@ public class MenueAgentCaisseController implements Initializable {
 
     public void chargerCommandeDapprovisionnement() {
 
-        listeCommandeA.setAll(serviceFactureAchat.chargerCommande());
+        listeCommandeA.setAll(serviceFactureAchat.chargerCommandeNonFacture());
 
     }
 

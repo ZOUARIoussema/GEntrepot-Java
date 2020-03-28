@@ -15,8 +15,14 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -24,9 +30,7 @@ import javafx.scene.layout.Pane;
  * @author oussema
  */
 public class AuthentificationController implements Initializable {
-    
-    
-    
+
     ServiceUser serviceUser = new ServiceUser();
 
     @FXML
@@ -58,18 +62,78 @@ public class AuthentificationController implements Initializable {
         // TODO
     }
 
+    Alert creerAlerte(String text, Alert.AlertType type) {
+        Alert alert = new Alert(type);
+        alert.setHeaderText(null);
+        alert.setContentText(text);
+
+        return alert;
+    }
+
     @FXML
     private void validerConnecter(ActionEvent event) {
-        
-     
-        
-        User user = new User(paneConnectionNUser.getText(),paneConnectionMotPasse.getText());
-        
-        System.out.println(serviceUser.afficher().contains(user));
-        
-        
-        
-        
+
+        Stage primaryStage = new Stage();
+
+        User user = serviceUser.find(paneConnectionNUser.getText(), paneConnectionMotPasse.getText());
+
+        if (user!=null) {
+
+            System.out.println("correcte");
+
+            if (user.getRole().equals("Admin")) {
+                
+                
+                 try {
+
+                    BorderPane root = (BorderPane) FXMLLoader.load(getClass().getResource("/com/gentrepot/views/MenueAdmin.fxml"));
+                    Scene scene = new Scene(root);
+                    primaryStage.setScene(scene);
+                    primaryStage.setTitle("Menue Agent Caisse : " + user.getUsername());
+                    primaryStage.show();
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                }
+
+            }
+
+            if (user.getRole().equals("Responsable Achat")) {
+
+            }
+
+            if (user.getRole().equals("Responsable Vente")) {
+
+            }
+
+            if (user.getRole().equals("Agent Caisse")) {
+
+                try {
+
+                    BorderPane root = (BorderPane) FXMLLoader.load(getClass().getResource("/com/gentrepot/views/MenueAgentCaisse.fxml"));
+                    Scene scene = new Scene(root);
+                    primaryStage.setScene(scene);
+                    primaryStage.setTitle("Menue Agent Caisse : " + user.getUsername());
+                    primaryStage.show();
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                }
+
+            }
+
+            if (user.getRole().equals("Chef De Parc")) {
+
+            }
+
+            if (user.getRole().equals("Client")) {
+
+            }
+
+        } else {
+            System.out.println("incorrecte");
+            creerAlerte("Non d'utlisateur ou mot de passe incorrecte ! ", Alert.AlertType.WARNING).showAndWait();
+
+        }
+
     }
 
     @FXML
@@ -78,7 +142,7 @@ public class AuthentificationController implements Initializable {
 
     @FXML
     private void creerCompte(ActionEvent event) {
-        
+
         paneAjouterUser.setVisible(true);
         new ZoomIn(paneAjouterUser).play();
         paneAjouterUser.toFront();
@@ -87,16 +151,15 @@ public class AuthentificationController implements Initializable {
 
     @FXML
     private void validerajouterUser(ActionEvent event) {
-        
-        
-        User user = new User(0, paneAjouterUsertextNomUser.getText(), paneAjouterUsertextAdresseMail.getText(), paneAjouterUsertextNomUser.getText(), paneAjouterUsertextAdresseMail.getText(), paneAjouterUsertextMotPasse.getText(),"ROLE_CLIEN");
+
+        User user = new User(0, paneAjouterUsertextNomUser.getText(), paneAjouterUsertextAdresseMail.getText(), paneAjouterUsertextNomUser.getText(), paneAjouterUsertextAdresseMail.getText(), paneAjouterUsertextMotPasse.getText(), "Client");
 
         serviceUser.ajouter(user);
-        
+
         paneConnection.setVisible(true);
         new ZoomIn(paneConnection).play();
         paneConnection.toFront();
-        
+
     }
 
     @FXML
