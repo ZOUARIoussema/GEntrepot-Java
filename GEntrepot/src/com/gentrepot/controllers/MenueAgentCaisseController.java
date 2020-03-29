@@ -40,6 +40,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.chart.PieChart;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
@@ -592,12 +593,41 @@ public class MenueAgentCaisseController implements Initializable {
     private TableColumn<LigneCommandeDApprovisionnement, Double> tableViewListeLigneAjouterFactureTotalD;
     @FXML
     private JFXTextField textFTotalCommandeDetail;
+    @FXML
+    private PieChart pieChartRecouvrement;
+    @FXML
+    private PieChart pieChartReglement;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+
+        /**
+         * pie chart
+         */
+        ObservableList<PieChart.Data> listReglement = FXCollections.observableArrayList();
+
+        
+        
+        double totalA=serviceFactureAchat.totalAchatParAnneSysteme();
+        double totalAP=serviceFactureAchat.totalPayerParAnneSysteme();
+        
+        
+        
+        PieChart.Data totalAchat = new PieChart.Data("total achat:"+totalA+"DT",totalA);
+        PieChart.Data totalPayer = new PieChart.Data("total payé:"+totalAP+"DT",totalAP);
+        
+        
+        
+        listReglement.add(totalAchat);
+        listReglement.add(totalPayer);
+        
+        
+          pieChartReglement.setLabelsVisible(true);
+        pieChartReglement.setData(listReglement);
+      
 
         /*
         *table view liste ligne commande deatil facture
@@ -628,7 +658,7 @@ public class MenueAgentCaisseController implements Initializable {
 
         tableViewListeFactureModifierRegChequeNF.setCellValueFactory(new PropertyValueFactory<>("numeroF"));
         tableViewListeFactureModifierRegChequeDC.setCellValueFactory(new PropertyValueFactory<>("dateCreation"));
-        tableViewListeFactureModifierRegChequeEtat.setCellValueFactory(new PropertyValueFactory<>("dateEchaillancePaiement"));
+        tableViewListeFactureModifierRegChequeEtat.setCellValueFactory(new PropertyValueFactory<>("etat"));
         tableViewListeFactureModifierRegChequeTTC.setCellValueFactory(new PropertyValueFactory<>("totalTTC"));
         tableViewListeFactureModifierRegChequeTP.setCellValueFactory(new PropertyValueFactory<>("totalPaye"));
         tableViewListeFactureModifierRegChequeRP.setCellValueFactory(new PropertyValueFactory<>("restePaye"));
@@ -640,7 +670,7 @@ public class MenueAgentCaisseController implements Initializable {
 
         tableViewAjouterRegChequeListeFactureNF.setCellValueFactory(new PropertyValueFactory<>("numeroF"));
         tableViewAjouterRegChequeListeFactureDC.setCellValueFactory(new PropertyValueFactory<>("dateCreation"));
-        tableViewAjouterRegChequeListeFactureEtat.setCellValueFactory(new PropertyValueFactory<>("dateEchaillancePaiement"));
+        tableViewAjouterRegChequeListeFactureEtat.setCellValueFactory(new PropertyValueFactory<>("etat"));
         tableViewAjouterRegChequeListeFactureTTC.setCellValueFactory(new PropertyValueFactory<>("totalTTC"));
         tableViewAjouterRegChequeListeFactureTP.setCellValueFactory(new PropertyValueFactory<>("totalPaye"));
         tableViewAjouterRegChequeListeFactureRP.setCellValueFactory(new PropertyValueFactory<>("restePaye"));
@@ -652,7 +682,7 @@ public class MenueAgentCaisseController implements Initializable {
 
         tableViewModifierReglementEspeceListeFactureAchatNF.setCellValueFactory(new PropertyValueFactory<>("numeroF"));
         tableViewModifierReglementEspeceListeFactureAchatDC.setCellValueFactory(new PropertyValueFactory<>("dateCreation"));
-        tableViewModifierReglementEspeceListeFactureAchatEtat.setCellValueFactory(new PropertyValueFactory<>("dateEchaillancePaiement"));
+        tableViewModifierReglementEspeceListeFactureAchatEtat.setCellValueFactory(new PropertyValueFactory<>("etat"));
         tableViewModifierReglementEspeceListeFactureAchatTTc.setCellValueFactory(new PropertyValueFactory<>("totalTTC"));
         tableViewModifierReglementEspeceListeFactureAchatTP.setCellValueFactory(new PropertyValueFactory<>("totalPaye"));
         tableViewModifierReglementEspeceListeFactureAchatRP.setCellValueFactory(new PropertyValueFactory<>("restePaye"));
@@ -664,7 +694,7 @@ public class MenueAgentCaisseController implements Initializable {
 
         tableViewAjouterReglementEspeceListeFactureAchatNF.setCellValueFactory(new PropertyValueFactory<>("numeroF"));
         tableViewAjouterReglementEspeceListeFactureAchatDC.setCellValueFactory(new PropertyValueFactory<>("dateCreation"));
-        tableViewAjouterReglementEspeceListeFactureAchatEtat.setCellValueFactory(new PropertyValueFactory<>("dateEchaillancePaiement"));
+        tableViewAjouterReglementEspeceListeFactureAchatEtat.setCellValueFactory(new PropertyValueFactory<>("etat"));
         tableViewAjouterReglementEspeceListeFactureAchatTTC.setCellValueFactory(new PropertyValueFactory<>("totalTTC"));
         tableViewAjouterReglementEspeceListeFactureAchatTP.setCellValueFactory(new PropertyValueFactory<>("totalPaye"));
         tableViewAjouterReglementEspeceListeFactureAchatRP.setCellValueFactory(new PropertyValueFactory<>("restePaye"));
@@ -696,7 +726,7 @@ public class MenueAgentCaisseController implements Initializable {
 
         tableViewListeFactureModifierRecouvrementClientChequeNumeroF.setCellValueFactory(new PropertyValueFactory<>("numeroF"));
         tableViewListeFactureModifierRecouvrementClientChequeDC.setCellValueFactory(new PropertyValueFactory<>("dateCreation"));
-        tableViewListeFactureModifierRecouvrementClientChequeEtat.setCellValueFactory(new PropertyValueFactory<>("dateEchaillancePaiement"));
+        tableViewListeFactureModifierRecouvrementClientChequeEtat.setCellValueFactory(new PropertyValueFactory<>("etat"));
         tableViewListeFactureModifierRecouvrementClientChequeTTC.setCellValueFactory(new PropertyValueFactory<>("totalTTC"));
         tableViewListeFactureModifierRecouvrementClientChequeTP.setCellValueFactory(new PropertyValueFactory<>("totalPaye"));
         tableViewListeFactureModifierRecouvrementClientChequeRP.setCellValueFactory(new PropertyValueFactory<>("restePaye"));
@@ -708,7 +738,7 @@ public class MenueAgentCaisseController implements Initializable {
 
         tableViewListeFactureAjouterRecouvrementClientChequeNumeroF.setCellValueFactory(new PropertyValueFactory<>("numeroF"));
         tableViewListeFactureAjouterRecouvrementClientChequeDateC.setCellValueFactory(new PropertyValueFactory<>("dateCreation"));
-        tableViewListeFactureAjouterRecouvrementClientChequeEtat.setCellValueFactory(new PropertyValueFactory<>("dateEchaillancePaiement"));
+        tableViewListeFactureAjouterRecouvrementClientChequeEtat.setCellValueFactory(new PropertyValueFactory<>("etat"));
         tableViewListeFactureAjouterRecouvrementClientChequeTTC.setCellValueFactory(new PropertyValueFactory<>("totalTTC"));
         tableViewListeFactureAjouterRecouvrementClientChequeTP.setCellValueFactory(new PropertyValueFactory<>("totalPaye"));
         tableViewListeFactureAjouterRecouvrementClientChequeRSP.setCellValueFactory(new PropertyValueFactory<>("restePaye"));
@@ -815,7 +845,7 @@ public class MenueAgentCaisseController implements Initializable {
 
         tableViewAjouterRecouvrementCEListeFactureNumeroF.setCellValueFactory(new PropertyValueFactory<>("numeroF"));
         tableViewAjouterRecouvrementCEListeFactureDateC.setCellValueFactory(new PropertyValueFactory<>("dateCreation"));
-        tableViewAjouterRecouvrementCEListeFactureEtat.setCellValueFactory(new PropertyValueFactory<>("dateEchaillancePaiement"));
+        tableViewAjouterRecouvrementCEListeFactureEtat.setCellValueFactory(new PropertyValueFactory<>("etat"));
         tableViewAjouterRecouvrementCEListeFactureTotalTTC.setCellValueFactory(new PropertyValueFactory<>("totalTTC"));
         tableViewAjouterRecouvrementCEListeFactureTotalPayer.setCellValueFactory(new PropertyValueFactory<>("totalPaye"));
         tableViewAjouterRecouvrementCEListeFactureResteAPayer.setCellValueFactory(new PropertyValueFactory<>("restePaye"));
@@ -828,7 +858,7 @@ public class MenueAgentCaisseController implements Initializable {
 
         tableViewModiferRecouvrementClientEspeceListeFactureNumeroF.setCellValueFactory(new PropertyValueFactory<>("numeroF"));
         tableViewModiferRecouvrementClientEspeceListeFactureDC.setCellValueFactory(new PropertyValueFactory<>("dateCreation"));
-        tableViewModiferRecouvrementClientEspeceListeFactureEtat.setCellValueFactory(new PropertyValueFactory<>("dateEchaillancePaiement"));
+        tableViewModiferRecouvrementClientEspeceListeFactureEtat.setCellValueFactory(new PropertyValueFactory<>("etat"));
         tableViewModiferRecouvrementClientEspeceListeFactureTTc.setCellValueFactory(new PropertyValueFactory<>("totalTTC"));
         tableViewModiferRecouvrementClientEspeceListeFactureTP.setCellValueFactory(new PropertyValueFactory<>("totalPaye"));
         tableViewModiferRecouvrementClientEspeceListeFactureRP.setCellValueFactory(new PropertyValueFactory<>("restePaye"));
@@ -1069,8 +1099,6 @@ public class MenueAgentCaisseController implements Initializable {
         paneGRecouvrementClient.setVisible(true);
         new ZoomIn(paneGRecouvrementClient).play();
         paneGRecouvrementClient.toFront();
-        
-        
 
         for (FactureVente facture : serviceRecouvrementClientEspece.chargerFactureVenteParDateSysteme()) {
 
@@ -1087,9 +1115,6 @@ public class MenueAgentCaisseController implements Initializable {
             tray.showAndDismiss(Duration.millis(3000));
 
         }
-        
-        
-        
 
     }
 
@@ -1409,13 +1434,18 @@ public class MenueAgentCaisseController implements Initializable {
 
             RecouvrementClientEspece recouvrementClientEspece = new RecouvrementClientEspece(factureVenteG, Double.valueOf(textFAjouterRCEMontant.getText()), new Date());
 
-            serviceRecouvrementClientEspece.ajouter(recouvrementClientEspece);
+            if (recouvrementClientEspece.getMontant() <= recouvrementClientEspece.getFactureVente().getRestePaye()) {
 
-            factureVenteG = null;
-            chargerListeRecouvrementClientEspece();
-            paneGRecouvrementClientEspece.setVisible(true);
-            new ZoomIn(paneGRecouvrementClientEspece).play();
-            paneGRecouvrementClientEspece.toFront();
+                serviceRecouvrementClientEspece.ajouter(recouvrementClientEspece);
+
+                factureVenteG = null;
+                chargerListeRecouvrementClientEspece();
+                paneGRecouvrementClientEspece.setVisible(true);
+                new ZoomIn(paneGRecouvrementClientEspece).play();
+                paneGRecouvrementClientEspece.toFront();
+            } else {
+                creerAlerte("Le montant du recouvrement doit etre inferieur au egale du reste a payer du facture ! ", AlertType.WARNING).showAndWait();
+            }
 
         } else {
 
@@ -1449,10 +1479,12 @@ public class MenueAgentCaisseController implements Initializable {
 
         if (factureVenteG != null) {
 
+            double aM = recouvrementClientEspeceG.getMontant();
+
             recouvrementClientEspeceG.setMontant(Double.valueOf(textFModifierRecouvrementCEspece.getText()));
             recouvrementClientEspeceG.setFactureVente(factureVenteG);
 
-            serviceRecouvrementClientEspece.modifier(recouvrementClientEspeceG);
+            serviceRecouvrementClientEspece.modifier(recouvrementClientEspeceG, aM);
 
             recouvrementClientEspeceG = null;
             factureVenteG = null;
@@ -1533,17 +1565,23 @@ public class MenueAgentCaisseController implements Initializable {
             LocalDate date = dateChequeAjouterRecouvrementClientCheque.getValue();
 
             RecouvrementClientCheque recouvrementClientCheque = new RecouvrementClientCheque(java.sql.Date.valueOf(date), Integer.valueOf(textFAjouterRecouvrementClientChequeNumeroCheque.getText()), factureVenteG, Double.valueOf(textFAjouterRecouvrementChequeMontant.getText()), new Date());
-            serviceRecouvrementClientCheque.ajouter(recouvrementClientCheque);
-            factureVenteG = null;
 
-            dateChequeAjouterRecouvrementClientCheque.setValue(null);
-            textFAjouterRecouvrementClientChequeNumeroCheque.setText("");
-            textFAjouterRecouvrementChequeMontant.setText("");
+            if (recouvrementClientCheque.getMontant() <= recouvrementClientCheque.getFactureVente().getRestePaye()) {
+                serviceRecouvrementClientCheque.ajouter(recouvrementClientCheque);
+                factureVenteG = null;
 
-            chargerListeRecouvrementClientCheque();
-            paneGrecouvrementClientcheque.setVisible(true);
-            new ZoomIn(paneGrecouvrementClientcheque).play();
-            paneGrecouvrementClientcheque.toFront();
+                dateChequeAjouterRecouvrementClientCheque.setValue(null);
+                textFAjouterRecouvrementClientChequeNumeroCheque.setText("");
+                textFAjouterRecouvrementChequeMontant.setText("");
+
+                chargerListeRecouvrementClientCheque();
+                paneGrecouvrementClientcheque.setVisible(true);
+                new ZoomIn(paneGrecouvrementClientcheque).play();
+                paneGrecouvrementClientcheque.toFront();
+            } else {
+                creerAlerte("Le montant du recouvrement doit etre inferieur au egale du reste a payer du facure ! ", AlertType.WARNING).showAndWait();
+
+            }
 
         } else {
             creerAlerte("Selectionner une facture ! ", AlertType.WARNING).showAndWait();
@@ -1572,12 +1610,14 @@ public class MenueAgentCaisseController implements Initializable {
 
         if (factureVenteG != null) {
 
+            double aM = recouvrementClientChequeG.getMontant();
+
             recouvrementClientChequeG.setFactureVente(factureVenteG);
             recouvrementClientChequeG.setNumeroCheque(Integer.valueOf(textFModifierRecouvrementClientChequeNumeroCheque.getText()));
             recouvrementClientChequeG.setDateCheque(java.sql.Date.valueOf(dateChequeModifierRecouvrementClientCheque.getValue()));
             recouvrementClientChequeG.setMontant(Double.valueOf(textFModiiferRecouvrementChequeMontant.getText()));
 
-            serviceRecouvrementClientCheque.modifier(recouvrementClientChequeG);
+            serviceRecouvrementClientCheque.modifier(recouvrementClientChequeG, aM);
 
             textFModifierRecouvrementClientChequeNumeroCheque.setText("");
             dateChequeModifierRecouvrementClientCheque.setValue(null);
@@ -1715,15 +1755,22 @@ public class MenueAgentCaisseController implements Initializable {
 
             ReglementFournisseurEspece r = new ReglementFournisseurEspece(factureAchatG, Double.valueOf(textFAjouterReglementEspece.getText()), new Date());
 
-            serviceReglementFournisseurEspece.ajouter(r);
+            if (r.getMontant() <= r.getFactureAchat().getRestePaye()) {
 
-            factureAchatG = null;
-            textFAjouterReglementEspece.setText("");
+                serviceReglementFournisseurEspece.ajouter(r);
 
-            chargerReglementFournisseurEspece();
-            paneGReglementFournisseurEspece.setVisible(true);
-            new ZoomIn(paneGReglementFournisseurEspece).play();
-            paneGReglementFournisseurEspece.toFront();
+                factureAchatG = null;
+                textFAjouterReglementEspece.setText("");
+
+                chargerReglementFournisseurEspece();
+                paneGReglementFournisseurEspece.setVisible(true);
+                new ZoomIn(paneGReglementFournisseurEspece).play();
+                paneGReglementFournisseurEspece.toFront();
+            } else {
+
+                creerAlerte("Le montant du reglement doit etre inferieur au egale au reste a payer du facture ! ", AlertType.WARNING).showAndWait();
+
+            }
 
         } else {
             creerAlerte("Selectionner une facture ! ", AlertType.WARNING).showAndWait();
@@ -1751,10 +1798,12 @@ public class MenueAgentCaisseController implements Initializable {
 
         if (factureAchatG != null) {
 
+            double ancientM = reglementFournisseurEspeceG.getMontant();
+
             reglementFournisseurEspeceG.setMontant(Double.valueOf(textFModifierReglementEspece.getText()));
             reglementFournisseurEspeceG.setFactureAchat(factureAchatG);
 
-            serviceReglementFournisseurEspece.modifier(reglementFournisseurEspeceG);
+            serviceReglementFournisseurEspece.modifier(reglementFournisseurEspeceG, ancientM);
 
             reglementFournisseurEspeceG = null;
             factureAchatG = null;
@@ -1794,17 +1843,23 @@ public class MenueAgentCaisseController implements Initializable {
 
             ReglementFournisseurCheque r = new ReglementFournisseurCheque(java.sql.Date.valueOf(date), Integer.valueOf(textfAjouterNumeroReglementCheque.getText()), factureAchatG, Double.valueOf(textAjouterRegChequeMontant.getText()), new Date());
 
-            serviceReglementFournisseurCheque.ajouter(r);
-            factureAchatG = null;
+            if (r.getMontant() <= factureAchatG.getRestePaye()) {
 
-            dateChequeAjouterReglCheque.setValue(null);
-            textfAjouterNumeroReglementCheque.setText("");
-            textAjouterRegChequeMontant.setText("");
+                serviceReglementFournisseurCheque.ajouter(r);
+                factureAchatG = null;
 
-            chargerReglementFournisseurCheque();
-            paneGReglementCheque.setVisible(true);
-            new ZoomIn(paneGReglementCheque).play();
-            paneGReglementCheque.toFront();
+                dateChequeAjouterReglCheque.setValue(null);
+                textfAjouterNumeroReglementCheque.setText("");
+                textAjouterRegChequeMontant.setText("");
+
+                chargerReglementFournisseurCheque();
+                paneGReglementCheque.setVisible(true);
+                new ZoomIn(paneGReglementCheque).play();
+                paneGReglementCheque.toFront();
+
+            } else {
+                creerAlerte("Montant du regelement doit etre inferieur au egale au reste a payer du facture ! ", AlertType.WARNING).showAndWait();
+            }
 
         } else {
             creerAlerte("Selectionner une facture ! ", AlertType.WARNING).showAndWait();
@@ -1840,12 +1895,16 @@ public class MenueAgentCaisseController implements Initializable {
 
         if (factureAchatG != null) {
 
+            double AncientM = 0;
+
+            AncientM = reglementFournisseurChequeG.getMontant();
+
             reglementFournisseurChequeG.setFactureAchat(factureAchatG);
             reglementFournisseurChequeG.setNumeroCheque(Integer.valueOf(textFNumeroModiferRegCheque.getText()));
             reglementFournisseurChequeG.setDateCheque(java.sql.Date.valueOf(dateChequeModifierRegCheque.getValue()));
             reglementFournisseurChequeG.setMontant(Double.valueOf(textMontantModifierRegCheque.getText()));
 
-            serviceReglementFournisseurCheque.modifier(reglementFournisseurChequeG);
+            serviceReglementFournisseurCheque.modifier(reglementFournisseurChequeG, AncientM);
 
             textFNumeroModiferRegCheque.setText("");
             dateChequeModifierRegCheque.setValue(null);

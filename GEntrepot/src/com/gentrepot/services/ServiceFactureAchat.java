@@ -27,7 +27,6 @@ public class ServiceFactureAchat implements IService<FactureAchat> {
 
     Connection cnx = DataSource.getInstance().getCnx();
     ServiceCommandeDApprovisionnment serviceCommandeDApprovisionnment = new ServiceCommandeDApprovisionnment();
-    
 
     @Override
     public void ajouter(FactureAchat f) {
@@ -48,13 +47,10 @@ public class ServiceFactureAchat implements IService<FactureAchat> {
 
             pst.executeUpdate();
             System.out.println("Facture achat ajoutée !");
-            
-            
+
             f.getCommandeDApprovisionnement().setEtat("facturer");
-            
+
             serviceCommandeDApprovisionnment.modifierEtatCommande(f.getCommandeDApprovisionnement());
-            
-            
 
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
@@ -98,7 +94,7 @@ public class ServiceFactureAchat implements IService<FactureAchat> {
             pst.setDate(1, new java.sql.Date(new Date().getTime()));
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
-                list.add(new FactureAchat(rs.getInt(1), rs.getDate(2), rs.getDate(3), rs.getDouble(4), rs.getString(5), rs.getDouble(6), rs.getDouble(7), rs.getDouble(8), rs.getDouble(9), getById(rs.getInt(10))));
+                list.add(new FactureAchat(rs.getInt(1), rs.getDate(2), rs.getDate(3), rs.getDouble(4), rs.getString(5), rs.getDouble(6), rs.getDouble(7), rs.getDouble(8), rs.getDouble(9), getCommandeById(rs.getInt(10))));
             }
 
         } catch (SQLException ex) {
@@ -118,7 +114,7 @@ public class ServiceFactureAchat implements IService<FactureAchat> {
             PreparedStatement pst = cnx.prepareStatement(requete);
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
-                list.add(new FactureAchat(rs.getInt(1), rs.getDate(2), rs.getDate(3), rs.getDouble(4), rs.getString(5), rs.getDouble(6), rs.getDouble(7), rs.getDouble(8), rs.getDouble(9), getById(rs.getInt(10))));
+                list.add(new FactureAchat(rs.getInt(1), rs.getDate(2), rs.getDate(3), rs.getDouble(4), rs.getString(5), rs.getDouble(6), rs.getDouble(7), rs.getDouble(8), rs.getDouble(9), getCommandeById(rs.getInt(10))));
             }
 
         } catch (SQLException ex) {
@@ -128,7 +124,7 @@ public class ServiceFactureAchat implements IService<FactureAchat> {
         return list;
     }
 
-    public CommandeDApprovisionnement getById(int id) {
+    public CommandeDApprovisionnement getCommandeById(int id) {
 
         CommandeDApprovisionnement commande = null;
 
@@ -189,31 +185,83 @@ public class ServiceFactureAchat implements IService<FactureAchat> {
 
         return list;
     }
-    
-    
-    
-    public List<CommandeDApprovisionnement>chargerCommandeNonFacture(){
-        
-        
-        List<CommandeDApprovisionnement>liste= new ArrayList<>();
-        
-        for(CommandeDApprovisionnement c:this.chargerCommande()){
-            
-            
-            
-            if(c.getEtat().equals("non_facturer")){
-                
+
+    public List<CommandeDApprovisionnement> chargerCommandeNonFacture() {
+
+        List<CommandeDApprovisionnement> liste = new ArrayList<>();
+
+        for (CommandeDApprovisionnement c : this.chargerCommande()) {
+
+            if (c.getEtat().equals("non_facturer")) {
+
                 liste.add(c);
             }
-            
+
         }
-        
+
         return liste;
     }
-     
+
+    public FactureAchat findFactureById(int id) {
+
+        FactureAchat factureAchat = null;
+
+        for (FactureAchat f : this.afficher()) {
+
+            if (f.getNumeroF() == id) {
+
+                factureAchat = f;
+                return factureAchat;
+            }
+        }
+
+        return factureAchat;
+
+    }
+
+    public double totalAchatParAnneSysteme() {
+
+        double total = 0;
+
+        try {
+            String requete = "SELECT sum(total_ttc) FROM `facture_achat` WHERE YEAR(`date_creation`)=year(sysdate())";
+            PreparedStatement pst = cnx.prepareStatement(requete);
+          
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+
+                total = rs.getDouble(1);
+            }
+
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+
+        return total;
+
+    }
     
     
-    
-    
+    public double totalPayerParAnneSysteme() {
+
+        double total = 0;
+
+        try {
+            String requete = "SELECT sum(total_paye) FROM `facture_achat` WHERE YEAR(`date_creation`)=year(sysdate())";
+            PreparedStatement pst = cnx.prepareStatement(requete);
+            
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+
+                total = rs.getDouble(1);
+            }
+
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+
+        return total;
+
+    }
 
 }

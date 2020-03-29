@@ -67,6 +67,7 @@
                            </image>
                         </ImageView>
                      </graphic></JFXButton>
+                  <Label layoutX="144.0" layoutY="23.0" text="s'inscrire" />
                </children>
             </Pane>
             <Pane fx:id="paneConnection" prefHeight="400.0" prefWidth="361.0" style="-fx-background-color: #fff;">
@@ -75,9 +76,34 @@
                   <Label layoutX="36.0" layoutY="192.0" text="Mot de passe" />
                   <JFXTextField fx:id="paneConnectionNUser" layoutX="155.0" layoutY="107.0" />
                   <JFXPasswordField fx:id="paneConnectionMotPasse" layoutX="155.0" layoutY="175.0" />
-                  <JFXButton fx:id="btnValider" layoutX="172.0" layoutY="250.0" onAction="#validerConnecter" text="Valder" />
-                  <JFXButton fx:id="btnAnnuler" layoutX="247.0" layoutY="250.0" onAction="#annulerConnecter" text="Annuler" />
-                  <JFXButton fx:id="btnCreerCompte" layoutX="72.0" layoutY="330.0" onAction="#creerCompte" prefHeight="25.0" prefWidth="200.0" text="Creer compte" />
+                  <JFXButton fx:id="btnValider" layoutX="172.0" layoutY="250.0" onAction="#validerConnecter" text="Valder">
+                     <graphic>
+                        <ImageView fitHeight="17.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@ImageMenueCaisse/depositphotos_79197690-stock-illustration-the-login-icon-entry-and.jpg" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton fx:id="btnAnnuler" layoutX="247.0" layoutY="250.0" onAction="#annulerConnecter" text="Annuler">
+                     <graphic>
+                        <ImageView fitHeight="13.0" fitWidth="11.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@ImageMenueCaisse/images%20(1).png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton fx:id="btnCreerCompte" layoutX="72.0" layoutY="330.0" onAction="#creerCompte" prefHeight="25.0" prefWidth="200.0" text="Creer compte">
+                     <graphic>
+                        <ImageView fitHeight="23.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@ImageMenueCaisse/icone-service-client-300x300.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <Label layoutX="138.0" layoutY="53.0" text="s'identifier" />
                </children>
             </Pane>
          </children>

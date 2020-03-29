@@ -27,6 +27,7 @@ public class ServiceRecouvrementClientEspece implements IService<RecouvrementCli
     
       Connection cnx = DataSource.getInstance().getCnx();
     
+      ServiceFactureVente serviceFactureVente = new ServiceFactureVente();
     
     
     @Override
@@ -41,6 +42,22 @@ public class ServiceRecouvrementClientEspece implements IService<RecouvrementCli
             pst.setInt(3, r.getFactureVente().getNumeroF());
             pst.executeUpdate();
             System.out.println("Recouvrement client espece ajoutée !");
+            
+            
+            
+            //modifier facture vente 
+            r.getFactureVente().setTotalPaye(r.getFactureVente().getTotalPaye() + r.getMontant());
+
+            r.getFactureVente().setRestePaye(r.getFactureVente().getTotalTTC() - r.getFactureVente().getTotalPaye());
+
+            if (r.getFactureVente().getRestePaye() == 0) {
+
+                r.getFactureVente().setEtat("payer");
+            }
+
+            serviceFactureVente.modifierParRecouvrement(r.getFactureVente());
+            
+            
 
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
@@ -57,6 +74,27 @@ public class ServiceRecouvrementClientEspece implements IService<RecouvrementCli
             pst.setInt(1, r.getId());
             pst.executeUpdate();
             System.out.println("Recouvrement Client espece supprimée !");
+            
+            
+            //modifier facture vente 
+            r.getFactureVente().setTotalPaye(r.getFactureVente().getTotalPaye() - r.getMontant());
+
+            r.getFactureVente().setRestePaye(r.getFactureVente().getTotalTTC() - r.getFactureVente().getTotalPaye());
+
+            if (r.getFactureVente().getRestePaye() == 0) {
+
+                r.getFactureVente().setEtat("payer");
+            }else
+            {
+                 r.getFactureVente().setEtat("non_payer");
+                
+            }
+
+            serviceFactureVente.modifierParRecouvrement(r.getFactureVente());
+            
+            
+            
+            
 
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
@@ -88,8 +126,54 @@ public class ServiceRecouvrementClientEspece implements IService<RecouvrementCli
         
         
     }
+    
+     public void modifier(RecouvrementClientEspece r,double ancientM) {
+        
+        
+          try {
+            String requete = "UPDATE recouvrement_client_espece SET montant=?,date_creation=?,idF_factureVente=? WHERE id=?";
+            PreparedStatement pst = cnx.prepareStatement(requete);
+            pst.setDouble(1, r.getMontant());
+            pst.setDate(2, new java.sql.Date(r.getDateCreation().getTime()));
+            pst.setInt(3,r.getFactureVente().getNumeroF());
+            pst.setInt(4,r.getId());
+            pst.executeUpdate();
+            System.out.println("Recouvrement Client espece modifiée !");
+            
+            
+            FactureVente factureVente =r.getFactureVente();
+            
+             //modifier facture
+            factureVente.setTotalPaye(factureVente.getTotalPaye() - ancientM);
 
-    @Override
+            factureVente.setTotalPaye(factureVente.getTotalPaye() + r.getMontant());
+
+            factureVente.setRestePaye(factureVente.getTotalTTC() - factureVente.getTotalPaye());
+
+            if (factureVente.getRestePaye() == 0) {
+
+                factureVente.setEtat("payer");
+            } else {
+                factureVente.setEtat("non_payer");
+            }
+
+            serviceFactureVente.modifierParRecouvrement(factureVente);
+            
+            
+            
+            
+
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+        
+        
+ 
+        
+        
+    }
+
+    
     public List<RecouvrementClientEspece> afficher() {
         
         
@@ -100,7 +184,7 @@ public class ServiceRecouvrementClientEspece implements IService<RecouvrementCli
             PreparedStatement pst = cnx.prepareStatement(requete);
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
-                list.add(new RecouvrementClientEspece(rs.getInt(1), new FactureVente(rs.getInt(4)), rs.getDouble(2),rs.getDate(3)));
+                list.add(new RecouvrementClientEspece(rs.getInt(1), findFactureById(rs.getInt(4)), rs.getDouble(2),rs.getDate(3)));
             }
 
         } catch (SQLException ex) {
@@ -173,6 +257,22 @@ public class ServiceRecouvrementClientEspece implements IService<RecouvrementCli
         
         return total;
     }
+     
+     
+     
+     public FactureVente findFactureById(int id){
+         
+         FactureVente factureVente =null;
+         
+         for(FactureVente f :this.chargerFactureVente()){
+             if(f.getNumeroF()==id){
+                 factureVente=f;
+                 return factureVente;
+             }
+         }
+         
+         return factureVente;
+     }
         
     
     
