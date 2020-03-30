@@ -54,7 +54,7 @@ public class ServiceFactureVente {
         try {
             String requete = "SELECT sum(total_ttc) FROM `facture_vente` WHERE YEAR(`date_creation`)=year(sysdate())";
             PreparedStatement pst = cnx.prepareStatement(requete);
-            pst.setDate(1, new java.sql.Date(new Date().getTime()));
+           
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
 
@@ -76,7 +76,7 @@ public class ServiceFactureVente {
         try {
             String requete = "SELECT sum(total_paye) FROM `facture_vente` WHERE YEAR(`date_creation`)=year(sysdate())";
             PreparedStatement pst = cnx.prepareStatement(requete);
-            pst.setDate(1, new java.sql.Date(new Date().getTime()));
+            
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
 

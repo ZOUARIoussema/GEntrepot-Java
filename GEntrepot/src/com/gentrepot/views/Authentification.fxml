@@ -70,13 +70,47 @@
                   <Label layoutX="144.0" layoutY="23.0" text="s'inscrire" />
                </children>
             </Pane>
+            <Pane fx:id="paneMotPasseOublie" prefHeight="400.0" prefWidth="361.0" style="-fx-background-color: #fff;">
+               <children>
+                  <Label layoutX="108.0" layoutY="25.0" text="Envoyer code de récuperation" />
+                  <Label layoutX="40.0" layoutY="142.0" text="Non Utilisateur" />
+                  <Label layoutX="46.0" layoutY="184.0" text="Adresse Mail" />
+                  <JFXTextField fx:id="textFUserC" layoutX="169.0" layoutY="125.0" />
+                  <JFXTextField fx:id="textFMailC" layoutX="169.0" layoutY="167.0" />
+                  <JFXButton fx:id="btnEnvoyerCode" layoutX="169.0" layoutY="228.0" onAction="#validerEnvoyerCode" text="Envoyer Code">
+                     <graphic>
+                        <ImageView fitHeight="27.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@ImageMenueCaisse/téléchargement%20(2).jpg" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+               </children>
+            </Pane>
+            <Pane fx:id="paneVerifierCode" prefHeight="400.0" prefWidth="361.0" style="-fx-background-color: #fff;">
+               <children>
+                  <Label layoutX="39.0" layoutY="176.0" text="Code" />
+                  <JFXTextField fx:id="textFCode" layoutX="153.0" layoutY="159.0" />
+                  <JFXButton fx:id="btnValiderCode" layoutX="160.0" layoutY="242.0" onAction="#validerCode" prefHeight="35.0" prefWidth="120.0" text="Verifier">
+                     <graphic>
+                        <ImageView fitHeight="27.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@ImageMenueCaisse/téléchargementValider.jpg" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <Label layoutX="127.0" layoutY="53.0" text="Verification code" />
+               </children>
+            </Pane>
             <Pane fx:id="paneConnection" prefHeight="400.0" prefWidth="361.0" style="-fx-background-color: #fff;">
                <children>
                   <Label layoutX="36.0" layoutY="124.0" text="Non d'utilisateur" />
                   <Label layoutX="36.0" layoutY="192.0" text="Mot de passe" />
                   <JFXTextField fx:id="paneConnectionNUser" layoutX="155.0" layoutY="107.0" />
                   <JFXPasswordField fx:id="paneConnectionMotPasse" layoutX="155.0" layoutY="175.0" />
-                  <JFXButton fx:id="btnValider" layoutX="172.0" layoutY="250.0" onAction="#validerConnecter" text="Valder">
+                  <JFXButton fx:id="btnValider" layoutX="165.0" layoutY="275.0" onAction="#validerConnecter" text="Valder">
                      <graphic>
                         <ImageView fitHeight="17.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -85,7 +119,7 @@
                         </ImageView>
                      </graphic>
                   </JFXButton>
-                  <JFXButton fx:id="btnAnnuler" layoutX="247.0" layoutY="250.0" onAction="#annulerConnecter" text="Annuler">
+                  <JFXButton fx:id="btnAnnuler" layoutX="253.0" layoutY="275.0" onAction="#annulerConnecter" text="Annuler">
                      <graphic>
                         <ImageView fitHeight="13.0" fitWidth="11.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -104,6 +138,25 @@
                      </graphic>
                   </JFXButton>
                   <Label layoutX="138.0" layoutY="53.0" text="s'identifier" />
+                  <Label graphicTextGap="1.0" layoutX="182.0" layoutY="227.0" onMouseClicked="#afficherPaneMotPasseOublie" opacity="0.93" text="mot de passe oublié" textFill="#1240c7" textOverrun="CLIP" underline="true" />
+               </children>
+            </Pane>
+            <Pane fx:id="paneValiderNouveauMotDePasse" prefHeight="400.0" prefWidth="361.0" style="-fx-background-color: #fff;">
+               <children>
+                  <Label layoutX="108.0" layoutY="47.0" text="Recuperer mot de passe" />
+                  <Label layoutX="28.0" layoutY="145.0" text="Nouveau mot de passe" />
+                  <Label layoutX="28.0" layoutY="205.0" text="Verifier mot de passe" />
+                  <JFXButton layoutX="191.0" layoutY="245.0" onAction="#validerCreationPasseWord" text="valider">
+                     <graphic>
+                        <ImageView fitHeight="27.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@ImageMenueCaisse/téléchargementValider.jpg" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <JFXPasswordField fx:id="textFNewPassword" layoutX="180.0" layoutY="128.0" />
+                  <JFXPasswordField fx:id="textFVerifPasseword" layoutX="180.0" layoutY="188.0" />
                </children>
             </Pane>
          </children>

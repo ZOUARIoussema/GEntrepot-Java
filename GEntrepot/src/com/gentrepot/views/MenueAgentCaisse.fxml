@@ -1135,12 +1135,38 @@
                   <Separator layoutX="505.0" layoutY="87.0" orientation="VERTICAL" prefHeight="423.0" prefWidth="0.0" />
                </children>
             </Pane>
-            <Pane fx:id="paneReglemntF" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #fff;" />
             <Pane fx:id="paneAccueille" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #fff;">
                <children>
-                  <PieChart fx:id="pieChartRecouvrement" layoutX="479.0" layoutY="158.0" prefHeight="330.0" prefWidth="434.0" />
-                  <PieChart fx:id="pieChartReglement" layoutX="66.0" layoutY="165.0" prefHeight="310.0" prefWidth="412.0" />
+                  <GridPane layoutX="46.0" layoutY="52.0" prefHeight="501.0" prefWidth="895.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="63.0" minWidth="10.0" prefWidth="42.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="383.0" minWidth="10.0" prefWidth="383.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints maxHeight="56.0" minHeight="10.0" prefHeight="56.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="72.0" minHeight="9.0" prefHeight="29.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="433.0" minHeight="10.0" prefHeight="363.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="56.0" minHeight="10.0" prefHeight="56.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <PieChart fx:id="pieChartRecouvrement" prefHeight="362.0" prefWidth="389.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                        <PieChart fx:id="pieChartReglement" prefHeight="362.0" prefWidth="389.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <AnchorPane GridPane.columnIndex="1">
+                           <children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" layoutX="89.0" layoutY="4.0" prefHeight="17.0" prefWidth="193.0" text="Statistique reglement fournisseur" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane GridPane.columnIndex="3">
+                           <children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" layoutX="108.0" layoutY="4.0" prefHeight="17.0" prefWidth="177.0" text="Statistique recouvrement client" />
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </GridPane>
                </children></Pane>
+            <Pane fx:id="paneReglemntF" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #fff;" />
          </children>
       </StackPane>
    </center>

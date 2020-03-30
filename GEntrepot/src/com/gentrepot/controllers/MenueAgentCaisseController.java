@@ -18,6 +18,7 @@ import com.gentrepot.models.RecouvrementClientEspece;
 import com.gentrepot.models.ReglementFournisseurCheque;
 import com.gentrepot.models.ReglementFournisseurEspece;
 import com.gentrepot.services.ServiceFactureAchat;
+import com.gentrepot.services.ServiceFactureVente;
 import com.gentrepot.services.ServiceInventaireCaisse;
 import com.gentrepot.services.ServiceLettreDeRelance;
 import com.gentrepot.services.ServiceRecouvrementClientCheque;
@@ -87,6 +88,7 @@ public class MenueAgentCaisseController implements Initializable {
     ServiceRecouvrementClientEspece serviceRecouvrementClientEspece = new ServiceRecouvrementClientEspece();
     ServiceLettreDeRelance serviceLettreDeRelance = new ServiceLettreDeRelance();
     ServiceFactureAchat serviceFactureAchat = new ServiceFactureAchat();
+    ServiceFactureVente serviceFactureVente = new ServiceFactureVente();
 
     ServiceReglementFournisseurCheque serviceReglementFournisseurCheque = new ServiceReglementFournisseurCheque();
     ServiceReglementFournisseurEspece serviceReglementFournisseurEspece = new ServiceReglementFournisseurEspece();
@@ -604,30 +606,11 @@ public class MenueAgentCaisseController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        /**
-         * pie chart
-         */
-        ObservableList<PieChart.Data> listReglement = FXCollections.observableArrayList();
+        
+        afficheStatReglement();
+        afficheStatRecouvrement();
+        
 
-        
-        
-        double totalA=serviceFactureAchat.totalAchatParAnneSysteme();
-        double totalAP=serviceFactureAchat.totalPayerParAnneSysteme();
-        
-        
-        
-        PieChart.Data totalAchat = new PieChart.Data("total achat:"+totalA+"DT",totalA);
-        PieChart.Data totalPayer = new PieChart.Data("total payé:"+totalAP+"DT",totalAP);
-        
-        
-        
-        listReglement.add(totalAchat);
-        listReglement.add(totalPayer);
-        
-        
-          pieChartReglement.setLabelsVisible(true);
-        pieChartReglement.setData(listReglement);
-      
 
         /*
         *table view liste ligne commande deatil facture
@@ -1633,6 +1616,53 @@ public class MenueAgentCaisseController implements Initializable {
             creerAlerte("Selectionner une facture ! ", AlertType.WARNING).showAndWait();
         }
 
+    }
+    
+    public void afficheStatReglement(){
+        
+        /**
+         * pie chart reglement
+         */
+        ObservableList<PieChart.Data> listReglement = FXCollections.observableArrayList();
+
+        double totalA = serviceFactureAchat.totalAchatParAnneSysteme();
+        double totalAP = serviceFactureAchat.totalPayerParAnneSysteme();
+
+        PieChart.Data totalAchat = new PieChart.Data("total achat:" + totalA + "DT", totalA);
+        PieChart.Data totalPayer = new PieChart.Data("total payé:" + totalAP + "DT", totalAP);
+
+        listReglement.add(totalAchat);
+        listReglement.add(totalPayer);
+
+        pieChartReglement.setLabelsVisible(true);
+        pieChartReglement.setData(listReglement);
+        
+        
+        
+        
+    }
+    
+    public void afficheStatRecouvrement(){
+        
+        
+        /**
+         * pie chart Recouvrement
+         */
+        ObservableList<PieChart.Data> listRecouvrement = FXCollections.observableArrayList();
+
+        double totalARecouvrement = serviceFactureVente.totalVenteParAnneSysteme();
+        double totalAPRecouvrement = serviceFactureVente.totalPayerParAnneSysteme();
+
+        PieChart.Data totalAchatRecouvrement = new PieChart.Data("total vente:" + totalARecouvrement + "DT", totalARecouvrement);
+        PieChart.Data totalPayerRecouvrement = new PieChart.Data("total payé:" + totalAPRecouvrement + "DT", totalAPRecouvrement);
+
+        listRecouvrement.add(totalAchatRecouvrement);
+        listRecouvrement.add(totalPayerRecouvrement);
+
+        pieChartRecouvrement.setLabelsVisible(true);
+        pieChartRecouvrement.setData(listRecouvrement);
+        
+        
     }
 
     @FXML

@@ -19,6 +19,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -53,6 +54,26 @@ public class AuthentificationController implements Initializable {
     private JFXPasswordField paneConnectionMotPasse;
     @FXML
     private JFXButton btnCreerCompte;
+    @FXML
+    private Pane paneVerifierCode;
+    @FXML
+    private Pane paneMotPasseOublie;
+    @FXML
+    private Pane paneValiderNouveauMotDePasse;
+    @FXML
+    private JFXTextField textFUserC;
+    @FXML
+    private JFXTextField textFMailC;
+    @FXML
+    private JFXButton btnEnvoyerCode;
+    @FXML
+    private JFXTextField textFCode;
+    @FXML
+    private JFXButton btnValiderCode;
+    @FXML
+    private JFXPasswordField textFNewPassword;
+    @FXML
+    private JFXPasswordField textFVerifPasseword;
 
     /**
      * Initializes the controller class.
@@ -77,14 +98,13 @@ public class AuthentificationController implements Initializable {
 
         User user = serviceUser.find(paneConnectionNUser.getText(), paneConnectionMotPasse.getText());
 
-        if (user!=null) {
+        if (user != null) {
 
             System.out.println("correcte");
 
             if (user.getRole().equals("Admin")) {
-                
-                
-                 try {
+
+                try {
 
                     BorderPane root = (BorderPane) FXMLLoader.load(getClass().getResource("/com/gentrepot/views/MenueAdmin.fxml"));
                     Scene scene = new Scene(root);
@@ -168,6 +188,26 @@ public class AuthentificationController implements Initializable {
         paneConnection.setVisible(true);
         new ZoomIn(paneConnection).play();
         paneConnection.toFront();
+    }
+
+    @FXML
+    private void afficherPaneMotPasseOublie(MouseEvent event) {
+
+        paneMotPasseOublie.setVisible(true);
+        new ZoomIn(paneMotPasseOublie).play();
+        paneMotPasseOublie.toFront();
+    }
+
+    @FXML
+    private void validerEnvoyerCode(ActionEvent event) {
+    }
+
+    @FXML
+    private void validerCode(ActionEvent event) {
+    }
+
+    @FXML
+    private void validerCreationPasseWord(ActionEvent event) {
     }
 
 }
