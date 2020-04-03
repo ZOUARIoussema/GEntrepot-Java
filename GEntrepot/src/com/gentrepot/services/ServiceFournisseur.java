@@ -6,15 +6,18 @@
 package com.gentrepot.services;
 
 import com.gentrepot.models.Fournisseur;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  *
  * @author oussema
  */
-public class ServiceFournisseur {
+public class ServiceFournisseur implements IService<Fournisseur>{
     @Override
     public List<Fournisseur> afficher() {
+        
+        return new ArrayList<Fournisseur>();
      
     
     }
@@ -26,5 +29,20 @@ public class ServiceFournisseur {
             }
         }
         return et.get(a);
+    }
+
+    @Override
+    public void ajouter(Fournisseur t) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void supprimer(Fournisseur t) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void modifier(Fournisseur t) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

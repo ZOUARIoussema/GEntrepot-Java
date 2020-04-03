@@ -22,6 +22,8 @@ public class ServiceProduitAchat implements IService<ProduitAchat>{
     public List<ProduitAchat> afficher() {
      
     
+        
+        return new ArrayList<ProduitAchat>();
     }
     public ProduitAchat rechercher(List<ProduitAchat> et, String nom){
         int a = 0;
@@ -31,5 +33,20 @@ public class ServiceProduitAchat implements IService<ProduitAchat>{
             }
         }
         return et.get(a);
+    }
+
+    @Override
+    public void ajouter(ProduitAchat t) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void supprimer(ProduitAchat t) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void modifier(ProduitAchat t) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

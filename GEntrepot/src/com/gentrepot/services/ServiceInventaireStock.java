@@ -13,6 +13,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -80,6 +81,15 @@ public class ServiceInventaireStock implements IService<InventaireStock>{
 
         return list;
     
+    }
+    public List<InventaireStock> rechercherInventaireStockParDate(List<InventaireStock> l, Date date){
+        List<InventaireStock> lv = new ArrayList<>();
+        for(int i=0;i<l.size();i++){
+            if(l.get(i).getDateCreation().equals(date)){
+                lv.add(l.get(i));
+            }
+        }
+        return lv;
     }
     
 }

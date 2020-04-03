@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gentrepot.controllers.STOCKAGEController">
+   <children>
+      <AnchorPane id="head" layoutY="-1.0" prefHeight="76.0" prefWidth="913.0" style="-fx-background-color: #FFA219;">
+         <children>
+            <MenuButton id="param" layoutX="838.0" layoutY="25.0" mnemonicParsing="false" style="-fx-background-color: #FFA219;" text="Guifo">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Action 1" />
+                <MenuItem mnemonicParsing="false" text="Action 2" />
+              </items>
+            </MenuButton>
+            <Label layoutX="9.0" layoutY="-6.0" prefHeight="59.0" prefWidth="32.0" text="G">
+               <font>
+                  <Font size="46.0" />
+               </font>
+            </Label>
+            <Label layoutX="39.0" layoutY="28.0" text="ENTREPOT">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="25.0" layoutY="54.0" text="Make Tasks Easier">
+               <font>
+                  <Font name="System Italic" size="12.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <SplitPane dividerPositions="0.25041736227045075" layoutY="80.0" prefHeight="520.0" prefWidth="913.0">
+        <items>
+          <AnchorPane id="side" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #2A3D51;">
+               <children>
+                  <VBox layoutX="16.0" layoutY="55.0" prefHeight="463.0" prefWidth="191.0">
+                     <children>
+                        <MenuButton mnemonicParsing="false" prefHeight="59.0" prefWidth="191.0" style="-fx-background-color: #2A3D51;" text="Commandes Approvisionnement" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="25.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@image/truck-16.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <items>
+                              <MenuItem fx:id="effectuerCommande" mnemonicParsing="false" onAction="#effectuerCommande" text="Effectuer" />
+                              <MenuItem fx:id="chercherCommande" mnemonicParsing="false" onAction="#chercherCommande" text="Chercher" />
+                           </items>
+                        </MenuButton>
+                        <MenuButton mnemonicParsing="false" prefHeight="59.0" prefWidth="191.0" style="-fx-background-color: #2A3D51;" text="Emplacement" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="25.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@image/map-marker-2-16.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </MenuButton>
+                        <MenuButton mnemonicParsing="false" prefHeight="59.0" prefWidth="191.0" style="-fx-background-color: #2A3D51;" text="Action 1" textFill="WHITE">
+                          <items>
+                            <MenuItem mnemonicParsing="false" text="Action 1" />
+                            <MenuItem mnemonicParsing="false" text="Action 2" />
+                          </items>
+                           <graphic>
+                              <ImageView fitHeight="25.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@image/clipboard-3-16.png" />
+                                 </image></ImageView>
+                           </graphic>
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </MenuButton>
+                        <MenuButton mnemonicParsing="false" prefHeight="59.0" prefWidth="191.0" style="-fx-background-color: #2A3D51;" text="Pertes" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="25.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@image/negative-dynamic-16.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <items>
+                              <MenuItem mnemonicParsing="false" text="Action 1" />
+                              <MenuItem mnemonicParsing="false" text="Action 2" />
+                           </items>
+                        </MenuButton>
+                        <MenuButton mnemonicParsing="false" prefHeight="59.0" prefWidth="191.0" style="-fx-background-color: #2A3D51;" text="Parametres" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="25.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@image/gear-2-16.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <items>
+                              <MenuItem mnemonicParsing="false" text="Action 1" />
+                              <MenuItem mnemonicParsing="false" text="Action 2" />
+                           </items>
+                        </MenuButton>
+                     </children></VBox>
+                  <Button layoutX="56.0" layoutY="8.0" mnemonicParsing="false" style="-fx-background-color: #2A3D51;" />
+                  <ImageView fitHeight="31.0" fitWidth="32.0" layoutX="93.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@image/home.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+          <AnchorPane id="content" minHeight="0.0" minWidth="0.0" prefHeight="318.0" prefWidth="440.0">
+               <children>
+                  <StackPane fx:id="com" prefHeight="518.0" prefWidth="680.0">
+                     <children>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #51489f;" />
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #000000;" />
+                     </children>
+                  </StackPane>
+               </children></AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>

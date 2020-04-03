@@ -12,6 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -88,5 +89,15 @@ public class ServicePerte implements IService<Perte>{
         }
         return l.get(a);
     }
+    public List<Perte> rechercherPerte(List<Perte> l, Date date){
+        List<Perte> lv = new ArrayList<>();
+        for(int i=0;i<l.size();i++){
+            if(l.get(i).getDate().equals(date)){
+                lv.add(l.get(i));
+            }
+        }
+        return lv;
+    }
+    
     
 }

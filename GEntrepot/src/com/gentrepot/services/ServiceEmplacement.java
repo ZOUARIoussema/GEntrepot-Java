@@ -89,5 +89,15 @@ public class ServiceEmplacement implements IService<Emplacement>{
         }
         return l.get(a);
     }
+    public List<Emplacement> rechercherEmplacementVide(List<Emplacement> l, String classe){
+        List<Emplacement> lv = new ArrayList<>();
+        for(int i=0;i<l.size();i++){
+            if((l.get(i).getClasse().equals(classe))&&(l.get(i).getQuantiteStocker() == 0)){
+                lv.add(l.get(i));
+            }
+        }
+        return lv;
+    }
+    
     
 }
