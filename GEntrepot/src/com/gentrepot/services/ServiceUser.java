@@ -6,6 +6,7 @@
 package com.gentrepot.services;
 
 import com.gentrepot.models.InventaireCaisse;
+import com.gentrepot.models.Password;
 import com.gentrepot.models.User;
 import com.gentrepot.utils.DataSource;
 import java.sql.Connection;
@@ -33,8 +34,34 @@ public class ServiceUser implements IService<User> {
 
             pst.setString(1, u.getUsername());
             pst.setString(2, u.getEmail());
-            pst.setString(3, u.getPassword());
-            pst.setString(4, u.getRole());
+            pst.setString(3, Password.hashPassword(u.getPassword()));
+
+            if (u.getRole().equals("Client")) {
+                pst.setString(4, "a:1:{i:0;s:10:\"ROLE_CLIEN\";}");
+
+            }
+            if (u.getRole().equals("Chef De Parc")) {
+                pst.setString(4, "a:1:{i:0;s:10:\"ROLE_CPARC\";}");
+
+            }
+            if (u.getRole().equals("Agent Caisse")) {
+                pst.setString(4, "a:1:{i:0;s:10:\"ROLE_ACAIS\";}");
+
+            }
+            if (u.getRole().equals("Responsable Vente")) {
+                pst.setString(4, "a:1:{i:0;s:10:\"ROLE_RVENT\";}");
+
+            }
+            if (u.getRole().equals("Responsable Achat")) {
+                pst.setString(4, "a:1:{i:0;s:10:\"ROLE_RACHA\";}");
+
+            }
+            if (u.getRole().equals("Admin")) {
+
+                pst.setString(4, "a:1:{i:0;s:10:\"ROLE_ADMIN\";}");
+
+            }
+
             pst.setString(5, u.getUsernamCanonical());
             pst.setString(6, u.getEmailCanonical());
             pst.setInt(7, 1);
@@ -118,7 +145,7 @@ public class ServiceUser implements IService<User> {
             String requete = "SELECT * FROM user where username=? and password=? ";
             PreparedStatement pst = cnx.prepareStatement(requete);
             pst.setString(1, nonU);
-             pst.setString(2, motPasse);
+            pst.setString(2, motPasse);
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
 
@@ -130,6 +157,25 @@ public class ServiceUser implements IService<User> {
         }
 
         return user;
+    }
+
+    public User verifUser(String nonU, String motPasse) {
+
+        User user = null;
+
+        for (User u : this.afficher()) {
+
+            if (nonU.equals(u.getUsername()) && Password.checkPassword(motPasse, u.getPassword())) {
+
+                user = u;
+                return user;
+
+            }
+
+        }
+
+        return user;
+
     }
 
 }

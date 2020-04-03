@@ -96,13 +96,15 @@ public class AuthentificationController implements Initializable {
 
         Stage primaryStage = new Stage();
 
-        User user = serviceUser.find(paneConnectionNUser.getText(), paneConnectionMotPasse.getText());
+        User user = serviceUser.verifUser(paneConnectionNUser.getText(), paneConnectionMotPasse.getText());
 
         if (user != null) {
 
             System.out.println("correcte");
 
-            if (user.getRole().equals("Admin")) {
+            if (user.getRole().equals("a:1:{i:0;s:10:\"ROLE_ADMIN\";}")) {
+                
+                System.out.println("admin");
 
                 try {
 
@@ -117,15 +119,18 @@ public class AuthentificationController implements Initializable {
 
             }
 
-            if (user.getRole().equals("Responsable Achat")) {
+            if (user.getRole().equals("a:1:{i:0;s:10:\"ROLE_RACHA\";}")) {
+                 System.out.println("achat");
 
             }
 
-            if (user.getRole().equals("Responsable Vente")) {
+            if (user.getRole().equals("a:1:{i:0;s:10:\"ROLE_RVENT\";}")) {
+                 System.out.println("vente");
 
             }
 
-            if (user.getRole().equals("Agent Caisse")) {
+            if (user.getRole().equals("a:1:{i:0;s:10:\"ROLE_ACAIS\";}")) {
+                 System.out.println("caisse");
 
                 try {
 
@@ -140,11 +145,13 @@ public class AuthentificationController implements Initializable {
 
             }
 
-            if (user.getRole().equals("Chef De Parc")) {
+            if (user.getRole().equals("a:1:{i:0;s:10:\"ROLE_CPARC\";}")) {
+                 System.out.println("parc");
 
             }
 
-            if (user.getRole().equals("Client")) {
+            if (user.getRole().equals("a:1:{i:0;s:10:\"ROLE_CLIEN\";}")) {
+                 System.out.println("client");
 
             }
 
