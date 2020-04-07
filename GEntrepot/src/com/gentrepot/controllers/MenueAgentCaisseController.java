@@ -56,6 +56,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
@@ -103,6 +104,7 @@ public class MenueAgentCaisseController implements Initializable {
     private RecouvrementClientCheque recouvrementClientChequeG = null;
     private ReglementFournisseurCheque reglementFournisseurChequeG = null;
     private ReglementFournisseurEspece reglementFournisseurEspeceG = null;
+    Stage primaryStage = new Stage();
 
     @FXML
     private Button btnFactureF;
@@ -144,14 +146,6 @@ public class MenueAgentCaisseController implements Initializable {
     @FXML
     private Pane paneAjouterInventaire;
     @FXML
-    private Label soldeTC;
-    @FXML
-    private Label soldeTE;
-    @FXML
-    private Label soldeCalculer;
-    @FXML
-    private Label ecart;
-    @FXML
     private JFXTextField totalTheorique;
     @FXML
     private JFXTextField totalCheque;
@@ -169,14 +163,6 @@ public class MenueAgentCaisseController implements Initializable {
     private JFXButton btnValiderAjouterInventaire;
     @FXML
     private JFXButton btnAnnulerAjouterInventairecaisse;
-    @FXML
-    private Label soldeTC1;
-    @FXML
-    private Label soldeTE1;
-    @FXML
-    private Label soldeCalculer1;
-    @FXML
-    private Label ecart1;
     @FXML
     private JFXTextField totalTheoriqueM;
     @FXML
@@ -606,11 +592,8 @@ public class MenueAgentCaisseController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        
         afficheStatReglement();
         afficheStatRecouvrement();
-        
-
 
         /*
         *table view liste ligne commande deatil facture
@@ -1152,7 +1135,18 @@ public class MenueAgentCaisseController implements Initializable {
     @FXML
     private void calculerEcart(KeyEvent event) {
 
-        ecartC.setText(String.valueOf(Double.valueOf(soldeTCalculer.getText()) - totalT));
+        try{
+        
+        Double total = Double.parseDouble(soldeTCalculer.getText());
+        
+        ecartC.setText(String.valueOf(total - totalT));
+        }
+        catch(Exception ex){
+            
+            soldeTCalculer.setText("");
+            ecartC.setText("");
+            
+        }
     }
 
     @FXML
@@ -1617,9 +1611,9 @@ public class MenueAgentCaisseController implements Initializable {
         }
 
     }
-    
-    public void afficheStatReglement(){
-        
+
+    public void afficheStatReglement() {
+
         /**
          * pie chart reglement
          */
@@ -1636,15 +1630,11 @@ public class MenueAgentCaisseController implements Initializable {
 
         pieChartReglement.setLabelsVisible(true);
         pieChartReglement.setData(listReglement);
-        
-        
-        
-        
+
     }
-    
-    public void afficheStatRecouvrement(){
-        
-        
+
+    public void afficheStatRecouvrement() {
+
         /**
          * pie chart Recouvrement
          */
@@ -1661,8 +1651,7 @@ public class MenueAgentCaisseController implements Initializable {
 
         pieChartRecouvrement.setLabelsVisible(true);
         pieChartRecouvrement.setData(listRecouvrement);
-        
-        
+
     }
 
     @FXML
@@ -1972,6 +1961,24 @@ public class MenueAgentCaisseController implements Initializable {
     private void retourDetailFacture(ActionEvent event) {
 
         chargerFactureFournisseur();
+    }
+
+    @FXML
+    private void fermer(MouseEvent event) {
+        
+         ((Stage) this.btnLettreRelance.getScene().getWindow()).close();
+         try {
+
+            HBox root = (HBox) FXMLLoader.load(getClass().getResource("/com/gentrepot/views/Authentification.fxml"));
+            Scene scene = new Scene(root);
+            primaryStage.setScene(scene);
+            primaryStage.setTitle("Authentification");
+            primaryStage.show();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+
     }
 
 }

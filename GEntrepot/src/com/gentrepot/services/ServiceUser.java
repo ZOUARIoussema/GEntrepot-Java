@@ -6,7 +6,7 @@
 package com.gentrepot.services;
 
 import com.gentrepot.models.InventaireCaisse;
-import com.gentrepot.models.Password;
+import com.gentrepot.services.Password;
 import com.gentrepot.models.User;
 import com.gentrepot.utils.DataSource;
 import java.sql.Connection;
@@ -62,6 +62,12 @@ public class ServiceUser implements IService<User> {
 
             }
 
+            if (u.getRole().equals("Responsable Stockage")) {
+
+                pst.setString(4, "a:1:{i:0;s:10:\"ROLE_STOCK\";}");
+
+            }
+
             pst.setString(5, u.getUsernamCanonical());
             pst.setString(6, u.getEmailCanonical());
             pst.setInt(7, 1);
@@ -101,8 +107,37 @@ public class ServiceUser implements IService<User> {
 
             pst.setString(1, u.getUsername());
             pst.setString(2, u.getEmail());
-            pst.setString(3, u.getPassword());
-            pst.setString(4, u.getRole());
+            pst.setString(3, Password.hashPassword(u.getPassword()));
+            if (u.getRole().equals("Client")) {
+                pst.setString(4, "a:1:{i:0;s:10:\"ROLE_CLIEN\";}");
+
+            }
+            if (u.getRole().equals("Chef De Parc")) {
+                pst.setString(4, "a:1:{i:0;s:10:\"ROLE_CPARC\";}");
+
+            }
+            if (u.getRole().equals("Agent Caisse")) {
+                pst.setString(4, "a:1:{i:0;s:10:\"ROLE_ACAIS\";}");
+
+            }
+            if (u.getRole().equals("Responsable Vente")) {
+                pst.setString(4, "a:1:{i:0;s:10:\"ROLE_RVENT\";}");
+
+            }
+            if (u.getRole().equals("Responsable Achat")) {
+                pst.setString(4, "a:1:{i:0;s:10:\"ROLE_RACHA\";}");
+
+            }
+            if (u.getRole().equals("Admin")) {
+
+                pst.setString(4, "a:1:{i:0;s:10:\"ROLE_ADMIN\";}");
+
+            }
+            if (u.getRole().equals("Responsable Stockage")) {
+
+                pst.setString(4, "a:1:{i:0;s:10:\"ROLE_STOCK\";}");
+
+            }
             pst.setString(5, u.getUsernamCanonical());
             pst.setString(6, u.getEmailCanonical());
             pst.setInt(7, u.getId());
@@ -120,6 +155,7 @@ public class ServiceUser implements IService<User> {
     public List<User> afficher() {
 
         List<User> list = new ArrayList<>();
+        User u;
 
         try {
             String requete = "SELECT * FROM user";
@@ -127,7 +163,43 @@ public class ServiceUser implements IService<User> {
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
 
-                list.add(new User(rs.getInt(1), rs.getString(2), rs.getString(4), rs.getString(3), rs.getString(5), rs.getString(8), rs.getString(12)));
+                u = new User(rs.getInt(1), rs.getString(2), rs.getString(4), rs.getString(3), rs.getString(5), rs.getString(8), rs.getString(12));
+
+                if (u.getRole().equals("a:1:{i:0;s:10:\"ROLE_CLIEN\";}")) {
+                    u.setRole("Client");
+
+                }
+                if (u.getRole().equals("a:1:{i:0;s:10:\"ROLE_CPARC\";}")) {
+
+                    u.setRole("Chef De Parc");
+
+                }
+                if (u.getRole().equals("a:1:{i:0;s:10:\"ROLE_ACAIS\";}")) {
+
+                    u.setRole("Agent Caisse");
+
+                }
+                if (u.getRole().equals("a:1:{i:0;s:10:\"ROLE_RVENT\";}")) {
+
+                    u.setRole("Responsable Vente");
+
+                }
+                if (u.getRole().equals("a:1:{i:0;s:10:\"ROLE_RACHA\";}")) {
+
+                    u.setRole("Responsable Achat");
+
+                }
+                if (u.getRole().equals("a:1:{i:0;s:10:\"ROLE_ADMIN\";}")) {
+
+                    u.setRole("Admin");
+
+                }
+                if (u.getRole().equals("a:1:{i:0;s:10:\"ROLE_STOCK\";}")) {
+
+                    u.setRole("Responsable Stockage");
+                }
+
+                list.add(u);
             }
 
         } catch (SQLException ex) {
@@ -176,6 +248,31 @@ public class ServiceUser implements IService<User> {
 
         return user;
 
+    }
+
+    public User verifLoginMail(String login, String adresseMail) {
+
+        User user = null;
+
+        System.out.println(login);
+        System.out.println(adresseMail);
+
+        try {
+            String requete = "SELECT * FROM user where username=? and email=? ";
+            PreparedStatement pst = cnx.prepareStatement(requete);
+            pst.setString(1, login);
+            pst.setString(2, adresseMail);
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+
+                user = new User(rs.getInt(1), rs.getString(2), rs.getString(4), rs.getString(3), rs.getString(5), rs.getString(8), rs.getString(12));
+            }
+
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+
+        return user;
     }
 
 }

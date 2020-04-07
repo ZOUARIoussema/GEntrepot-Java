@@ -7,9 +7,12 @@ package com.gentrepot.controllers;
 
 import animatefx.animation.ZoomIn;
 import com.gentrepot.models.User;
+import com.gentrepot.services.MailService;
+import com.gentrepot.services.Password;
 import com.gentrepot.services.ServiceUser;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -34,7 +37,7 @@ import javafx.scene.layout.Pane;
 public class GestionUtilisateurController implements Initializable {
 
     ObservableList<User> listeUsers = FXCollections.observableArrayList();
-    ObservableList<String> listeRole = FXCollections.observableArrayList("Admin", "Responsable Achat", "Responsable Vente", "Agent Caisse", "Chef De Parc", "Client");
+    ObservableList<String> listeRole = FXCollections.observableArrayList("Admin","Responsable Stockage", "Responsable Achat", "Responsable Vente", "Agent Caisse", "Chef De Parc", "Client");
 
     ServiceUser serviceUser = new ServiceUser();
 
@@ -70,7 +73,7 @@ public class GestionUtilisateurController implements Initializable {
     @FXML
     private JFXTextField textFAdresseMailM;
     @FXML
-    private JFXTextField textMotPAsseM;
+    private JFXPasswordField textMotPAsseM;
     @FXML
     private JFXComboBox<String> AjouterUserComboboxM;
     @FXML
@@ -81,8 +84,6 @@ public class GestionUtilisateurController implements Initializable {
     private JFXButton paneAjouterBtnAjouterUser;
     @FXML
     private TableColumn<?, ?> tableViewAction;
-    @FXML
-    private JFXButton btnEnvoyerMail;
 
     /**
      * Initializes the controller class.
@@ -233,8 +234,5 @@ public class GestionUtilisateurController implements Initializable {
 
     }
 
-    @FXML
-    private void envoyerMail(ActionEvent event) {
-    }
-
+    
 }

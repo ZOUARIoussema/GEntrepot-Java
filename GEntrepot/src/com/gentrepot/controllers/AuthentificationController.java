@@ -7,23 +7,29 @@ package com.gentrepot.controllers;
 
 import animatefx.animation.ZoomIn;
 import com.gentrepot.models.User;
+import com.gentrepot.services.MailService;
 import com.gentrepot.services.ServiceUser;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
+import java.util.Random;
 import java.util.ResourceBundle;
+import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 /**
  * FXML Controller class
@@ -33,6 +39,9 @@ import javafx.stage.Stage;
 public class AuthentificationController implements Initializable {
 
     ServiceUser serviceUser = new ServiceUser();
+    Stage primaryStage = new Stage();
+    String code;
+    User userNewPassword = null;
 
     @FXML
     private Pane paneAjouterUser;
@@ -41,7 +50,7 @@ public class AuthentificationController implements Initializable {
     @FXML
     private JFXPasswordField paneAjouterUsertextMotPasse;
     @FXML
-    private JFXPasswordField paneAjouterUsertextAdresseMail;
+    private JFXTextField paneAjouterUsertextAdresseMail;
     @FXML
     private JFXButton btnValider;
     @FXML
@@ -74,6 +83,12 @@ public class AuthentificationController implements Initializable {
     private JFXPasswordField textFNewPassword;
     @FXML
     private JFXPasswordField textFVerifPasseword;
+    @FXML
+    private Label labelNUA;
+    @FXML
+    private JFXButton btnValiderNewPassword;
+    @FXML
+    private ImageView btnCreerNewPassword;
 
     /**
      * Initializes the controller class.
@@ -94,16 +109,16 @@ public class AuthentificationController implements Initializable {
     @FXML
     private void validerConnecter(ActionEvent event) {
 
-        Stage primaryStage = new Stage();
-
         User user = serviceUser.verifUser(paneConnectionNUser.getText(), paneConnectionMotPasse.getText());
 
         if (user != null) {
 
             System.out.println("correcte");
 
-            if (user.getRole().equals("a:1:{i:0;s:10:\"ROLE_ADMIN\";}")) {
-                
+            if (user.getRole().equals("Admin")) {
+
+                ((Stage) this.btnValider.getScene().getWindow()).close();
+
                 System.out.println("admin");
 
                 try {
@@ -119,18 +134,22 @@ public class AuthentificationController implements Initializable {
 
             }
 
-            if (user.getRole().equals("a:1:{i:0;s:10:\"ROLE_RACHA\";}")) {
-                 System.out.println("achat");
+            if (user.getRole().equals("Responsable Achat")) {
+                System.out.println("achat");
+
+                ((Stage) this.btnValider.getScene().getWindow()).close();
 
             }
 
-            if (user.getRole().equals("a:1:{i:0;s:10:\"ROLE_RVENT\";}")) {
-                 System.out.println("vente");
+            if (user.getRole().equals("Responsable Vente")) {
+                System.out.println("vente");
+                ((Stage) this.btnValider.getScene().getWindow()).close();
 
             }
 
-            if (user.getRole().equals("a:1:{i:0;s:10:\"ROLE_ACAIS\";}")) {
-                 System.out.println("caisse");
+            if (user.getRole().equals("Agent Caisse")) {
+                System.out.println("caisse");
+                ((Stage) this.btnValider.getScene().getWindow()).close();
 
                 try {
 
@@ -145,13 +164,15 @@ public class AuthentificationController implements Initializable {
 
             }
 
-            if (user.getRole().equals("a:1:{i:0;s:10:\"ROLE_CPARC\";}")) {
-                 System.out.println("parc");
+            if (user.getRole().equals("Chef De Parc")) {
+                System.out.println("parc");
+                ((Stage) this.btnValider.getScene().getWindow()).close();
 
             }
 
-            if (user.getRole().equals("a:1:{i:0;s:10:\"ROLE_CLIEN\";}")) {
-                 System.out.println("client");
+            if (user.getRole().equals("Client")) {
+                System.out.println("client");
+                ((Stage) this.btnValider.getScene().getWindow()).close();
 
             }
 
@@ -165,6 +186,10 @@ public class AuthentificationController implements Initializable {
 
     @FXML
     private void annulerConnecter(ActionEvent event) {
+
+        paneConnectionNUser.setText("");
+        paneConnectionMotPasse.setText("");
+
     }
 
     @FXML
@@ -178,6 +203,23 @@ public class AuthentificationController implements Initializable {
 
     @FXML
     private void validerajouterUser(ActionEvent event) {
+
+        if (paneAjouterUsertextNomUser.getText().equals("")) {
+
+            creerAlerte("Non d'utlisateur vide ! ", Alert.AlertType.WARNING).showAndWait();
+            return;
+        }
+
+        if (paneAjouterUsertextMotPasse.getText().equals("")) {
+
+            creerAlerte("mot de passe vide ! ", Alert.AlertType.WARNING).showAndWait();
+            return;
+        }
+        if (paneAjouterUsertextAdresseMail.getText().equals("")) {
+
+            creerAlerte("adresse mail vide ! ", Alert.AlertType.WARNING).showAndWait();
+            return;
+        }
 
         User user = new User(0, paneAjouterUsertextNomUser.getText(), paneAjouterUsertextAdresseMail.getText(), paneAjouterUsertextNomUser.getText(), paneAjouterUsertextAdresseMail.getText(), paneAjouterUsertextMotPasse.getText(), "Client");
 
@@ -207,14 +249,70 @@ public class AuthentificationController implements Initializable {
 
     @FXML
     private void validerEnvoyerCode(ActionEvent event) {
+
+        userNewPassword = serviceUser.verifLoginMail(textFUserC.getText(), textFMailC.getText());
+
+        if (userNewPassword != null) {
+
+            Random r = new Random();
+
+            code = String.valueOf(r.nextInt(9999));
+
+            MailService.EnvoyerMail(textFMailC.getText(), "code verification", "code:" + code);
+
+            paneVerifierCode.setVisible(true);
+            new ZoomIn(paneVerifierCode).play();
+            paneVerifierCode.toFront();
+
+        } else {
+
+            creerAlerte("Non d'utlisateur ou adresse mail incorrecte ! ", Alert.AlertType.WARNING).showAndWait();
+        }
+
     }
 
     @FXML
     private void validerCode(ActionEvent event) {
+
+        if (code.equals(textFCode.getText())) {
+
+            paneValiderNouveauMotDePasse.setVisible(true);
+            new ZoomIn(paneValiderNouveauMotDePasse).play();
+            paneValiderNouveauMotDePasse.toFront();
+
+        } else {
+            creerAlerte("code de verification incorrecte ! ", Alert.AlertType.WARNING).showAndWait();
+
+        }
+
     }
 
     @FXML
     private void validerCreationPasseWord(ActionEvent event) {
+
+        String password1 = textFNewPassword.getText();
+        String password2 = textFVerifPasseword.getText();
+
+        if (password1.equals("") || password2.equals("")) {
+
+            creerAlerte("Remplier tout les champs ! ", Alert.AlertType.WARNING).showAndWait();
+            return;
+        }
+
+        if (!(password1.equals(password2))) {
+
+            creerAlerte("mot de passe incorrecte ! ", Alert.AlertType.WARNING).showAndWait();
+            return;
+        }
+
+        userNewPassword.setPassword(password1);
+
+        serviceUser.modifier(userNewPassword);
+
+        paneConnection.setVisible(true);
+        new ZoomIn(paneConnection).play();
+        paneConnection.toFront();
+
     }
 
 }

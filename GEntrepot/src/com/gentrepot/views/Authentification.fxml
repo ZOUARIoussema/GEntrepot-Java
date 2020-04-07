@@ -12,6 +12,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
 
 <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="634.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gentrepot.controllers.AuthentificationController">
    <children>
@@ -26,58 +27,24 @@
       </Pane>
       <StackPane prefHeight="400.0" prefWidth="353.0">
          <children>
-            <Pane fx:id="paneAjouterUser" prefHeight="400.0" prefWidth="361.0" style="-fx-background-color: #fff;">
-               <children>
-                  <GridPane layoutX="37.0" layoutY="58.0" prefHeight="166.0" prefWidth="259.0">
-                     <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="105.0" minWidth="10.0" prefWidth="99.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="95.0" minWidth="10.0" prefWidth="24.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="178.0" minWidth="10.0" prefWidth="138.0" />
-                     </columnConstraints>
-                     <rowConstraints>
-                        <RowConstraints maxHeight="67.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="68.0" minHeight="8.0" prefHeight="13.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="69.0" minHeight="10.0" prefHeight="36.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="15.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="57.0" minHeight="10.0" prefHeight="38.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="49.0" minHeight="10.0" prefHeight="29.0" vgrow="SOMETIMES" />
-                     </rowConstraints>
-                     <children>
-                        <Label text="Non d'utilisateur" />
-                        <Label text="Mot de passe" GridPane.rowIndex="2" />
-                        <JFXTextField fx:id="paneAjouterUsertextNomUser" prefHeight="25.0" prefWidth="135.0" GridPane.columnIndex="2" />
-                        <JFXPasswordField fx:id="paneAjouterUsertextMotPasse" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                        <Label text="Adresse mail" GridPane.rowIndex="4" />
-                        <JFXPasswordField fx:id="paneAjouterUsertextAdresseMail" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-                     </children>
-                  </GridPane>
-                  <JFXButton fx:id="btnValider" layoutX="89.0" layoutY="243.0" onAction="#validerajouterUser" text="Valder">
-                     <graphic>
-                        <ImageView fitHeight="24.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@ImageMenueCaisse/pngtree-add-vector-icon-png-image_3791307.jpg" />
-                           </image>
-                        </ImageView>
-                     </graphic></JFXButton>
-                  <JFXButton fx:id="btnAnnuler" layoutX="223.0" layoutY="246.0" onAction="#annulerAjouterUser" text="Annuler">
-                     <graphic>
-                        <ImageView fitHeight="19.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@ImageMenueCaisse/images%20(1).png" />
-                           </image>
-                        </ImageView>
-                     </graphic></JFXButton>
-                  <Label layoutX="144.0" layoutY="23.0" text="s'inscrire" />
-               </children>
-            </Pane>
             <Pane fx:id="paneMotPasseOublie" prefHeight="400.0" prefWidth="361.0" style="-fx-background-color: #fff;">
                <children>
-                  <Label layoutX="108.0" layoutY="25.0" text="Envoyer code de récuperation" />
-                  <Label layoutX="40.0" layoutY="142.0" text="Non Utilisateur" />
-                  <Label layoutX="46.0" layoutY="184.0" text="Adresse Mail" />
-                  <JFXTextField fx:id="textFUserC" layoutX="169.0" layoutY="125.0" />
-                  <JFXTextField fx:id="textFMailC" layoutX="169.0" layoutY="167.0" />
-                  <JFXButton fx:id="btnEnvoyerCode" layoutX="169.0" layoutY="228.0" onAction="#validerEnvoyerCode" text="Envoyer Code">
+                  <Label layoutX="47.0" layoutY="25.0" text="Envoyer code de récuperation" textFill="#1240c7">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="17.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField fx:id="textFUserC" focusColor="#ababab" layoutX="45.0" layoutY="125.0" prefHeight="25.0" prefWidth="259.0" promptText="Non Utilisateur" unFocusColor="#a8a8a8">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="15.0" />
+                     </font>
+                  </JFXTextField>
+                  <JFXTextField fx:id="textFMailC" focusColor="#ababab" layoutX="46.0" layoutY="200.0" prefHeight="25.0" prefWidth="259.0" promptText="Adresse Mail" unFocusColor="#a8a8a8">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="15.0" />
+                     </font>
+                  </JFXTextField>
+                  <JFXButton fx:id="btnEnvoyerCode" layoutX="183.0" layoutY="266.0" onAction="#validerEnvoyerCode" style="-fx-border-color: #318ce7;" text="Envoyer Code">
                      <graphic>
                         <ImageView fitHeight="27.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -90,9 +57,11 @@
             </Pane>
             <Pane fx:id="paneVerifierCode" prefHeight="400.0" prefWidth="361.0" style="-fx-background-color: #fff;">
                <children>
-                  <Label layoutX="39.0" layoutY="176.0" text="Code" />
-                  <JFXTextField fx:id="textFCode" layoutX="153.0" layoutY="159.0" />
-                  <JFXButton fx:id="btnValiderCode" layoutX="160.0" layoutY="242.0" onAction="#validerCode" prefHeight="35.0" prefWidth="120.0" text="Verifier">
+                  <JFXTextField fx:id="textFCode" focusColor="#ababab" layoutX="29.0" layoutY="159.0" prefHeight="25.0" prefWidth="259.0" promptText="Code" unFocusColor="#a8a8a8">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="15.0" />
+                     </font></JFXTextField>
+                  <JFXButton fx:id="btnValiderCode" layoutX="160.0" layoutY="242.0" onAction="#validerCode" prefHeight="35.0" prefWidth="120.0" style="-fx-border-color: #318ce7;" text="Verifier">
                      <graphic>
                         <ImageView fitHeight="27.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -101,34 +70,84 @@
                         </ImageView>
                      </graphic>
                   </JFXButton>
-                  <Label layoutX="127.0" layoutY="53.0" text="Verification code" />
+                  <Label layoutX="102.0" layoutY="30.0" text="Verification code" textFill="#1240c7">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="17.0" />
+                     </font></Label>
+               </children>
+            </Pane>
+            <Pane fx:id="paneAjouterUser" prefHeight="400.0" prefWidth="361.0" style="-fx-background-color: #fff;">
+               <children>
+                  <GridPane layoutX="43.0" layoutY="100.0" prefHeight="166.0" prefWidth="259.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="252.0" minWidth="10.0" prefWidth="252.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints maxHeight="67.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="68.0" minHeight="8.0" prefHeight="13.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="69.0" minHeight="10.0" prefHeight="36.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="15.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="57.0" minHeight="10.0" prefHeight="38.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="49.0" minHeight="10.0" prefHeight="29.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <JFXTextField fx:id="paneAjouterUsertextNomUser" focusColor="#ababab" prefHeight="25.0" prefWidth="135.0" promptText="Non d'utilisateur" unFocusColor="#a8a8a8" />
+                        <JFXPasswordField fx:id="paneAjouterUsertextMotPasse" focusColor="#ababab" promptText="Mot de passe" unFocusColor="#a8a8a8" GridPane.rowIndex="2" />
+                        <JFXTextField fx:id="paneAjouterUsertextAdresseMail" focusColor="#ababab" promptText="Adresse mail" unFocusColor="#a8a8a8" GridPane.rowIndex="4" />
+                     </children>
+                  </GridPane>
+                  <JFXButton fx:id="btnValider" layoutX="43.0" layoutY="301.0" onAction="#validerajouterUser" style="-fx-border-color: #318ce7;" text="Valder">
+                     <graphic>
+                        <ImageView fitHeight="24.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@ImageMenueCaisse/pngtree-add-vector-icon-png-image_3791307.jpg" />
+                           </image>
+                        </ImageView>
+                     </graphic></JFXButton>
+                  <JFXButton fx:id="btnAnnuler" layoutX="212.0" layoutY="300.0" onAction="#annulerAjouterUser" prefHeight="35.0" prefWidth="84.0" style="-fx-border-color: #318ce7;" text="Annuler">
+                     <graphic>
+                        <ImageView fitHeight="19.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@ImageMenueCaisse/images%20(1).png" />
+                           </image>
+                        </ImageView>
+                     </graphic></JFXButton>
+                  <Label layoutX="76.0" layoutY="32.0" text="Creation Compte Client" textFill="#1240c7">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="17.0" />
+                     </font></Label>
                </children>
             </Pane>
             <Pane fx:id="paneValiderNouveauMotDePasse" prefHeight="400.0" prefWidth="361.0" style="-fx-background-color: #fff;">
                <children>
-                  <Label layoutX="108.0" layoutY="47.0" text="Recuperer mot de passe" />
-                  <Label layoutX="28.0" layoutY="145.0" text="Nouveau mot de passe" />
-                  <Label layoutX="28.0" layoutY="205.0" text="Verifier mot de passe" />
-                  <JFXButton layoutX="191.0" layoutY="245.0" onAction="#validerCreationPasseWord" text="valider">
+                  <Label layoutX="54.0" layoutY="26.0" text="creation nouveau mot de passe" textFill="#1240c7">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="17.0" />
+                     </font></Label>
+                  <JFXButton fx:id="btnValiderNewPassword" layoutX="230.0" layoutY="249.0" onAction="#validerCreationPasseWord" style="-fx-border-color: #318ce7;" text="valider">
                      <graphic>
-                        <ImageView fitHeight="27.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="btnCreerNewPassword" fitHeight="27.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@ImageMenueCaisse/téléchargementValider.jpg" />
                            </image>
                         </ImageView>
                      </graphic>
                   </JFXButton>
-                  <JFXPasswordField fx:id="textFNewPassword" layoutX="180.0" layoutY="128.0" />
-                  <JFXPasswordField fx:id="textFVerifPasseword" layoutX="180.0" layoutY="188.0" />
+                  <JFXPasswordField fx:id="textFNewPassword" focusColor="#ababab" layoutX="45.0" layoutY="128.0" prefHeight="25.0" prefWidth="270.0" promptText="Nouveau mot de passe" unFocusColor="#a8a8a8" />
+                  <JFXPasswordField fx:id="textFVerifPasseword" focusColor="#ababab" layoutX="45.0" layoutY="188.0" prefHeight="25.0" prefWidth="270.0" promptText="Verifier mot de passe" unFocusColor="#a8a8a8" />
                </children>
             </Pane>
             <Pane fx:id="paneConnection" prefHeight="400.0" prefWidth="361.0" style="-fx-background-color: #fff;">
                <children>
-                  <Label layoutX="36.0" layoutY="124.0" text="Non d'utilisateur" />
-                  <Label layoutX="36.0" layoutY="192.0" text="Mot de passe" />
-                  <JFXTextField fx:id="paneConnectionNUser" layoutX="155.0" layoutY="107.0" />
-                  <JFXPasswordField fx:id="paneConnectionMotPasse" layoutX="155.0" layoutY="175.0" />
-                  <JFXButton fx:id="btnValider" layoutX="165.0" layoutY="275.0" onAction="#validerConnecter" text="Valder">
+                  <JFXTextField fx:id="paneConnectionNUser" focusColor="#ababab" layoutX="31.0" layoutY="107.0" prefHeight="25.0" prefWidth="259.0" promptText="Non d'utilisateur" unFocusColor="#a8a8a8">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="15.0" />
+                     </font></JFXTextField>
+                  <JFXPasswordField fx:id="paneConnectionMotPasse" focusColor="#ababab" layoutX="31.0" layoutY="175.0" prefHeight="25.0" prefWidth="259.0" promptText="Mot de passe" unFocusColor="#a8a8a8">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="15.0" />
+                     </font></JFXPasswordField>
+                  <JFXButton fx:id="btnValider" layoutX="72.0" layoutY="275.0" onAction="#validerConnecter" style="-fx-border-color: #318ce7;" text="Valder">
                      <graphic>
                         <ImageView fitHeight="17.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -137,7 +156,7 @@
                         </ImageView>
                      </graphic>
                   </JFXButton>
-                  <JFXButton fx:id="btnAnnuler" layoutX="253.0" layoutY="275.0" onAction="#annulerConnecter" text="Annuler">
+                  <JFXButton fx:id="btnAnnuler" layoutX="197.0" layoutY="275.0" onAction="#annulerConnecter" style="-fx-border-color: #318ce7;" text="Annuler">
                      <graphic>
                         <ImageView fitHeight="13.0" fitWidth="11.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -146,7 +165,7 @@
                         </ImageView>
                      </graphic>
                   </JFXButton>
-                  <JFXButton fx:id="btnCreerCompte" layoutX="72.0" layoutY="330.0" onAction="#creerCompte" prefHeight="25.0" prefWidth="200.0" text="Creer compte">
+                  <JFXButton fx:id="btnCreerCompte" layoutX="72.0" layoutY="330.0" onAction="#creerCompte" prefHeight="25.0" prefWidth="200.0" style="-fx-border-color: #318ce7;" text="Creer compte">
                      <graphic>
                         <ImageView fitHeight="23.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -155,7 +174,10 @@
                         </ImageView>
                      </graphic>
                   </JFXButton>
-                  <Label layoutX="138.0" layoutY="53.0" text="s'identifier" />
+                  <Label layoutX="127.0" layoutY="23.0" text="S'identifier" textFill="#1240c7">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="17.0" />
+                     </font></Label>
                   <Label graphicTextGap="1.0" layoutX="182.0" layoutY="227.0" onMouseClicked="#afficherPaneMotPasseOublie" opacity="0.93" text="mot de passe oublié" textFill="#1240c7" textOverrun="CLIP" underline="true" />
                </children>
             </Pane>
