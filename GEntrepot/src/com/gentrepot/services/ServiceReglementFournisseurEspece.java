@@ -15,6 +15,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.util.Duration;
+import tray.animations.AnimationType;
+import tray.notification.NotificationType;
+import tray.notification.TrayNotification;
 
 /**
  *
@@ -36,9 +40,7 @@ public class ServiceReglementFournisseurEspece implements IService<ReglementFour
             pst.setInt(3, r.getFactureAchat().getNumeroF());
             pst.executeUpdate();
             System.out.println("Reglement fournisseur espece ajoutée !");
-            
-            
-            
+
             //modifier facture
             r.getFactureAchat().setTotalPaye(r.getFactureAchat().getTotalPaye() + r.getMontant());
 
@@ -50,7 +52,18 @@ public class ServiceReglementFournisseurEspece implements IService<ReglementFour
             }
 
             serviceFactureAchat.modifier(r.getFactureAchat());
-            
+
+            String title = " Reglement fournisseur  ";
+            String message = "Reglement fournisseur espece est ajouté avec succes ";
+
+            TrayNotification tray = new TrayNotification();
+            AnimationType type = AnimationType.POPUP;
+
+            tray.setAnimationType(type);
+            tray.setTitle(title);
+            tray.setMessage(message);
+            tray.setNotificationType(NotificationType.SUCCESS);
+            tray.showAndDismiss(Duration.millis(3000));
 
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
@@ -67,9 +80,7 @@ public class ServiceReglementFournisseurEspece implements IService<ReglementFour
             pst.setInt(1, r.getId());
             pst.executeUpdate();
             System.out.println("Reglement Fournisseur espece supprimée !");
-            
-            
-            
+
             //modifier facture
             r.getFactureAchat().setTotalPaye(r.getFactureAchat().getTotalPaye() - r.getMontant());
 
@@ -78,10 +89,9 @@ public class ServiceReglementFournisseurEspece implements IService<ReglementFour
             if (r.getFactureAchat().getRestePaye() == 0) {
 
                 r.getFactureAchat().setEtat("payer");
-            }else
-            {
-                  r.getFactureAchat().setEtat("non_payer");
-                
+            } else {
+                r.getFactureAchat().setEtat("non_payer");
+
             }
 
             serviceFactureAchat.modifier(r.getFactureAchat());
@@ -110,11 +120,10 @@ public class ServiceReglementFournisseurEspece implements IService<ReglementFour
         }
 
     }
-    
-    public void modifier(ReglementFournisseurEspece r,double ancientM) {
-        
-        
-         FactureAchat factureAchat =r.getFactureAchat();
+
+    public void modifier(ReglementFournisseurEspece r, double ancientM) {
+
+        FactureAchat factureAchat = r.getFactureAchat();
 
         try {
             String requete = "UPDATE reglement_fournisseur_espece SET montant=?,date_creation=?,numeroF_factureAchat=? WHERE id=?";
@@ -125,9 +134,8 @@ public class ServiceReglementFournisseurEspece implements IService<ReglementFour
             pst.setInt(4, r.getId());
             pst.executeUpdate();
             System.out.println("Reglement Fournisseur espece modifiée !");
-            
-            
-             //modifier facture
+
+            //modifier facture
             factureAchat.setTotalPaye(factureAchat.getTotalPaye() - ancientM);
 
             factureAchat.setTotalPaye(factureAchat.getTotalPaye() + r.getMontant());
@@ -142,6 +150,18 @@ public class ServiceReglementFournisseurEspece implements IService<ReglementFour
             }
 
             serviceFactureAchat.modifier(factureAchat);
+
+            String title = " Reglement fournisseur  ";
+            String message = "Reglement fournisseur espece est modifié avec succes ";
+
+            TrayNotification tray = new TrayNotification();
+            AnimationType type = AnimationType.POPUP;
+
+            tray.setAnimationType(type);
+            tray.setTitle(title);
+            tray.setMessage(message);
+            tray.setNotificationType(NotificationType.SUCCESS);
+            tray.showAndDismiss(Duration.millis(3000));
 
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());

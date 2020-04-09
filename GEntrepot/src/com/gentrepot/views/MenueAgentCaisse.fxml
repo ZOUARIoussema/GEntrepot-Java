@@ -92,79 +92,6 @@
    <center>
       <StackPane prefHeight="579.0" prefWidth="709.0" BorderPane.alignment="CENTER">
          <children>
-            <Pane fx:id="paneAjouterLettreDeRelance" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #fff;">
-               <children>
-                  <Label layoutX="42.0" layoutY="58.0" text="Liste des factures client" textFill="#1240c7">
-                     <font>
-                        <Font name="Arial Rounded MT Bold" size="17.0" />
-                     </font></Label>
-                  <TableView fx:id="tableVLettreListeFactureClient" layoutX="78.0" layoutY="144.0" prefHeight="316.0" prefWidth="633.0">
-                    <columns>
-                      <TableColumn fx:id="tableVLettreListeFactureClientNumeroF" prefWidth="121.0" text="Numero Facture" />
-                      <TableColumn fx:id="tableVLettreListeFactureClientDateCreation" prefWidth="93.0" text="Date Creation" />
-                        <TableColumn fx:id="tableVLettreListeFactureClientDatePay" prefWidth="163.0" text="Date Echaillance Payement" />
-                        <TableColumn fx:id="tableVLettreListeFactureClientEtat" prefWidth="77.0" text="Etat" />
-                        <TableColumn fx:id="tableVLettreListeFactureClientTotal" prefWidth="101.0" text="Total" />
-                        <TableColumn fx:id="tableVLettreListeFactureClientAction" prefWidth="77.0" text="Action" />
-                    </columns>
-                  </TableView>
-                  <Separator layoutX="750.0" layoutY="190.0" orientation="VERTICAL" prefHeight="200.0" style="-fx-background-color: #318ce7;" />
-                  <JFXButton fx:id="btnValiderAjouterLettre" alignment="TOP_LEFT" layoutX="782.0" layoutY="269.0" onAction="#validerAjouterLettre" prefHeight="41.0" prefWidth="164.0" style="-fx-border-color: #318ce7;" text="Ajouter Lettre">
-                     <graphic>
-                        <ImageView fitHeight="33.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@ImageMenueCaisse/pngtree-add-vector-icon-png-image_3791307.jpg" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </JFXButton>
-               </children>
-            </Pane>
-            <Pane fx:id="paneGLettreR" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #fff;">
-               <children>
-                  <Label layoutX="50.0" layoutY="102.0" text="Liste des lettres de relance" textFill="#1240c7">
-                     <font>
-                        <Font name="Arial Rounded MT Bold" size="17.0" />
-                     </font></Label>
-                  <TableView fx:id="tableViewLettreDeRelance" layoutX="50.0" layoutY="151.0" prefHeight="297.0" prefWidth="521.0">
-                    <columns>
-                      <TableColumn fx:id="cLettreDateCreation" prefWidth="163.0" text="Date Creation" />
-                      <TableColumn fx:id="cLettreFactureClient" prefWidth="176.0" text="Facture Client" />
-                        <TableColumn fx:id="tableViewLettreDeRelanceCAction" prefWidth="181.0" text="Action" />
-                    </columns>
-                  </TableView>
-                  <Separator layoutX="590.0" layoutY="190.0" orientation="VERTICAL" prefHeight="200.0" style="-fx-background-color: #318ce7;" />
-                  <GridPane layoutX="639.0" layoutY="225.0" prefHeight="110.0" prefWidth="163.0">
-                     <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
-                     </columnConstraints>
-                     <rowConstraints>
-                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="39.0" minHeight="10.0" prefHeight="39.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="73.0" minHeight="10.0" prefHeight="56.0" vgrow="SOMETIMES" />
-                     </rowConstraints>
-                     <children>
-                        <JFXButton fx:id="btnAjouterLettre" alignment="TOP_LEFT" onAction="#afficherPaneAjouterLettre" prefHeight="41.0" prefWidth="164.0" style="-fx-border-color: #318ce7;" text="Ajouter lettre">
-                           <graphic>
-                              <ImageView fitHeight="33.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@ImageMenueCaisse/pngtree-add-vector-icon-png-image_3791307.jpg" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </JFXButton>
-                        <JFXButton fx:id="btnSupprimerLettre" alignment="TOP_LEFT" onAction="#supprimerLettre" prefHeight="43.0" prefWidth="172.0" style="-fx-border-color: #318ce7;" text="Supprimer lettre" GridPane.rowIndex="2">
-                           <graphic>
-                              <ImageView fitHeight="33.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@ImageMenueCaisse/téléchargement.jpg" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </JFXButton>
-                     </children>
-                  </GridPane>
-               </children></Pane>
             <Pane fx:id="paneGInvetaireC" prefHeight="579.0" prefWidth="721.0" style="-fx-background-color: #fff;">
                <children>
                   <Label layoutX="31.0" layoutY="59.0" text="Liste des inventaire caisses" textFill="#1240c7">
@@ -224,6 +151,329 @@
                      </children>
                   </GridPane>
                   <Separator layoutX="740.0" layoutY="140.0" orientation="VERTICAL" prefHeight="259.0" prefWidth="2.0" style="-fx-background-color: #318ce7;" />
+               </children>
+            </Pane>
+            <Pane fx:id="paneDetailFacture" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #fff;">
+               <children>
+                  <Label layoutX="35.0" layoutY="44.0" text="Detail Facture" textFill="#1240c7">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="18.0" />
+                     </font></Label>
+                  <GridPane layoutX="564.0" layoutY="97.0" prefHeight="337.0" prefWidth="316.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="130.0" minWidth="10.0" prefWidth="130.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="85.0" minWidth="10.0" prefWidth="37.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints maxHeight="59.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="53.0" minHeight="10.0" prefHeight="39.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <Label alignment="CENTER" text="Numero Facture" textFill="#1240c7">
+                           <GridPane.margin>
+                              <Insets top="20.0" />
+                           </GridPane.margin>
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="13.0" />
+                           </font>
+                        </Label>
+                        <Label text="Date Echaillance" textFill="#1240c7" GridPane.rowIndex="2">
+                           <GridPane.margin>
+                              <Insets top="20.0" />
+                           </GridPane.margin>
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="13.0" />
+                           </font>
+                        </Label>
+                        <Label text="Frais transport" textFill="#1240c7" GridPane.rowIndex="4">
+                           <GridPane.margin>
+                              <Insets top="20.0" />
+                           </GridPane.margin>
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="13.0" />
+                           </font>
+                        </Label>
+                        <Label text="Timbre fiscale" textFill="#1240c7" GridPane.rowIndex="6">
+                           <GridPane.margin>
+                              <Insets top="20.0" />
+                           </GridPane.margin>
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="13.0" />
+                           </font>
+                        </Label>
+                        <Label text="Total TTC" textFill="#1240c7" GridPane.rowIndex="8">
+                           <GridPane.margin>
+                              <Insets top="20.0" />
+                           </GridPane.margin>
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="13.0" />
+                           </font>
+                        </Label>
+                        <JFXTextField fx:id="textFNumeroFD" editable="false" GridPane.columnIndex="2" />
+                        <JFXTextField fx:id="textFFraisTransportD" editable="false" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                        <JFXTextField fx:id="textFTimbreFiscaleD" editable="false" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+                        <JFXTextField fx:id="textFTTCD" editable="false" GridPane.columnIndex="2" GridPane.rowIndex="8" />
+                        <JFXDatePicker fx:id="textFDateEchaillanceFactureD" editable="false" prefHeight="25.0" prefWidth="159.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                     </children>
+                  </GridPane>
+                  <JFXButton fx:id="btnRetourDetailFacture" layoutX="809.0" layoutY="448.0" onAction="#retourDetailFacture" prefHeight="25.0" prefWidth="96.0" style="-fx-border-color: #318ce7;" text="Retour">
+                     <graphic>
+                        <ImageView fitHeight="31.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@ImageMenueCaisse/images%20(1).png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <TableView fx:id="tableViewListeLigneAjouterFactureDetail" layoutX="58.0" layoutY="146.0" prefHeight="219.0" prefWidth="403.0">
+                     <columns>
+                        <TableColumn fx:id="tableViewListeLigneAjouterFactureProduitD" prefWidth="75.0" text="Produit" />
+                        <TableColumn fx:id="tableViewListeLigneAjouterFacturePrixD" prefWidth="75.0" text="Prix" />
+                        <TableColumn fx:id="tableViewListeLigneAjouterFactureQTeD" prefWidth="75.0" text="Quantite" />
+                        <TableColumn fx:id="tableViewListeLigneAjouterFactureTVAD" prefWidth="83.0" text="Tva" />
+                        <TableColumn fx:id="tableViewListeLigneAjouterFactureTotalD" prefWidth="93.0" text="Total" />
+                     </columns>
+                  </TableView>
+                  <Label layoutX="58.0" layoutY="105.0" text="Liste des articles commandés" textFill="#1240c7">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="17.0" />
+                     </font></Label>
+                  <Label layoutX="260.0" layoutY="396.0" text="Total Commande" textFill="#1240c7" />
+                  <JFXTextField fx:id="textFTotalCommandeDetail" editable="false" layoutX="373.0" layoutY="379.0" prefHeight="25.0" prefWidth="87.0" />
+                  <Separator layoutX="505.0" layoutY="87.0" orientation="VERTICAL" prefHeight="423.0" prefWidth="0.0" />
+               </children>
+            </Pane>
+            <Pane fx:id="paneAccueille" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #fff;">
+               <children>
+                  <GridPane layoutX="46.0" layoutY="52.0" prefHeight="501.0" prefWidth="895.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="63.0" minWidth="10.0" prefWidth="42.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="383.0" minWidth="10.0" prefWidth="383.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints maxHeight="56.0" minHeight="10.0" prefHeight="56.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="72.0" minHeight="9.0" prefHeight="29.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="433.0" minHeight="10.0" prefHeight="363.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="56.0" minHeight="10.0" prefHeight="56.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <PieChart fx:id="pieChartRecouvrement" prefHeight="362.0" prefWidth="389.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                        <PieChart fx:id="pieChartReglement" prefHeight="362.0" prefWidth="389.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <AnchorPane GridPane.columnIndex="1">
+                           <children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" layoutX="89.0" layoutY="4.0" prefHeight="17.0" prefWidth="212.0" text="Statistique reglement fournisseur" textFill="#1240c7">
+                                 <font>
+                                    <Font name="Arial Rounded MT Bold" size="13.0" />
+                                 </font></Label>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane GridPane.columnIndex="3">
+                           <children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" layoutX="108.0" layoutY="4.0" prefHeight="17.0" prefWidth="212.0" text="Statistique recouvrement client" textFill="#1240c7">
+                                 <font>
+                                    <Font name="Arial Rounded MT Bold" size="13.0" />
+                                 </font></Label>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </GridPane>
+               </children></Pane>
+            <Pane fx:id="paneAjouterLettreDeRelance" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #fff;">
+               <children>
+                  <Label layoutX="42.0" layoutY="58.0" text="Liste des factures client" textFill="#1240c7">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="17.0" />
+                     </font></Label>
+                  <TableView fx:id="tableVLettreListeFactureClient" layoutX="78.0" layoutY="144.0" prefHeight="316.0" prefWidth="633.0">
+                    <columns>
+                      <TableColumn fx:id="tableVLettreListeFactureClientNumeroF" prefWidth="121.0" text="Numero Facture" />
+                      <TableColumn fx:id="tableVLettreListeFactureClientDateCreation" prefWidth="93.0" text="Date Creation" />
+                        <TableColumn fx:id="tableVLettreListeFactureClientDatePay" prefWidth="163.0" text="Date Echaillance Payement" />
+                        <TableColumn fx:id="tableVLettreListeFactureClientEtat" prefWidth="77.0" text="Etat" />
+                        <TableColumn fx:id="tableVLettreListeFactureClientTotal" prefWidth="101.0" text="Total" />
+                        <TableColumn fx:id="tableVLettreListeFactureClientAction" prefWidth="77.0" text="Action" />
+                    </columns>
+                  </TableView>
+                  <Separator layoutX="750.0" layoutY="190.0" orientation="VERTICAL" prefHeight="200.0" style="-fx-background-color: #318ce7;" />
+                  <JFXButton fx:id="btnValiderAjouterLettre" alignment="TOP_LEFT" layoutX="782.0" layoutY="269.0" onAction="#validerAjouterLettre" prefHeight="41.0" prefWidth="164.0" style="-fx-border-color: #318ce7;" text="Ajouter Lettre">
+                     <graphic>
+                        <ImageView fitHeight="33.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@ImageMenueCaisse/pngtree-add-vector-icon-png-image_3791307.jpg" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+               </children>
+            </Pane>
+            <Pane fx:id="paneGLettreR" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #fff;">
+               <children>
+                  <Label layoutX="50.0" layoutY="102.0" text="Liste des lettres de relance" textFill="#1240c7">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="17.0" />
+                     </font>
+                  </Label>
+                  <TableView fx:id="tableViewLettreDeRelance" layoutX="50.0" layoutY="151.0" onMouseClicked="#selectLettre" prefHeight="297.0" prefWidth="521.0">
+                    <columns>
+                      <TableColumn fx:id="cLettreDateCreation" prefWidth="163.0" text="Date Creation" />
+                      <TableColumn fx:id="cLettreFactureClient" prefWidth="176.0" text="Facture Client" />
+                        <TableColumn fx:id="tableViewLettreDeRelanceCAction" prefWidth="181.0" text="Action" />
+                    </columns>
+                  </TableView>
+                  <Separator layoutX="590.0" layoutY="190.0" orientation="VERTICAL" prefHeight="200.0" style="-fx-background-color: #318ce7;" />
+                  <GridPane layoutX="650.0" layoutY="206.0" prefHeight="164.0" prefWidth="163.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="39.0" minHeight="10.0" prefHeight="39.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="73.0" minHeight="10.0" prefHeight="56.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="73.0" minHeight="10.0" prefHeight="22.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="73.0" minHeight="10.0" prefHeight="14.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <JFXButton fx:id="btnAjouterLettre" alignment="TOP_LEFT" onAction="#afficherPaneAjouterLettre" prefHeight="41.0" prefWidth="164.0" style="-fx-border-color: #318ce7;" text="Ajouter lettre">
+                           <graphic>
+                              <ImageView fitHeight="33.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@ImageMenueCaisse/pngtree-add-vector-icon-png-image_3791307.jpg" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </JFXButton>
+                        <JFXButton fx:id="btnSupprimerLettre" alignment="TOP_LEFT" onAction="#supprimerLettre" prefHeight="43.0" prefWidth="172.0" style="-fx-border-color: #318ce7;" text="Supprimer lettre" GridPane.rowIndex="2">
+                           <graphic>
+                              <ImageView fitHeight="33.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@ImageMenueCaisse/téléchargement.jpg" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </JFXButton>
+                     </children>
+                  </GridPane>
+                  <JFXButton fx:id="btnEnvoeyMailLettre" alignment="TOP_LEFT" layoutX="399.0" layoutY="467.0" onAction="#EnvoyerMailLettre" prefHeight="43.0" prefWidth="172.0" style="-fx-border-color: #318ce7;" text="Envoyer Mail">
+                     <graphic>
+                        <ImageView fitHeight="33.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@ImageMenueCaisse/téléchargement%20(2).jpg" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <JFXTextField fx:id="textFAdresseMailClient" focusColor="#ababab" layoutX="187.0" layoutY="476.0" promptText="Adresse mail" unFocusColor="#a8a8a8">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="17.0" />
+                     </font>
+                  </JFXTextField>
+               </children>
+            </Pane>
+            <Pane fx:id="paneAjouterFacture" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #fff;">
+               <children>
+                  <Label layoutX="68.0" layoutY="79.0" text="Liste des commande d'approvisionnement" textFill="#1240c7">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="17.0" />
+                     </font></Label>
+                  <TableView fx:id="paneAjouterFactureTableVListeCommande" layoutX="68.0" layoutY="139.0" prefHeight="335.0" prefWidth="658.0">
+                    <columns>
+                      <TableColumn fx:id="paneAjouterFactureTableVListeCommandeNumeroC" prefWidth="137.0" text="Numero Commande" />
+                      <TableColumn fx:id="paneAjouterFactureTableVListeCommandeDateC" prefWidth="103.0" text="Date Creation" />
+                        <TableColumn fx:id="paneAjouterFactureTableVListeCommandeEtatC" text="Etat" />
+                        <TableColumn fx:id="paneAjouterFactureTableVListeCommandeTotalC" prefWidth="97.0" text="Total" />
+                        <TableColumn fx:id="paneAjouterFactureTableVListeCommandeFournisseur" prefWidth="122.0" text="Fournisseur" />
+                    </columns>
+                  </TableView>
+                  <JFXButton fx:id="btnAnnulerAjouterFacture" layoutX="819.0" layoutY="290.0" onAction="#annulerAjouterFacture" style="-fx-border-color: #318ce7;" text="Annuler">
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@ImageMenueCaisse/images%20(1).png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <Separator layoutX="771.0" layoutY="207.0" orientation="VERTICAL" prefHeight="200.0" style="-fx-background-color: #318ce7;" />
+               </children>
+            </Pane>
+            <Pane fx:id="paneEnregistrerFacture" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #fff;">
+               <children>
+                  <Label layoutX="35.0" layoutY="44.0" text="Ajouter facture" textFill="#1240c7">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="17.0" />
+                     </font></Label>
+                  <GridPane layoutX="564.0" layoutY="97.0" prefHeight="337.0" prefWidth="316.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="85.0" minWidth="10.0" prefWidth="22.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="294.0" minWidth="10.0" prefWidth="294.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints maxHeight="59.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="53.0" minHeight="10.0" prefHeight="39.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <JFXTextField fx:id="textFNumeroF" focusColor="#ababab" onKeyReleased="#verifNumeroF" promptText="Numero Facture" unFocusColor="#a8a8a8" GridPane.columnIndex="1">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="17.0" />
+                           </font></JFXTextField>
+                        <JFXTextField fx:id="textFFraisTransport" focusColor="#ababab" onKeyReleased="#verifFraisT" promptText="Frais transport" unFocusColor="#a8a8a8" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="17.0" />
+                           </font></JFXTextField>
+                        <JFXTextField fx:id="textFTimbreFiscale" focusColor="#ababab" onKeyReleased="#verifTimbreF" promptText="Timbre fiscale" unFocusColor="#a8a8a8" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="17.0" />
+                           </font></JFXTextField>
+                        <JFXTextField fx:id="textFTTC" focusColor="#ababab" onKeyReleased="#verifTTC" promptText="Total TTC" unFocusColor="#a8a8a8" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="17.0" />
+                           </font></JFXTextField>
+                        <JFXDatePicker fx:id="textFDateEchaillanceFacture" prefHeight="25.0" prefWidth="304.0" promptText="Date Echaillance" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                     </children>
+                  </GridPane>
+                  <JFXButton fx:id="btnValiderAjouterFactureAchat" layoutX="853.0" layoutY="448.0" onAction="#validerAjouterFactureAchat" style="-fx-border-color: #318ce7;" text="Ajouter">
+                     <graphic>
+                        <ImageView fitHeight="32.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@ImageMenueCaisse/téléchargementValider.jpg" />
+                           </image>
+                        </ImageView>
+                     </graphic></JFXButton>
+                  <TableView fx:id="tableViewListeLigneAjouterFacture" layoutX="58.0" layoutY="146.0" prefHeight="219.0" prefWidth="403.0">
+                    <columns>
+                      <TableColumn fx:id="tableViewListeLigneAjouterFactureProduit" prefWidth="75.0" text="Produit" />
+                      <TableColumn fx:id="tableViewListeLigneAjouterFacturePrix" prefWidth="75.0" text="Prix" />
+                        <TableColumn fx:id="tableViewListeLigneAjouterFactureQTe" prefWidth="75.0" text="Quantite" />
+                        <TableColumn fx:id="tableViewListeLigneAjouterFactureTVA" prefWidth="83.0" text="Tva" />
+                        <TableColumn fx:id="tableViewListeLigneAjouterFactureTotal" prefWidth="93.0" text="Total" />
+                    </columns>
+                  </TableView>
+                  <Label layoutX="58.0" layoutY="111.0" text="Liste des articles commandés" textFill="#1240c7">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="16.0" />
+                     </font></Label>
+                  <Label layoutX="260.0" layoutY="396.0" text="Total Commande" textFill="#318ce7" />
+                  <JFXTextField fx:id="textFTotalCommande" layoutX="373.0" layoutY="379.0" prefHeight="25.0" prefWidth="87.0" />
+                  <Separator layoutX="505.0" layoutY="87.0" orientation="VERTICAL" prefHeight="423.0" prefWidth="0.0" style="-fx-background-color: #318ce7;" />
                </children>
             </Pane>
             <Pane fx:id="paneGFactureF" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #fff;">
@@ -297,7 +547,7 @@
                                              <font>
                                                 <Font name="Arial Rounded MT Bold" size="17.0" />
                                              </font></Label>
-                                          <JFXTextField fx:id="textFModifierRecouvrementCEspece" focusColor="#ababab" layoutX="654.0" layoutY="105.0" prefHeight="33.0" prefWidth="175.0" promptText="Montant" unFocusColor="#a8a8a8">
+                                          <JFXTextField fx:id="textFModifierRecouvrementCEspece" focusColor="#ababab" layoutX="654.0" layoutY="105.0" onKeyReleased="#verifMRM" prefHeight="33.0" prefWidth="175.0" promptText="Montant" unFocusColor="#a8a8a8">
                                              <font>
                                                 <Font name="Arial Rounded MT Bold" size="17.0" />
                                              </font></JFXTextField>
@@ -337,7 +587,7 @@
                                              <font>
                                                 <Font name="Arial Rounded MT Bold" size="17.0" />
                                              </font></Label>
-                                          <JFXTextField fx:id="textFAjouterRCEMontant" focusColor="#ababab" layoutX="640.0" layoutY="105.0" prefHeight="25.0" prefWidth="170.0" promptText="Montant" unFocusColor="#a8a8a8">
+                                          <JFXTextField fx:id="textFAjouterRCEMontant" focusColor="#ababab" layoutX="640.0" layoutY="105.0" onKeyReleased="#verifMREA" prefHeight="25.0" prefWidth="170.0" promptText="Montant" unFocusColor="#a8a8a8">
                                              <font>
                                                 <Font name="Arial Rounded MT Bold" size="17.0" />
                                              </font></JFXTextField>
@@ -455,11 +705,11 @@
                                                 <RowConstraints maxHeight="52.0" minHeight="10.0" prefHeight="52.0" vgrow="SOMETIMES" />
                                              </rowConstraints>
                                              <children>
-                                                <JFXTextField fx:id="textFModiiferRecouvrementChequeMontant" focusColor="#ababab" prefHeight="25.0" prefWidth="100.0" promptText="Montant" unFocusColor="#a8a8a8" GridPane.columnIndex="1">
+                                                <JFXTextField fx:id="textFModiiferRecouvrementChequeMontant" focusColor="#ababab" onKeyReleased="#verifMRecouvrementCM" prefHeight="25.0" prefWidth="100.0" promptText="Montant" unFocusColor="#a8a8a8" GridPane.columnIndex="1">
                                                    <font>
                                                       <Font name="Arial Rounded MT Bold" size="17.0" />
                                                    </font></JFXTextField>
-                                                <JFXTextField fx:id="textFModifierRecouvrementClientChequeNumeroCheque" focusColor="#ababab" prefHeight="25.0" prefWidth="100.0" promptText="Numero Cheque" unFocusColor="#a8a8a8" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                                <JFXTextField fx:id="textFModifierRecouvrementClientChequeNumeroCheque" focusColor="#ababab" onKeyReleased="#verifNumeroChequeNCheque" prefHeight="25.0" prefWidth="100.0" promptText="Numero Cheque" unFocusColor="#a8a8a8" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                                    <font>
                                                       <Font name="Arial Rounded MT Bold" size="17.0" />
                                                    </font></JFXTextField>
@@ -514,12 +764,12 @@
                                                 <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                                              </rowConstraints>
                                              <children>
-                                                <JFXTextField fx:id="textFAjouterRecouvrementChequeMontant" focusColor="#ababab" prefHeight="25.0" prefWidth="176.0" promptText="Montant" unFocusColor="#a8a8a8">
+                                                <JFXTextField fx:id="textFAjouterRecouvrementChequeMontant" focusColor="#ababab" onKeyReleased="#verifMAjouterRecouvrementCheque" prefHeight="25.0" prefWidth="176.0" promptText="Montant" unFocusColor="#a8a8a8">
                                                    <font>
                                                       <Font name="Arial Rounded MT Bold" size="17.0" />
                                                    </font>
                                                 </JFXTextField>
-                                                <JFXTextField fx:id="textFAjouterRecouvrementClientChequeNumeroCheque" focusColor="#ababab" prefHeight="25.0" prefWidth="207.0" promptText="Numero Cheque" unFocusColor="#a8a8a8" GridPane.rowIndex="2">
+                                                <JFXTextField fx:id="textFAjouterRecouvrementClientChequeNumeroCheque" focusColor="#ababab" onKeyReleased="#verifNumeroChequeAjouterRec" prefHeight="25.0" prefWidth="207.0" promptText="Numero Cheque" unFocusColor="#a8a8a8" GridPane.rowIndex="2">
                                                    <font>
                                                       <Font name="Arial Rounded MT Bold" size="17.0" />
                                                    </font>
@@ -626,43 +876,6 @@
                            <content>
                               <StackPane prefHeight="150.0" prefWidth="200.0">
                                  <children>
-                                    <Pane fx:id="paneModifierReglementEspece" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #fff;">
-                                       <children>
-                                          <TableView fx:id="tableViewModifierReglementEspeceListeFactureAchat" layoutX="40.0" layoutY="67.0" onMouseClicked="#modifierReglementEspeceListeFactureAchatSelection" prefHeight="264.0" prefWidth="562.0">
-                                             <columns>
-                                                <TableColumn fx:id="tableViewModifierReglementEspeceListeFactureAchatNF" prefWidth="113.0" text="Numero Facture" />
-                                                <TableColumn fx:id="tableViewModifierReglementEspeceListeFactureAchatDC" text="Date creation" />
-                                                <TableColumn fx:id="tableViewModifierReglementEspeceListeFactureAchatEtat" prefWidth="75.0" text="Etat" />
-                                                <TableColumn fx:id="tableViewModifierReglementEspeceListeFactureAchatTTc" prefWidth="75.0" text="Total TTC" />
-                                                <TableColumn fx:id="tableViewModifierReglementEspeceListeFactureAchatTP" prefWidth="75.0" text="Total Payer" />
-                                                <TableColumn fx:id="tableViewModifierReglementEspeceListeFactureAchatRP" prefWidth="109.0" text="Reste A Payer" />
-                                             </columns>
-                                          </TableView>
-                                          <Label layoutX="40.0" layoutY="34.0" text="Liste des facture client" />
-                                          <JFXTextField fx:id="textFModifierReglementEspece" focusColor="#ababab" layoutX="649.0" layoutY="105.0" prefHeight="25.0" prefWidth="161.0" promptText="Montant" unFocusColor="#a8a8a8">
-                                             <font>
-                                                <Font name="Arial Rounded MT Bold" size="17.0" />
-                                             </font></JFXTextField>
-                                          <JFXButton fx:id="btnModifierReglementEspece" layoutX="649.0" layoutY="159.0" onAction="#validerModifierReglementEspece" style="-fx-border-color: #318ce7;" text="Modifier Recouvrement ">
-                                             <graphic>
-                                                <ImageView fitHeight="30.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
-                                                   <image>
-                                                      <Image url="@ImageMenueCaisse/images%20(1).jpg" />
-                                                   </image>
-                                                </ImageView>
-                                             </graphic>
-                                          </JFXButton>
-                                          <JFXButton fx:id="btnAnnulerAjouterRecouvrementCEspece11" layoutX="649.0" layoutY="228.0" onAction="#AnuulerModiferReglementEspece" prefHeight="40.0" prefWidth="180.0" style="-fx-border-color: #318ce7;" text="Annuler">
-                                             <graphic>
-                                                <ImageView fitHeight="30.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
-                                                   <image>
-                                                      <Image url="@ImageMenueCaisse/images%20(1).png" />
-                                                   </image>
-                                                </ImageView>
-                                             </graphic>
-                                          </JFXButton>
-                                       </children>
-                                    </Pane>
                                     <Pane fx:id="paneajouterReglementEspece" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #fff;">
                                        <children>
                                           <TableView fx:id="tableViewAjouterReglementEspeceListeFactureAchat" layoutX="40.0" layoutY="67.0" onMouseClicked="#paneAjouterReglementEspceSelectionner" prefHeight="264.0" prefWidth="562.0">
@@ -679,7 +892,7 @@
                                              <font>
                                                 <Font name="Arial Rounded MT Bold" size="17.0" />
                                              </font></Label>
-                                          <JFXTextField fx:id="textFAjouterReglementEspece" focusColor="#ababab" layoutX="659.0" layoutY="105.0" prefHeight="25.0" prefWidth="151.0" promptText="Montant" unFocusColor="#a8a8a8">
+                                          <JFXTextField fx:id="textFAjouterReglementEspece" focusColor="#ababab" layoutX="659.0" layoutY="105.0" onKeyReleased="#verifMonatantAjouter" prefHeight="25.0" prefWidth="151.0" promptText="Montant" unFocusColor="#a8a8a8">
                                              <font>
                                                 <Font name="Arial Rounded MT Bold" size="17.0" />
                                              </font></JFXTextField>
@@ -693,6 +906,43 @@
                                              </graphic>
                                           </JFXButton>
                                           <JFXButton fx:id="btnAnnulerAjouterReglementEspece" layoutX="659.0" layoutY="233.0" onAction="#AnnulerAjouterReglementEspece" prefHeight="40.0" prefWidth="151.0" style="-fx-border-color: #318ce7;" text="Annuler">
+                                             <graphic>
+                                                <ImageView fitHeight="30.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@ImageMenueCaisse/images%20(1).png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </JFXButton>
+                                       </children>
+                                    </Pane>
+                                    <Pane fx:id="paneModifierReglementEspece" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #fff;">
+                                       <children>
+                                          <TableView fx:id="tableViewModifierReglementEspeceListeFactureAchat" layoutX="40.0" layoutY="67.0" onMouseClicked="#modifierReglementEspeceListeFactureAchatSelection" prefHeight="264.0" prefWidth="562.0">
+                                             <columns>
+                                                <TableColumn fx:id="tableViewModifierReglementEspeceListeFactureAchatNF" prefWidth="113.0" text="Numero Facture" />
+                                                <TableColumn fx:id="tableViewModifierReglementEspeceListeFactureAchatDC" text="Date creation" />
+                                                <TableColumn fx:id="tableViewModifierReglementEspeceListeFactureAchatEtat" prefWidth="75.0" text="Etat" />
+                                                <TableColumn fx:id="tableViewModifierReglementEspeceListeFactureAchatTTc" prefWidth="75.0" text="Total TTC" />
+                                                <TableColumn fx:id="tableViewModifierReglementEspeceListeFactureAchatTP" prefWidth="75.0" text="Total Payer" />
+                                                <TableColumn fx:id="tableViewModifierReglementEspeceListeFactureAchatRP" prefWidth="109.0" text="Reste A Payer" />
+                                             </columns>
+                                          </TableView>
+                                          <Label layoutX="40.0" layoutY="34.0" text="Liste des facture client" />
+                                          <JFXTextField fx:id="textFModifierReglementEspece" focusColor="#ababab" layoutX="649.0" layoutY="105.0" onKeyReleased="#verifMontant" prefHeight="25.0" prefWidth="161.0" promptText="Montant" unFocusColor="#a8a8a8">
+                                             <font>
+                                                <Font name="Arial Rounded MT Bold" size="17.0" />
+                                             </font></JFXTextField>
+                                          <JFXButton fx:id="btnModifierReglementEspece" layoutX="649.0" layoutY="159.0" onAction="#vModiferReglementEspece" prefHeight="40.0" prefWidth="179.0" style="-fx-border-color: #318ce7;" text="Modifier Reglement">
+                                             <graphic>
+                                                <ImageView fitHeight="30.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@ImageMenueCaisse/images%20(1).jpg" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </JFXButton>
+                                          <JFXButton fx:id="btnAnnulerAjouterRecouvrementCEspece11" layoutX="649.0" layoutY="228.0" onAction="#AnuulerModiferReglementEspece" prefHeight="40.0" prefWidth="180.0" style="-fx-border-color: #318ce7;" text="Annuler">
                                              <graphic>
                                                 <ImageView fitHeight="30.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                                                    <image>
@@ -797,12 +1047,12 @@
                                                 <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                                              </rowConstraints>
                                              <children>
-                                                <JFXTextField fx:id="textAjouterRegChequeMontant" focusColor="#ababab" prefHeight="25.0" prefWidth="184.0" promptText="Montant" unFocusColor="#a8a8a8">
+                                                <JFXTextField fx:id="textAjouterRegChequeMontant" focusColor="#ababab" onKeyReleased="#verifMACheque" prefHeight="25.0" prefWidth="184.0" promptText="Montant" unFocusColor="#a8a8a8">
                                                    <font>
                                                       <Font name="Arial Rounded MT Bold" size="17.0" />
                                                    </font>
                                                 </JFXTextField>
-                                                <JFXTextField fx:id="textfAjouterNumeroReglementCheque" focusColor="#ababab" prefHeight="25.0" prefWidth="214.0" promptText="Numero Cheque" unFocusColor="#a8a8a8" GridPane.rowIndex="2">
+                                                <JFXTextField fx:id="textfAjouterNumeroReglementCheque" focusColor="#ababab" onKeyReleased="#verifNChA" prefHeight="25.0" prefWidth="214.0" promptText="Numero Cheque" unFocusColor="#a8a8a8" GridPane.rowIndex="2">
                                                    <font>
                                                       <Font name="Arial Rounded MT Bold" size="17.0" />
                                                    </font>
@@ -859,11 +1109,11 @@
                                                 <RowConstraints maxHeight="52.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
                                              </rowConstraints>
                                              <children>
-                                                <JFXTextField fx:id="textMontantModifierRegCheque" focusColor="#ababab" prefHeight="33.0" prefWidth="210.0" promptText="Montant" unFocusColor="#a8a8a8" GridPane.columnIndex="1">
+                                                <JFXTextField fx:id="textMontantModifierRegCheque" focusColor="#ababab" onKeyReleased="#verifMM" prefHeight="33.0" prefWidth="210.0" promptText="Montant" unFocusColor="#a8a8a8" GridPane.columnIndex="1">
                                                    <font>
                                                       <Font name="Arial Rounded MT Bold" size="17.0" />
                                                    </font></JFXTextField>
-                                                <JFXTextField fx:id="textFNumeroModiferRegCheque" focusColor="#ababab" prefHeight="25.0" prefWidth="100.0" promptText="Numero Cheque" unFocusColor="#a8a8a8" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                                <JFXTextField fx:id="textFNumeroModiferRegCheque" focusColor="#ababab" onKeyReleased="#verifNMCH" prefHeight="25.0" prefWidth="100.0" promptText="Numero Cheque" unFocusColor="#a8a8a8" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                                    <font>
                                                       <Font name="Arial Rounded MT Bold" size="17.0" />
                                                    </font></JFXTextField>
@@ -958,247 +1208,81 @@
                   </TabPane>
                </children>
             </Pane>
-            <Pane fx:id="paneAjouterFacture" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #fff;">
-               <children>
-                  <Label layoutX="68.0" layoutY="79.0" text="Liste des commande d'approvisionnement" textFill="#1240c7">
-                     <font>
-                        <Font name="Arial Rounded MT Bold" size="17.0" />
-                     </font></Label>
-                  <TableView fx:id="paneAjouterFactureTableVListeCommande" layoutX="68.0" layoutY="139.0" prefHeight="335.0" prefWidth="658.0">
-                    <columns>
-                      <TableColumn fx:id="paneAjouterFactureTableVListeCommandeNumeroC" prefWidth="137.0" text="Numero Commande" />
-                      <TableColumn fx:id="paneAjouterFactureTableVListeCommandeDateC" prefWidth="103.0" text="Date Creation" />
-                        <TableColumn fx:id="paneAjouterFactureTableVListeCommandeEtatC" text="Etat" />
-                        <TableColumn fx:id="paneAjouterFactureTableVListeCommandeTotalC" prefWidth="97.0" text="Total" />
-                        <TableColumn fx:id="paneAjouterFactureTableVListeCommandeFournisseur" prefWidth="122.0" text="Fournisseur" />
-                    </columns>
-                  </TableView>
-                  <JFXButton fx:id="btnAnnulerAjouterFacture" layoutX="819.0" layoutY="290.0" onAction="#annulerAjouterFacture" style="-fx-border-color: #318ce7;" text="Annuler">
-                     <graphic>
-                        <ImageView fitHeight="30.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@ImageMenueCaisse/images%20(1).png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </JFXButton>
-                  <Separator layoutX="771.0" layoutY="207.0" orientation="VERTICAL" prefHeight="200.0" style="-fx-background-color: #318ce7;" />
-               </children>
-            </Pane>
-            <Pane fx:id="paneEnregistrerFacture" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #fff;">
-               <children>
-                  <Label layoutX="35.0" layoutY="44.0" text="Ajouter facture" textFill="#1240c7">
-                     <font>
-                        <Font name="Arial Rounded MT Bold" size="17.0" />
-                     </font></Label>
-                  <GridPane layoutX="564.0" layoutY="97.0" prefHeight="337.0" prefWidth="316.0">
-                     <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="85.0" minWidth="10.0" prefWidth="22.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="294.0" minWidth="10.0" prefWidth="294.0" />
-                     </columnConstraints>
-                     <rowConstraints>
-                        <RowConstraints maxHeight="59.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="53.0" minHeight="10.0" prefHeight="39.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                     </rowConstraints>
-                     <children>
-                        <JFXTextField fx:id="textFNumeroF" focusColor="#ababab" promptText="Numero Facture" unFocusColor="#a8a8a8" GridPane.columnIndex="1">
-                           <font>
-                              <Font name="Arial Rounded MT Bold" size="17.0" />
-                           </font></JFXTextField>
-                        <JFXTextField fx:id="textFFraisTransport" focusColor="#ababab" promptText="Frais transport" unFocusColor="#a8a8a8" GridPane.columnIndex="1" GridPane.rowIndex="4">
-                           <font>
-                              <Font name="Arial Rounded MT Bold" size="17.0" />
-                           </font></JFXTextField>
-                        <JFXTextField fx:id="textFTimbreFiscale" focusColor="#ababab" promptText="Timbre fiscale" unFocusColor="#a8a8a8" GridPane.columnIndex="1" GridPane.rowIndex="6">
-                           <font>
-                              <Font name="Arial Rounded MT Bold" size="17.0" />
-                           </font></JFXTextField>
-                        <JFXTextField fx:id="textFTTC" focusColor="#ababab" promptText="Total TTC" unFocusColor="#a8a8a8" GridPane.columnIndex="1" GridPane.rowIndex="8">
-                           <font>
-                              <Font name="Arial Rounded MT Bold" size="17.0" />
-                           </font></JFXTextField>
-                        <JFXDatePicker fx:id="textFDateEchaillanceFacture" prefHeight="25.0" prefWidth="304.0" promptText="Date Echaillance" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                     </children>
-                  </GridPane>
-                  <JFXButton fx:id="btnValiderAjouterFactureAchat" layoutX="853.0" layoutY="448.0" onAction="#validerAjouterFactureAchat" style="-fx-border-color: #318ce7;" text="Ajouter">
-                     <graphic>
-                        <ImageView fitHeight="32.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@ImageMenueCaisse/téléchargementValider.jpg" />
-                           </image>
-                        </ImageView>
-                     </graphic></JFXButton>
-                  <TableView fx:id="tableViewListeLigneAjouterFacture" layoutX="58.0" layoutY="146.0" prefHeight="219.0" prefWidth="403.0">
-                    <columns>
-                      <TableColumn fx:id="tableViewListeLigneAjouterFactureProduit" prefWidth="75.0" text="Produit" />
-                      <TableColumn fx:id="tableViewListeLigneAjouterFacturePrix" prefWidth="75.0" text="Prix" />
-                        <TableColumn fx:id="tableViewListeLigneAjouterFactureQTe" prefWidth="75.0" text="Quantite" />
-                        <TableColumn fx:id="tableViewListeLigneAjouterFactureTVA" prefWidth="83.0" text="Tva" />
-                        <TableColumn fx:id="tableViewListeLigneAjouterFactureTotal" prefWidth="93.0" text="Total" />
-                    </columns>
-                  </TableView>
-                  <Label layoutX="58.0" layoutY="111.0" text="Liste des articles commandés" textFill="#1240c7">
-                     <font>
-                        <Font name="Arial Rounded MT Bold" size="16.0" />
-                     </font></Label>
-                  <Label layoutX="260.0" layoutY="396.0" text="Total Commande" textFill="#318ce7" />
-                  <JFXTextField fx:id="textFTotalCommande" layoutX="373.0" layoutY="379.0" prefHeight="25.0" prefWidth="87.0" />
-                  <Separator layoutX="505.0" layoutY="87.0" orientation="VERTICAL" prefHeight="423.0" prefWidth="0.0" style="-fx-background-color: #318ce7;" />
-               </children>
-            </Pane>
-            <Pane fx:id="paneDetailFacture" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #fff;">
-               <children>
-                  <Label layoutX="35.0" layoutY="44.0" text="Detail Facture" textFill="#1240c7">
-                     <font>
-                        <Font name="Arial Rounded MT Bold" size="18.0" />
-                     </font></Label>
-                  <GridPane layoutX="564.0" layoutY="97.0" prefHeight="337.0" prefWidth="316.0">
-                     <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="130.0" minWidth="10.0" prefWidth="130.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="85.0" minWidth="10.0" prefWidth="37.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
-                     </columnConstraints>
-                     <rowConstraints>
-                        <RowConstraints maxHeight="59.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="53.0" minHeight="10.0" prefHeight="39.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                     </rowConstraints>
-                     <children>
-                        <Label alignment="CENTER" text="Numero Facture" textFill="#1240c7">
-                           <GridPane.margin>
-                              <Insets top="20.0" />
-                           </GridPane.margin>
-                           <font>
-                              <Font name="Arial Rounded MT Bold" size="13.0" />
-                           </font>
-                        </Label>
-                        <Label text="Date Echaillance" textFill="#1240c7" GridPane.rowIndex="2">
-                           <GridPane.margin>
-                              <Insets top="20.0" />
-                           </GridPane.margin>
-                           <font>
-                              <Font name="Arial Rounded MT Bold" size="13.0" />
-                           </font>
-                        </Label>
-                        <Label text="Frais transport" textFill="#1240c7" GridPane.rowIndex="4">
-                           <GridPane.margin>
-                              <Insets top="20.0" />
-                           </GridPane.margin>
-                           <font>
-                              <Font name="Arial Rounded MT Bold" size="13.0" />
-                           </font>
-                        </Label>
-                        <Label text="Timbre fiscale" textFill="#1240c7" GridPane.rowIndex="6">
-                           <GridPane.margin>
-                              <Insets top="20.0" />
-                           </GridPane.margin>
-                           <font>
-                              <Font name="Arial Rounded MT Bold" size="13.0" />
-                           </font>
-                        </Label>
-                        <Label text="Total TTC" textFill="#1240c7" GridPane.rowIndex="8">
-                           <GridPane.margin>
-                              <Insets top="20.0" />
-                           </GridPane.margin>
-                           <font>
-                              <Font name="Arial Rounded MT Bold" size="13.0" />
-                           </font>
-                        </Label>
-                        <JFXTextField fx:id="textFNumeroFD" editable="false" GridPane.columnIndex="2" />
-                        <JFXTextField fx:id="textFFraisTransportD" editable="false" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-                        <JFXTextField fx:id="textFTimbreFiscaleD" editable="false" GridPane.columnIndex="2" GridPane.rowIndex="6" />
-                        <JFXTextField fx:id="textFTTCD" editable="false" GridPane.columnIndex="2" GridPane.rowIndex="8" />
-                        <JFXDatePicker fx:id="textFDateEchaillanceFactureD" editable="false" prefHeight="25.0" prefWidth="159.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                     </children>
-                  </GridPane>
-                  <JFXButton fx:id="btnRetourDetailFacture" layoutX="809.0" layoutY="448.0" onAction="#retourDetailFacture" prefHeight="25.0" prefWidth="96.0" style="-fx-border-color: #318ce7;" text="Retour">
-                     <graphic>
-                        <ImageView fitHeight="31.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@ImageMenueCaisse/images%20(1).png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </JFXButton>
-                  <TableView fx:id="tableViewListeLigneAjouterFactureDetail" layoutX="58.0" layoutY="146.0" prefHeight="219.0" prefWidth="403.0">
-                     <columns>
-                        <TableColumn fx:id="tableViewListeLigneAjouterFactureProduitD" prefWidth="75.0" text="Produit" />
-                        <TableColumn fx:id="tableViewListeLigneAjouterFacturePrixD" prefWidth="75.0" text="Prix" />
-                        <TableColumn fx:id="tableViewListeLigneAjouterFactureQTeD" prefWidth="75.0" text="Quantite" />
-                        <TableColumn fx:id="tableViewListeLigneAjouterFactureTVAD" prefWidth="83.0" text="Tva" />
-                        <TableColumn fx:id="tableViewListeLigneAjouterFactureTotalD" prefWidth="93.0" text="Total" />
-                     </columns>
-                  </TableView>
-                  <Label layoutX="58.0" layoutY="105.0" text="Liste des articles commandés" textFill="#1240c7">
-                     <font>
-                        <Font name="Arial Rounded MT Bold" size="17.0" />
-                     </font></Label>
-                  <Label layoutX="260.0" layoutY="396.0" text="Total Commande" textFill="#1240c7" />
-                  <JFXTextField fx:id="textFTotalCommandeDetail" editable="false" layoutX="373.0" layoutY="379.0" prefHeight="25.0" prefWidth="87.0" />
-                  <Separator layoutX="505.0" layoutY="87.0" orientation="VERTICAL" prefHeight="423.0" prefWidth="0.0" />
-               </children>
-            </Pane>
             <Pane fx:id="paneAjouterInventaire" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #fff;">
                <children>
-                  <GridPane alignment="CENTER" layoutX="43.0" layoutY="122.0" prefHeight="302.0" prefWidth="346.0">
+                  <GridPane alignment="CENTER" layoutX="43.0" layoutY="122.0" prefHeight="377.0" prefWidth="346.0">
                      <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="88.0" minWidth="0.0" prefWidth="0.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="325.0" minWidth="10.0" prefWidth="305.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="325.0" minWidth="10.0" prefWidth="148.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="325.0" minWidth="10.0" prefWidth="160.0" />
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="325.0" minWidth="10.0" prefWidth="18.0" />
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="225.0" minWidth="10.0" prefWidth="24.0" />
                      </columnConstraints>
                      <rowConstraints>
-                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="46.0" minHeight="10.0" prefHeight="46.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="46.0" minHeight="10.0" prefHeight="46.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="29.0" minHeight="10.0" prefHeight="22.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="43.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="26.0" minHeight="4.0" prefHeight="25.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="59.0" minHeight="10.0" prefHeight="53.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="36.0" minHeight="10.0" prefHeight="14.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="45.0" minHeight="10.0" prefHeight="45.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="29.0" minHeight="10.0" prefHeight="29.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="59.0" minHeight="10.0" prefHeight="59.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="36.0" minHeight="9.0" prefHeight="27.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="54.0" minHeight="10.0" prefHeight="34.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="46.0" minHeight="10.0" prefHeight="18.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="29.0" minHeight="10.0" prefHeight="15.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <JFXTextField fx:id="totalTheorique" editable="false" focusColor="#ababab" promptText="Solde total" unFocusColor="#a8a8a8" GridPane.columnIndex="1">
+                        <JFXTextField fx:id="totalTheorique" editable="false" focusColor="#ababab" unFocusColor="#a8a8a8" GridPane.columnIndex="2">
                            <font>
                               <Font name="Arial Rounded MT Bold" size="17.0" />
                            </font></JFXTextField>
-                        <JFXTextField fx:id="totalCheque" editable="false" focusColor="#ababab" promptText="Solde en cheque" unFocusColor="#a8a8a8" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                        <JFXTextField fx:id="totalCheque" editable="false" focusColor="#ababab" unFocusColor="#a8a8a8" GridPane.columnIndex="2" GridPane.rowIndex="2">
                            <font>
                               <Font name="Arial Rounded MT Bold" size="17.0" />
                            </font></JFXTextField>
-                        <JFXTextField fx:id="totalEspece" editable="false" focusColor="#ababab" promptText="Solde en espece" unFocusColor="#a8a8a8" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                        <JFXTextField fx:id="totalEspece" editable="false" focusColor="#ababab" unFocusColor="#a8a8a8" GridPane.columnIndex="2" GridPane.rowIndex="4">
                            <font>
                               <Font name="Arial Rounded MT Bold" size="17.0" />
                            </font></JFXTextField>
-                        <JFXTextField fx:id="soldeTCalculer" focusColor="#ababab" onKeyReleased="#calculerEcart" promptText="Solde calculer" unFocusColor="#a8a8a8" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                        <JFXTextField fx:id="soldeTCalculer" focusColor="#ababab" onKeyReleased="#calculerEcart" unFocusColor="#a8a8a8" GridPane.columnIndex="2" GridPane.rowIndex="6">
                            <font>
                               <Font name="Arial Rounded MT Bold" size="17.0" />
                            </font></JFXTextField>
-                        <JFXTextField fx:id="ecartC" focusColor="#ababab" promptText="Ecart" unFocusColor="#a8a8a8" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                        <JFXTextField fx:id="ecartC" focusColor="#ababab" unFocusColor="#a8a8a8" GridPane.columnIndex="2" GridPane.rowIndex="8">
                            <font>
                               <Font name="Arial Rounded MT Bold" size="17.0" />
                            </font></JFXTextField>
+                        <Label text="Solde total" GridPane.columnIndex="1">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="16.0" />
+                           </font>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </Label>
+                        <Label text="Solde en cheque" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label text="Solde en espece" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label text="Solde calculer" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" contentDisplay="CENTER" text="Ecart" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="16.0" />
+                           </font>
+                        </Label>
                      </children>
                   </GridPane>
-                  <JFXButton fx:id="btnValiderAjouterInventaire" layoutX="515.0" layoutY="172.0" onAction="#ajouterInventaireCaisse" prefHeight="46.0" prefWidth="94.0" style="-fx-border-color: #318ce7;" text="Valider">
+                  <JFXButton fx:id="btnValiderAjouterInventaire" layoutX="528.0" layoutY="209.0" onAction="#ajouterInventaireCaisse" prefHeight="46.0" prefWidth="94.0" style="-fx-border-color: #318ce7;" text="Valider">
                      <graphic>
                         <ImageView fitHeight="31.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -1206,7 +1290,7 @@
                            </image>
                         </ImageView>
                      </graphic></JFXButton>
-                  <JFXButton fx:id="btnAnnulerAjouterInventairecaisse" layoutX="515.0" layoutY="290.0" onAction="#anuulerAjouterInventaireCaisse" style="-fx-border-color: #318ce7;" text="Annuler">
+                  <JFXButton fx:id="btnAnnulerAjouterInventairecaisse" layoutX="528.0" layoutY="340.0" onAction="#anuulerAjouterInventaireCaisse" style="-fx-border-color: #318ce7;" text="Annuler">
                      <graphic>
                         <ImageView fitHeight="31.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -1218,53 +1302,17 @@
                      <font>
                         <Font name="Arial Rounded MT Bold" size="17.0" />
                      </font></Label>
-                  <Separator layoutX="448.0" layoutY="166.0" orientation="VERTICAL" prefHeight="188.0" prefWidth="3.0" style="-fx-background-color: #318ce7;" />
+                  <Separator layoutX="448.0" layoutY="166.0" orientation="VERTICAL" prefHeight="303.0" prefWidth="0.0" style="-fx-background-color: #318ce7;" />
                </children>
             </Pane>
-            <Pane fx:id="paneAccueille" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #fff;">
-               <children>
-                  <GridPane layoutX="46.0" layoutY="52.0" prefHeight="501.0" prefWidth="895.0">
-                     <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="63.0" minWidth="10.0" prefWidth="42.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="383.0" minWidth="10.0" prefWidth="383.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
-                     </columnConstraints>
-                     <rowConstraints>
-                        <RowConstraints maxHeight="56.0" minHeight="10.0" prefHeight="56.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="72.0" minHeight="9.0" prefHeight="29.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="433.0" minHeight="10.0" prefHeight="363.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="56.0" minHeight="10.0" prefHeight="56.0" vgrow="SOMETIMES" />
-                     </rowConstraints>
-                     <children>
-                        <PieChart fx:id="pieChartRecouvrement" prefHeight="362.0" prefWidth="389.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-                        <PieChart fx:id="pieChartReglement" prefHeight="362.0" prefWidth="389.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <AnchorPane GridPane.columnIndex="1">
-                           <children>
-                              <Label alignment="CENTER" contentDisplay="CENTER" layoutX="89.0" layoutY="4.0" prefHeight="17.0" prefWidth="212.0" text="Statistique reglement fournisseur" textFill="#1240c7">
-                                 <font>
-                                    <Font name="Arial Rounded MT Bold" size="13.0" />
-                                 </font></Label>
-                           </children>
-                        </AnchorPane>
-                        <AnchorPane GridPane.columnIndex="3">
-                           <children>
-                              <Label alignment="CENTER" contentDisplay="CENTER" layoutX="108.0" layoutY="4.0" prefHeight="17.0" prefWidth="212.0" text="Statistique recouvrement client" textFill="#1240c7">
-                                 <font>
-                                    <Font name="Arial Rounded MT Bold" size="13.0" />
-                                 </font></Label>
-                           </children>
-                        </AnchorPane>
-                     </children>
-                  </GridPane>
-               </children></Pane>
             <Pane fx:id="paneModiferInventaire" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #fff;">
                <children>
-                  <GridPane alignment="CENTER" layoutX="97.0" layoutY="151.0" prefHeight="268.0" prefWidth="258.0">
+                  <GridPane alignment="CENTER" layoutX="59.0" layoutY="151.0" prefHeight="268.0" prefWidth="355.0">
                      <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="88.0" minWidth="5.0" prefWidth="5.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="252.0" minWidth="10.0" prefWidth="236.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="155.0" minWidth="10.0" prefWidth="17.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="145.0" minWidth="5.0" prefWidth="145.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="252.0" minWidth="10.0" prefWidth="12.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="252.0" minWidth="10.0" prefWidth="136.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="155.0" minWidth="10.0" prefWidth="63.0" />
                      </columnConstraints>
                      <rowConstraints>
                         <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
@@ -1279,26 +1327,51 @@
                         <RowConstraints maxHeight="29.0" minHeight="10.0" prefHeight="22.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <JFXTextField fx:id="totalTheoriqueM" editable="false" focusColor="#ababab" promptText="Solde total" unFocusColor="#a8a8a8" GridPane.columnIndex="1">
+                        <JFXTextField fx:id="totalTheoriqueM" editable="false" focusColor="#ababab" unFocusColor="#a8a8a8" GridPane.columnIndex="2">
                            <font>
                               <Font name="Arial Rounded MT Bold" size="17.0" />
                            </font></JFXTextField>
-                        <JFXTextField fx:id="totalChequeM" editable="false" focusColor="#ababab" promptText="Solde en cheque" unFocusColor="#a8a8a8" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                        <JFXTextField fx:id="totalChequeM" editable="false" focusColor="#ababab" unFocusColor="#a8a8a8" GridPane.columnIndex="2" GridPane.rowIndex="2">
                            <font>
                               <Font name="Arial Rounded MT Bold" size="17.0" />
                            </font></JFXTextField>
-                        <JFXTextField fx:id="totalEspeceM" editable="false" focusColor="#ababab" promptText="Solde en espece" unFocusColor="#a8a8a8" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                        <JFXTextField fx:id="totalEspeceM" editable="false" focusColor="#ababab" unFocusColor="#a8a8a8" GridPane.columnIndex="2" GridPane.rowIndex="4">
                            <font>
                               <Font name="Arial Rounded MT Bold" size="17.0" />
                            </font></JFXTextField>
-                        <JFXTextField fx:id="soldeTCalculerM" focusColor="#ababab" onKeyReleased="#calculerEcartM" promptText="Solde calculer" unFocusColor="#a8a8a8" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                        <JFXTextField fx:id="soldeTCalculerM" focusColor="#ababab" onKeyReleased="#calculerEcartM" unFocusColor="#a8a8a8" GridPane.columnIndex="2" GridPane.rowIndex="6">
                            <font>
                               <Font name="Arial Rounded MT Bold" size="17.0" />
                            </font></JFXTextField>
-                        <JFXTextField fx:id="ecartCM" focusColor="#ababab" promptText="Ecart" unFocusColor="#a8a8a8" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                        <JFXTextField fx:id="ecartCM" focusColor="#ababab" unFocusColor="#a8a8a8" GridPane.columnIndex="2" GridPane.rowIndex="8">
                            <font>
                               <Font name="Arial Rounded MT Bold" size="17.0" />
                            </font></JFXTextField>
+                        <Label text="Solde total">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="17.0" />
+                           </font>
+                        </Label>
+                        <Label text="Solde en cheque" GridPane.rowIndex="2">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="17.0" />
+                           </font>
+                        </Label>
+                        <Label text="Solde en espece" GridPane.rowIndex="4">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="17.0" />
+                           </font>
+                        </Label>
+                        <Label text="Solde calculer" GridPane.rowIndex="6">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="17.0" />
+                           </font>
+                        </Label>
+                        <Label text="Ecart" GridPane.rowIndex="8">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="17.0" />
+                           </font>
+                        </Label>
                      </children>
                   </GridPane>
                   <JFXButton fx:id="btnEnregistrerModiferInventaire" layoutX="573.0" layoutY="203.0" onAction="#EnregistrerModifierInventaire" prefHeight="42.0" prefWidth="131.0" style="-fx-border-color: #318ce7;" text="Enregistrer">

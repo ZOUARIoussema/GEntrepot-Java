@@ -16,6 +16,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import javafx.util.Duration;
+import tray.animations.AnimationType;
+import tray.notification.NotificationType;
+import tray.notification.TrayNotification;
 
 /**
  *
@@ -52,6 +56,19 @@ public class ServiceReglementFournisseurCheque implements IService<ReglementFour
             }
 
             serviceFactureAchat.modifier(r.getFactureAchat());
+            
+            
+             String title = " Reglement fournisseur  ";
+            String message = "Reglement fournisseur cheque est ajouté avec succes ";
+
+            TrayNotification tray = new TrayNotification();
+            AnimationType type = AnimationType.POPUP;
+
+            tray.setAnimationType(type);
+            tray.setTitle(title);
+            tray.setMessage(message);
+            tray.setNotificationType(NotificationType.SUCCESS);
+            tray.showAndDismiss(Duration.millis(3000));
 
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
@@ -102,6 +119,7 @@ public class ServiceReglementFournisseurCheque implements IService<ReglementFour
             pst.setInt(6, r.getId());
             pst.executeUpdate();
             System.out.println("Reglement Fournisseur cheque modifiée !");
+            
 
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
@@ -140,6 +158,18 @@ public class ServiceReglementFournisseurCheque implements IService<ReglementFour
             }
 
             serviceFactureAchat.modifier(factureAchat);
+            
+             String title = " Reglement fournisseur  ";
+            String message = "Reglement fournisseur cheque est modifié avec succes ";
+
+            TrayNotification tray = new TrayNotification();
+            AnimationType type = AnimationType.POPUP;
+
+            tray.setAnimationType(type);
+            tray.setTitle(title);
+            tray.setMessage(message);
+            tray.setNotificationType(NotificationType.SUCCESS);
+            tray.showAndDismiss(Duration.millis(3000));
 
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());

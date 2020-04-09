@@ -17,6 +17,7 @@ import com.gentrepot.models.RecouvrementClientCheque;
 import com.gentrepot.models.RecouvrementClientEspece;
 import com.gentrepot.models.ReglementFournisseurCheque;
 import com.gentrepot.models.ReglementFournisseurEspece;
+import com.gentrepot.services.MailService;
 import com.gentrepot.services.ServiceFactureAchat;
 import com.gentrepot.services.ServiceFactureVente;
 import com.gentrepot.services.ServiceInventaireCaisse;
@@ -52,6 +53,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.InputMethodEvent;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -585,6 +587,10 @@ public class MenueAgentCaisseController implements Initializable {
     private PieChart pieChartRecouvrement;
     @FXML
     private PieChart pieChartReglement;
+    @FXML
+    private JFXButton btnEnvoeyMailLettre;
+    @FXML
+    private JFXTextField textFAdresseMailClient;
 
     /**
      * Initializes the controller class.
@@ -1135,17 +1141,22 @@ public class MenueAgentCaisseController implements Initializable {
     @FXML
     private void calculerEcart(KeyEvent event) {
 
-        try{
-        
-        Double total = Double.parseDouble(soldeTCalculer.getText());
-        
-        ecartC.setText(String.valueOf(total - totalT));
-        }
-        catch(Exception ex){
+        try {
+
+            Double total = Double.parseDouble(soldeTCalculer.getText());
+
+            if (total < 0) {
+
+                soldeTCalculer.setText(String.valueOf(0));
+            }
+
+            ecartC.setText(String.valueOf(total - totalT));
             
+        } catch (Exception ex) {
+
             soldeTCalculer.setText("");
             ecartC.setText("");
-            
+
         }
     }
 
@@ -1197,13 +1208,18 @@ public class MenueAgentCaisseController implements Initializable {
     @FXML
     private void ajouterInventaireCaisse(ActionEvent event) {
 
-        InventaireCaisse inventaireCaisse = new InventaireCaisse(new Date(), Double.valueOf(soldeTCalculer.getText()), Double.valueOf(totalTheorique.getText()), Double.valueOf(totalCheque.getText()), Double.valueOf(totalEspece.getText()), Double.valueOf(ecartC.getText()));
+        if (soldeTCalculer.getText().equals("")) {
+            creerAlerte("champt solde calculer vide ! ", AlertType.WARNING).showAndWait();
+        } else {
 
-        serviceInventaireCaisse.ajouter(inventaireCaisse);
+            InventaireCaisse inventaireCaisse = new InventaireCaisse(new Date(), Double.valueOf(soldeTCalculer.getText()), Double.valueOf(totalTheorique.getText()), Double.valueOf(totalCheque.getText()), Double.valueOf(totalEspece.getText()), Double.valueOf(ecartC.getText()));
 
-        clear();
+            serviceInventaireCaisse.ajouter(inventaireCaisse);
 
-        chargerPaneGInventaire();
+            clear();
+
+            chargerPaneGInventaire();
+        }
     }
 
     @FXML
@@ -1339,6 +1355,28 @@ public class MenueAgentCaisseController implements Initializable {
     @FXML
     private void validerAjouterFactureAchat(ActionEvent event) {
 
+        if (textFNumeroF.getText().equals("") || Integer.valueOf(textFNumeroF.getText()) == 0) {
+
+            creerAlerte("champs numero facture vide !", AlertType.WARNING).showAndWait();
+            return;
+        }
+         if (textFFraisTransport.getText().equals("") || Double.valueOf(textFFraisTransport.getText()) == 0) {
+
+            creerAlerte("champs frais de transport vide !", AlertType.WARNING).showAndWait();
+            return;
+        }
+          if (textFTimbreFiscale.getText().equals("") || Double.valueOf(textFTimbreFiscale.getText()) == 0) {
+
+            creerAlerte("champs timbre fiscale vide !", AlertType.WARNING).showAndWait();
+            return;
+        }
+          
+          if (textFTTC.getText().equals("") || Double.valueOf(textFTTC.getText()) == 0) {
+
+            creerAlerte("champs TTC vide !", AlertType.WARNING).showAndWait();
+            return;
+        }
+
         LocalDate date = textFDateEchaillanceFacture.getValue();
 
         FactureAchat factureAchat = new FactureAchat(Integer.valueOf(textFNumeroF.getText()), new Date(), java.sql.Date.valueOf(date), Double.valueOf(textFTTC.getText()), "non_paye", 0, Double.valueOf(textFTTC.getText()), Double.valueOf(textFTimbreFiscale.getText()), Double.valueOf(textFFraisTransport.getText()), commandeDApprovisionnementG);
@@ -1409,19 +1447,26 @@ public class MenueAgentCaisseController implements Initializable {
 
         if (factureVenteG != null) {
 
-            RecouvrementClientEspece recouvrementClientEspece = new RecouvrementClientEspece(factureVenteG, Double.valueOf(textFAjouterRCEMontant.getText()), new Date());
+            if (textFAjouterRCEMontant.getText().equals("") || Double.valueOf(textFAjouterRCEMontant.getText()) == 0) {
 
-            if (recouvrementClientEspece.getMontant() <= recouvrementClientEspece.getFactureVente().getRestePaye()) {
-
-                serviceRecouvrementClientEspece.ajouter(recouvrementClientEspece);
-
-                factureVenteG = null;
-                chargerListeRecouvrementClientEspece();
-                paneGRecouvrementClientEspece.setVisible(true);
-                new ZoomIn(paneGRecouvrementClientEspece).play();
-                paneGRecouvrementClientEspece.toFront();
+                creerAlerte("Champ montant vide !", AlertType.WARNING).showAndWait();
             } else {
-                creerAlerte("Le montant du recouvrement doit etre inferieur au egale du reste a payer du facture ! ", AlertType.WARNING).showAndWait();
+
+                RecouvrementClientEspece recouvrementClientEspece = new RecouvrementClientEspece(factureVenteG, Double.valueOf(textFAjouterRCEMontant.getText()), new Date());
+
+                if (recouvrementClientEspece.getMontant() <= recouvrementClientEspece.getFactureVente().getRestePaye()) {
+
+                    serviceRecouvrementClientEspece.ajouter(recouvrementClientEspece);
+
+                    factureVenteG = null;
+                    chargerListeRecouvrementClientEspece();
+                    paneGRecouvrementClientEspece.setVisible(true);
+                    new ZoomIn(paneGRecouvrementClientEspece).play();
+                    paneGRecouvrementClientEspece.toFront();
+                } else {
+                    creerAlerte("Le montant du recouvrement doit etre inferieur au egale du reste a payer du facture ! ", AlertType.WARNING).showAndWait();
+                }
+
             }
 
         } else {
@@ -1456,20 +1501,26 @@ public class MenueAgentCaisseController implements Initializable {
 
         if (factureVenteG != null) {
 
-            double aM = recouvrementClientEspeceG.getMontant();
+            if (textFModifierRecouvrementCEspece.getText().equals("") || Double.valueOf(textFModifierRecouvrementCEspece.getText()) == 0) {
 
-            recouvrementClientEspeceG.setMontant(Double.valueOf(textFModifierRecouvrementCEspece.getText()));
-            recouvrementClientEspeceG.setFactureVente(factureVenteG);
+                creerAlerte("Champt montant vide !", AlertType.WARNING).showAndWait();
+            } else {
 
-            serviceRecouvrementClientEspece.modifier(recouvrementClientEspeceG, aM);
+                double aM = recouvrementClientEspeceG.getMontant();
 
-            recouvrementClientEspeceG = null;
-            factureVenteG = null;
+                recouvrementClientEspeceG.setMontant(Double.valueOf(textFModifierRecouvrementCEspece.getText()));
+                recouvrementClientEspeceG.setFactureVente(factureVenteG);
 
-            chargerListeRecouvrementClientEspece();
-            paneGRecouvrementClientEspece.setVisible(true);
-            new ZoomIn(paneGRecouvrementClientEspece).play();
-            paneGRecouvrementClientEspece.toFront();
+                serviceRecouvrementClientEspece.modifier(recouvrementClientEspeceG, aM);
+
+                recouvrementClientEspeceG = null;
+                factureVenteG = null;
+
+                chargerListeRecouvrementClientEspece();
+                paneGRecouvrementClientEspece.setVisible(true);
+                new ZoomIn(paneGRecouvrementClientEspece).play();
+                paneGRecouvrementClientEspece.toFront();
+            }
 
         } else {
             creerAlerte("Selectionner une facture ! ", AlertType.WARNING).showAndWait();
@@ -1539,6 +1590,18 @@ public class MenueAgentCaisseController implements Initializable {
 
         if (factureVenteG != null) {
 
+            if (textFAjouterRecouvrementChequeMontant.getText().equals("") || Double.valueOf(textFAjouterRecouvrementChequeMontant.getText()) == 0) {
+
+                creerAlerte("champs mobtant vide !", AlertType.WARNING).showAndWait();
+                return;
+            }
+
+            if (textFAjouterRecouvrementClientChequeNumeroCheque.getText().equals("") || Double.valueOf(Integer.valueOf(textFAjouterRecouvrementClientChequeNumeroCheque.getText())) == 0) {
+
+                creerAlerte("champs numero cheque vide !", AlertType.WARNING).showAndWait();
+                return;
+            }
+
             LocalDate date = dateChequeAjouterRecouvrementClientCheque.getValue();
 
             RecouvrementClientCheque recouvrementClientCheque = new RecouvrementClientCheque(java.sql.Date.valueOf(date), Integer.valueOf(textFAjouterRecouvrementClientChequeNumeroCheque.getText()), factureVenteG, Double.valueOf(textFAjouterRecouvrementChequeMontant.getText()), new Date());
@@ -1586,6 +1649,18 @@ public class MenueAgentCaisseController implements Initializable {
     private void validerModifierRecouvrementClientCheque(ActionEvent event) {
 
         if (factureVenteG != null) {
+
+            if (textFModiiferRecouvrementChequeMontant.getText().equals("") || Double.valueOf(textFModiiferRecouvrementChequeMontant.getText()) == 0) {
+
+                creerAlerte("champs mobtant vide !", AlertType.WARNING).showAndWait();
+                return;
+            }
+
+            if (textFModifierRecouvrementClientChequeNumeroCheque.getText().equals("") || Double.valueOf(Integer.valueOf(textFModifierRecouvrementClientChequeNumeroCheque.getText())) == 0) {
+
+                creerAlerte("champs numero cheque vide !", AlertType.WARNING).showAndWait();
+                return;
+            }
 
             double aM = recouvrementClientChequeG.getMontant();
 
@@ -1772,6 +1847,12 @@ public class MenueAgentCaisseController implements Initializable {
 
         if (factureAchatG != null) {
 
+            if (textFAjouterReglementEspece.getText().equals("") || Double.valueOf(Integer.valueOf(textFAjouterReglementEspece.getText())) == 0) {
+
+                creerAlerte("champs montant  vide !", AlertType.WARNING).showAndWait();
+                return;
+            }
+
             ReglementFournisseurEspece r = new ReglementFournisseurEspece(factureAchatG, Double.valueOf(textFAjouterReglementEspece.getText()), new Date());
 
             if (r.getMontant() <= r.getFactureAchat().getRestePaye()) {
@@ -1812,10 +1893,15 @@ public class MenueAgentCaisseController implements Initializable {
 
     }
 
-    @FXML
     private void validerModifierReglementEspece(ActionEvent event) {
 
         if (factureAchatG != null) {
+
+            if (textFModifierReglementEspece.getText().equals("") || Double.valueOf(Integer.valueOf(textFModifierReglementEspece.getText())) == 0) {
+
+                creerAlerte("champs montant vide !", AlertType.WARNING).showAndWait();
+                return;
+            }
 
             double ancientM = reglementFournisseurEspeceG.getMontant();
 
@@ -1857,6 +1943,18 @@ public class MenueAgentCaisseController implements Initializable {
     private void validerAjouterReglementCheque(ActionEvent event) {
 
         if (factureAchatG != null) {
+
+            if (textAjouterRegChequeMontant.getText().equals("") || Double.valueOf(textAjouterRegChequeMontant.getText()) == 0) {
+
+                creerAlerte("champs mobtant vide !", AlertType.WARNING).showAndWait();
+                return;
+            }
+
+            if (textfAjouterNumeroReglementCheque.getText().equals("") || Integer.valueOf(Integer.valueOf(textfAjouterNumeroReglementCheque.getText())) == 0) {
+
+                creerAlerte("champs numero cheque vide !", AlertType.WARNING).showAndWait();
+                return;
+            }
 
             LocalDate date = dateChequeAjouterReglCheque.getValue();
 
@@ -1914,6 +2012,18 @@ public class MenueAgentCaisseController implements Initializable {
 
         if (factureAchatG != null) {
 
+            if (textMontantModifierRegCheque.getText().equals("") || Double.valueOf(textMontantModifierRegCheque.getText()) == 0) {
+
+                creerAlerte("champs mobtant vide !", AlertType.WARNING).showAndWait();
+                return;
+            }
+
+            if (textFNumeroModiferRegCheque.getText().equals("") || Double.valueOf(Integer.valueOf(textFNumeroModiferRegCheque.getText())) == 0) {
+
+                creerAlerte("champs numero cheque vide !", AlertType.WARNING).showAndWait();
+                return;
+            }
+
             double AncientM = 0;
 
             AncientM = reglementFournisseurChequeG.getMontant();
@@ -1965,9 +2075,9 @@ public class MenueAgentCaisseController implements Initializable {
 
     @FXML
     private void fermer(MouseEvent event) {
-        
-         ((Stage) this.btnLettreRelance.getScene().getWindow()).close();
-         try {
+
+        ((Stage) this.btnLettreRelance.getScene().getWindow()).close();
+        try {
 
             HBox root = (HBox) FXMLLoader.load(getClass().getResource("/com/gentrepot/views/Authentification.fxml"));
             Scene scene = new Scene(root);
@@ -1978,6 +2088,360 @@ public class MenueAgentCaisseController implements Initializable {
             System.out.println(e.getMessage());
         }
 
+    }
+
+    @FXML
+    private void EnvoyerMailLettre(ActionEvent event) {
+
+        if (textFAdresseMailClient.getText().equals("")) {
+            creerAlerte("Donner adresse mail ! ", AlertType.WARNING).showAndWait();
+            return;
+        }
+
+        if (lettreDeRelanceG != null) {
+
+            MailService.EnvoyerMail(textFAdresseMailClient.getText(), "Lettre de relance", "Facture impayée numero°" + lettreDeRelanceG.getFactureVente().getNumeroF());
+            lettreDeRelanceG = null;
+            textFAdresseMailClient.setText("");
+
+            String title = " Lettre de relance  ";
+            String message = " Mail envoyer avec succes ";
+
+            TrayNotification tray = new TrayNotification();
+            AnimationType type = AnimationType.POPUP;
+
+            tray.setAnimationType(type);
+            tray.setTitle(title);
+            tray.setMessage(message);
+            tray.setNotificationType(NotificationType.SUCCESS);
+            tray.showAndDismiss(Duration.millis(3000));
+
+        } else {
+            creerAlerte("Selectionner une lettre ! ", AlertType.WARNING).showAndWait();
+        }
+    }
+
+    @FXML
+    private void selectLettre(MouseEvent event) {
+
+        lettreDeRelanceG = tableViewLettreDeRelance.getSelectionModel().getSelectedItem();
+    }
+
+    @FXML
+    private void verifNumeroF(KeyEvent event) {
+
+        try {
+
+            int num = Integer.parseInt(textFNumeroF.getText());
+
+            if (num <= 0) {
+                textFNumeroF.setText("");
+            }
+
+        } catch (Exception ex) {
+
+            textFNumeroF.setText("");
+
+        }
+
+    }
+
+    @FXML
+    private void verifFraisT(KeyEvent event) {
+
+        try {
+            double f = Double.parseDouble(textFFraisTransport.getText());
+
+            if (f < 0) {
+                textFFraisTransport.setText("");
+            }
+
+        } catch (Exception ex) {
+
+            textFFraisTransport.setText("");
+
+        }
+
+    }
+
+    @FXML
+    private void verifTimbreF(KeyEvent event) {
+
+        try {
+            double t = Double.parseDouble(textFTimbreFiscale.getText());
+
+            if (t < 0) {
+                textFTimbreFiscale.setText("");
+            }
+
+        } catch (Exception ex) {
+
+            textFTimbreFiscale.setText("");
+
+        }
+
+    }
+
+    @FXML
+    private void verifTTC(KeyEvent event) {
+
+        try {
+            double ttc = Double.parseDouble(textFTTC.getText());
+
+            if (ttc <= 0) {
+                textFTTC.setText("");
+            }
+
+        } catch (Exception ex) {
+
+            textFTTC.setText("");
+
+        }
+
+    }
+
+    @FXML
+    private void verifMontant(KeyEvent event) {
+
+        try {
+            double m = Double.parseDouble(textFModifierReglementEspece.getText());
+
+            if (m <= 0) {
+                textFModifierReglementEspece.setText("");
+            }
+
+        } catch (Exception ex) {
+
+            textFModifierReglementEspece.setText("");
+
+        }
+    }
+
+    @FXML
+    private void verifMonatantAjouter(KeyEvent event) {
+
+        try {
+            double m = Double.parseDouble(textFAjouterReglementEspece.getText());
+
+            if (m <= 0) {
+                textFAjouterReglementEspece.setText("");
+            }
+
+        } catch (Exception ex) {
+
+            textFAjouterReglementEspece.setText("");
+
+        }
+    }
+
+    @FXML
+    private void verifMACheque(KeyEvent event) {
+
+        try {
+            double m = Double.parseDouble(textAjouterRegChequeMontant.getText());
+
+            if (m <= 0) {
+                textAjouterRegChequeMontant.setText("");
+            }
+
+        } catch (Exception ex) {
+
+            textAjouterRegChequeMontant.setText("");
+
+        }
+    }
+
+    @FXML
+    private void verifNChA(KeyEvent event) {
+
+        try {
+            int m = Integer.parseInt(textfAjouterNumeroReglementCheque.getText());
+
+            if (m <= 0) {
+                textfAjouterNumeroReglementCheque.setText("");
+            }
+
+        } catch (Exception ex) {
+
+            textfAjouterNumeroReglementCheque.setText("");
+
+        }
+
+    }
+
+    @FXML
+    private void verifMM(KeyEvent event) {
+
+        try {
+            double m = Double.parseDouble(textMontantModifierRegCheque.getText());
+
+            if (m <= 0) {
+                textMontantModifierRegCheque.setText("");
+            }
+
+        } catch (Exception ex) {
+
+            textMontantModifierRegCheque.setText("");
+
+        }
+    }
+
+    @FXML
+    private void verifNMCH(KeyEvent event) {
+
+        try {
+            int m = Integer.parseInt(textFNumeroModiferRegCheque.getText());
+
+            if (m <= 0) {
+                textFNumeroModiferRegCheque.setText("");
+            }
+
+        } catch (Exception ex) {
+
+            textFNumeroModiferRegCheque.setText("");
+
+        }
+
+    }
+
+    @FXML
+    private void verifMRM(KeyEvent event) {
+
+        try {
+            double m = Double.parseDouble(textFModifierRecouvrementCEspece.getText());
+
+            if (m <= 0) {
+                textFModifierRecouvrementCEspece.setText("");
+            }
+
+        } catch (Exception ex) {
+
+            textFModifierRecouvrementCEspece.setText("");
+
+        }
+
+    }
+
+    @FXML
+    private void verifMREA(KeyEvent event) {
+
+        try {
+            double m = Double.parseDouble(textFAjouterRCEMontant.getText());
+
+            if (m <= 0) {
+                textFAjouterRCEMontant.setText("");
+            }
+
+        } catch (Exception ex) {
+
+            textFAjouterRCEMontant.setText("");
+
+        }
+
+    }
+
+    @FXML
+    private void verifMRecouvrementCM(KeyEvent event) {
+
+        try {
+            double m = Double.parseDouble(textFModiiferRecouvrementChequeMontant.getText());
+
+            if (m <= 0) {
+                textFModiiferRecouvrementChequeMontant.setText("");
+            }
+
+        } catch (Exception ex) {
+
+            textFModiiferRecouvrementChequeMontant.setText("");
+
+        }
+
+    }
+
+    @FXML
+    private void verifNumeroChequeNCheque(KeyEvent event) {
+
+        try {
+            int m = Integer.parseInt(textFModifierRecouvrementClientChequeNumeroCheque.getText());
+
+            if (m <= 0) {
+                textFModifierRecouvrementClientChequeNumeroCheque.setText("");
+            }
+
+        } catch (Exception ex) {
+
+            textFModifierRecouvrementClientChequeNumeroCheque.setText("");
+
+        }
+
+    }
+
+    @FXML
+    private void verifMAjouterRecouvrementCheque(KeyEvent event) {
+
+        try {
+            double m = Double.parseDouble(textFAjouterRecouvrementChequeMontant.getText());
+
+            if (m <= 0) {
+                textFAjouterRecouvrementChequeMontant.setText("");
+            }
+
+        } catch (Exception ex) {
+
+            textFAjouterRecouvrementChequeMontant.setText("");
+
+        }
+
+    }
+
+    @FXML
+    private void verifNumeroChequeAjouterRec(KeyEvent event) {
+
+        try {
+            int m = Integer.parseInt(textFAjouterRecouvrementClientChequeNumeroCheque.getText());
+
+            if (m <= 0) {
+                textFAjouterRecouvrementClientChequeNumeroCheque.setText("");
+            }
+
+        } catch (Exception ex) {
+
+            textFAjouterRecouvrementClientChequeNumeroCheque.setText("");
+
+        }
+    }
+
+    @FXML
+    private void vModiferReglementEspece(ActionEvent event) {
+
+        if (textFModifierReglementEspece.getText().equals("") || Double.valueOf(textFModifierReglementEspece.getText()) == 0) {
+
+            creerAlerte("champs montant vide !", AlertType.WARNING).showAndWait();
+
+        } else {
+
+            if (factureAchatG != null) {
+
+                double ancientM = reglementFournisseurEspeceG.getMontant();
+
+                reglementFournisseurEspeceG.setMontant(Double.valueOf(textFModifierReglementEspece.getText()));
+                reglementFournisseurEspeceG.setFactureAchat(factureAchatG);
+
+                serviceReglementFournisseurEspece.modifier(reglementFournisseurEspeceG, ancientM);
+
+                reglementFournisseurEspeceG = null;
+                factureAchatG = null;
+
+                chargerReglementFournisseurEspece();
+                paneGReglementFournisseurEspece.setVisible(true);
+                new ZoomIn(paneGReglementFournisseurEspece).play();
+                paneGReglementFournisseurEspece.toFront();
+
+            } else {
+                creerAlerte("Selectionner une facture ! ", AlertType.WARNING).showAndWait();
+            }
+
+        }
 
     }
 

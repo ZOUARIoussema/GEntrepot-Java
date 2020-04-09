@@ -18,6 +18,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import javafx.util.Duration;
+import tray.animations.AnimationType;
+import tray.notification.NotificationType;
+import tray.notification.TrayNotification;
 
 /**
  *
@@ -52,6 +56,18 @@ public class ServiceFactureAchat implements IService<FactureAchat> {
 
             serviceCommandeDApprovisionnment.modifierEtatCommande(f.getCommandeDApprovisionnement());
 
+            String title = " Facture achat ";
+            String message = " Facture achat ajouté avec succes ";
+
+            TrayNotification tray = new TrayNotification();
+            AnimationType type = AnimationType.POPUP;
+
+            tray.setAnimationType(type);
+            tray.setTitle(title);
+            tray.setMessage(message);
+            tray.setNotificationType(NotificationType.INFORMATION);
+            tray.showAndDismiss(Duration.millis(3000));
+
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
         }
@@ -77,6 +93,20 @@ public class ServiceFactureAchat implements IService<FactureAchat> {
 
             pst.executeUpdate();
             System.out.println("Facture achat  modifiée !");
+            
+            
+            
+            String title = " Modification Facture achat ";
+            String message = "Total payé  modier avec succes ";
+
+            TrayNotification tray = new TrayNotification();
+            AnimationType type = AnimationType.POPUP;
+
+            tray.setAnimationType(type);
+            tray.setTitle(title);
+            tray.setMessage(message);
+            tray.setNotificationType(NotificationType.SUCCESS);
+            tray.showAndDismiss(Duration.millis(3000));
 
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
@@ -226,7 +256,7 @@ public class ServiceFactureAchat implements IService<FactureAchat> {
         try {
             String requete = "SELECT sum(total_ttc) FROM `facture_achat` WHERE YEAR(`date_creation`)=year(sysdate())";
             PreparedStatement pst = cnx.prepareStatement(requete);
-          
+
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
 
@@ -240,8 +270,7 @@ public class ServiceFactureAchat implements IService<FactureAchat> {
         return total;
 
     }
-    
-    
+
     public double totalPayerParAnneSysteme() {
 
         double total = 0;
@@ -249,7 +278,7 @@ public class ServiceFactureAchat implements IService<FactureAchat> {
         try {
             String requete = "SELECT sum(total_paye) FROM `facture_achat` WHERE YEAR(`date_creation`)=year(sysdate())";
             PreparedStatement pst = cnx.prepareStatement(requete);
-            
+
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
 

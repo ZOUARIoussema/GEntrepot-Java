@@ -17,6 +17,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import javafx.util.Duration;
+import tray.animations.AnimationType;
+import tray.notification.NotificationType;
+import tray.notification.TrayNotification;
 
 /**
  *
@@ -56,6 +60,18 @@ public class ServiceRecouvrementClientEspece implements IService<RecouvrementCli
             }
 
             serviceFactureVente.modifierParRecouvrement(r.getFactureVente());
+            
+             String title = " Recouvrement client ";
+            String message = "Recouvrement client espece est ajouté avec succes ";
+
+            TrayNotification tray = new TrayNotification();
+            AnimationType type = AnimationType.POPUP;
+
+            tray.setAnimationType(type);
+            tray.setTitle(title);
+            tray.setMessage(message);
+            tray.setNotificationType(NotificationType.SUCCESS);
+            tray.showAndDismiss(Duration.millis(3000));
             
             
 
@@ -160,7 +176,17 @@ public class ServiceRecouvrementClientEspece implements IService<RecouvrementCli
             serviceFactureVente.modifierParRecouvrement(factureVente);
             
             
-            
+             String title = " Recouvrement client ";
+            String message = "Recouvrement client espece est modifié avec succes ";
+
+            TrayNotification tray = new TrayNotification();
+            AnimationType type = AnimationType.POPUP;
+
+            tray.setAnimationType(type);
+            tray.setTitle(title);
+            tray.setMessage(message);
+            tray.setNotificationType(NotificationType.SUCCESS);
+            tray.showAndDismiss(Duration.millis(3000));
             
 
         } catch (SQLException ex) {
