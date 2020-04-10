@@ -6,13 +6,19 @@
 package com.gentrepot.services;
 
 import com.gentrepot.models.CommandeDApprovisionnement;
+import com.gentrepot.models.Fournisseur;
 import com.gentrepot.utils.DataSource;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -24,13 +30,26 @@ public class ServiceCommandeDApprovisionnment implements IService<CommandeDAppro
     @Override
     public void ajouter(CommandeDApprovisionnement ca) {
         try {
-            String requete = "INSERT INTO commande_d_aprovisionnement (id_fournisseur,total_c,dateCreation,etat,taux_remise,total_tva) VALUES ('" + ca.getFournisseur().getId() + "','" + ca.getTotalC() + "','" + ca.getDateCreation() + "','" + ca.getEtat() + "','" + ca.getTauxRemise() + "','" + ca.getTotalTva() +"')";
-            Statement st = cnx.createStatement();
-            st.executeUpdate(requete);
+
+            //String date = request.getParameter(ca.getDateCreation());
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd"); // your template here
+            java.util.Date dateStr = formatter.parse(ca.getDateCreation());
+            java.sql.Date dateDB = new java.sql.Date(dateStr.getTime());
+            String requete = "INSERT INTO commande_d_aprovisionnement (id_fournisseur,total_c,dateCreation,etat,taux_remise,total_tva) VALUES (?,?,?,?,?,?)";
+            PreparedStatement pst = cnx.prepareStatement(requete);
+            pst.setInt(1, ca.getFournisseur().getId());
+            pst.setDouble(2, ca.getTotalC());
+            pst.setDate(3, dateDB);
+            pst.setString(4, ca.getEtat());
+            pst.setDouble(5, ca.getTauxRemise());
+            pst.setDouble(6, ca.getTotalTva());
+            pst.executeUpdate();
             System.out.println("commande ajoutée !");
 
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
+        } catch (ParseException ex) {
+            Logger.getLogger(ServiceCommandeDApprovisionnment.class.getName()).log(Level.SEVERE, null, ex);
         }  
     }
 
@@ -69,7 +88,7 @@ public class ServiceCommandeDApprovisionnment implements IService<CommandeDAppro
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(requete);
             while (rs.next()) {
-                list.add(new CommandeDApprovisionnement(rs.getInt(2), rs.getDouble(3), rs.getDate(4), rs.getString(5), rs.getDouble(6), rs.getDouble(7), f.rechercher(f.afficher(),rs.getInt(1))));
+                list.add(new CommandeDApprovisionnement(rs.getInt(2), rs.getDouble(3), rs.getString(4), rs.getString(5), rs.getDouble(6), rs.getDouble(7), new Fournisseur(rs.getInt(1),"SA",56562222,"Alger","Apple@gmail.com","AG441",65)));
             }
 
         } catch (SQLException ex) {
