@@ -45,6 +45,13 @@ public class CommandeVente {
         
     }
 
+    public CommandeVente(double totalC, Date dateC, String etat, double tauxRemise) {
+        this.totalC = totalC;
+        this.dateC = dateC;
+        this.etat = etat;
+        this.tauxRemise = tauxRemise;
+    }
+
     public CommandeVente() {
         
          this.ligneCommande= new ArrayList<>();

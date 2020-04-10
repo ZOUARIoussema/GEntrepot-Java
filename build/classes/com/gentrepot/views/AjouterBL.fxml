@@ -6,19 +6,26 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="577.0" prefWidth="946.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="com.gentrepot.controllers.AjouterBLController">
+<AnchorPane id="AnchorPane" prefHeight="720.0" prefWidth="1101.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gentrepot.controllers.AjouterBLController">
     <stylesheets>
         <URL value="@ajouterbl.css" />
     </stylesheets>
    <children>
-      <TableView layoutX="108.0" layoutY="126.0" prefHeight="200.0" prefWidth="545.0">
+      <TableView fx:id="tableViewCommande" layoutX="46.0" layoutY="67.0" onMouseClicked="#selectCommande" prefHeight="540.0" prefWidth="1010.0">
         <columns>
-          <TableColumn prefWidth="75.0" text="C1" />
-          <TableColumn prefWidth="75.0" text="C2" />
+          <TableColumn fx:id="col_total" prefWidth="213.0" text="Total" />
+          <TableColumn fx:id="col_date" prefWidth="305.0" text="Date" />
+            <TableColumn fx:id="col_taux" minWidth="0.0" prefWidth="290.0" text="Taux de remise" />
+            <TableColumn fx:id="col_etat" minWidth="0.0" prefWidth="201.0" text="Etat" />
         </columns>
       </TableView>
-      <Button fx:id="btnLivrer" layoutX="747.0" layoutY="193.0" mnemonicParsing="false" onAction="#afficherInterfaceLivreer" text="Livreer" />
-      <Label layoutX="120.0" layoutY="80.0" text="Liste cmmande" />
+      <Button fx:id="btnLivrer" layoutX="367.0" layoutY="630.0" mnemonicParsing="false" onAction="#afficherInterfaceLivreer" text="Livreer" />
+      <Label layoutX="450.0" layoutY="14.0" prefHeight="45.0" prefWidth="202.0" text="Liste des commandes">
+         <font>
+            <Font size="20.0" />
+         </font></Label>
+      <Button fx:id="btnDetails" layoutX="632.0" layoutY="630.0" mnemonicParsing="false" onAction="#afficherInterfaceDetails" text="Details" />
    </children>
 </AnchorPane>

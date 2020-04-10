@@ -24,7 +24,7 @@ public class TestInterfaceVente extends Application {
         
         try {
 
-            AnchorPane root = (AnchorPane) FXMLLoader.load(getClass().getResource("/com/gentrepot/views/AjouterBL.fxml"));
+            AnchorPane root = (AnchorPane) FXMLLoader.load(getClass().getResource("/com/gentrepot/views/menu.fxml"));
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);
 
@@ -37,6 +37,8 @@ public class TestInterfaceVente extends Application {
         
     }
      public static void main(String[] args) {
+         
+         
 
         launch(args);
 

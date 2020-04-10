@@ -11,6 +11,8 @@ import com.gentrepot.models.ProduitAchat;
 import com.gentrepot.services.ServiceCommandeVente;
 import com.gentrepot.services.ServiceProduitAchat;
 import com.gentrepot.utils.DataSource;
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -21,15 +23,21 @@ import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -52,14 +60,11 @@ public class AjouterCommandeController implements Initializable {
     
     private LigneCommande ligneG=null;
 
-    //selct mil table view o ta3mil saisi lil quantite tisna3 ligne commande
-    // LigneCommande ligne = new LigneCommande(commandeVenteG, produit, 0, 0, 0, 0);
-    @FXML
+        @FXML
     private TableColumn<ProduitAchat, String> col_ref;
     @FXML
     private TableColumn<ProduitAchat, String> col_lib;
 
-    // commandeVenteG.getLigneCommande().a
     ObservableList<ProduitAchat> oblist = FXCollections.observableArrayList();
     ObservableList<LigneCommande> listeLigneCommande = FXCollections.observableArrayList();
     @FXML
@@ -90,6 +95,11 @@ public class AjouterCommandeController implements Initializable {
     private TableColumn<ProduitAchat, Double> col_prix;
     @FXML
     private Button btnAC;
+    @FXML
+    private TableColumn<?, ?> col_prix1;
+    private JFXTextField textFLibelle;
+    @FXML
+    private TextField filterField;
 
     /**
      * Initializes the controller class.
@@ -98,7 +108,7 @@ public class AjouterCommandeController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
     commandeVenteG.setId(serviceCommandeVente.recupere()+1);
 
-        try {
+      /*  try {
             String requete
                     = "select * from produit_achat";
             PreparedStatement pst = cnx.prepareStatement(requete);
@@ -112,13 +122,17 @@ public class AjouterCommandeController implements Initializable {
             }
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
-        }
+        }*/
+      
+      
+      oblist.setAll(serviceCommandeVente.afficherProduit());
 
         col_ref.setCellValueFactory(new PropertyValueFactory<>("reference"));
         col_lib.setCellValueFactory(new PropertyValueFactory<>("libelle"));
         col_prix.setCellValueFactory(new PropertyValueFactory<>("prixVente"));
 
-        tableViewProduit.setItems(oblist);
+        
+        
 
         tableViewLigneTotal.setCellValueFactory(new PropertyValueFactory<>("total"));
 
@@ -129,10 +143,61 @@ public class AjouterCommandeController implements Initializable {
         tableViewLignePrix.setCellValueFactory(new PropertyValueFactory<>("prix"));
 
         tableViewLigneProduit.setCellValueFactory(new PropertyValueFactory<>("refp"));
+        
+        
+         FilteredList<ProduitAchat> filteredData = new FilteredList<>(oblist, b -> true);
+		
+		// 2. Set the filter Predicate whenever the filter changes.
+		filterField.textProperty().addListener((observable, oldValue, newValue) -> {
+			filteredData.setPredicate(produit -> {
+				// If filter text is empty, display all persons.
+								
+				if (newValue == null || newValue.isEmpty()) {
+					return true;
+				}
+				
+				// Compare first name and last name of every person with filter text.
+				String lowerCaseFilter = newValue.toLowerCase();
+				
+				if (produit.getLibelle().toLowerCase().indexOf(lowerCaseFilter) != -1 ) {
+					return true; // Filter matches first name.
+				} 
+				else if (String.valueOf(produit.getPrixVente()).indexOf(lowerCaseFilter)!=-1)
+				     return true;
+                                
+                                
+                                else if (String.valueOf(produit.getReference()).indexOf(lowerCaseFilter)!=-1)
+				     return true;
+				     else  
+				    	 return false; // Does not match.
+			});
+		});
+		
+		// 3. Wrap the FilteredList in a SortedList. 
+		SortedList<ProduitAchat> sortedData = new SortedList<>(filteredData);
+		
+		// 4. Bind the SortedList comparator to the TableView comparator.
+		// 	  Otherwise, sorting the TableView would have no effect.
+		sortedData.comparatorProperty().bind(tableViewProduit.comparatorProperty());
+		
+		// 5. Add sorted (and filtered) data to the table.
+        
+        
+                tableViewProduit.setItems(sortedData);
+
 
         tableViewLigne.setItems(listeLigneCommande);
+        
+        
+        
+        
 
     }
+    
+    
+    
+    
+    
 
     @FXML
     private void selectArticle(MouseEvent event) {
@@ -158,7 +223,7 @@ public class AjouterCommandeController implements Initializable {
 
              
             
-           //verif exixtance du produit dand le panier
+           //verifier l'existance du produit dand le panier
             if(commandeVenteG.getLigneCommande().contains(ligne)){
             
             
@@ -308,12 +373,38 @@ public class AjouterCommandeController implements Initializable {
         commandeVenteG.setDateC(new Date());
         commandeVenteG.setEtat("non livrer");
         
+        
+        //ajoyet user connecer
+        
+       // commandeVenteG.setUser(user);
+        
+        
           serviceCommandeVente.ajouterCommande(commandeVenteG);
           commandeVenteG=null;
           
         }
+        
+        
+          Stage primaryStage = new Stage();
+        
+        try {
+
+            AnchorPane root = (AnchorPane) FXMLLoader.load(getClass().getResource("/com/gentrepot/views/Merci.fxml"));
+            Scene scene = new Scene(root);
+            primaryStage.setScene(scene);
+
+            primaryStage.show();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
          
       
     }
+
+    
+    
+    
+   
+    
 
 }
