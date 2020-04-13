@@ -113,6 +113,8 @@ public class MenueAdminController implements Initializable {
 
             primaryStage.show();
             
+             ((Stage) this.btnAchat.getScene().getWindow()).close();
+            
             
         } catch (Exception e) {
             System.out.println(e.getMessage());

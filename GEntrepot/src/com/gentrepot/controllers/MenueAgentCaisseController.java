@@ -591,6 +591,8 @@ public class MenueAgentCaisseController implements Initializable {
     private JFXButton btnEnvoeyMailLettre;
     @FXML
     private JFXTextField textFAdresseMailClient;
+    @FXML
+    private ImageView imageFermer;
 
     /**
      * Initializes the controller class.
@@ -1151,7 +1153,7 @@ public class MenueAgentCaisseController implements Initializable {
             }
 
             ecartC.setText(String.valueOf(total - totalT));
-            
+
         } catch (Exception ex) {
 
             soldeTCalculer.setText("");
@@ -1360,18 +1362,18 @@ public class MenueAgentCaisseController implements Initializable {
             creerAlerte("champs numero facture vide !", AlertType.WARNING).showAndWait();
             return;
         }
-         if (textFFraisTransport.getText().equals("") || Double.valueOf(textFFraisTransport.getText()) == 0) {
+        if (textFFraisTransport.getText().equals("") || Double.valueOf(textFFraisTransport.getText()) == 0) {
 
             creerAlerte("champs frais de transport vide !", AlertType.WARNING).showAndWait();
             return;
         }
-          if (textFTimbreFiscale.getText().equals("") || Double.valueOf(textFTimbreFiscale.getText()) == 0) {
+        if (textFTimbreFiscale.getText().equals("") || Double.valueOf(textFTimbreFiscale.getText()) == 0) {
 
             creerAlerte("champs timbre fiscale vide !", AlertType.WARNING).showAndWait();
             return;
         }
-          
-          if (textFTTC.getText().equals("") || Double.valueOf(textFTTC.getText()) == 0) {
+
+        if (textFTTC.getText().equals("") || Double.valueOf(textFTTC.getText()) == 0) {
 
             creerAlerte("champs TTC vide !", AlertType.WARNING).showAndWait();
             return;
