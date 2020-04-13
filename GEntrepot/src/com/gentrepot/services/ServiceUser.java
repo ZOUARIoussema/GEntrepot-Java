@@ -15,6 +15,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+import javafx.util.Duration;
+import tray.animations.AnimationType;
+import tray.notification.NotificationType;
+import tray.notification.TrayNotification;
 
 /**
  *
@@ -79,10 +86,33 @@ public class ServiceUser implements IService<User> {
             System.err.println(ex.getMessage());
         }
 
+        String title = " Utilisateur ";
+        String message = "compte utilisateur est ajouté avec succes ";
+
+        TrayNotification tray = new TrayNotification();
+        AnimationType type = AnimationType.POPUP;
+
+        tray.setAnimationType(type);
+        tray.setTitle(title);
+        tray.setMessage(message);
+        tray.setNotificationType(NotificationType.SUCCESS);
+        tray.showAndDismiss(Duration.millis(3000));
+
     }
 
     @Override
     public void supprimer(User u) {
+        
+        
+        
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Supprimer utilisateur");
+        alert.setHeaderText("Voulez vous supprimer cette utilisateur "+u.getUsername()+" ?");
+        
+        
+        Optional<ButtonType> option = alert.showAndWait();
+        
+         if (option.get() == ButtonType.OK) {
 
         try {
             String requete = "DELETE FROM user WHERE id=?";
@@ -94,6 +124,8 @@ public class ServiceUser implements IService<User> {
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
         }
+        
+         }
 
     }
 
@@ -148,6 +180,20 @@ public class ServiceUser implements IService<User> {
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
         }
+        
+        
+         String title = " Utilisateur ";
+        String message = "compte utilisateur est modifié avec succes ";
+
+        TrayNotification tray = new TrayNotification();
+        AnimationType type = AnimationType.POPUP;
+
+        tray.setAnimationType(type);
+        tray.setTitle(title);
+        tray.setMessage(message);
+        tray.setNotificationType(NotificationType.SUCCESS);
+        tray.showAndDismiss(Duration.millis(3000));
+
 
     }
 

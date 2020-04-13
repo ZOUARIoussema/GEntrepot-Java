@@ -15,6 +15,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.util.Duration;
 import tray.animations.AnimationType;
 import tray.notification.NotificationType;
@@ -59,6 +62,17 @@ public class ServiceLettreDeRelance implements IService<LettreDeRelance> {
 
     @Override
     public void supprimer(LettreDeRelance l) {
+        
+        
+        
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Supprimer lettre de relance");
+        alert.setHeaderText("Voulez vous supprimer cette lettre ?");
+        
+        
+        Optional<ButtonType> option = alert.showAndWait();
+        
+         if (option.get() == ButtonType.OK) {
 
         try {
             String requete = "DELETE FROM lettre_de_relance WHERE id=?";
@@ -70,6 +84,8 @@ public class ServiceLettreDeRelance implements IService<LettreDeRelance> {
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
         }
+        
+         }
 
     }
 

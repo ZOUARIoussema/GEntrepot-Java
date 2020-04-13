@@ -95,7 +95,7 @@ public class MenueAgentCaisseController implements Initializable {
 
     ServiceReglementFournisseurCheque serviceReglementFournisseurCheque = new ServiceReglementFournisseurCheque();
     ServiceReglementFournisseurEspece serviceReglementFournisseurEspece = new ServiceReglementFournisseurEspece();
-    double totalT = (serviceRecouvrementClientCheque.totalCheque() + serviceRecouvrementClientEspece.totalEspece());
+    double totalT = 0;
 
     private InventaireCaisse inventaireCaisseG = null;
     private LettreDeRelance lettreDeRelanceG = null;
@@ -1164,10 +1164,19 @@ public class MenueAgentCaisseController implements Initializable {
 
     @FXML
     private void afficherPaneAjouterInventaire(ActionEvent event) {
+        
+        
+        double totalC=serviceRecouvrementClientCheque.totalCheque();
+        
+        double totalE=serviceRecouvrementClientEspece.totalEspece();
+        
+        
+        this.totalT=totalC+totalE;
+        
 
-        totalTheorique.setText(String.valueOf(totalT));
-        totalCheque.setText(String.valueOf(serviceRecouvrementClientCheque.totalCheque()));
-        totalEspece.setText(String.valueOf(serviceRecouvrementClientEspece.totalEspece()));
+        totalTheorique.setText(String.valueOf(totalC+totalE));
+        totalCheque.setText(String.valueOf(totalC));
+        totalEspece.setText(String.valueOf(totalE));
 
         paneAjouterInventaire.setVisible(true);
         new ZoomIn(paneAjouterInventaire).play();
@@ -1252,8 +1261,28 @@ public class MenueAgentCaisseController implements Initializable {
 
     @FXML
     private void calculerEcartM(KeyEvent event) {
+        
+        
+        
+         try {
 
-        ecartCM.setText(String.valueOf(Double.valueOf(soldeTCalculerM.getText()) - totalT));
+            Double total = Double.parseDouble(soldeTCalculerM.getText());
+
+            if (total < 0) {
+
+                soldeTCalculerM.setText(String.valueOf(0));
+            }
+
+            ecartCM.setText(String.valueOf(total - totalT));
+
+        } catch (Exception ex) {
+
+            soldeTCalculerM.setText("");
+            ecartCM.setText("");
+
+        }
+
+       
 
     }
 

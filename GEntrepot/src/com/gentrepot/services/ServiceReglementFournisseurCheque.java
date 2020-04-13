@@ -16,6 +16,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.util.Duration;
 import tray.animations.AnimationType;
 import tray.notification.NotificationType;
@@ -78,6 +81,18 @@ public class ServiceReglementFournisseurCheque implements IService<ReglementFour
 
     @Override
     public void supprimer(ReglementFournisseurCheque r) {
+        
+        
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Supprimer reglement cheque");
+        alert.setHeaderText("Voulez vous supprimer cette reglement ?");
+        
+        
+        Optional<ButtonType> option = alert.showAndWait();
+        
+         if (option.get() == ButtonType.OK) {
+        
+        
         try {
             String requete = "DELETE FROM reglement_fournisseur_cheque WHERE id=?";
             PreparedStatement pst = cnx.prepareStatement(requete);
@@ -104,6 +119,8 @@ public class ServiceReglementFournisseurCheque implements IService<ReglementFour
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
         }
+        
+         }
     }
 
     @Override

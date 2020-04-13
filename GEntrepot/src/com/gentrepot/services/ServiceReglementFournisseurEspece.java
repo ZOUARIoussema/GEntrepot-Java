@@ -15,6 +15,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.util.Duration;
 import tray.animations.AnimationType;
 import tray.notification.NotificationType;
@@ -74,30 +77,40 @@ public class ServiceReglementFournisseurEspece implements IService<ReglementFour
     @Override
     public void supprimer(ReglementFournisseurEspece r) {
 
-        try {
-            String requete = "DELETE FROM reglement_fournisseur_espece WHERE id=?";
-            PreparedStatement pst = cnx.prepareStatement(requete);
-            pst.setInt(1, r.getId());
-            pst.executeUpdate();
-            System.out.println("Reglement Fournisseur espece supprimée !");
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Supprimer reglement espece");
+        alert.setHeaderText("Voulez vous supprimer cette reglement");
 
-            //modifier facture
-            r.getFactureAchat().setTotalPaye(r.getFactureAchat().getTotalPaye() - r.getMontant());
+        Optional<ButtonType> option = alert.showAndWait();
 
-            r.getFactureAchat().setRestePaye(r.getFactureAchat().getTotalTTC() - r.getFactureAchat().getTotalPaye());
+        if (option.get() == ButtonType.OK) {
 
-            if (r.getFactureAchat().getRestePaye() == 0) {
+            try {
+                String requete = "DELETE FROM reglement_fournisseur_espece WHERE id=?";
+                PreparedStatement pst = cnx.prepareStatement(requete);
+                pst.setInt(1, r.getId());
+                pst.executeUpdate();
+                System.out.println("Reglement Fournisseur espece supprimée !");
 
-                r.getFactureAchat().setEtat("payer");
-            } else {
-                r.getFactureAchat().setEtat("non_payer");
+                //modifier facture
+                r.getFactureAchat().setTotalPaye(r.getFactureAchat().getTotalPaye() - r.getMontant());
 
+                r.getFactureAchat().setRestePaye(r.getFactureAchat().getTotalTTC() - r.getFactureAchat().getTotalPaye());
+
+                if (r.getFactureAchat().getRestePaye() == 0) {
+
+                    r.getFactureAchat().setEtat("payer");
+                } else {
+                    r.getFactureAchat().setEtat("non_payer");
+
+                }
+
+                serviceFactureAchat.modifier(r.getFactureAchat());
+
+            } catch (SQLException ex) {
+                System.err.println(ex.getMessage());
             }
 
-            serviceFactureAchat.modifier(r.getFactureAchat());
-
-        } catch (SQLException ex) {
-            System.err.println(ex.getMessage());
         }
 
     }
