@@ -329,145 +329,6 @@
                   </JFXTextField>
                </children>
             </Pane>
-            <Pane fx:id="paneAjouterFacture" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #fff;">
-               <children>
-                  <Label layoutX="68.0" layoutY="79.0" text="Liste des commande d'approvisionnement" textFill="#1240c7">
-                     <font>
-                        <Font name="Arial Rounded MT Bold" size="17.0" />
-                     </font></Label>
-                  <TableView fx:id="paneAjouterFactureTableVListeCommande" layoutX="68.0" layoutY="139.0" prefHeight="335.0" prefWidth="658.0">
-                    <columns>
-                      <TableColumn fx:id="paneAjouterFactureTableVListeCommandeNumeroC" prefWidth="137.0" text="Numero Commande" />
-                      <TableColumn fx:id="paneAjouterFactureTableVListeCommandeDateC" prefWidth="103.0" text="Date Creation" />
-                        <TableColumn fx:id="paneAjouterFactureTableVListeCommandeEtatC" text="Etat" />
-                        <TableColumn fx:id="paneAjouterFactureTableVListeCommandeTotalC" prefWidth="97.0" text="Total" />
-                        <TableColumn fx:id="paneAjouterFactureTableVListeCommandeFournisseur" prefWidth="122.0" text="Fournisseur" />
-                    </columns>
-                  </TableView>
-                  <JFXButton fx:id="btnAnnulerAjouterFacture" layoutX="819.0" layoutY="290.0" onAction="#annulerAjouterFacture" style="-fx-border-color: #318ce7;" text="Annuler">
-                     <graphic>
-                        <ImageView fitHeight="30.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@ImageMenueCaisse/images%20(1).png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </JFXButton>
-                  <Separator layoutX="771.0" layoutY="207.0" orientation="VERTICAL" prefHeight="200.0" style="-fx-background-color: #318ce7;" />
-               </children>
-            </Pane>
-            <Pane fx:id="paneEnregistrerFacture" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #fff;">
-               <children>
-                  <Label layoutX="35.0" layoutY="44.0" text="Ajouter facture" textFill="#1240c7">
-                     <font>
-                        <Font name="Arial Rounded MT Bold" size="17.0" />
-                     </font></Label>
-                  <GridPane layoutX="564.0" layoutY="97.0" prefHeight="337.0" prefWidth="316.0">
-                     <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="85.0" minWidth="10.0" prefWidth="22.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="294.0" minWidth="10.0" prefWidth="294.0" />
-                     </columnConstraints>
-                     <rowConstraints>
-                        <RowConstraints maxHeight="59.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="53.0" minHeight="10.0" prefHeight="39.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                     </rowConstraints>
-                     <children>
-                        <JFXTextField fx:id="textFNumeroF" focusColor="#ababab" onKeyReleased="#verifNumeroF" promptText="Numero Facture" unFocusColor="#a8a8a8" GridPane.columnIndex="1">
-                           <font>
-                              <Font name="Arial Rounded MT Bold" size="17.0" />
-                           </font></JFXTextField>
-                        <JFXTextField fx:id="textFFraisTransport" focusColor="#ababab" onKeyReleased="#verifFraisT" promptText="Frais transport" unFocusColor="#a8a8a8" GridPane.columnIndex="1" GridPane.rowIndex="4">
-                           <font>
-                              <Font name="Arial Rounded MT Bold" size="17.0" />
-                           </font></JFXTextField>
-                        <JFXTextField fx:id="textFTimbreFiscale" focusColor="#ababab" onKeyReleased="#verifTimbreF" promptText="Timbre fiscale" unFocusColor="#a8a8a8" GridPane.columnIndex="1" GridPane.rowIndex="6">
-                           <font>
-                              <Font name="Arial Rounded MT Bold" size="17.0" />
-                           </font></JFXTextField>
-                        <JFXTextField fx:id="textFTTC" focusColor="#ababab" onKeyReleased="#verifTTC" promptText="Total TTC" unFocusColor="#a8a8a8" GridPane.columnIndex="1" GridPane.rowIndex="8">
-                           <font>
-                              <Font name="Arial Rounded MT Bold" size="17.0" />
-                           </font></JFXTextField>
-                        <JFXDatePicker fx:id="textFDateEchaillanceFacture" prefHeight="25.0" prefWidth="304.0" promptText="Date Echaillance" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                     </children>
-                  </GridPane>
-                  <JFXButton fx:id="btnValiderAjouterFactureAchat" layoutX="853.0" layoutY="448.0" onAction="#validerAjouterFactureAchat" style="-fx-border-color: #318ce7;" text="Ajouter">
-                     <graphic>
-                        <ImageView fitHeight="32.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@ImageMenueCaisse/téléchargementValider.jpg" />
-                           </image>
-                        </ImageView>
-                     </graphic></JFXButton>
-                  <TableView fx:id="tableViewListeLigneAjouterFacture" layoutX="58.0" layoutY="146.0" prefHeight="219.0" prefWidth="403.0">
-                    <columns>
-                      <TableColumn fx:id="tableViewListeLigneAjouterFactureProduit" prefWidth="75.0" text="Produit" />
-                      <TableColumn fx:id="tableViewListeLigneAjouterFacturePrix" prefWidth="75.0" text="Prix" />
-                        <TableColumn fx:id="tableViewListeLigneAjouterFactureQTe" prefWidth="75.0" text="Quantite" />
-                        <TableColumn fx:id="tableViewListeLigneAjouterFactureTVA" prefWidth="83.0" text="Tva" />
-                        <TableColumn fx:id="tableViewListeLigneAjouterFactureTotal" prefWidth="93.0" text="Total" />
-                    </columns>
-                  </TableView>
-                  <Label layoutX="58.0" layoutY="111.0" text="Liste des articles commandés" textFill="#1240c7">
-                     <font>
-                        <Font name="Arial Rounded MT Bold" size="16.0" />
-                     </font></Label>
-                  <Label layoutX="260.0" layoutY="396.0" text="Total Commande" textFill="#318ce7" />
-                  <JFXTextField fx:id="textFTotalCommande" layoutX="373.0" layoutY="379.0" prefHeight="25.0" prefWidth="87.0" />
-                  <Separator layoutX="505.0" layoutY="87.0" orientation="VERTICAL" prefHeight="423.0" prefWidth="0.0" style="-fx-background-color: #318ce7;" />
-               </children>
-            </Pane>
-            <Pane fx:id="paneGFactureF" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #fff;">
-               <children>
-                  <Label layoutX="49.0" layoutY="68.0" text="Liste des facture fournisseurs" textFill="#1240c7">
-                     <font>
-                        <Font name="Arial Rounded MT Bold" size="17.0" />
-                     </font></Label>
-                  <TableView fx:id="tableVListeFactureFournisseur" layoutX="49.0" layoutY="96.0" prefHeight="356.0" prefWidth="685.0">
-                    <columns>
-                      <TableColumn fx:id="tableVListeFactureFournisseurNumeroF" prefWidth="100.0" text="Numero Facture" />
-                      <TableColumn fx:id="tableVListeFactureFournisseurDateC" prefWidth="87.0" text="Date Creation" />
-                        <TableColumn fx:id="tableVListeFactureFournisseurDateE" prefWidth="101.0" text="Date Echaillance" />
-                        <TableColumn fx:id="tableVListeFactureFournisseurTTC" prefWidth="69.0" text="Total TTC" />
-                        <TableColumn fx:id="tableVListeFactureFournisseurEtat" prefWidth="56.0" text="Etat" />
-                        <TableColumn fx:id="tableVListeFactureFournisseurTPayer" prefWidth="79.0" text="Total Payer" />
-                        <TableColumn fx:id="tableVListeFactureFournisseurRestePayer" prefWidth="101.0" text="Reste Payer" />
-                    </columns>
-                  </TableView>
-                  <GridPane layoutX="804.0" layoutY="245.0">
-                     <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
-                     </columnConstraints>
-                     <rowConstraints>
-                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                     </rowConstraints>
-                     <children>
-                        <JFXButton fx:id="btnAjouterFactureFournisseur" alignment="TOP_LEFT" onAction="#afficherPaneAjouterFactureFournisseur" prefHeight="41.0" prefWidth="164.0" style="-fx-border-color: #318ce7;" text="Ajouter facture" GridPane.rowIndex="1">
-                           <graphic>
-                              <ImageView fitHeight="33.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@ImageMenueCaisse/pngtree-add-vector-icon-png-image_3791307.jpg" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </JFXButton>
-                     </children>
-                  </GridPane>
-                  <Separator layoutX="777.0" layoutY="144.0" orientation="VERTICAL" prefHeight="246.0" prefWidth="0.0" style="-fx-background-color: #318ce7;" />
-               </children>
-            </Pane>
             <Pane fx:id="paneGRecouvrementClient" prefHeight="579.0" prefWidth="979.0" style="-fx-background-color: #fff;">
                <children>
                   <Label layoutX="38.0" layoutY="47.0" text="Recouvrement Client" textFill="#1240c7">
@@ -1406,6 +1267,145 @@
                         <Font name="Arial Rounded MT Bold" size="17.0" />
                      </font></Label>
                   <Separator layoutX="448.0" layoutY="166.0" orientation="VERTICAL" prefHeight="303.0" prefWidth="0.0" style="-fx-background-color: #318ce7;" />
+               </children>
+            </Pane>
+            <Pane fx:id="paneAjouterFacture" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #fff;">
+               <children>
+                  <Label layoutX="68.0" layoutY="79.0" text="Liste des commande d'approvisionnement" textFill="#1240c7">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="17.0" />
+                     </font></Label>
+                  <TableView fx:id="paneAjouterFactureTableVListeCommande" layoutX="68.0" layoutY="139.0" prefHeight="335.0" prefWidth="658.0">
+                    <columns>
+                      <TableColumn fx:id="paneAjouterFactureTableVListeCommandeNumeroC" prefWidth="137.0" text="Numero Commande" />
+                      <TableColumn fx:id="paneAjouterFactureTableVListeCommandeDateC" prefWidth="103.0" text="Date Creation" />
+                        <TableColumn fx:id="paneAjouterFactureTableVListeCommandeEtatC" text="Etat" />
+                        <TableColumn fx:id="paneAjouterFactureTableVListeCommandeTotalC" prefWidth="97.0" text="Total" />
+                        <TableColumn fx:id="paneAjouterFactureTableVListeCommandeFournisseur" prefWidth="122.0" text="Fournisseur" />
+                    </columns>
+                  </TableView>
+                  <JFXButton fx:id="btnAnnulerAjouterFacture" layoutX="819.0" layoutY="290.0" onAction="#annulerAjouterFacture" style="-fx-border-color: #318ce7;" text="Annuler">
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@ImageMenueCaisse/images%20(1).png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <Separator layoutX="771.0" layoutY="207.0" orientation="VERTICAL" prefHeight="200.0" style="-fx-background-color: #318ce7;" />
+               </children>
+            </Pane>
+            <Pane fx:id="paneGFactureF" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #fff;">
+               <children>
+                  <Label layoutX="49.0" layoutY="68.0" text="Liste des factures fournisseurs" textFill="#1240c7">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="17.0" />
+                     </font></Label>
+                  <TableView fx:id="tableVListeFactureFournisseur" layoutX="49.0" layoutY="112.0" prefHeight="326.0" prefWidth="697.0">
+                    <columns>
+                      <TableColumn fx:id="tableVListeFactureFournisseurNumeroF" prefWidth="100.0" text="Numero Facture" />
+                      <TableColumn fx:id="tableVListeFactureFournisseurDateC" prefWidth="87.0" text="Date création" />
+                        <TableColumn fx:id="tableVListeFactureFournisseurDateE" prefWidth="122.0" text="Date d’échéance" />
+                        <TableColumn fx:id="tableVListeFactureFournisseurTTC" prefWidth="66.0" text="Total TTC" />
+                        <TableColumn fx:id="tableVListeFactureFournisseurEtat" prefWidth="64.0" text="Etat" />
+                        <TableColumn fx:id="tableVListeFactureFournisseurTPayer" prefWidth="79.0" text="Total Payer" />
+                        <TableColumn fx:id="tableVListeFactureFournisseurRestePayer" prefWidth="96.0" text="Reste à Payer" />
+                    </columns>
+                  </TableView>
+                  <GridPane layoutX="804.0" layoutY="245.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <JFXButton fx:id="btnAjouterFactureFournisseur" alignment="TOP_LEFT" onAction="#afficherPaneAjouterFactureFournisseur" prefHeight="41.0" prefWidth="164.0" style="-fx-border-color: #318ce7;" text="Ajouter facture" GridPane.rowIndex="1">
+                           <graphic>
+                              <ImageView fitHeight="33.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@ImageMenueCaisse/pngtree-add-vector-icon-png-image_3791307.jpg" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </JFXButton>
+                     </children>
+                  </GridPane>
+                  <Separator layoutX="777.0" layoutY="144.0" orientation="VERTICAL" prefHeight="246.0" prefWidth="0.0" style="-fx-background-color: #318ce7;" />
+               </children>
+            </Pane>
+            <Pane fx:id="paneEnregistrerFacture" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #fff;">
+               <children>
+                  <Label layoutX="35.0" layoutY="44.0" text="Ajouter facture" textFill="#1240c7">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="17.0" />
+                     </font></Label>
+                  <GridPane layoutX="564.0" layoutY="97.0" prefHeight="337.0" prefWidth="316.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="85.0" minWidth="10.0" prefWidth="22.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="294.0" minWidth="10.0" prefWidth="294.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints maxHeight="59.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="53.0" minHeight="10.0" prefHeight="39.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <JFXTextField fx:id="textFNumeroF" focusColor="#ababab" onKeyReleased="#verifNumeroF" promptText="Numero Facture" unFocusColor="#a8a8a8" GridPane.columnIndex="1">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="17.0" />
+                           </font></JFXTextField>
+                        <JFXTextField fx:id="textFFraisTransport" focusColor="#ababab" onKeyReleased="#verifFraisT" promptText="Frais transport" unFocusColor="#a8a8a8" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="17.0" />
+                           </font></JFXTextField>
+                        <JFXTextField fx:id="textFTimbreFiscale" focusColor="#ababab" onKeyReleased="#verifTimbreF" promptText="Timbre fiscale" unFocusColor="#a8a8a8" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="17.0" />
+                           </font></JFXTextField>
+                        <JFXTextField fx:id="textFTTC" focusColor="#ababab" onKeyReleased="#verifTTC" promptText="Total TTC" unFocusColor="#a8a8a8" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="17.0" />
+                           </font></JFXTextField>
+                        <JFXDatePicker fx:id="textFDateEchaillanceFacture" prefHeight="25.0" prefWidth="304.0" promptText="Date Echaillance" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                     </children>
+                  </GridPane>
+                  <JFXButton fx:id="btnValiderAjouterFactureAchat" layoutX="853.0" layoutY="448.0" onAction="#validerAjouterFactureAchat" style="-fx-border-color: #318ce7;" text="Ajouter">
+                     <graphic>
+                        <ImageView fitHeight="32.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@ImageMenueCaisse/téléchargementValider.jpg" />
+                           </image>
+                        </ImageView>
+                     </graphic></JFXButton>
+                  <TableView fx:id="tableViewListeLigneAjouterFacture" layoutX="58.0" layoutY="146.0" prefHeight="219.0" prefWidth="403.0">
+                    <columns>
+                      <TableColumn fx:id="tableViewListeLigneAjouterFactureProduit" prefWidth="75.0" text="Produit" />
+                      <TableColumn fx:id="tableViewListeLigneAjouterFacturePrix" prefWidth="75.0" text="Prix" />
+                        <TableColumn fx:id="tableViewListeLigneAjouterFactureQTe" prefWidth="75.0" text="Quantite" />
+                        <TableColumn fx:id="tableViewListeLigneAjouterFactureTVA" prefWidth="83.0" text="Tva" />
+                        <TableColumn fx:id="tableViewListeLigneAjouterFactureTotal" prefWidth="93.0" text="Total" />
+                    </columns>
+                  </TableView>
+                  <Label layoutX="58.0" layoutY="111.0" text="Liste des articles commandés" textFill="#1240c7">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="16.0" />
+                     </font></Label>
+                  <Label layoutX="260.0" layoutY="396.0" text="Total Commande" textFill="#318ce7" />
+                  <JFXTextField fx:id="textFTotalCommande" layoutX="373.0" layoutY="379.0" prefHeight="25.0" prefWidth="87.0" />
+                  <Separator layoutX="505.0" layoutY="87.0" orientation="VERTICAL" prefHeight="423.0" prefWidth="0.0" style="-fx-background-color: #318ce7;" />
                </children>
             </Pane>
             <Pane fx:id="paneAccueille" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #fff;">

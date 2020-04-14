@@ -2204,6 +2204,9 @@ public class MenueAgentCaisseController implements Initializable {
             if (t < 0) {
                 textFTimbreFiscale.setText("");
             }
+            
+            
+            textFTTC.setText(String.valueOf(t+Double.valueOf(textFFraisTransport.getText())+Double.valueOf(textFTotalCommande.getText())));
 
         } catch (Exception ex) {
 
