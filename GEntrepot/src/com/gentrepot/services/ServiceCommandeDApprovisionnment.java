@@ -31,7 +31,7 @@ public class ServiceCommandeDApprovisionnment implements IService<CommandeDAppro
     public void ajouter(CommandeDApprovisionnement ca) {
         try {
 
-            //String date = request.getParameter(ca.getDateCreation());
+            
             SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd"); // your template here
             java.util.Date dateStr = formatter.parse(ca.getDateCreation());
             java.sql.Date dateDB = new java.sql.Date(dateStr.getTime());
@@ -69,13 +69,25 @@ public class ServiceCommandeDApprovisionnment implements IService<CommandeDAppro
     @Override
     public void modifier(CommandeDApprovisionnement ca) {
         try {
-            String requete = "UPDATE commande_d_aprovisionnement SET id_fournisseur='" + ca.getFournisseur().getId() + "',total_c='" + ca.getTotalC() + "',dateCreation='" + ca.getDateCreation() + "',etat='" + ca.getEtat() + "',taux_remise='" + ca.getTauxRemise() + "',total_tva='" + ca.getTotalTva() + "' WHERE numeroC=" + ca.getNumeroC();
-            Statement st = cnx.createStatement();
-            st.executeUpdate(requete);
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd"); // your template here
+            java.util.Date dateStr = formatter.parse(ca.getDateCreation());
+            java.sql.Date dateDB = new java.sql.Date(dateStr.getTime());
+            String requete = "UPDATE commande_d_aprovisionnement SET id_fournisseur=?,total_c=?,dateCreation=?,etat=?,taux_remise=?,total_tva=? WHERE numeroC=?";
+            PreparedStatement pst = cnx.prepareStatement(requete);
+            pst.setInt(1, ca.getFournisseur().getId());
+            pst.setDouble(2, ca.getTotalC());
+            pst.setDate(3, dateDB);
+            pst.setString(4, ca.getEtat());
+            pst.setDouble(5, ca.getTauxRemise());
+            pst.setDouble(6, ca.getTotalTva());
+            pst.setInt(7, ca.getNumeroC());
+            pst.executeUpdate();
             System.out.println("commande modifiée !");
-
+    
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
+        } catch (ParseException ex) {
+            Logger.getLogger(ServiceCommandeDApprovisionnment.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -96,6 +108,22 @@ public class ServiceCommandeDApprovisionnment implements IService<CommandeDAppro
         }
 
         return list;
+    
+    }
+    public CommandeDApprovisionnement lastCmd() {
+        CommandeDApprovisionnement ca = null;
+        try {
+            String requete = "SELECT * FROM commande_d_aprovisionnement ORDER BY numeroC DESC LIMIT 1";
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(requete);
+            if ( rs.next() ){
+            ca = new CommandeDApprovisionnement(rs.getInt(2), rs.getDouble(3), rs.getString(4), rs.getString(5), rs.getDouble(6), rs.getDouble(7), new Fournisseur(rs.getInt(1),"SA",56562222,"Alger","Apple@gmail.com","AG441",65));
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+
+        return ca;
     
     }
     public CommandeDApprovisionnement rechercher(List<CommandeDApprovisionnement> l, int in){

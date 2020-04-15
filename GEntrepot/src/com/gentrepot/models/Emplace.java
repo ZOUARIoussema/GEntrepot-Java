@@ -7,33 +7,21 @@ package com.gentrepot.models;
 
 /**
  *
- * @author oussema
+ * @author guiforodrigue
  */
-public class Emplacement {
-    
+public class Emplace {
     private int id;
     private String adresse;
     private int capaciteStockage;
     private int quantiteStocker;
     private String classe;
-    private Entrepot entrepot;
 
-    public Emplacement(int id, String adresse, int capaciteStockage, int quantiteStocker, String classe, Entrepot entrepot) {
+    public Emplace(int id, String adresse, int capaciteStockage, int quantiteStocker, String classe) {
         this.id = id;
         this.adresse = adresse;
         this.capaciteStockage = capaciteStockage;
         this.quantiteStocker = quantiteStocker;
         this.classe = classe;
-        this.entrepot = entrepot;
-    }
-    public Emplacement(String adresse, int capaciteStockage, int quantiteStocker, String classe, Entrepot entrepot) {
-        
-        this.adresse = adresse;
-        this.capaciteStockage = capaciteStockage;
-        this.quantiteStocker = quantiteStocker;
-        this.classe = classe;
-        this.entrepot = entrepot;
-        
     }
 
     public int getId() {
@@ -75,23 +63,5 @@ public class Emplacement {
     public void setClasse(String classe) {
         this.classe = classe;
     }
-
-    public Entrepot getEntrepot() {
-        return entrepot;
-    }
-
-    public void setEntrepot(Entrepot entrepot) {
-        this.entrepot = entrepot;
-    }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
 }

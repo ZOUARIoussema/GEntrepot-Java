@@ -28,6 +28,14 @@ public class LigneCommandeDApprovisionnement {
         this.total = total;
         this.tva = tva;
     }
+    public LigneCommandeDApprovisionnement(CommandeDApprovisionnement commandeDApprovisionnement, ProduitAchat produitAchat, double prix, int quantite, double total, double tva) {
+        this.commandeDApprovisionnement = commandeDApprovisionnement;
+        this.produitAchat = produitAchat;
+        this.prix = prix;
+        this.quantite = quantite;
+        this.total = total;
+        this.tva = tva;
+    }
 
     
     

@@ -8,12 +8,17 @@ package com.gentrepot.services;
 import com.gentrepot.models.Perte;
 import com.gentrepot.utils.DataSource;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -25,13 +30,19 @@ public class ServicePerte implements IService<Perte>{
     @Override
     public void ajouter(Perte p) {
         try {
-            String requete = "INSERT INTO perte (dateCreation) VALUES ('" + p.getDate() + "')";
-            Statement st = cnx.createStatement();
-            st.executeUpdate(requete);
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd"); // your template here
+            java.util.Date dateStr = formatter.parse(p.getDate());
+            java.sql.Date dateDB = new java.sql.Date(dateStr.getTime());
+            String requete = "INSERT INTO perte (dateCreation) VALUES (?)";
+            PreparedStatement pst = cnx.prepareStatement(requete);           
+            pst.setDate(1, dateDB);            
+            pst.executeUpdate();
             System.out.println("Perte ajoutée !");
 
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
+        } catch (ParseException ex) {
+            Logger.getLogger(ServicePerte.class.getName()).log(Level.SEVERE, null, ex);
         }  
     }
 
@@ -70,7 +81,7 @@ public class ServicePerte implements IService<Perte>{
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(requete);
             while (rs.next()) {
-                list.add(new Perte(rs.getInt(1), rs.getDate(2)));
+                list.add(new Perte(rs.getInt(1), rs.getString(2)));
             }
 
         } catch (SQLException ex) {
@@ -97,6 +108,22 @@ public class ServicePerte implements IService<Perte>{
             }
         }
         return lv;
+    }
+    public Perte lastPert() {
+        Perte ca = null;
+        try {
+            String requete = "SELECT * FROM perte ORDER BY id DESC LIMIT 1";
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(requete);
+            if ( rs.next() ){
+            ca = new Perte(rs.getInt(1), rs.getString(2));
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+
+        return ca;
+    
     }
     
     

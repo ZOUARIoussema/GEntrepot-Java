@@ -5,28 +5,17 @@
  */
 package com.gentrepot.models;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
 /**
  *
- * @author oussema
+ * @author guiforodrigue
  */
-public class Perte {
-
+public class Pert {
     private int id;
     private String date;
-    private List<LignePerte>lignePertes;
 
-    public Perte(int id, String date) {
+    public Pert(int id, String date) {
         this.id = id;
         this.date = date;
-        this.lignePertes=new ArrayList<>();
-    }
-    public Perte(String date) {
-        this.date = date;
-        //this.lignePertes=new ArrayList<>();
     }
 
     public int getId() {
@@ -44,15 +33,7 @@ public class Perte {
     public void setDate(String date) {
         this.date = date;
     }
-
-    public List<LignePerte> getLignePertes() {
-        return lignePertes;
-    }
-
-    public void setLignePertes(List<LignePerte> lignePertes) {
-        this.lignePertes = lignePertes;
-    }
     
     
-
+    
 }

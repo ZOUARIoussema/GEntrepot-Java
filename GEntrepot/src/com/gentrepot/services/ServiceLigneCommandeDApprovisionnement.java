@@ -80,4 +80,5 @@ public class ServiceLigneCommandeDApprovisionnement implements IService<LigneCom
         return list;
     
     }
+    
 }

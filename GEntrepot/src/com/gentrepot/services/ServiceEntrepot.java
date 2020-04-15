@@ -25,7 +25,7 @@ public class ServiceEntrepot implements IService<Entrepot>{
     @Override
     public void ajouter(Entrepot et) {
         try {
-            String requete = "INSERT INTO entrepot (matriculeFiscal,adresse,adresseMail,numeroTel) VALUES ('" + et.getMatriculeFiscale() + "','" + et.getAdresse() + "','" + et.getAdresseMail() + "','" + et.getNumeroTel() + "')";
+            String requete = "INSERT INTO entrepot (matriculeFiscal,adresse,raisonSocial,adresseMail,numeroTel) VALUES ('" + et.getMatriculeFiscale() + "','" + et.getAdresse() + "','" +et.getRaisonSociale()+"','"+ et.getAdresseMail() + "','" + et.getNumeroTel() + "')";
             Statement st = cnx.createStatement();
             st.executeUpdate(requete);
             System.out.println("Entrepot ajouté !");
@@ -38,7 +38,7 @@ public class ServiceEntrepot implements IService<Entrepot>{
     @Override
     public void supprimer(Entrepot et) {
         try {
-            String requete = "DELETE FROM entrepot WHERE matriculeFiscal=" + et.getMatriculeFiscale();
+            String requete = "DELETE FROM entrepot WHERE matriculeFiscal LIKE '" + et.getMatriculeFiscale() + "'";
             Statement st = cnx.createStatement();
             st.executeUpdate(requete);
             System.out.println("Entrepot supprimé !");
@@ -51,7 +51,7 @@ public class ServiceEntrepot implements IService<Entrepot>{
     @Override
     public void modifier(Entrepot et) {
         try {
-            String requete = "UPDATE entrepot SET adresse='" + et.getAdresse() + "',adresseMail='" + et.getAdresseMail() + "',numeroTel='" + et.getNumeroTel() + "' WHERE matriculeFiscal=" + et.getMatriculeFiscale();
+            String requete = "UPDATE entrepot SET matriculeFiscal='" + et.getMatriculeFiscale() + "',adresse='" + et.getAdresse() + "',raisonSocial='" + et.getRaisonSociale() +"',adresseMail='" + et.getAdresseMail() + "',numeroTel='" + et.getNumeroTel() + "' WHERE matriculeFiscal LIKE '" + et.getMatriculeFiscale() + "'" ;
             Statement st = cnx.createStatement();
             st.executeUpdate(requete);
             System.out.println("Entrepot modifiée !");

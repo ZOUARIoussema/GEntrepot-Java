@@ -8,6 +8,7 @@ package com.gentrepot.services;
 import com.gentrepot.models.Emplacement;
 import com.gentrepot.utils.DataSource;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -24,11 +25,16 @@ public class ServiceEmplacement implements IService<Emplacement>{
     @Override
     public void ajouter(Emplacement ep) {
         try {
-            String requete = "INSERT INTO emplacement (adresse,capaciteStockage,quantiteStockage,classe,matriculeFiscal_Entrepot) VALUES ('" + ep.getAdresse() + "','" + ep.getCapaciteStockage() + "','" + ep.getQuantiteStocker() + "','" + ep.getClasse() + "','" + ep.getEntrepot().getMatriculeFiscale() + "')";
-            Statement st = cnx.createStatement();
-            st.executeUpdate(requete);
+            String requete = "INSERT INTO emplacement (adresse,capaciteStockage,quantiteStocker,classe,matriculeFiscal_Entrepot) VALUES (?,?,?,?,?)";
+            PreparedStatement pst = cnx.prepareStatement(requete);
+            pst.setString(1, ep.getAdresse());
+            pst.setInt(2, ep.getCapaciteStockage());
+            pst.setInt(3, ep.getQuantiteStocker());
+            pst.setString(4, ep.getClasse());
+            pst.setString(5, ep.getEntrepot().getMatriculeFiscale());
+            pst.executeUpdate();
             System.out.println("emplacement ajouté !");
-
+           
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
         }  

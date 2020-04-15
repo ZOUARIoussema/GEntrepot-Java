@@ -5,24 +5,20 @@
  */
 package com.gentrepot.models;
 
-import java.util.Date;
-
 /**
  *
- * @author oussema
+ * @author guiforodrigue
  */
-public class InventaireStock {
-    
-    
+public class Invent {
     private int id;
-    private ProduitAchat produitAchat;
-    private Emplacement emplacement;
+    private String produitAchat;
+    private String emplacement;
     private String dateCreation;
     private int qunatiteInventiare;
     private int ecart;
     private int quantiteTheorique;
 
-    public InventaireStock(int id, ProduitAchat produitAchat, Emplacement emplacement, String dateCreation, int qunatiteInventiare, int ecart, int quantiteTheorique) {
+    public Invent(int id, String produitAchat, String emplacement, String dateCreation, int qunatiteInventiare, int ecart, int quantiteTheorique) {
         this.id = id;
         this.produitAchat = produitAchat;
         this.emplacement = emplacement;
@@ -31,7 +27,7 @@ public class InventaireStock {
         this.ecart = ecart;
         this.quantiteTheorique = quantiteTheorique;
     }
-     public InventaireStock(ProduitAchat produitAchat, Emplacement emplacement, String dateCreation, int qunatiteInventiare, int ecart, int quantiteTheorique) {
+    public Invent(String produitAchat, String emplacement, String dateCreation, int qunatiteInventiare, int ecart, int quantiteTheorique) {
         
         this.produitAchat = produitAchat;
         this.emplacement = emplacement;
@@ -49,19 +45,19 @@ public class InventaireStock {
         this.id = id;
     }
 
-    public ProduitAchat getProduitAchat() {
+    public String getProduitAchat() {
         return produitAchat;
     }
 
-    public void setProduitAchat(ProduitAchat produitAchat) {
+    public void setProduitAchat(String produitAchat) {
         this.produitAchat = produitAchat;
     }
 
-    public Emplacement getEmplacement() {
+    public String getEmplacement() {
         return emplacement;
     }
 
-    public void setEmplacement(Emplacement emplacement) {
+    public void setEmplacement(String emplacement) {
         this.emplacement = emplacement;
     }
 
@@ -96,10 +92,6 @@ public class InventaireStock {
     public void setQuantiteTheorique(int quantiteTheorique) {
         this.quantiteTheorique = quantiteTheorique;
     }
-    
-    
-    
-    
     
     
     

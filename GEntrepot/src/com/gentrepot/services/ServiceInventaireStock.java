@@ -9,12 +9,17 @@ import com.gentrepot.models.Emplacement;
 import com.gentrepot.models.InventaireStock;
 import com.gentrepot.utils.DataSource;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -26,13 +31,29 @@ public class ServiceInventaireStock implements IService<InventaireStock>{
     @Override
     public void ajouter(InventaireStock iv) {
         try {
-            String requete = "INSERT INTO inventaire_stock (ref_produit,id_emplacement,dateCreation,quantiteInventaire,ecart,quantiteTheorique) VALUES ('" + iv.getProduitAchat().getReference() + "','" + iv.getEmplacement().getId() + "','" + iv.getDateCreation() + "','" + iv.getQunatiteInventiare() + "','" + iv.getEcart() + "','" + iv.getQuantiteTheorique() + "')";
-            Statement st = cnx.createStatement();
-            st.executeUpdate(requete);
-            System.out.println(" Inventaire effectué !");
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd"); // your template here
+            java.util.Date dateStr = formatter.parse(iv.getDateCreation());
+            java.sql.Date dateDB = new java.sql.Date(dateStr.getTime());
+            String requete = "INSERT INTO inventaire_stock (ref_produit,id_emplacement,dateCreation,quantiteInventaire,ecart,quantiteTheorique) VALUES (?,?,?,?,?,?)";
+            PreparedStatement pst = cnx.prepareStatement(requete);
+            pst.setString(1, iv.getProduitAchat().getReference());
+            pst.setInt(2, iv.getEmplacement().getId());
+            pst.setDate(3, dateDB);
+            pst.setInt(4, iv.getQunatiteInventiare());
+            pst.setInt(5, iv.getEcart());
+            pst.setInt(6, iv.getQuantiteTheorique());
+            pst.executeUpdate();
+            System.out.println("commande ajoutée !");
+            
+            
+  
+            
+            
 
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
+        } catch (ParseException ex) {
+            Logger.getLogger(ServiceInventaireStock.class.getName()).log(Level.SEVERE, null, ex);
         }  
     }
 
@@ -72,7 +93,7 @@ public class ServiceInventaireStock implements IService<InventaireStock>{
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(requete);
             while (rs.next()) {
-                list.add(new InventaireStock(rs.getInt(1), sa.rechercher(sa.afficher(),rs.getString(2)), sp.rechercher(sp.afficher(),rs.getInt(3)), rs.getDate(4), rs.getInt(5), rs.getInt(6), rs.getInt(7)));
+                list.add(new InventaireStock(rs.getInt(1), sa.rechercher(sa.afficher(),rs.getString(2)), sp.rechercher(sp.afficher(),rs.getInt(3)), rs.getString(4), rs.getInt(5), rs.getInt(6), rs.getInt(7)));
             }
 
         } catch (SQLException ex) {
@@ -90,6 +111,15 @@ public class ServiceInventaireStock implements IService<InventaireStock>{
             }
         }
         return lv;
+    }
+    public InventaireStock rechercher(List<InventaireStock> l, int n){
+        
+        for(int i=0;i<l.size();i++){
+            if(l.get(i).getId() == n){
+                 return l.get(i);
+            }
+        }
+        return null;
     }
     
 }
