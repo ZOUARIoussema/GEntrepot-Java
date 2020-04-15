@@ -11,4 +11,7 @@ package com.gentrepot.services;
  */
 public class ServiceLettreDeRelance {
     
+    
+    
+    
 }

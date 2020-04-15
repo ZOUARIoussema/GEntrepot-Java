@@ -38,6 +38,29 @@ public class FactureVente {
         this.bonLivraison = bonLivraison;
     }
 
+    public FactureVente(Date dateCreation, Date dateEchaillancePaiement, double totalTTC, String etat, double totalPaye, double restePaye, double timbreFiscale, double fraisTransport, BonLivraison bonLivraison) {
+        this.dateCreation = dateCreation;
+        this.dateEchaillancePaiement = dateEchaillancePaiement;
+        this.totalTTC = totalTTC;
+        this.etat = etat;
+        this.totalPaye = totalPaye;
+        this.restePaye = restePaye;
+        this.timbreFiscale = timbreFiscale;
+        this.fraisTransport = fraisTransport;
+        this.bonLivraison = bonLivraison;
+    }
+
+    public FactureVente(Date dateCreation, Date dateEchaillancePaiement, double totalTTC, String etat, double totalPaye, double restePaye, double timbreFiscale, double fraisTransport) {
+        this.dateCreation = dateCreation;
+        this.dateEchaillancePaiement = dateEchaillancePaiement;
+        this.totalTTC = totalTTC;
+        this.etat = etat;
+        this.totalPaye = totalPaye;
+        this.restePaye = restePaye;
+        this.timbreFiscale = timbreFiscale;
+        this.fraisTransport = fraisTransport;
+    }
+
     public int getNumeroF() {
         return numeroF;
     }

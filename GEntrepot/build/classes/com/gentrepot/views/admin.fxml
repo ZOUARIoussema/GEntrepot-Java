@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import java.net.URL?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="904.0" prefWidth="1303.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gentrepot.controllers.AdminController">
+   <center>
+      <AnchorPane id="AnchorPane" prefHeight="414.0" prefWidth="620.0" styleClass="mainFxmlClass">
+          <stylesheets>
+              <URL value="@admin.css" />
+          </stylesheets>
+         <children>
+            <StackPane prefHeight="898.0" prefWidth="978.0">
+               <children>
+                  <Pane fx:id="paneBoutique" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #fff;" />
+                  <Pane fx:id="paneAceuille" prefHeight="874.0" prefWidth="903.0" style="-fx-background-color: #fff;">
+                     <children>
+                        <Label layoutX="87.0" layoutY="71.0" text="Label" />
+                     </children>
+                  </Pane>
+                  <Pane fx:id="paneFacture" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #fff;">
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#0061b4" height="185.0" layoutX="-93.0" layoutY="69.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1087.0">
+                           <effect>
+                              <DropShadow />
+                           </effect>
+                        </Rectangle>
+                        <TableView fx:id="tableViewFactureVente" layoutX="46.0" layoutY="270.0" prefHeight="614.0" prefWidth="886.0">
+                           <columns>
+                              <TableColumn fx:id="col_dateF" prefWidth="155.0" text="Date de creation" />
+                              <TableColumn fx:id="col_dateE" prefWidth="176.0" text="Date echaillance paiement" />
+                              <TableColumn fx:id="col_totalF" minWidth="0.0" prefWidth="92.0" text="Total" />
+                              <TableColumn fx:id="col_etatF" minWidth="0.0" prefWidth="62.0" text="Etat" />
+                              <TableColumn fx:id="col_totalPa" minWidth="0.0" prefWidth="92.0" text="total paye" />
+                              <TableColumn fx:id="col_rest" minWidth="0.0" prefWidth="105.0" text="rest paye" />
+                              <TableColumn fx:id="col_timbre" minWidth="0.0" prefWidth="110.0" text="Timbre fiscale" />
+                              <TableColumn fx:id="col_frais" minWidth="0.0" prefWidth="93.0" text="Frais transport" />
+                           </columns>
+                        </TableView>
+                        <Label layoutX="32.0" layoutY="162.0" prefHeight="18.0" prefWidth="138.0" text="/home/facturevente" textFill="WHITE">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="32.0" layoutY="182.0" text="Factures vente" textFill="WHITE">
+                           <font>
+                              <Font size="37.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane fx:id="paneCommande" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #fff;">
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#0061b4" height="185.0" layoutX="-93.0" layoutY="69.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1082.0">
+                           <effect>
+                              <DropShadow />
+                           </effect>
+                        </Rectangle>
+                        <TableView fx:id="tableViewCommande" layoutX="46.0" layoutY="274.0" prefHeight="614.0" prefWidth="886.0">
+                           <columns>
+                              <TableColumn fx:id="col_total" prefWidth="220.0" text="Total" />
+                              <TableColumn fx:id="col_date" prefWidth="158.0" text="Date" />
+                              <TableColumn fx:id="col_taux" minWidth="0.0" prefWidth="198.0" text="Taux de remise" />
+                              <TableColumn fx:id="col_etat" minWidth="0.0" prefWidth="78.0" text="Etat" />
+                              <TableColumn fx:id="col_user" minWidth="0.0" prefWidth="231.0" text="User" />
+                           </columns>
+                        </TableView>
+                        <Label layoutX="32.0" layoutY="162.0" prefHeight="18.0" prefWidth="138.0" text="/home/commandes" textFill="WHITE">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="32.0" layoutY="182.0" text="Commandes" textFill="WHITE">
+                           <font>
+                              <Font size="37.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane fx:id="paneBL" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #fff;">
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#0061b4" height="185.0" layoutX="-93.0" layoutY="69.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1082.0">
+                           <effect>
+                              <DropShadow />
+                           </effect>
+                        </Rectangle>
+                        <Label layoutX="32.0" layoutY="162.0" prefHeight="18.0" prefWidth="138.0" text="/home/bondelivraison" textFill="WHITE">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="32.0" layoutY="182.0" text="Bon de livraisons" textFill="WHITE">
+                           <font>
+                              <Font size="37.0" />
+                           </font>
+                        </Label>
+                        <TableView fx:id="tableviewBon" layoutX="22.0" layoutY="268.0" onMouseClicked="#selectBon" prefHeight="614.0" prefWidth="796.0">
+                          <columns>
+                            <TableColumn fx:id="col_adress" prefWidth="183.0" text="adresse " />
+                            <TableColumn fx:id="col_etatBL" prefWidth="88.0" text="etat" />
+                              <TableColumn fx:id="col_dateBL" prefWidth="206.0" text="date de creation" />
+                              <TableColumn fx:id="col_nom" prefWidth="115.0" text="nom" />
+                              <TableColumn fx:id="col_prenom" prefWidth="106.0" text="prenom" />
+                          </columns>
+                        </TableView>
+                     </children>
+                  </Pane>
+                  <Pane fx:id="paneStatistique" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #fff;">
+                     <children>
+                        <BarChart fx:id="ProduitChart" layoutX="36.0" layoutY="132.0" prefHeight="738.0" prefWidth="847.0" title="Produits">
+                          <xAxis>
+                            <CategoryAxis label="articles" side="BOTTOM" fx:id="x" />
+                          </xAxis>
+                          <yAxis>
+                            <NumberAxis fx:id="y" label="Nombre" side="LEFT" />
+                          </yAxis>
+                        </BarChart>
+                     </children>
+                  </Pane>
+               </children>
+            </StackPane>
+         </children>
+      </AnchorPane>
+   </center>
+   <left>
+      <AnchorPane prefHeight="758.0" prefWidth="310.0" style="-fx-background-color: #0061B4;" BorderPane.alignment="CENTER">
+         <children>
+            <AnchorPane layoutX="-12.0" layoutY="-14.0" prefHeight="917.0" prefWidth="67.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="-12.0" AnchorPane.rightAnchor="291.0" AnchorPane.topAnchor="-14.0">
+               <effect>
+                  <DropShadow />
+               </effect>
+            </AnchorPane>
+            <JFXButton fx:id="btnBoutique" alignment="BASELINE_LEFT" buttonType="RAISED" graphicTextGap="40.0" layoutX="-17.0" layoutY="124.0" onAction="#BoutiqueAction" prefHeight="62.0" prefWidth="334.0" ripplerFill="#00d9fff0" text="Boutique" textFill="WHITE">
+               <font>
+                  <Font size="27.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIconView glyphName="ALIGN_JUSTIFY" size="20" text="" wrappingWidth="31.0" />
+               </graphic>
+            </JFXButton>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#115697" height="86.0" layoutX="-5.0" layoutY="-14.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" width="351.0" />
+            <Label layoutX="68.0" layoutY="14.0" prefHeight="41.0" prefWidth="168.0" text="A D M I N" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="37.0" />
+               </font>
+            </Label>
+            <Label layoutX="59.0" layoutY="849.0" prefHeight="41.0" prefWidth="168.0" text="Responsable vente" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="16.0" />
+               </font>
+            </Label>
+            <JFXButton fx:id="btnCommande" alignment="BASELINE_LEFT" buttonType="RAISED" graphicTextGap="40.0" layoutX="-17.0" layoutY="176.0" onAction="#CommandesAction" prefHeight="62.0" prefWidth="334.0" ripplerFill="#00d9fff0" text="Commandes" textFill="WHITE">
+               <font>
+                  <Font size="27.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIconView glyphName="ALIGN_JUSTIFY" size="20" text="" wrappingWidth="31.0" />
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="btnBon" alignment="BASELINE_LEFT" buttonType="RAISED" graphicTextGap="40.0" layoutX="-17.0" layoutY="228.0" onAction="#BonAction" prefHeight="62.0" prefWidth="334.0" ripplerFill="#00d9fff0" text="Bons de livraison" textFill="WHITE">
+               <font>
+                  <Font size="27.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIconView glyphName="ALIGN_JUSTIFY" size="20" text="" wrappingWidth="31.0" />
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="btnFacture" alignment="BASELINE_LEFT" buttonType="RAISED" graphicTextGap="40.0" layoutX="-15.0" layoutY="290.0" onAction="#FactureAction" prefHeight="62.0" prefWidth="334.0" ripplerFill="#00d9fff0" text="Factures vente" textFill="WHITE">
+               <font>
+                  <Font size="27.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIconView glyphName="ALIGN_JUSTIFY" size="20" text="" wrappingWidth="31.0" />
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="btnStat" alignment="BASELINE_LEFT" buttonType="RAISED" graphicTextGap="40.0" layoutX="-5.0" layoutY="352.0" onAction="#StatAction" prefHeight="62.0" prefWidth="345.0" ripplerFill="#00d9fff0" text="Statistique" textFill="WHITE">
+               <font>
+                  <Font size="27.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIconView glyphName="ALIGN_JUSTIFY" size="20" text="" wrappingWidth="31.0" />
+               </graphic>
+            </JFXButton>
+         </children>
+         <effect>
+            <DropShadow />
+         </effect>
+      </AnchorPane>
+   </left>
+</BorderPane>
