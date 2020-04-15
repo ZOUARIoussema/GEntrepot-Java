@@ -24,8 +24,8 @@ public class AideChauffeur {
         this.prenom = prenom;
         this.adresse = adresse;
     }
-    
-    
+
+     
     
     
     
@@ -60,6 +60,11 @@ public class AideChauffeur {
 
     public void setAdresse(String adresse) {
         this.adresse = adresse;
+    }
+
+    @Override
+    public String toString() {
+        return "AideChauffeur{" + "cin=" + cin + ", nom=" + nom + ", prenom=" + prenom + ", adresse=" + adresse + '}';
     }
     
     
