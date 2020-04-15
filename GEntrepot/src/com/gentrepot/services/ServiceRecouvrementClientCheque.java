@@ -220,7 +220,7 @@ public class ServiceRecouvrementClientCheque implements IService<RecouvrementCli
         double total = 0;
 
         try {
-            String requete = "SELECT sum(montant) FROM recouvrement_client_cheque where date_creation=?";
+            String requete = "SELECT round( sum(montant),3) FROM recouvrement_client_cheque where date_creation=?";
             PreparedStatement pst = cnx.prepareStatement(requete);
             pst.setDate(1, new java.sql.Date(new Date().getTime()));
             ResultSet rs = pst.executeQuery();

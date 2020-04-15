@@ -10,22 +10,22 @@ import com.gentrepot.models.LigneCommande;
 import com.gentrepot.models.ProduitAchat;
 import com.gentrepot.utils.DataSource;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
  * @author oussema
  */
 public class ServiceCommandeVente {
-
-    //methode recupere id 
+    
+    
+    
+    
+     //methode recupere id 
     Connection cnx = DataSource.getInstance().getCnx();
 
     public int recupere() {
@@ -256,5 +256,4 @@ public class ServiceCommandeVente {
     
     
     
-
 }

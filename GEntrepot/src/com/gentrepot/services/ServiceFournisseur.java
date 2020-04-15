@@ -6,6 +6,11 @@
 package com.gentrepot.services;
 
 import com.gentrepot.models.Fournisseur;
+import com.gentrepot.utils.DataSource;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,14 +19,94 @@ import java.util.List;
  * @author oussema
  */
 public class ServiceFournisseur implements IService<Fournisseur>{
+        
+        
+    
+     Connection cnx = DataSource.getInstance().getCnx();
+
+    @Override
+    public void ajouter(Fournisseur t) {
+        try {
+            String requete = "INSERT INTO fournisseur (raisonSociale,numeroTelephone,adresse,adresseMail,matriculeFiscale,codePostale) VALUES (?,?,?,?,?,?)";
+            PreparedStatement pst = cnx.prepareStatement(requete);
+            pst.setString(1, t.getRaisonSociale());
+            pst.setInt(2, t.getNumeroTelephone());
+            pst.setString(3, t.getAdresse());
+            pst.setString(4, t.getAdresseMail());
+            pst.setString(5, t.getMatriculeFiscale());
+            pst.setInt(6, t.getCodePostale());
+            pst.executeUpdate();
+            System.out.println("Fournisseur ajouté !");
+
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+    }
+
+    @Override
+    public void supprimer(Fournisseur t) {
+         try {
+            String requete = "DELETE FROM personne WHERE id=?";
+            PreparedStatement pst = cnx.prepareStatement(requete);
+            pst.setInt(1, t.getId());
+            pst.executeUpdate();
+            System.out.println("Fournisseur supprimé !");
+
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+    }
+
+    @Override
+    public void modifier(Fournisseur t) {
+       try {
+            String requete = "UPDATE fournisseur SET raisonSociale=?,numeroTelephone=?,adresse=?,adresseMail=?,matriculeFiscale=?,codePostale=? WHERE id=?";
+            PreparedStatement pst = cnx.prepareStatement(requete);
+            pst.setInt(7, t.getId());
+            pst.setString(1, t.getRaisonSociale());
+            pst.setInt(2, t.getNumeroTelephone());
+            pst.setString(3, t.getAdresse());
+            pst.setString(4, t.getAdresseMail());
+            pst.setString(5, t.getMatriculeFiscale());
+            pst.setInt(6, t.getCodePostale());
+            pst.executeUpdate();
+            System.out.println("Fournisseur modifié !");
+
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        } 
+    }
+
     @Override
     public List<Fournisseur> afficher() {
-        
-        return new ArrayList<Fournisseur>();
-     
-    
+        List<Fournisseur> list = new ArrayList<>();
+
+        try {
+            String requete = "SELECT * FROM fournisseur";
+            PreparedStatement pst = cnx.prepareStatement(requete);
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                list.add(new Fournisseur(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getInt(7)));
+            }
+
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+
+        return list;
     }
-    public Fournisseur rechercher(List<Fournisseur> et, int in){
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      public Fournisseur rechercher(List<Fournisseur> et, int in){
         int a = 0;
         for(int i=0;i<et.size();i++){
             if(et.get(i).getId() == in){
@@ -29,20 +114,5 @@ public class ServiceFournisseur implements IService<Fournisseur>{
             }
         }
         return et.get(a);
-    }
-
-    @Override
-    public void ajouter(Fournisseur t) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void supprimer(Fournisseur t) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void modifier(Fournisseur t) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

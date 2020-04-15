@@ -7,7 +7,6 @@ package com.gentrepot.services;
 
 import com.gentrepot.models.BonLivraison;
 import com.gentrepot.models.CommandeVente;
-import com.gentrepot.models.LigneCommande;
 import com.gentrepot.utils.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -22,7 +21,7 @@ import java.util.List;
  */
 public class ServiceBonLivraison {
     
-    Connection cnx = DataSource.getInstance().getCnx();
+     Connection cnx = DataSource.getInstance().getCnx();
 
     public void ajouterBon(BonLivraison b) {
         try {
@@ -95,5 +94,6 @@ public class ServiceBonLivraison {
         }
 
     }
+    
     
 }

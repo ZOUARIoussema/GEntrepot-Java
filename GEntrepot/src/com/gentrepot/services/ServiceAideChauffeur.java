@@ -13,12 +13,16 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  *
  * @author oussema
  */
 public class ServiceAideChauffeur implements IService<AideChauffeur>{
+        
+        
     
     Connection cnx = DataSource.getInstance().getCnx();
 
@@ -57,16 +61,16 @@ public class ServiceAideChauffeur implements IService<AideChauffeur>{
         
     }
 
-    @Override
-    public void modifier(AideChauffeur A) {
+    
+    public void modifier(AideChauffeur A,String n,String p,String a) {
         
          try {
             String requete = "UPDATE aide_chauffeur SET nom=?,prenom=?,adresse=? WHERE cin=?";
             PreparedStatement pst = cnx.prepareStatement(requete);
             pst.setString(4, A.getCin());
-            pst.setString(1, A.getNom());
-            pst.setString(2, A.getPrenom());
-             pst.setString(3, A.getAdresse());
+            pst.setString(1,n);
+            pst.setString(2, p);
+             pst.setString(3, a);
             pst.executeUpdate();
             System.out.println("aidechauffeur modifiée !");
 
@@ -78,8 +82,8 @@ public class ServiceAideChauffeur implements IService<AideChauffeur>{
     }
 
     @Override
-    public List<AideChauffeur> afficher() {
-        
+    public ObservableList<AideChauffeur> afficher() {
+              ObservableList<AideChauffeur> c = FXCollections.observableArrayList();
         
           List<AideChauffeur> list = new ArrayList<>();
 
@@ -88,16 +92,21 @@ public class ServiceAideChauffeur implements IService<AideChauffeur>{
             PreparedStatement pst = cnx.prepareStatement(requete);
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
-                list.add(new AideChauffeur(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4)));
+                c.add(new AideChauffeur(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4)));
             }
 
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
         }
 
-        return list;
+        return c;
         
          
+    }
+
+    @Override
+    public void modifier(AideChauffeur t) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

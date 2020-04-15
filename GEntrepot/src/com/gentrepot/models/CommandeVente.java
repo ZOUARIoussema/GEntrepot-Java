@@ -23,10 +23,6 @@ public class CommandeVente {
     private double tauxRemise;
     private User user;
     private List<LigneCommande>ligneCommande;
-    
-    
-    
-    
 
     public CommandeVente(int id, double totalC, Date dateC, String etat, double tauxRemise, User user) {
         this.id = id;
@@ -37,6 +33,18 @@ public class CommandeVente {
         this.user = user;
         this.ligneCommande= new ArrayList<>();
     }
+
+      public CommandeVente() {
+        
+         this.ligneCommande= new ArrayList<>();
+        
+    }
+
+    public CommandeVente(int id) {
+        this.id = id;
+    }
+      
+         
 
     public CommandeVente( int id,double totalC, Date dateC, String etat, double tauxRemise) {
         this.totalC = totalC;
@@ -55,22 +63,6 @@ public class CommandeVente {
         this.etat = etat;
         this.tauxRemise = tauxRemise;
     }
-
-    public CommandeVente() {
-        
-         this.ligneCommande= new ArrayList<>();
-        
-    }
-
-    public CommandeVente(int id) {
-        this.id = id;
-    }
-
-    
-    
-    
-    
-    
     
     
     public int getId() {
@@ -125,15 +117,9 @@ public class CommandeVente {
         return ligneCommande;
     }
 
-    @Override
-    public String toString() {
-        return "CommandeVente{" + "id=" + id + ", totalC=" + totalC + ", dateC=" + dateC + ", etat=" + etat + ", tauxRemise=" + tauxRemise + ", user=" + user + ", ligneCommande=" + ligneCommande + '}';
-    }
-
     public void setLigneCommande(List<LigneCommande> ligneCommande) {
         this.ligneCommande = ligneCommande;
     }
-
     
     
     

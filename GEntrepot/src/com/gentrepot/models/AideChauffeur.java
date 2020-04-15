@@ -12,6 +12,7 @@ package com.gentrepot.models;
 public class AideChauffeur {
     
     
+     private int id;
     
     private String cin;
     private String nom;
@@ -24,8 +25,8 @@ public class AideChauffeur {
         this.prenom = prenom;
         this.adresse = adresse;
     }
-
-     
+    
+    
     
     
     
@@ -62,9 +63,12 @@ public class AideChauffeur {
         this.adresse = adresse;
     }
 
-    @Override
-    public String toString() {
-        return "AideChauffeur{" + "cin=" + cin + ", nom=" + nom + ", prenom=" + prenom + ", adresse=" + adresse + '}';
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
     
     

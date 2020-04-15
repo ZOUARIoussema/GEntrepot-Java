@@ -24,6 +24,10 @@ public class Perte {
         this.date = date;
         this.lignePertes=new ArrayList<>();
     }
+    
+    
+    
+     
     public Perte(String date) {
         this.date = date;
         //this.lignePertes=new ArrayList<>();
@@ -44,6 +48,8 @@ public class Perte {
     public void setDate(String date) {
         this.date = date;
     }
+
+    
 
     public List<LignePerte> getLignePertes() {
         return lignePertes;

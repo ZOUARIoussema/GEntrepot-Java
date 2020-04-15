@@ -25,6 +25,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -38,10 +39,20 @@ import javafx.util.Duration;
  */
 public class AuthentificationController implements Initializable {
 
+    //user global
+    
+    public static User userG=null;
+    
+    
     ServiceUser serviceUser = new ServiceUser();
     Stage primaryStage = new Stage();
     String code;
     User userNewPassword = null;
+    
+    
+    
+    
+    
 
     @FXML
     private Pane paneAjouterUser;
@@ -114,6 +125,8 @@ public class AuthentificationController implements Initializable {
         if (user != null) {
 
             System.out.println("correcte");
+            
+            userG=user;
 
             if (user.getRole().equals("Admin")) {
 
@@ -138,12 +151,39 @@ public class AuthentificationController implements Initializable {
                 System.out.println("achat");
 
                 ((Stage) this.btnValider.getScene().getWindow()).close();
+                
+                
+                
+                 try {
+
+                    AnchorPane root = (AnchorPane) FXMLLoader.load(getClass().getResource("/com/gentrepot/views/Acceuil.fxml"));
+                    Scene scene = new Scene(root);
+                    primaryStage.setScene(scene);
+                    primaryStage.setTitle("Menue Responsable Achat");
+                    primaryStage.show();
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                }
 
             }
 
             if (user.getRole().equals("Responsable Vente")) {
                 System.out.println("vente");
                 ((Stage) this.btnValider.getScene().getWindow()).close();
+                
+                
+                
+                
+                  try {
+
+                    BorderPane root = (BorderPane) FXMLLoader.load(getClass().getResource("/com/gentrepot/views/admin.fxml"));
+                    Scene scene = new Scene(root);
+                    primaryStage.setScene(scene);
+                    primaryStage.setTitle("Menue Vente");
+                    primaryStage.show();
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                }
 
             }
 
@@ -167,12 +207,55 @@ public class AuthentificationController implements Initializable {
             if (user.getRole().equals("Chef De Parc")) {
                 System.out.println("parc");
                 ((Stage) this.btnValider.getScene().getWindow()).close();
+                
+                
+                
+                try {
+
+                    AnchorPane root = (AnchorPane) FXMLLoader.load(getClass().getResource("/com/gentrepot/views/ChefParc.fxml"));
+                    Scene scene = new Scene(root);
+                    primaryStage.setScene(scene);
+                    primaryStage.setTitle("Menue Chef Parc : " + user.getUsername());
+                    primaryStage.show();
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                }
+                
 
             }
 
             if (user.getRole().equals("Client")) {
                 System.out.println("client");
                 ((Stage) this.btnValider.getScene().getWindow()).close();
+                
+                
+                  try {
+
+                    AnchorPane root = (AnchorPane) FXMLLoader.load(getClass().getResource("/com/gentrepot/views/menu.fxml"));
+                    Scene scene = new Scene(root);
+                    primaryStage.setScene(scene);
+                    primaryStage.setTitle("Ajouter Commande");
+                    primaryStage.show();
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                }
+
+            }
+
+            if (user.getRole().equals("Responsable Stockage")) {
+                System.out.println("Responsable Stockage");
+                ((Stage) this.btnValider.getScene().getWindow()).close();
+
+                try {
+
+                    AnchorPane root = (AnchorPane) FXMLLoader.load(getClass().getResource("/com/gentrepot/views/STOCKAGE.fxml"));
+                    Scene scene = new Scene(root);
+                    primaryStage.setScene(scene);
+                    primaryStage.setTitle("Menue stockage");
+                    primaryStage.show();
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                }
 
             }
 

@@ -27,8 +27,13 @@ public class FactureVente {
     
     private BonLivraison bonLivraison;
     
+    
+    /****ousssema****/
+    
     private  CheckBox checkBoxLettreRelance =new CheckBox();
     
+    
+    /*****///
 
     public FactureVente(int numeroF, Date dateCreation, Date dateEchaillancePaiement, double totalTTC, String etat, double totalPaye, double restePaye, double timbreFiscale, double fraisTransport, BonLivraison bonLivraison) {
         this.numeroF = numeroF;
@@ -42,8 +47,8 @@ public class FactureVente {
         this.fraisTransport = fraisTransport;
         this.bonLivraison = bonLivraison;
     }
-
-    public FactureVente(Date dateCreation, Date dateEchaillancePaiement, double totalTTC, String etat, double totalPaye, double restePaye, double timbreFiscale, double fraisTransport, BonLivraison bonLivraison) {
+    
+     public FactureVente(Date dateCreation, Date dateEchaillancePaiement, double totalTTC, String etat, double totalPaye, double restePaye, double timbreFiscale, double fraisTransport, BonLivraison bonLivraison) {
         this.dateCreation = dateCreation;
         this.dateEchaillancePaiement = dateEchaillancePaiement;
         this.totalTTC = totalTTC;
@@ -55,7 +60,27 @@ public class FactureVente {
         this.bonLivraison = bonLivraison;
     }
 
-    public FactureVente(Date dateCreation, Date dateEchaillancePaiement, double totalTTC, String etat, double totalPaye, double restePaye, double timbreFiscale, double fraisTransport) {
+
+    public FactureVente(int numeroF, Date dateCreation, Date dateEchaillancePaiement, double totalTTC, String etat) {
+        this.numeroF = numeroF;
+        this.dateCreation = dateCreation;
+        this.dateEchaillancePaiement = dateEchaillancePaiement;
+        this.totalTTC = totalTTC;
+        this.etat = etat;
+    }
+
+    public FactureVente(int numeroF, Date dateCreation, Date dateEchaillancePaiement, double totalTTC, String etat, double totalPaye, double restePaye) {
+        this.numeroF = numeroF;
+        this.dateCreation = dateCreation;
+        this.dateEchaillancePaiement = dateEchaillancePaiement;
+        this.totalTTC = totalTTC;
+        this.etat = etat;
+        this.totalPaye = totalPaye;
+        this.restePaye = restePaye;
+    }
+    
+    
+     public FactureVente(Date dateCreation, Date dateEchaillancePaiement, double totalTTC, String etat, double totalPaye, double restePaye, double timbreFiscale, double fraisTransport) {
         this.dateCreation = dateCreation;
         this.dateEchaillancePaiement = dateEchaillancePaiement;
         this.totalTTC = totalTTC;
@@ -65,6 +90,14 @@ public class FactureVente {
         this.timbreFiscale = timbreFiscale;
         this.fraisTransport = fraisTransport;
     }
+    
+
+    public FactureVente(int numeroF) {
+        this.numeroF = numeroF;
+    }
+    
+    
+    
 
     public int getNumeroF() {
         return numeroF;

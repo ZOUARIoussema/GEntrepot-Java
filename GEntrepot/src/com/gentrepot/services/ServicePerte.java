@@ -22,9 +22,12 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author rodrigue
+ * @author oussema
  */
 public class ServicePerte implements IService<Perte>{
+    
+    
+    
     Connection cnx = DataSource.getInstance().getCnx();
 
     @Override
@@ -125,6 +128,5 @@ public class ServicePerte implements IService<Perte>{
         return ca;
     
     }
-    
     
 }

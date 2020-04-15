@@ -12,6 +12,11 @@ package com.gentrepot.models;
 public class CategorieAchat {
     
     
+    public CategorieAchat(int id) {
+        this.id = id;
+    }
+    
+    
     private int id;
     private String nom;
 
@@ -19,6 +24,20 @@ public class CategorieAchat {
         this.id = id;
         this.nom = nom;
     }
+    
+
+    public CategorieAchat(String nom) {
+        this.nom = nom;
+    }
+
+    
+
+    @Override
+    public String toString() {
+        return "CategorieAchat{" + "id=" + id + ", nom=" + nom + '}';
+    }
+    
+    
 
     public int getId() {
         return id;

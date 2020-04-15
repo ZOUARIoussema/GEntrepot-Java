@@ -37,6 +37,13 @@ public class BonLivraison {
         this.commandeVente = commandeVente;
     }
 
+    public BonLivraison() {
+    }
+    
+    
+    
+      
+
     public int getId() {
         return id;
     }
@@ -66,7 +73,13 @@ public class BonLivraison {
         this.nom = nom;
         this.prenom = prenom;
     }
+    
+    
+    
+    
+    
 
+   
     public void setId(int id) {
         this.id = id;
     }

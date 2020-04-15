@@ -9,7 +9,7 @@ import java.util.List;
 
 /**
  *
- * @author rodrigue
+ * @author aissa
  * @param <T>
  */
 public interface IService<T> {

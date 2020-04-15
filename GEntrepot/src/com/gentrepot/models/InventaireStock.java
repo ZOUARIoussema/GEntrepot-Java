@@ -31,6 +31,8 @@ public class InventaireStock {
         this.ecart = ecart;
         this.quantiteTheorique = quantiteTheorique;
     }
+    
+    
      public InventaireStock(ProduitAchat produitAchat, Emplacement emplacement, String dateCreation, int qunatiteInventiare, int ecart, int quantiteTheorique) {
         
         this.produitAchat = produitAchat;
@@ -72,6 +74,8 @@ public class InventaireStock {
     public void setDateCreation(String dateCreation) {
         this.dateCreation = dateCreation;
     }
+
+    
 
     public int getQunatiteInventiare() {
         return qunatiteInventiare;

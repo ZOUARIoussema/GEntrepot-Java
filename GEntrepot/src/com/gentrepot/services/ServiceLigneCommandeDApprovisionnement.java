@@ -18,7 +18,10 @@ import java.util.List;
  *
  * @author oussema
  */
-public class ServiceLigneCommandeDApprovisionnement implements IService<LigneCommandeDApprovisionnement>{
+public class ServiceLigneCommandeDApprovisionnement   implements IService<LigneCommandeDApprovisionnement>{
+        
+        
+        
     Connection cnx = DataSource.getInstance().getCnx();
 
     @Override
@@ -80,5 +83,4 @@ public class ServiceLigneCommandeDApprovisionnement implements IService<LigneCom
         return list;
     
     }
-    
 }

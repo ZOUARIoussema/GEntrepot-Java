@@ -147,7 +147,7 @@ public class AdminController implements Initializable {
          *
          * ajouter button
          */
-        TableColumn<BonLivraison, Void> colBtn = new TableColumn("Action");
+         TableColumn<BonLivraison, Void> colBtn = new TableColumn("Action");
 
         Callback<TableColumn<BonLivraison, Void>, TableCell<BonLivraison, Void>> cellFactory = new Callback<TableColumn<BonLivraison, Void>, TableCell<BonLivraison, Void>>() {
             @Override
@@ -197,7 +197,7 @@ public class AdminController implements Initializable {
         colBtn.setCellFactory(cellFactory);
 
         tableviewBon.getColumns().add(colBtn);
-
+ 
     }
 
     @FXML

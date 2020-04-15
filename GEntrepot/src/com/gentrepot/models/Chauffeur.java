@@ -12,6 +12,8 @@ package com.gentrepot.models;
 public class Chauffeur {
     
     
+     private int id;
+    
     private String cin;
     private String nom;
     private String prenom;
@@ -74,6 +76,14 @@ public class Chauffeur {
 
     public void setEtat(String etat) {
         this.etat = etat;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
     
     

@@ -6,7 +6,6 @@
 package com.gentrepot.services;
 
 import com.gentrepot.models.Entrepot;
-import com.gentrepot.models.Perte;
 import com.gentrepot.utils.DataSource;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -20,6 +19,9 @@ import java.util.List;
  * @author oussema
  */
 public class ServiceEntrepot implements IService<Entrepot>{
+    
+    
+    
     Connection cnx = DataSource.getInstance().getCnx();
 
     @Override
@@ -89,5 +91,6 @@ public class ServiceEntrepot implements IService<Entrepot>{
         }
         return l.get(a);
     }
+    
     
 }

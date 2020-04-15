@@ -207,7 +207,7 @@ public class ServiceReglementFournisseurEspece implements IService<ReglementFour
         double total = 0;
 
         try {
-            String requete = "SELECT sum(montant) FROM reglement_fournisseur_espece where date_creation=?";
+            String requete = "SELECT round( sum(montant),3) FROM reglement_fournisseur_espece where date_creation=?";
             PreparedStatement pst = cnx.prepareStatement(requete);
             pst.setDate(1, new java.sql.Date(new java.util.Date().getTime()));
             ResultSet rs = pst.executeQuery();

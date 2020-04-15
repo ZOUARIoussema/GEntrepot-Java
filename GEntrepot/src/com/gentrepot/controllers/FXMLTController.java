@@ -3,37 +3,23 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pidev.views;
+package com.gentrepot.controllers;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.Pane;
 
 /**
  * FXML Controller class
  *
- * @author LENOVO
+ * @author oussema
  */
-public class PanierController implements Initializable {
+public class FXMLTController implements Initializable {
 
     @FXML
-    private TableView<?> tabpanier;
-    @FXML
-    private Label prix_total;
-    @FXML
-    private Button valider;
-    @FXML
-    private TextField adresse;
-    @FXML
-    private Pane retour;
-    @FXML
-    private Pane history;
+    private Button btn;
 
     /**
      * Initializes the controller class.

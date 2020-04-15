@@ -24,6 +24,9 @@ public class LignePerte {
         this.quantite = quantite;
         this.raisonPerte = raisonPerte;
     }
+    
+    
+    
     public LignePerte(Perte perte, ProduitAchat produitAchat, int quantite, String raisonPerte) {
         
         this.perte = perte;

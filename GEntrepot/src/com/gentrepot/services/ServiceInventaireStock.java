@@ -5,7 +5,6 @@
  */
 package com.gentrepot.services;
 
-import com.gentrepot.models.Emplacement;
 import com.gentrepot.models.InventaireStock;
 import com.gentrepot.utils.DataSource;
 import java.sql.Connection;
@@ -25,7 +24,10 @@ import java.util.logging.Logger;
  *
  * @author oussema
  */
-public class ServiceInventaireStock implements IService<InventaireStock>{
+public class ServiceInventaireStock   implements IService<InventaireStock>{
+        
+        
+       
     Connection cnx = DataSource.getInstance().getCnx();
 
     @Override
@@ -121,5 +123,6 @@ public class ServiceInventaireStock implements IService<InventaireStock>{
         }
         return null;
     }
+    
     
 }

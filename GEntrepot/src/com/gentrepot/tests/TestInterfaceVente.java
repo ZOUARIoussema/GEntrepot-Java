@@ -25,8 +25,8 @@ public class TestInterfaceVente extends Application {
         
         try {
 
-           // AnchorPane root = (AnchorPane) FXMLLoader.load(getClass().getResource("/com/gentrepot/views/menu.fxml"));
-          BorderPane root = (BorderPane) FXMLLoader.load(getClass().getResource("/com/gentrepot/views/admin.fxml"));
+         //   AnchorPane root = (AnchorPane) FXMLLoader.load(getClass().getResource("/com/gentrepot/views/menu.fxml"));
+           BorderPane root = (BorderPane) FXMLLoader.load(getClass().getResource("/com/gentrepot/views/Admin.fxml"));
 
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);

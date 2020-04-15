@@ -24,8 +24,14 @@ import java.util.logging.Logger;
  *
  * @author oussema
  */
-public class ServiceCommandeDApprovisionnment implements IService<CommandeDApprovisionnement>{
+public class ServiceCommandeDApprovisionnment implements IService<CommandeDApprovisionnement> {
+    
     Connection cnx = DataSource.getInstance().getCnx();
+    
+    
+    
+    
+    
 
     @Override
     public void ajouter(CommandeDApprovisionnement ca) {
@@ -136,7 +142,20 @@ public class ServiceCommandeDApprovisionnment implements IService<CommandeDAppro
         return l.get(a);
     }
     
-    Connection cnx = DataSource.getInstance().getCnx();
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     /*oussema*/
     
@@ -158,11 +177,7 @@ public class ServiceCommandeDApprovisionnment implements IService<CommandeDAppro
     }
     
     
-    
-    
-    
-    
-    
+     
     
     /***************/
     

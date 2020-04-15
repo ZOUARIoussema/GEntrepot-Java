@@ -5,8 +5,6 @@
  */
 package com.gentrepot.models;
 
-import java.util.Objects;
-
 /**
  *
  * @author oussema
@@ -54,7 +52,8 @@ public class ProduitAchat {
     public ProduitAchat(String reference) {
         this.reference = reference;
     }
-
+    
+     
     public ProduitAchat(String reference, String libelle, int quantiteStock,double prix) {
         this.reference = reference;
         this.libelle = libelle;
@@ -83,6 +82,7 @@ public class ProduitAchat {
         this.reference = reference;
         this.libelle = libelle;
     }
+    
 
     public String getReference() {
         return reference;
@@ -218,30 +218,6 @@ public class ProduitAchat {
 
     public void setSousCategorieAchat(SousCategorieAchat sousCategorieAchat) {
         this.sousCategorieAchat = sousCategorieAchat;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 3;
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final ProduitAchat other = (ProduitAchat) obj;
-        if (!Objects.equals(this.reference, other.reference)) {
-            return false;
-        }
-        return true;
     }
     
     

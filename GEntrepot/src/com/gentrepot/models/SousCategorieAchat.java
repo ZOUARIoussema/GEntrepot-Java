@@ -11,6 +11,14 @@ package com.gentrepot.models;
  */
 public class SousCategorieAchat {
 
+    public SousCategorieAchat(int id) {
+        this.id = id;
+    }
+
+    public SousCategorieAchat(String nom) {
+        this.nom = nom;
+    }
+
     private int id;
     private String nom;
     private CategorieAchat categorieAchat;
@@ -21,6 +29,25 @@ public class SousCategorieAchat {
         this.categorieAchat = categorieAchat;
     }
 
+    public SousCategorieAchat(String nom, CategorieAchat categorieAchat) {
+        this.nom = nom;
+        this.categorieAchat = categorieAchat;
+    }
+
+    public SousCategorieAchat(int id, String nom) {
+        this.id = id;
+        this.nom = nom;
+    }
+    
+    
+
+    @Override
+    public String toString() {
+        return "SousCategorieAchat{" + "id=" + id + ", nom=" + nom + ", categorieAchat=" + categorieAchat + '}';
+    }
+
+    
+    
     public int getId() {
         return id;
     }

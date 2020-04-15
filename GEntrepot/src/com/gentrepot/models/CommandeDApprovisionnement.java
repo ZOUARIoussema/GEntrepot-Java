@@ -51,6 +51,10 @@ public class CommandeDApprovisionnement {
     public CommandeDApprovisionnement(int numeroC) {
         this.numeroC = numeroC;
     }
+
+    
+    
+     
     public CommandeDApprovisionnement(double totalC, String dateCreation, String etat, double tauxRemise, double totalTva, Fournisseur fournisseur) {
         this.totalC = totalC;
         this.dateCreation = dateCreation;
@@ -61,6 +65,8 @@ public class CommandeDApprovisionnement {
         this.ligneCommandeDApprovisionnements= new ArrayList<>();
     }
        
+    
+    
     
     public int getNumeroC() {
         return numeroC;
@@ -86,6 +92,9 @@ public class CommandeDApprovisionnement {
         this.dateCreation = dateCreation;
     }
 
+    
+    
+    
     public String getEtat() {
         return etat;
     }

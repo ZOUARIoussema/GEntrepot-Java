@@ -7,9 +7,7 @@ package com.gentrepot.controllers;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 
 /**
  * FXML Controller class
@@ -17,9 +15,6 @@ import javafx.scene.control.Button;
  * @author LENOVO
  */
 public class MerciController implements Initializable {
-
-    @FXML
-    private Button btn;
 
     /**
      * Initializes the controller class.

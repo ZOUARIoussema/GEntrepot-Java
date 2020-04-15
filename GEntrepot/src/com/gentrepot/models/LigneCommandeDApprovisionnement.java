@@ -31,6 +31,9 @@ public class LigneCommandeDApprovisionnement {
         this.tva = tva;
         this.refP=produitAchat.getReference();
     }
+
+    
+      
     public LigneCommandeDApprovisionnement(CommandeDApprovisionnement commandeDApprovisionnement, ProduitAchat produitAchat, double prix, int quantite, double total, double tva) {
         this.commandeDApprovisionnement = commandeDApprovisionnement;
         this.produitAchat = produitAchat;
@@ -39,9 +42,6 @@ public class LigneCommandeDApprovisionnement {
         this.total = total;
         this.tva = tva;
     }
-
-    
-    
     
     
     

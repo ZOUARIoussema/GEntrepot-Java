@@ -19,7 +19,12 @@ import java.util.List;
  *
  * @author oussema
  */
-public class ServiceEmplacement implements IService<Emplacement>{
+public class ServiceEmplacement  implements IService<Emplacement>{
+    
+    
+    
+    
+   
     Connection cnx = DataSource.getInstance().getCnx();
 
     @Override

@@ -15,16 +15,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
  * @author oussema
  */
 public class ServiceLigneCommande {
-
-    Connection cnx = DataSource.getInstance().getCnx();
+    
+    
+     Connection cnx = DataSource.getInstance().getCnx();
 
     public void ajouter(LigneCommande l) {
         try {
@@ -120,5 +119,5 @@ public class ServiceLigneCommande {
 
         return liste;
     }
-
+    
 }

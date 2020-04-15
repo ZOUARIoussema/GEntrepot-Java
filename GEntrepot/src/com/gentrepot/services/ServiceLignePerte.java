@@ -12,14 +12,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 /**
  *
  * @author oussema
  */
-public class ServiceLignePerte implements IService<LignePerte>{
+public class ServiceLignePerte  implements IService<LignePerte>{
+        
+       
     Connection cnx = DataSource.getInstance().getCnx();
 
     @Override

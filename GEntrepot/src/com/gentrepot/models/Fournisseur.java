@@ -11,22 +11,30 @@ package com.gentrepot.models;
  */
 public class Fournisseur {
     
-    
     private int id;
     private String raisonSociale;
     private int numeroTelephone;
     private String adresse;
     private String adresseMail;
-    private String matriuleFiscale;
+    private String matriculeFiscale;
     private int codePostale;
 
-    public Fournisseur(int id, String raisonSociale, int numeroTelephone, String adresse, String adresseMail, String matriuleFiscale, int codePostale) {
+    public Fournisseur(int id, String raisonSociale, int numeroTelephone, String adresse, String adresseMail, String matriculeFiscale, int codePostale) {
         this.id = id;
         this.raisonSociale = raisonSociale;
         this.numeroTelephone = numeroTelephone;
         this.adresse = adresse;
         this.adresseMail = adresseMail;
-        this.matriuleFiscale = matriuleFiscale;
+        this.matriculeFiscale = matriculeFiscale;
+        this.codePostale = codePostale;
+    }
+
+    public Fournisseur(String raisonSociale, int numeroTelephone, String adresse, String adresseMail, String matriculeFiscale, int codePostale) {
+        this.raisonSociale = raisonSociale;
+        this.numeroTelephone = numeroTelephone;
+        this.adresse = adresse;
+        this.adresseMail = adresseMail;
+        this.matriculeFiscale = matriculeFiscale;
         this.codePostale = codePostale;
     }
 
@@ -80,12 +88,12 @@ public class Fournisseur {
         this.adresseMail = adresseMail;
     }
 
-    public String getMatriuleFiscale() {
-        return matriuleFiscale;
+    public String getMatriculeFiscale() {
+        return matriculeFiscale;
     }
 
-    public void setMatriuleFiscale(String matriuleFiscale) {
-        this.matriuleFiscale = matriuleFiscale;
+    public void setMatriculeFiscale(String matriculeFiscale) {
+        this.matriculeFiscale = matriculeFiscale;
     }
 
     public int getCodePostale() {
@@ -95,6 +103,12 @@ public class Fournisseur {
     public void setCodePostale(int codePostale) {
         this.codePostale = codePostale;
     }
+
+    @Override
+    public String toString() {
+        return "Fournisseur{" + "id=" + id + ", raisonSociale=" + raisonSociale + ", numeroTelephone=" + numeroTelephone + ", adresse=" + adresse + ", adresseMail=" + adresseMail + ", matriculeFiscale=" + matriculeFiscale + ", codePostale=" + codePostale + '}';
+    }
+    
     
     
     

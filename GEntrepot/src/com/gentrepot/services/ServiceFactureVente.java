@@ -5,7 +5,7 @@
  */
 package com.gentrepot.services;
 
-import com.gentrepot.models.BonLivraison;
+import com.gentrepot.models.FactureAchat;
 import com.gentrepot.models.FactureVente;
 import com.gentrepot.utils.DataSource;
 import java.sql.Connection;
@@ -13,6 +13,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -20,7 +21,12 @@ import java.util.List;
  * @author oussema
  */
 public class ServiceFactureVente {
-     
+    
+    
+    
+    
+    
+    
     Connection cnx = DataSource.getInstance().getCnx();
 
     public void ajouterFactureV(FactureVente fv) {
@@ -79,4 +85,90 @@ public class ServiceFactureVente {
         return facture;
 
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    /***ousema***/
+   
+    
+    
+     public void modifierParRecouvrement(FactureVente f) {
+
+        try {
+            String requete = "update facture_vente  set etat=?,total_paye=?,reste_apaye=? where id=?  ";
+
+            PreparedStatement pst = cnx.prepareStatement(requete);
+            pst.setString(1, f.getEtat());
+            pst.setDouble(2, f.getTotalPaye());
+            pst.setDouble(3, f.getRestePaye());
+
+            pst.setInt(4, f.getNumeroF());
+
+            pst.executeUpdate();
+            System.out.println("Facture vente  modifiée !");
+
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+
+    }
+     
+     
+      public double totalVenteParAnneSysteme() {
+
+        double total = 0;
+
+        try {
+            String requete = "SELECT round( sum(total_ttc),3) FROM `facture_vente` WHERE YEAR(`date_creation`)=year(sysdate())";
+            PreparedStatement pst = cnx.prepareStatement(requete);
+           
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+
+                total = rs.getDouble(1);
+            }
+
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+
+        return total;
+
+    }
+      
+      public double totalPayerParAnneSysteme() {
+
+        double total = 0;
+
+        try {
+            String requete = "SELECT round( sum(total_paye),3) FROM `facture_vente` WHERE YEAR(`date_creation`)=year(sysdate())";
+            PreparedStatement pst = cnx.prepareStatement(requete);
+            
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+
+                total = rs.getDouble(1);
+            }
+
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+
+        return total;
+
+    }
+     /***    *************  ****/
+    
+    
 }

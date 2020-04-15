@@ -182,7 +182,7 @@ public class ServiceFactureAchat implements IService<FactureAchat> {
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
 
-                CommandeDApprovisionnement c = new CommandeDApprovisionnement(rs.getInt(2), rs.getDouble(3), rs.getDate(4), rs.getString(5), rs.getDouble(6), rs.getDouble(7), new Fournisseur(rs.getInt(1)));
+                CommandeDApprovisionnement c = new CommandeDApprovisionnement(rs.getInt(2), rs.getDouble(3), rs.getString(4), rs.getString(5), rs.getDouble(6), rs.getDouble(7), new Fournisseur(rs.getInt(1)));
 
                 list.add(c);
 
@@ -254,7 +254,7 @@ public class ServiceFactureAchat implements IService<FactureAchat> {
         double total = 0;
 
         try {
-            String requete = "SELECT sum(total_ttc) FROM `facture_achat` WHERE YEAR(`date_creation`)=year(sysdate())";
+            String requete = "SELECT  round( sum(total_ttc),3) FROM `facture_achat` WHERE YEAR(`date_creation`)=year(sysdate())";
             PreparedStatement pst = cnx.prepareStatement(requete);
 
             ResultSet rs = pst.executeQuery();
@@ -276,7 +276,7 @@ public class ServiceFactureAchat implements IService<FactureAchat> {
         double total = 0;
 
         try {
-            String requete = "SELECT sum(total_paye) FROM `facture_achat` WHERE YEAR(`date_creation`)=year(sysdate())";
+            String requete = "SELECT round( sum(total_paye),3) FROM `facture_achat` WHERE YEAR(`date_creation`)=year(sysdate())";
             PreparedStatement pst = cnx.prepareStatement(requete);
 
             ResultSet rs = pst.executeQuery();

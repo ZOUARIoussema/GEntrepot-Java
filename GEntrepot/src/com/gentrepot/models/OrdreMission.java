@@ -20,7 +20,7 @@ public class OrdreMission {
     private Vehicule vehicule;
     private Chauffeur chauffeur;
     private AideChauffeur aideChauffeur;
-    private Date dateCeation;
+    private Date dateCreation;
     private Date dateSortie;
     private Date dateRetour;
     
@@ -31,10 +31,44 @@ public class OrdreMission {
         this.vehicule = vehicule;
         this.chauffeur = chauffeur;
         this.aideChauffeur = aideChauffeur;
-        this.dateCeation = dateCeation;
+        this.dateCreation = dateCeation;
         this.dateSortie = dateSortie;
         this.dateRetour = dateRetour;
         this.bonLivraisons=new ArrayList<>();
+    }
+    
+    
+    
+     public OrdreMission(int id, Vehicule vehicule, Chauffeur chauffeur, AideChauffeur aideChauffeur, Date dateCreation, Date dateSortie, Date dateRetour, List<BonLivraison> bonLivraisons) {
+        this.id = id;
+        this.vehicule = vehicule;
+        this.chauffeur = chauffeur;
+        this.aideChauffeur = aideChauffeur;
+        this.dateCreation = dateCreation;
+        this.dateSortie = dateSortie;
+        this.dateRetour = dateRetour;
+        this.bonLivraisons = bonLivraisons;
+    }
+
+    public OrdreMission(Vehicule vehicule, Chauffeur chauffeur, AideChauffeur aideChauffeur, Date dateCreation, Date dateSortie, Date dateRetour, List<BonLivraison> bonLivraisons) {
+        this.vehicule = vehicule;
+        this.chauffeur = chauffeur;
+        this.aideChauffeur = aideChauffeur;
+        this.dateCreation = dateCreation;
+        this.dateSortie = dateSortie;
+        this.dateRetour = dateRetour;
+        this.bonLivraisons = bonLivraisons;
+    }
+
+    
+
+    public OrdreMission(Vehicule vehicule, Chauffeur chauffeur, Date dateCreation, Date dateSortie, Date dateRetour) {
+        this.vehicule = vehicule;
+        this.chauffeur = chauffeur;
+        this.dateCreation = dateCreation;
+        this.dateSortie = dateSortie;
+        this.dateRetour = dateRetour;
+
     }
 
     public int getId() {
@@ -69,12 +103,12 @@ public class OrdreMission {
         this.aideChauffeur = aideChauffeur;
     }
 
-    public Date getDateCeation() {
-        return dateCeation;
+    public Date getDateCreation() {
+        return dateCreation;
     }
 
-    public void setDateCeation(Date dateCeation) {
-        this.dateCeation = dateCeation;
+    public void setDateCreation(Date dateCreation) {
+        this.dateCreation = dateCreation;
     }
 
     public Date getDateSortie() {
@@ -100,6 +134,12 @@ public class OrdreMission {
     public void setBonLivraisons(List<BonLivraison> bonLivraisons) {
         this.bonLivraisons = bonLivraisons;
     }
+    
+    
+
+     
+    
+    
     
     
     

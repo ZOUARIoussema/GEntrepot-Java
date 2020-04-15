@@ -17,7 +17,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="904.0" prefWidth="1303.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gentrepot.controllers.AdminController">
+<BorderPane prefHeight="904.0" prefWidth="1319.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gentrepot.controllers.AdminController">
    <center>
       <AnchorPane id="AnchorPane" prefHeight="414.0" prefWidth="620.0" styleClass="mainFxmlClass">
           <stylesheets>
@@ -63,34 +63,6 @@
                         </Label>
                      </children>
                   </Pane>
-                  <Pane fx:id="paneCommande" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #fff;">
-                     <children>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#0061b4" height="185.0" layoutX="-93.0" layoutY="69.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1082.0">
-                           <effect>
-                              <DropShadow />
-                           </effect>
-                        </Rectangle>
-                        <TableView fx:id="tableViewCommande" layoutX="46.0" layoutY="274.0" prefHeight="614.0" prefWidth="886.0">
-                           <columns>
-                              <TableColumn fx:id="col_total" prefWidth="220.0" text="Total" />
-                              <TableColumn fx:id="col_date" prefWidth="158.0" text="Date" />
-                              <TableColumn fx:id="col_taux" minWidth="0.0" prefWidth="198.0" text="Taux de remise" />
-                              <TableColumn fx:id="col_etat" minWidth="0.0" prefWidth="78.0" text="Etat" />
-                              <TableColumn fx:id="col_user" minWidth="0.0" prefWidth="231.0" text="User" />
-                           </columns>
-                        </TableView>
-                        <Label layoutX="32.0" layoutY="162.0" prefHeight="18.0" prefWidth="138.0" text="/home/commandes" textFill="WHITE">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <Label layoutX="32.0" layoutY="182.0" text="Commandes" textFill="WHITE">
-                           <font>
-                              <Font size="37.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </Pane>
                   <Pane fx:id="paneBL" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #fff;">
                      <children>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#0061b4" height="185.0" layoutX="-93.0" layoutY="69.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1082.0">
@@ -117,6 +89,34 @@
                               <TableColumn fx:id="col_prenom" prefWidth="106.0" text="prenom" />
                           </columns>
                         </TableView>
+                     </children>
+                  </Pane>
+                  <Pane fx:id="paneCommande" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #fff;">
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#0061b4" height="185.0" layoutX="-93.0" layoutY="69.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1082.0">
+                           <effect>
+                              <DropShadow />
+                           </effect>
+                        </Rectangle>
+                        <TableView fx:id="tableViewCommande" layoutX="46.0" layoutY="274.0" prefHeight="614.0" prefWidth="886.0">
+                           <columns>
+                              <TableColumn fx:id="col_total" prefWidth="220.0" text="Total" />
+                              <TableColumn fx:id="col_date" prefWidth="158.0" text="Date" />
+                              <TableColumn fx:id="col_taux" minWidth="0.0" prefWidth="198.0" text="Taux de remise" />
+                              <TableColumn fx:id="col_etat" minWidth="0.0" prefWidth="78.0" text="Etat" />
+                              <TableColumn fx:id="col_user" minWidth="0.0" prefWidth="231.0" text="User" />
+                           </columns>
+                        </TableView>
+                        <Label layoutX="32.0" layoutY="162.0" prefHeight="18.0" prefWidth="138.0" text="/home/commandes" textFill="WHITE">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="32.0" layoutY="182.0" text="Commandes" textFill="WHITE">
+                           <font>
+                              <Font size="37.0" />
+                           </font>
+                        </Label>
                      </children>
                   </Pane>
                   <Pane fx:id="paneStatistique" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #fff;">
