@@ -41,6 +41,32 @@ public class BonLivraison {
         return id;
     }
 
+    public BonLivraison(int id, String adresseLivraison, String etat, Date dateCreation, String nom, String prenom) {
+        this.id = id;
+        this.adresseLivraison = adresseLivraison;
+        this.etat = etat;
+        this.dateCreation = dateCreation;
+        this.nom = nom;
+        this.prenom = prenom;
+    }
+
+    public BonLivraison(String adresseLivraison, String etat, Date dateCreation, String nom, String prenom, CommandeVente commandeVente) {
+        this.adresseLivraison = adresseLivraison;
+        this.etat = etat;
+        this.dateCreation = dateCreation;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.commandeVente = commandeVente;
+    }
+
+    public BonLivraison(String adresseLivraison, String etat, Date dateCreation, String nom, String prenom) {
+        this.adresseLivraison = adresseLivraison;
+        this.etat = etat;
+        this.dateCreation = dateCreation;
+        this.nom = nom;
+        this.prenom = prenom;
+    }
+
     public void setId(int id) {
         this.id = id;
     }

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import java.net.URL?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="720.0" prefWidth="1101.0" style="-fx-background-color: #E8EAF6;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gentrepot.controllers.AjouterBLController">
+    <stylesheets>
+        <URL value="@ajouterbl.css" />
+    </stylesheets>
+   <children>
+      <TableView fx:id="tableViewCommande" layoutX="46.0" layoutY="67.0" onMouseClicked="#selectCommande" prefHeight="540.0" prefWidth="1010.0">
+        <columns>
+          <TableColumn fx:id="col_total" prefWidth="213.0" text="Total" />
+          <TableColumn fx:id="col_date" prefWidth="305.0" text="Date" />
+            <TableColumn fx:id="col_taux" minWidth="0.0" prefWidth="290.0" text="Taux de remise" />
+            <TableColumn fx:id="col_etat" minWidth="0.0" prefWidth="201.0" text="Etat" />
+        </columns>
+      </TableView>
+      <Label layoutX="396.0" layoutY="14.0" prefHeight="45.0" prefWidth="310.0" text="Liste des commandes" textFill="#2c4ca0">
+         <font>
+            <Font name="Arial Bold" size="29.0" />
+         </font></Label>
+      <JFXButton fx:id="btnLivrer" layoutX="345.0" layoutY="621.0" onAction="#afficherInterfaceLivreer" prefHeight="35.0" prefWidth="102.0" ripplerFill="WHITE" style="-fx-background-color: #2762ab; -fx-background-radius: 100;" text="Livrer" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="14.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="btnDetails" layoutX="655.0" layoutY="621.0" onAction="#afficherInterfaceDetails" prefHeight="35.0" prefWidth="102.0" ripplerFill="WHITE" style="-fx-background-color: #2762ab; -fx-background-radius: 100;" text="Details" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="14.0" />
+         </font>
+      </JFXButton>
+   </children>
+</AnchorPane>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="689.0" prefWidth="1091.0" style="-fx-background-color: #ffff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gentrepot.controllers.ValidationBController">
+     <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2762ab" height="699.0" layoutX="-7.0" layoutY="-3.0" stroke="WHITE" strokeType="INSIDE" width="530.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="561.0" layoutX="218.0" layoutY="53.0" stroke="BLACK" strokeType="INSIDE" width="667.0">
+         <effect>
+            <DropShadow />
+         </effect>
+      </Rectangle>
+      <Label layoutX="228.0" layoutY="160.0" prefHeight="30.0" prefWidth="60.0" text="Nom">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Label>
+      <Label layoutX="232.0" layoutY="286.0" prefHeight="47.0" prefWidth="89.0" text="Prenom" textAlignment="JUSTIFY">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Label>
+      <Label layoutX="232.0" layoutY="392.0" prefHeight="47.0" prefWidth="243.0" text="Adresse de Livraison">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Label>
+      <JFXTextField fx:id="text_nom" focusColor="#2762ab" layoutX="523.0" layoutY="165.0" prefHeight="25.0" prefWidth="349.0" unFocusColor="BLACK">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField fx:id="text_adress" focusColor="#2762ab" layoutX="526.0" layoutY="403.0" prefHeight="25.0" prefWidth="349.0" />
+      <JFXTextField fx:id="text_prenom" focusColor="#2762ab" layoutX="526.0" layoutY="286.0" prefHeight="25.0" prefWidth="349.0" />
+      <JFXButton fx:id="btnValider" layoutX="440.0" layoutY="510.0" onAction="#ValiderBL" prefHeight="35.0" prefWidth="225.0" ripplerFill="WHITE" style="-fx-background-color: #2762ab; -fx-background-radius: 100;" text="Valider" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font>
+         <effect>
+            <DropShadow />
+         </effect>
+      </JFXButton>
+      <Label layoutX="455.0" layoutY="65.0" prefHeight="57.0" prefWidth="243.0" text="Bon de livraison" textFill="#2762ab">
+         <font>
+            <Font name="System Bold" size="26.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
