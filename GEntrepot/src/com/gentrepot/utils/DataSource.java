@@ -25,7 +25,7 @@ public class DataSource {
     private DataSource() {
         try {
             cnx = DriverManager.getConnection(URL, LOGIN, PASSWORD);
-            System.out.println("Conncting !");
+            System.out.println("Connecting !");
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
         }

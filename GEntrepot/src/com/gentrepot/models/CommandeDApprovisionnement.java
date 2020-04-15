@@ -19,7 +19,7 @@ public class CommandeDApprovisionnement {
     
     private int numeroC;
     private double totalC;
-    private Date dateCreation;
+    private String dateCreation;
     private String etat;
     private double tauxRemise;
     private double totalTva;
@@ -36,7 +36,7 @@ public class CommandeDApprovisionnement {
     
     
 
-    public CommandeDApprovisionnement(int numeroC, double totalC, Date dateCreation, String etat, double tauxRemise, double totalTva, Fournisseur fournisseur) {
+    public CommandeDApprovisionnement(int numeroC, double totalC, String dateCreation, String etat, double tauxRemise, double totalTva, Fournisseur fournisseur) {
         this.numeroC = numeroC;
         this.totalC = totalC;
         this.dateCreation = dateCreation;
@@ -51,12 +51,16 @@ public class CommandeDApprovisionnement {
     public CommandeDApprovisionnement(int numeroC) {
         this.numeroC = numeroC;
     }
-
-    
-    
-    
-    
-    
+    public CommandeDApprovisionnement(double totalC, String dateCreation, String etat, double tauxRemise, double totalTva, Fournisseur fournisseur) {
+        this.totalC = totalC;
+        this.dateCreation = dateCreation;
+        this.etat = etat;
+        this.tauxRemise = tauxRemise;
+        this.totalTva = totalTva;
+        this.fournisseur = fournisseur;
+        this.ligneCommandeDApprovisionnements= new ArrayList<>();
+    }
+       
     
     public int getNumeroC() {
         return numeroC;
@@ -74,11 +78,11 @@ public class CommandeDApprovisionnement {
         this.totalC = totalC;
     }
 
-    public Date getDateCreation() {
+    public String getDateCreation() {
         return dateCreation;
     }
 
-    public void setDateCreation(Date dateCreation) {
+    public void setDateCreation(String dateCreation) {
         this.dateCreation = dateCreation;
     }
 

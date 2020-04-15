@@ -16,13 +16,17 @@ import java.util.List;
 public class Perte {
 
     private int id;
-    private Date date;
+    private String date;
     private List<LignePerte>lignePertes;
 
-    public Perte(int id, Date date) {
+    public Perte(int id, String date) {
         this.id = id;
         this.date = date;
         this.lignePertes=new ArrayList<>();
+    }
+    public Perte(String date) {
+        this.date = date;
+        //this.lignePertes=new ArrayList<>();
     }
 
     public int getId() {
@@ -33,11 +37,11 @@ public class Perte {
         this.id = id;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 

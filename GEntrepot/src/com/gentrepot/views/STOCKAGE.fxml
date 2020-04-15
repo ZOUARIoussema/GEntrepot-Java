@@ -1,0 +1,504 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gentrepot.controllers.STOCKAGEController">
+   <children>
+      <AnchorPane id="head" layoutY="-1.0" prefHeight="76.0" prefWidth="913.0" style="-fx-background-color: #FFA219;">
+         <children>
+            <MenuButton id="param" layoutX="838.0" layoutY="25.0" mnemonicParsing="false" style="-fx-background-color: #FFA219;" text="Guifo">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Action 1" />
+                <MenuItem mnemonicParsing="false" text="Action 2" />
+              </items>
+            </MenuButton>
+            <Label layoutX="9.0" layoutY="-6.0" prefHeight="59.0" prefWidth="32.0" text="G">
+               <font>
+                  <Font size="46.0" />
+               </font>
+            </Label>
+            <Label layoutX="39.0" layoutY="28.0" text="ENTREPOT">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="25.0" layoutY="54.0" text="Make Tasks Easier">
+               <font>
+                  <Font name="System Italic" size="12.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <SplitPane dividerPositions="0.25041736227045075" layoutY="80.0" prefHeight="520.0" prefWidth="913.0">
+        <items>
+          <AnchorPane id="side" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #2A3D51;">
+               <children>
+                  <VBox layoutX="16.0" layoutY="55.0" prefHeight="463.0" prefWidth="191.0">
+                     <children>
+                        <MenuButton mnemonicParsing="false" prefHeight="59.0" prefWidth="191.0" style="-fx-background-color: #2A3D51;" text="Commandes Approvisionnement" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="25.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@image/truck-16.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <items>
+                              <MenuItem fx:id="effectuerCommande" mnemonicParsing="false" onAction="#effectuerCommande" text="Effectuer" />
+                              <MenuItem fx:id="chercherCommande" mnemonicParsing="false" onAction="#chercherCommande" text="Chercher" />
+                           </items>
+                        </MenuButton>
+                        <MenuButton mnemonicParsing="false" prefHeight="59.0" prefWidth="191.0" style="-fx-background-color: #2A3D51;" text="Emplacement" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="25.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@image/map-marker-2-16.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <items>
+                              <MenuItem fx:id="creerE" mnemonicParsing="false" onAction="#creerEmplacement" text="Creer Emplacement" />
+                              <MenuItem fx:id="gererE" mnemonicParsing="false" onAction="#gererEspace" text="Gerer Espace" />
+                           </items>
+                        </MenuButton>
+                        <MenuButton mnemonicParsing="false" prefHeight="59.0" prefWidth="191.0" style="-fx-background-color: #2A3D51;" text="Inventaires" textFill="WHITE">
+                          <items>
+                            <MenuItem fx:id="effectuerI" mnemonicParsing="false" onAction="#effectuerInventaire" text="Effectuer Inventaire" />
+                            <MenuItem fx:id="filtrerImprI" mnemonicParsing="false" onAction="#FiltrerImprimerInventaire" text="Filtration &amp; Impression" />
+                          </items>
+                           <graphic>
+                              <ImageView fitHeight="25.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@image/clipboard-3-16.png" />
+                                 </image></ImageView>
+                           </graphic>
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </MenuButton>
+                        <MenuButton mnemonicParsing="false" prefHeight="59.0" prefWidth="191.0" style="-fx-background-color: #2A3D51;" text="Pertes" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="25.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@image/negative-dynamic-16.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <items>
+                              <MenuItem fx:id="passerEnP" mnemonicParsing="false" onAction="#passerEnPerte" text="Passer en perte" />
+                              <MenuItem fx:id="filImprP" mnemonicParsing="false" onAction="#filtrerEtImprimerPertes" text="Filtration &amp; Impression" />
+                           </items>
+                        </MenuButton>
+                        <MenuButton mnemonicParsing="false" prefHeight="59.0" prefWidth="191.0" style="-fx-background-color: #2A3D51;" text="Parametres" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="25.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@image/gear-2-16.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <items>
+                              <MenuItem fx:id="entrepot" mnemonicParsing="false" onAction="#informationEntrepot" text="Entrepot" />
+                              <MenuItem fx:id="sauver" mnemonicParsing="false" onAction="#sauvegarder" text="Sauvegardes" />
+                           </items>
+                        </MenuButton>
+                     </children></VBox>
+                  <Button fx:id="home" layoutX="56.0" layoutY="8.0" mnemonicParsing="false" onAction="#Acceuil" style="-fx-background-color: #2A3D51;" text="Acceuil" textFill="WHITE">
+                     <graphic>
+                        <ImageView fitHeight="31.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@image/home.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></Button>
+               </children>
+            </AnchorPane>
+          <AnchorPane id="content" minHeight="0.0" minWidth="0.0" prefHeight="318.0" prefWidth="440.0">
+               <children>
+                  <StackPane fx:id="com" prefHeight="518.0" prefWidth="680.0">
+                     <children>
+                        <AnchorPane prefHeight="518.0" prefWidth="680.0" visible="false">
+                           <children>
+                              <Label layoutX="193.0" layoutY="1.0" text="COMMANDE D'APPROVISINNEMENT">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                              <HBox layoutX="7.0" layoutY="41.0" prefHeight="27.0" prefWidth="480.0">
+                                 <children>
+                                    <Label prefHeight="27.0" prefWidth="36.0" text="Date" />
+                                    <DatePicker fx:id="dateCreationCmd" prefHeight="25.0" prefWidth="111.0" />
+                                 </children>
+                              </HBox>
+                              <HBox layoutX="7.0" layoutY="76.0" prefHeight="27.0" prefWidth="673.0">
+                                 <children>
+                                    <Label prefHeight="31.0" prefWidth="70.0" text="Fournisseur" />
+                                    <ChoiceBox fx:id="fournisseur" prefWidth="150.0" />
+                                    <Label prefHeight="27.0" prefWidth="91.0" text="     Taux remise" />
+                                    <TextField fx:id="tauxRemise" />
+                                 </children>
+                              </HBox>
+                              <Line endX="675.0" endY="-13.0" layoutX="7.0" layoutY="124.0" startX="-7.0" startY="-13.0" />
+                              <HBox layoutY="137.0" prefHeight="17.0" prefWidth="680.0">
+                                 <children>
+                                    <Label prefHeight="17.0" prefWidth="110.0" text="  produit" />
+                                    <Label prefHeight="17.0" prefWidth="46.0" text="Qté" />
+                                    <Label prefHeight="17.0" prefWidth="149.0" text="prix unitaire" />
+                                    <Label prefHeight="17.0" prefWidth="90.0" text="TVA" />
+                                 </children>
+                              </HBox>
+                              <HBox layoutY="161.0" prefHeight="27.0" prefWidth="514.0">
+                                 <children>
+                                    <ChoiceBox fx:id="produit" prefHeight="25.0" prefWidth="109.0" />
+                                    <TextField fx:id="qteCmd" prefHeight="25.0" prefWidth="45.0" />
+                                    <TextField fx:id="prixUnitaire" prefHeight="25.0" prefWidth="118.0" />
+                                    <Label prefHeight="27.0" prefWidth="32.0" text="Dinar" />
+                                    <TextField fx:id="tva" prefHeight="25.0" prefWidth="66.0" />
+                                    <Label prefHeight="25.0" prefWidth="28.0" text="\%" />
+                                    <Button fx:id="ajouterP" mnemonicParsing="false" onAction="#ajouterPanier" prefHeight="27.0" prefWidth="68.0" style="-fx-background-color: #FFA219;" text="Ajouter">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font></Button>
+                                 </children>
+                              </HBox>
+                              <VBox layoutX="1.0" layoutY="216.0" prefHeight="99.0" prefWidth="532.0">
+                                 <children>
+                                    <TableView fx:id="panier" prefHeight="90.0" prefWidth="514.0" />
+                                 </children>
+                              </VBox>
+                              <Label layoutX="14.0" layoutY="197.0" text="panier">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Line endX="680.0" endY="-1.0" layoutX="7.0" layoutY="354.0" startX="-7.0" startY="-1.0" />
+                              <Label layoutX="14.0" layoutY="355.0" text="Liste des commandes d'approvisionnement">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                              <TableView fx:id="tabCommande" layoutX="-1.0" layoutY="377.0" prefHeight="141.0" prefWidth="683.0" />
+                              <Button fx:id="annulerC" layoutX="107.0" layoutY="317.0" mnemonicParsing="false" onAction="#annulerCommande" prefHeight="27.0" prefWidth="70.0" style="-fx-background-color: #FFA219;" text="Annuler">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="effectuerC" layoutX="14.0" layoutY="317.0" mnemonicParsing="false" onAction="#validerCommande" prefHeight="27.0" prefWidth="70.0" style="-fx-background-color: #FFA219;" text="Effectuer">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="518.0" prefWidth="681.0" visible="false">
+                           <children>
+                              <Label layoutX="318.0" layoutY="1.0" text="PERTE">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                              <HBox layoutY="52.0" prefHeight="27.0" prefWidth="242.0">
+                                 <children>
+                                    <Label prefHeight="27.0" prefWidth="39.0" text=" Date" />
+                                    <DatePicker fx:id="datePerte" prefHeight="25.0" prefWidth="112.0" />
+                                 </children>
+                              </HBox>
+                              <Line endX="596.0" endY="-8.0" layoutX="84.0" layoutY="101.0" startX="-83.0" startY="-8.0" />
+                              <HBox layoutX="1.0" layoutY="123.0" prefHeight="27.0" prefWidth="427.0">
+                                 <children>
+                                    <Label prefHeight="26.0" prefWidth="93.0" text=" Produit" />
+                                    <Label prefHeight="26.0" prefWidth="81.0" text="Qté" />
+                                    <Label prefHeight="27.0" prefWidth="99.0" text="Raison De La Perte" />
+                                 </children>
+                              </HBox>
+                              <HBox layoutX="1.0" layoutY="150.0" prefHeight="27.0" prefWidth="491.0">
+                                 <children>
+                                    <ChoiceBox fx:id="produitPerdu" prefHeight="27.0" prefWidth="84.0" />
+                                    <TextField fx:id="qtePerdu" prefHeight="27.0" prefWidth="86.0" />
+                                    <ChoiceBox fx:id="raisonPerte" prefHeight="25.0" prefWidth="113.0" />
+                                    <Button fx:id="ajouterPerte" mnemonicParsing="false" onAction="#ajouterCorbeille" prefHeight="27.0" prefWidth="68.0" style="-fx-background-color: #FFA219;" text="Ajouter">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </Button>
+                                 </children>
+                              </HBox>
+                              <Label layoutX="14.0" layoutY="186.0" prefHeight="25.0" prefWidth="70.0" text="Corbeille">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                              <VBox layoutX="2.0" layoutY="211.0" prefHeight="99.0" prefWidth="385.0">
+                                 <children>
+                                    <TableView fx:id="tabPert" prefHeight="200.0" prefWidth="200.0" />
+                                 </children>
+                              </VBox>
+                              <Line endX="585.0" endY="21.0" layoutX="94.0" layoutY="330.0" startX="-94.0" startY="21.0" />
+                              <Button fx:id="enregistrerP" layoutX="2.0" layoutY="317.0" mnemonicParsing="false" onAction="#enregitrerPerte" prefHeight="27.0" prefWidth="84.0" style="-fx-background-color: #FFA219;" text="Enregistrer">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="annulerP" layoutX="134.0" layoutY="317.0" mnemonicParsing="false" onAction="#annulerPerte" prefHeight="27.0" prefWidth="84.0" style="-fx-background-color: #FFA219;" text="Annuler">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Button>
+                              <Label layoutX="9.0" layoutY="352.0" prefHeight="25.0" prefWidth="130.0" text="Liste des pertes">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                              <TableView fx:id="tabPerte" layoutY="383.0" prefHeight="134.0" prefWidth="330.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" visible="false">
+                           <children>
+                              <Label layoutX="205.0" layoutY="1.0" text="INFORMATION SUR L'ENTREPOT">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                              <HBox layoutY="58.0" prefHeight="27.0" prefWidth="375.0">
+                                 <children>
+                                    <Label prefHeight="27.0" prefWidth="94.0" text=" Matricule Fiscale" />
+                                    <TextField fx:id="matrifis" prefHeight="30.0" prefWidth="149.0" />
+                                 </children>
+                              </HBox>
+                              <HBox layoutY="97.0" prefHeight="27.0" prefWidth="337.0">
+                                 <children>
+                                    <Label prefHeight="27.0" prefWidth="94.0" text=" Adresse" />
+                                    <TextField fx:id="adresseEnp" prefHeight="29.0" prefWidth="149.0" />
+                                 </children>
+                              </HBox>
+                              <HBox layoutY="136.0" prefHeight="26.0" prefWidth="279.0">
+                                 <children>
+                                    <Label prefHeight="26.0" prefWidth="94.0" text=" Raison Sociale" />
+                                    <TextField fx:id="raisonSocialEnp" prefHeight="25.0" prefWidth="150.0" />
+                                 </children>
+                              </HBox>
+                              <HBox layoutY="178.0" prefHeight="25.0" prefWidth="272.0">
+                                 <children>
+                                    <Label prefHeight="25.0" prefWidth="94.0" text=" Adresse Mail" />
+                                    <TextField fx:id="adresseMail" />
+                                 </children>
+                              </HBox>
+                              <HBox layoutY="219.0" prefHeight="25.0" prefWidth="256.0">
+                                 <children>
+                                    <Label prefHeight="25.0" prefWidth="94.0" text=" Téléphone" />
+                                    <TextField fx:id="telEnp" />
+                                 </children>
+                              </HBox>
+                              <VBox layoutX="372.0" layoutY="49.0" prefHeight="200.0" prefWidth="305.0">
+                                 <children>
+                                    <Label fx:id="mf" text="Label" />
+                                    <Label fx:id="adr" text="Label" />
+                                    <Label fx:id="rs" text="Label" />
+                                    <Label fx:id="mail" text="Label" />
+                                    <Label fx:id="tel" text="Label" />
+                                 </children>
+                              </VBox>
+                              <Line endX="40.0" endY="-1.0" layoutX="279.0" layoutY="259.0" startX="40.0" startY="-209.0" />
+                              <Button fx:id="enregEnp" layoutX="29.0" layoutY="272.0" mnemonicParsing="false" onAction="#enregistrerEntrepot" prefHeight="27.0" prefWidth="86.0" style="-fx-background-color: #FFA219;" text="Enregistrer">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="annulerEnp" layoutX="128.0" layoutY="272.0" mnemonicParsing="false" onAction="#annulerEntrepot" prefHeight="27.0" prefWidth="84.0" style="-fx-background-color: #FFA219;" text="Annuler">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="modilEnp" layoutX="372.0" layoutY="272.0" mnemonicParsing="false" onAction="#modifierEntrepot" prefHeight="27.0" prefWidth="81.0" style="-fx-background-color: #FFA219;" text="Modifier">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="suppriEnp" layoutX="525.0" layoutY="272.0" mnemonicParsing="false" onAction="#supprimerEntrepot" prefHeight="27.0" prefWidth="81.0" style="-fx-background-color: #FFA219;" text="Supprimer">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Button>
+                              <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="226.0" layoutY="343.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../../../../../entrepot.jpg" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" visible="false">
+                           <children>
+                              <Label layoutX="278.0" layoutY="1.0" text="EMPLACEMENT">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                              <HBox layoutY="43.0" prefHeight="27.0" prefWidth="316.0">
+                                 <children>
+                                    <Label prefHeight="26.0" prefWidth="83.0" text=" Adresse" />
+                                    <TextField fx:id="adrEmpl" prefHeight="29.0" prefWidth="149.0" />
+                                 </children>
+                              </HBox>
+                              <HBox layoutY="82.0" prefHeight="27.0" prefWidth="279.0">
+                                 <children>
+                                    <Label prefHeight="27.0" prefWidth="84.0" text=" Classe" />
+                                    <TextField fx:id="clasEmpl" prefHeight="27.0" prefWidth="148.0" />
+                                 </children>
+                              </HBox>
+                              <HBox layoutY="123.0" prefHeight="27.0" prefWidth="256.0">
+                                 <children>
+                                    <Label text=" Capacite Stockage" />
+                                    <TextField fx:id="capStoEmpl" prefHeight="27.0" prefWidth="130.0" />
+                                 </children>
+                              </HBox>
+                              <HBox layoutY="165.0" prefHeight="27.0" prefWidth="242.0">
+                                 <children>
+                                    <Label prefHeight="26.0" prefWidth="136.0" text=" Qté Stockée" />
+                                    <TextField fx:id="qteEmpl" prefHeight="25.0" prefWidth="95.0" />
+                                 </children>
+                              </HBox>
+                              <Button fx:id="enregisEmp" layoutX="22.0" layoutY="223.0" mnemonicParsing="false" onAction="#enregistrerEmplacement" prefHeight="27.0" prefWidth="81.0" style="-fx-background-color: #FFA219;" text="Enregistrer">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="annulerEmp" layoutX="150.0" layoutY="223.0" mnemonicParsing="false" onAction="#annulerEmplacement" prefHeight="27.0" prefWidth="81.0" style="-fx-background-color: #FFA219;" text="Annuler">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Button>
+                              <Line endX="575.0" layoutX="103.0" layoutY="260.0" startX="-100.0" />
+                              <Label layoutX="28.0" layoutY="270.0" prefHeight="25.0" prefWidth="184.0" text="Liste des emplacements">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                              <TableView fx:id="tabEmp" layoutX="2.0" layoutY="295.0" prefHeight="220.0" prefWidth="673.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                           <children>
+                              <Label layoutX="286.0" layoutY="1.0" text="INVENTAIRES">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                              <HBox layoutY="48.0" prefHeight="27.0" prefWidth="200.0">
+                                 <children>
+                                    <Label prefHeight="27.0" prefWidth="52.0" text=" Date" />
+                                    <DatePicker fx:id="dateIv" prefHeight="27.0" prefWidth="118.0" />
+                                 </children>
+                              </HBox>
+                              <HBox layoutY="90.0" prefHeight="27.0" prefWidth="501.0">
+                                 <children>
+                                    <Label prefHeight="27.0" prefWidth="53.0" text=" Produit" />
+                                    <ChoiceBox fx:id="produitIv" prefHeight="27.0" prefWidth="117.0" />
+                                    <Label prefHeight="27.0" prefWidth="105.0" text="          Emplacement" />
+                                    <ChoiceBox fx:id="emplaceIv" prefHeight="25.0" prefWidth="118.0" />
+                                 </children>
+                              </HBox>
+                              <HBox layoutY="137.0" prefHeight="27.0" prefWidth="385.0">
+                                 <children>
+                                    <Label prefHeight="27.0" prefWidth="96.0" text=" Qté Inventée" />
+                                    <TextField fx:id="qteIv" prefHeight="27.0" prefWidth="61.0" />
+                                 </children>
+                              </HBox>
+                              <Button fx:id="EnregisIv" layoutX="36.0" layoutY="193.0" mnemonicParsing="false" onAction="#enregistrerInventaire" prefHeight="27.0" prefWidth="81.0" style="-fx-background-color: #FFA219;" text="Enregistrer">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="annulerIv" layoutX="160.0" layoutY="193.0" mnemonicParsing="false" onAction="#AnnulerInventaire" prefHeight="27.0" prefWidth="81.0" style="-fx-background-color: #FFA219;" text="Annuler">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Button>
+                              <Line endX="562.0" endY="-24.0" layoutX="117.0" layoutY="273.0" startX="-117.0" startY="-24.0" />
+                              <Label layoutX="46.0" layoutY="259.0" text="Liste des inventaires">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                              <TableView fx:id="tabIv" layoutX="7.0" layoutY="295.0" prefHeight="220.0" prefWidth="673.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" visible="false">
+                           <children>
+                              <Label layoutX="263.0" layoutY="1.0" text="TABLEAU DE BORD">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Pane layoutY="44.0" prefHeight="209.0" prefWidth="680.0">
+                                 <children>
+                                    <LineChart layoutX="-5.0" layoutY="5.0" prefHeight="209.0" prefWidth="673.0">
+                                      <xAxis>
+                                        <CategoryAxis side="BOTTOM" />
+                                      </xAxis>
+                                      <yAxis>
+                                        <NumberAxis side="LEFT" />
+                                      </yAxis>
+                                    </LineChart>
+                                 </children>
+                              </Pane>
+                              <HBox layoutY="266.0" prefHeight="251.0" prefWidth="680.0">
+                                 <children>
+                                    <ProgressIndicator prefHeight="251.0" prefWidth="220.0" progress="0.0" />
+                                    <PieChart prefHeight="251.0" prefWidth="210.0" />
+                                    <BarChart prefHeight="251.0" prefWidth="265.0">
+                                      <xAxis>
+                                        <CategoryAxis side="BOTTOM" />
+                                      </xAxis>
+                                      <yAxis>
+                                        <NumberAxis side="LEFT" />
+                                      </yAxis>
+                                    </BarChart>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </StackPane>
+               </children></AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>

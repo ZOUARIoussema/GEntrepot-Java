@@ -5,43 +5,48 @@
  */
 package com.gentrepot.services;
 
-import com.gentrepot.models.LigneCommande;
+import com.gentrepot.models.Perte;
 import com.gentrepot.models.ProduitAchat;
-import com.gentrepot.utils.DataSource;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 
 /**
  *
  * @author oussema
  */
-public class ServiceProduitAchat {
-        Connection cnx = DataSource.getInstance().getCnx();
-      ObservableList<ProduitAchat> oblist = FXCollections.observableArrayList();
-
+public class ServiceProduitAchat implements IService<ProduitAchat>{
+    @Override
     public List<ProduitAchat> afficher() {
-
-        try {
-            String requete
-                    = "select * from produit_achat";
-            PreparedStatement pst = cnx.prepareStatement(requete);
-            ResultSet res = pst.executeQuery();
-
-            while (res.next()) {
-                
-               // oblist.add(new ProduitAchat(res.getString("reference"), res.getString("libelle"), res.getInt("quantiteEnStock")));
-               
-            }
-        } catch (SQLException ex) {
-            System.err.println(ex.getMessage());
-        }
-
-        return oblist;
-    }
+     
     
+        
+        return new ArrayList<ProduitAchat>();
+    }
+    public ProduitAchat rechercher(List<ProduitAchat> et, String nom){
+        int a = 0;
+        for(int i=0;i<et.size();i++){
+            if(et.get(i).getReference().equals(nom)){
+                a = i;
+            }
+        }
+        return et.get(a);
+    }
+
+    @Override
+    public void ajouter(ProduitAchat t) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void supprimer(ProduitAchat t) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void modifier(ProduitAchat t) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

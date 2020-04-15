@@ -8,21 +8,33 @@ package gentrepot;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 /**
  *
- * @author oussema
+ * @author rodrigue
  */
 public class GEntrepot extends Application {
 
     @Override
     public void start(Stage primaryStage) {
 
-        Button btn = new Button();
+        try {
+
+            AnchorPane root = (AnchorPane) FXMLLoader.load(getClass().getResource("/com/gentrepot/views/STOCKAGE.fxml"));
+            Scene scene = new Scene(root);
+            primaryStage.setScene(scene);
+            primaryStage.setTitle("Menu stockage");
+            primaryStage.show();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        /*Button btn = new Button();
         btn.setText("Say 'Hello World'");
         btn.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -39,7 +51,7 @@ public class GEntrepot extends Application {
 
         primaryStage.setTitle("Hello World!");
         primaryStage.setScene(scene);
-        primaryStage.show();
+        primaryStage.show();*/
     }
 
     /**

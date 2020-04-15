@@ -7,9 +7,13 @@
     <offline-allowed/>
   </information>
   <resources>
+    <jfx:javafx-runtime version="8.0+" href="http://javadl.sun.com/webapps/download/GetFile/javafx-latest/windows-i586/javafx2.jnlp"/>
+  </resources>
+  <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="GEntrepot.jar" size="48371" download="eager" />
-    <jar href="lib\mysql-connector-java-5.1.23-bin.jar" size="834126" download="eager" />
+    <jar href="GEntrepot.jar" size="170981" download="eager" />
+    <jar href="lib/controlsfx-8.0.1.jar" size="296347" download="eager" />
+    <jar href="lib/mysql-connector-java-5.1.23-bin.jar" size="834126" download="eager" />
   </resources>
   <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="GEntrepot" >
     <param name="requiredFXVersion" value="8.0+"/>
