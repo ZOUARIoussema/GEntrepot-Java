@@ -414,7 +414,7 @@
                               <TableView fx:id="tabEmp" layoutX="2.0" layoutY="295.0" prefHeight="220.0" prefWidth="673.0" />
                            </children>
                         </AnchorPane>
-                        <AnchorPane prefHeight="200.0" prefWidth="200.0" visible="false">
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
                            <children>
                               <Label layoutX="286.0" layoutY="1.0" text="INVENTAIRES">
                                  <font>

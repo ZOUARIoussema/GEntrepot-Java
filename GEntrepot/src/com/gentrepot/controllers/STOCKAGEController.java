@@ -411,7 +411,7 @@ public class STOCKAGEController implements Initializable {
         for(int i = 0 ; i < lc.size(); i++){
             inventData.add(lc.get(i));
         }
-        
+       
         tabIv.setEditable(true);               
         numerocolIv.setCellValueFactory(new PropertyValueFactory<Invent, Integer>("id"));       
         produitcolIv.setCellValueFactory(new PropertyValueFactory<Invent, String>("produitAchat"));
@@ -956,8 +956,8 @@ public class STOCKAGEController implements Initializable {
            anchor5.setVisible(false);
         tabIv.getColumns().addAll(numerocolIv,produitcolIv,emplacecolIv,datecolIv,qtecolIv,ecartcolIv,qtethcolIv,action1Iv,action2Iv);
 
-        produit.getItems().add("aa44");
-        produit.getItems().add("bb17");
+        produitIv.getItems().add("aa44");
+        produitIv.getItems().add("bb17");
         for(int i = 0; i<se.afficher().size();i++){
             emplaceIv.getItems().add(se.afficher().get(i).getAdresse());
         }
