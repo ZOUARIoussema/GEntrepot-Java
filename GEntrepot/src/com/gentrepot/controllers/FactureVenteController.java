@@ -64,8 +64,11 @@ public class FactureVenteController implements Initializable {
         LocalDate date = date_ech.getValue();
         
         
+        double totalF=Double.valueOf(text_frais.getText())+Double.valueOf(text_timbre.getText())+AdminController.blG.getCommandeVente().getTotalC();
+        
+        
       // 
-        FactureVente f = new FactureVente(new Date(), java.sql.Date.valueOf(date),Double.valueOf(text_totalfac.getText()), "non payée", 0, 0, 0, 0, AdminController.blG);
+        FactureVente f = new FactureVente(new Date(), java.sql.Date.valueOf(date),totalF, "non payée", 0, totalF, Double.valueOf(text_timbre.getText()), Double.valueOf(text_frais.getText()), AdminController.blG);
         
         
         serviceFactureVente.ajouterFactureV(f);

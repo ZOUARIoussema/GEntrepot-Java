@@ -95,6 +95,28 @@ public class ServiceCommandeVente {
             System.err.println(ex.getMessage());
         }
     }
+    
+    
+    
+    public CommandeVente findById(int id){
+        
+        CommandeVente c =null;
+        
+        
+        
+        for(CommandeVente co : this.afficherCommande()){
+            
+            
+            if(co.getId()==id){
+                
+                c=co;
+                return c;
+            }
+        }
+        
+        return c;
+    }
+    
 
     public List<CommandeVente> afficherCommande() {
         List<CommandeVente> commande = new ArrayList<>();

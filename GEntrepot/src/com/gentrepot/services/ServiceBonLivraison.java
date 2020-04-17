@@ -21,6 +21,9 @@ import java.util.List;
  */
 public class ServiceBonLivraison {
     
+    
+    ServiceCommandeVente serviceCommandeVente = new ServiceCommandeVente();
+    
      Connection cnx = DataSource.getInstance().getCnx();
 
     public void ajouterBon(BonLivraison b) {
@@ -66,7 +69,7 @@ public class ServiceBonLivraison {
 
                 BonLivraison bl = new BonLivraison(id,adresseLivraison, etat, dateC, nom, prenom);
                 
-                bl.setCommandeVente(new CommandeVente(rs.getInt(9)));
+                bl.setCommandeVente(serviceCommandeVente.findById(rs.getInt(9)));
                 
                 bon.add(bl);
             }
