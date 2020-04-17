@@ -396,7 +396,7 @@ public class AjouterCommandeController implements Initializable {
         
         //ajoyet user connecer
         
-       // commandeVenteG.setUser(user);
+         commandeVenteG.setUser(AuthentificationController.userG);
         
         
           serviceCommandeVente.ajouterCommande(commandeVenteG);

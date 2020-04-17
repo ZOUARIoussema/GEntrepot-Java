@@ -55,12 +55,13 @@ public class ServiceCommandeVente {
     //ajouter
     public void ajouterCommande(CommandeVente c) {
         try {
-            String requete = "INSERT INTO commande_vente (id,totalC,dateC,etat) VALUES (?,?,?,?)";
+            String requete = "INSERT INTO commande_vente (id,totalC,dateC,etat,user) VALUES (?,?,?,?,?)";
             PreparedStatement pst = cnx.prepareStatement(requete);
             pst.setInt(1, c.getId());
             pst.setDouble(2, c.getTotalC());
             pst.setDate(3, new java.sql.Date(c.getDateC().getTime()));
             pst.setString(4, c.getEtat());
+             pst.setInt(5, c.getUser().getId());
 
             pst.executeUpdate();
             System.out.println("Commande  ajoutée !");

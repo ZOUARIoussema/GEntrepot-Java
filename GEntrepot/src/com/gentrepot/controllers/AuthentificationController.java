@@ -306,11 +306,12 @@ public class AuthentificationController implements Initializable {
 
         User user = new User(0, paneAjouterUsertextNomUser.getText(), paneAjouterUsertextAdresseMail.getText(), paneAjouterUsertextNomUser.getText(), paneAjouterUsertextAdresseMail.getText(), paneAjouterUsertextMotPasse.getText(), "Client");
 
-        serviceUser.ajouter(user);
+      if( serviceUser.ajouterU(user)){
 
         paneConnection.setVisible(true);
         new ZoomIn(paneConnection).play();
         paneConnection.toFront();
+      }
 
     }
 
