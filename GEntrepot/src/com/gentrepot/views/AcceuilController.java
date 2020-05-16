@@ -24,7 +24,7 @@ import javafx.scene.layout.BorderPane;
  */
 public class AcceuilController implements Initializable {
 
-   @FXML
+    @FXML
     private BorderPane bp2;
         public void chargerpage (String page) 
     {
