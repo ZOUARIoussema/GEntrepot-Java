@@ -12,6 +12,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -31,7 +32,7 @@ public class ServiceVehicule  implements IService<Vehicule> {
             String requete = "INSERT INTO vehicule (id,etat,matricule,capacite,type) VALUES (?,?,?,?,?)";
             PreparedStatement pst = cnx.prepareStatement(requete);
             pst.setInt(1, A.getId());
-            pst.setString(2, A.getEtat());
+            pst.setString(2, "disponnible");
              pst.setInt(3, A.getMatricule());
               pst.setInt(4, A.getCapacite());
                pst.setString(5, A.getType());
@@ -101,4 +102,23 @@ public class ServiceVehicule  implements IService<Vehicule> {
     public void modifier(Vehicule t) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-}
+
+    public Vehicule findByMatricule(int matricule) {
+           Vehicule c = new Vehicule();
+        boolean t = false ;
+        Iterator <Vehicule>  it= afficher().iterator();
+        while((it.hasNext())&&t==false)
+        {
+            if (it.next().getMatricule()==matricule)
+            {
+                t=true;
+                c=(Vehicule) it.next();
+            }
+            
+        }
+        
+        return c;
+    }
+
+    }
+

@@ -15,10 +15,10 @@
         <URL value="@afficherchauffeur.css" />
     </stylesheets>
    <children>
-      <TableView fx:id="table" layoutX="89.0" layoutY="193.0" prefHeight="471.0" prefWidth="774.0">
+      <TableView fx:id="table" layoutX="116.0" layoutY="193.0" prefHeight="380.0" prefWidth="765.0">
         <columns>
-          <TableColumn fx:id="cin" prefWidth="132.0" text="Cin" />
-          <TableColumn fx:id="nom" prefWidth="122.40000915527344" text="Nom" />
+          <TableColumn fx:id="cin" prefWidth="124.79999542236328" text="Cin" />
+          <TableColumn fx:id="nom" prefWidth="130.4000244140625" text="Nom" />
             <TableColumn fx:id="prenom" prefWidth="137.5999755859375" text="Penom" />
             <TableColumn fx:id="adresse" prefWidth="115.20001220703125" text="Adresse" />
             <TableColumn fx:id="etat" prefWidth="132.79998779296875" text="Etat" />
@@ -30,7 +30,7 @@
             <Font size="32.0" />
          </font>
       </Label>
-      <Button layoutX="740.0" layoutY="665.0" mnemonicParsing="false" onMouseClicked="#modifier" prefHeight="38.0" prefWidth="124.0" text="modifier" />
+      <Button layoutX="758.0" layoutY="573.0" mnemonicParsing="false" onMouseClicked="#modifier" prefHeight="26.0" prefWidth="124.0" text="modifier" />
       <TextField fx:id="recherche" layoutX="598.0" layoutY="157.0" prefHeight="26.0" prefWidth="266.0" />
       <Text layoutX="456.0" layoutY="180.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Recherche :">
          <font>

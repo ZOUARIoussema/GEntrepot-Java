@@ -5,9 +5,16 @@
  */
 package com.gentrepot.models;
 
+
+
+
+import java.sql.Date;
+
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
+
+
+
 
 /**
  *
@@ -24,7 +31,7 @@ public class OrdreMission {
     private Date dateSortie;
     private Date dateRetour;
     
-    private List<BonLivraison> bonLivraisons;
+    private ArrayList<BonLivraison> bonLivraisons;
 
     public OrdreMission(int id, Vehicule vehicule, Chauffeur chauffeur, AideChauffeur aideChauffeur, Date dateCeation, Date dateSortie, Date dateRetour) {
         this.id = id;
@@ -35,6 +42,13 @@ public class OrdreMission {
         this.dateSortie = dateSortie;
         this.dateRetour = dateRetour;
         this.bonLivraisons=new ArrayList<>();
+    }
+
+    public OrdreMission(int id, Date dateCreation, Date dateSortie, Date dateRetour) {
+        this.id = id;
+        this.dateCreation = dateCreation;
+        this.dateSortie = dateSortie;
+        this.dateRetour = dateRetour;
     }
     
     
@@ -47,7 +61,7 @@ public class OrdreMission {
         this.dateCreation = dateCreation;
         this.dateSortie = dateSortie;
         this.dateRetour = dateRetour;
-        this.bonLivraisons = bonLivraisons;
+        this.bonLivraisons = (ArrayList<BonLivraison>) bonLivraisons;
     }
 
     public OrdreMission(Vehicule vehicule, Chauffeur chauffeur, AideChauffeur aideChauffeur, Date dateCreation, Date dateSortie, Date dateRetour, List<BonLivraison> bonLivraisons) {
@@ -57,7 +71,7 @@ public class OrdreMission {
         this.dateCreation = dateCreation;
         this.dateSortie = dateSortie;
         this.dateRetour = dateRetour;
-        this.bonLivraisons = bonLivraisons;
+        this.bonLivraisons = (ArrayList<BonLivraison>) bonLivraisons;
     }
 
     
@@ -70,6 +84,8 @@ public class OrdreMission {
         this.dateRetour = dateRetour;
 
     }
+
+   
 
     public int getId() {
         return id;
@@ -132,7 +148,7 @@ public class OrdreMission {
     }
 
     public void setBonLivraisons(List<BonLivraison> bonLivraisons) {
-        this.bonLivraisons = bonLivraisons;
+        this.bonLivraisons = (ArrayList<BonLivraison>) bonLivraisons;
     }
     
     

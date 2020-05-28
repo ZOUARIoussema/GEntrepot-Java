@@ -34,6 +34,10 @@ public class Vehicule {
         this.type = type;
     }
 
+    public Vehicule() {
+     
+    }
+
     public int getId() {
         return id;
     }

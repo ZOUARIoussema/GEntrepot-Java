@@ -24,7 +24,7 @@ public class TestLogistique extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
 
-       Parent  root = FXMLLoader.load(getClass().getResource("ChefParc.fxml"));
+       Parent  root = FXMLLoader.load(getClass().getResource("/com/gentrepot/views/ChefParc.fxml"));
         Scene scene = new Scene(root);
         
         primaryStage.setTitle("Accueil");

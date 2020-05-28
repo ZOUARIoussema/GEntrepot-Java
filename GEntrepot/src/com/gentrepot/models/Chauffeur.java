@@ -30,6 +30,9 @@ public class Chauffeur {
         this.etat = etat;
     }
 
+    public Chauffeur() {
+    }
+
     public String getCin() {
         return cin;
     }
