@@ -73,8 +73,8 @@ public class AdminController implements Initializable {
     private TableColumn<CommandeVente, Double> col_taux;
     @FXML
     private TableColumn<CommandeVente, String> col_etat;
-    //@FXML
-    //private TableColumn<CommandeVente, String> col_user;
+     @FXML
+    private TableColumn<CommandeVente, String> col_userr;
 
     /**
      * Initializes the controller class.
@@ -102,8 +102,8 @@ public class AdminController implements Initializable {
     private TableColumn<BonLivraison, String> col_nom;
     @FXML
     private TableColumn<BonLivraison, String> col_prenom;
-    @FXML
-    private TableColumn<?, ?> col_user;
+    //@FXML
+    //private TableColumn<?, ?> col_user;
     @FXML
     private TableView<BonLivraison> tableviewBon;
     @FXML
@@ -138,6 +138,7 @@ public class AdminController implements Initializable {
     private NumberAxis y;
     @FXML
     private CategoryAxis x;
+   
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -233,12 +234,13 @@ public class AdminController implements Initializable {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }*/
-        oblist.addAll(serviceCommandeVente.afficherCommande());
+        oblist.setAll(serviceCommandeVente.afficherCommande());
 
         col_total.setCellValueFactory(new PropertyValueFactory<>("totalC"));
         col_date.setCellValueFactory(new PropertyValueFactory<>("dateC"));
         col_etat.setCellValueFactory(new PropertyValueFactory<>("etat"));
         col_taux.setCellValueFactory(new PropertyValueFactory<>("tauxRemise"));
+        col_userr.setCellValueFactory(new PropertyValueFactory<>("idUser"));
 
         tableViewCommande.setItems(oblist);
 

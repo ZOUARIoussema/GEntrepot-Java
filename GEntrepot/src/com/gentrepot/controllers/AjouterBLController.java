@@ -5,6 +5,7 @@
  */
 package com.gentrepot.controllers;
 
+import static com.gentrepot.controllers.AuthentificationController.userG;
 import com.gentrepot.models.CommandeVente;
 import com.gentrepot.models.LigneCommande;
 import com.gentrepot.models.ProduitAchat;
@@ -51,6 +52,7 @@ public class AjouterBLController implements Initializable {
     private TableColumn<CommandeVente, Double> col_taux;
     @FXML
     private TableColumn<CommandeVente, String> col_etat;
+    
     @FXML
     private Button btnDetails;
     Connection cnx = DataSource.getInstance().getCnx();
@@ -73,9 +75,11 @@ public class AjouterBLController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         
         
-      /*  try {
+     /*  try {
             String requete
-                    = "select * from commande_vente";
+                                  = "select * from commande_vente WHERE user="+Commande.getUser();
+
+
             PreparedStatement pst = cnx.prepareStatement(requete);
             ResultSet res = pst.executeQuery();
 
@@ -90,7 +94,7 @@ public class AjouterBLController implements Initializable {
         }*/
       
       
-      oblist.addAll(serviceCommandeVente.afficherCommande());
+      oblist.addAll(serviceCommandeVente.afficherCommandeByUser(userG));
         
         col_total.setCellValueFactory(new PropertyValueFactory<>("totalC"));
         col_date.setCellValueFactory(new PropertyValueFactory<>("dateC"));
