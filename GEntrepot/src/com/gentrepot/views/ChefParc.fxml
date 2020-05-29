@@ -2,106 +2,108 @@
 
 <?import java.net.URL?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="913.0" prefWidth="931.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gentrepot.views.ChefParcController">
+<AnchorPane id="AnchorPane" prefHeight="629.0" prefWidth="910.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gentrepot.views.ChefParcController">
     <stylesheets>
         <URL value="@chefparc.css" />
     </stylesheets>
    <children>
       <BorderPane prefHeight="200.0" prefWidth="200.0">
          <top>
-            <VBox prefHeight="910.0" prefWidth="263.0" style="-fx-background-color: #ffff;" BorderPane.alignment="CENTER">
+            <VBox prefHeight="654.0" prefWidth="263.0" style="-fx-background-color: #0061B4;" BorderPane.alignment="CENTER">
                <children>
-                  <ImageView fitHeight="38.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Chauffeur" textAlignment="CENTER" wrappingWidth="262.9367485046387">
+                  <ImageView fitHeight="81.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Chauffeur" textAlignment="CENTER" wrappingWidth="201.33669662475586">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Text>
-                  <ImageView fitHeight="16.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                  <Button mnemonicParsing="false" onMouseClicked="#ajouterchauffeur" prefHeight="35.0" prefWidth="263.0" text="Ajouter Chauffeur">
+                  <ImageView fitHeight="17.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                  <Button mnemonicParsing="false" onMouseClicked="#ajouterchauffeur" prefHeight="18.0" prefWidth="263.0" style="-fx-background-color: transpar;" text="Ajouter Chauffeur" textFill="WHITE">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Button>
-                  <ImageView fitHeight="16.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                  <ImageView fitHeight="17.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                  <Button mnemonicParsing="false" onMouseClicked="#AfficherChauffeur" prefHeight="38.0" prefWidth="263.0" text="Afficher Chauffeur">
+                  <ImageView fitHeight="1.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fitHeight="1.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                  <Button mnemonicParsing="false" onMouseClicked="#AfficherChauffeur" prefHeight="21.0" prefWidth="263.0" style="-fx-background-color: transpar;" text="Afficher Chauffeur" textFill="WHITE">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Button>
                   <ImageView fitHeight="22.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Aide Chaufeur" textAlignment="CENTER" wrappingWidth="261.3367118835449">
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Aide Chaufeur" textAlignment="CENTER" wrappingWidth="234.13665413856506">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Text>
                   <ImageView fitHeight="17.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                  <Button mnemonicParsing="false" onMouseClicked="#AjoutAideChauffeur" prefHeight="35.0" prefWidth="263.0" text="Ajouter Aide Chauffeur">
+                  <Button mnemonicParsing="false" onMouseClicked="#AjoutAideChauffeur" prefHeight="15.0" prefWidth="263.0" style="-fx-background-color: transpar;" text="Ajouter Aide Chauffeur" textFill="WHITE">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Button>
-                  <ImageView fitHeight="15.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                  <ImageView fitHeight="14.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                  <Button mnemonicParsing="false" onMouseClicked="#AfficherAideChauffeur" prefHeight="38.0" prefWidth="263.0" text="Afficher Aide Chauffeur">
+                  <ImageView fitHeight="1.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fitHeight="1.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                  <Button mnemonicParsing="false" onMouseClicked="#AfficherAideChauffeur" prefHeight="22.0" prefWidth="263.0" style="-fx-background-color: transpar;" text="Afficher Aide Chauffeur" textFill="WHITE">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Button>
                   <ImageView fitHeight="21.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Vehicuel " textAlignment="CENTER" wrappingWidth="262.85704040527344">
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-background-color: #0061B4;" text="Vehicuel " textAlignment="CENTER" wrappingWidth="197.25704956054688">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Text>
-                  <ImageView fitHeight="14.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                  <Button mnemonicParsing="false" onMouseClicked="#AjouterVehicule" prefHeight="36.0" prefWidth="263.0" text="Ajouter vehicuel">
+                  <ImageView fitHeight="1.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                  <Button mnemonicParsing="false" onMouseClicked="#AjouterVehicule" prefHeight="21.0" prefWidth="263.0" style="-fx-background-color: transpar;" text="Ajouter vehicuel" textFill="WHITE">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Button>
-                  <ImageView fitHeight="18.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                  <ImageView fitHeight="21.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                  <Button mnemonicParsing="false" onMouseClicked="#AfficherVehicule" prefHeight="38.0" prefWidth="263.0" text="Afficher vehicuel">
+                  <ImageView fitHeight="1.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fitHeight="1.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                  <Button mnemonicParsing="false" onMouseClicked="#AfficherVehicule" prefHeight="38.0" prefWidth="263.0" style="-fx-background-color: transpar;" text="Afficher vehicuel" textFill="WHITE">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Button>
                   <ImageView fitHeight="20.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Ordre de Mission" textAlignment="CENTER" wrappingWidth="262.1367301940918">
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Ordre de Mission" textAlignment="CENTER" wrappingWidth="262.1367301940918">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Text>
-                  <ImageView fitHeight="20.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                  <Button mnemonicParsing="false" onMouseClicked="#AjouOrdere" prefHeight="37.0" prefWidth="263.0" text="Ajouter Ordre de Mission">
+                  <ImageView fitHeight="3.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                  <Button mnemonicParsing="false" onMouseClicked="#AjouOrdere" prefHeight="31.0" prefWidth="292.0" style="-fx-background-color: transpar;" text="Ajouter Ordre de Mission" textFill="WHITE">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Button>
-                  <ImageView fitHeight="16.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                  <ImageView fitHeight="19.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                  <Button mnemonicParsing="false" onMouseClicked="#AffOrdre" prefHeight="34.0" prefWidth="263.0" text="Afficher Ordre de Mission">
+                  <ImageView fitHeight="1.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fitHeight="1.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                  <Button mnemonicParsing="false" onMouseClicked="#AffOrdre" prefHeight="6.0" prefWidth="263.0" style="-fx-background-color: transpar;" text="Afficher Ordre de Mission" textFill="WHITE">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Button>
                   <ImageView fitHeight="41.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                  <Button mnemonicParsing="false" prefHeight="33.0" prefWidth="263.0" text="Log-out" textFill="#c52020">
+                  <Button fx:id="btnL" mnemonicParsing="false" prefHeight="0.0" prefWidth="263.0" style="-fx-background-color: transpar;" text="Log-out" textFill="WHITE">
                      <font>
                         <Font name="System Bold Italic" size="20.0" />
                      </font>
                      <graphic>
-                        <ImageView fitHeight="25.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@ImageMenueCaisse/exit-clipart-png-transparent-circle-11564085809zptaij3zvv.png" />
                            </image>
@@ -112,6 +114,15 @@
             </VBox>
          </top>
       </BorderPane>
-      <BorderPane fx:id="bp2" layoutX="265.0" layoutY="1.0" prefHeight="698.0" prefWidth="665.0" />
+      <BorderPane fx:id="bp2" layoutX="263.0" layoutY="-2.0" prefHeight="658.0" prefWidth="651.0" style="-fx-background-color: transpar;" />
+      <StackPane layoutX="-12.0" layoutY="80.0" prefHeight="581.0" prefWidth="46.0" style="-fx-background-color: ffffff;" />
+      <StackPane layoutY="-2.0" prefHeight="81.0" prefWidth="262.0" style="-fx-background-color: #142199;">
+         <children>
+            <Label text="LOGISTIQUE" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="31.0" />
+               </font>
+            </Label>
+         </children></StackPane>
    </children>
 </AnchorPane>

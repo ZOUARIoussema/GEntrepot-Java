@@ -35,24 +35,23 @@ public class AjouterVehicuelController implements Initializable {
     private Button btn;
     @FXML
     private ComboBox txtT;
-    @FXML
-    private ComboBox txtE;
+   
     ObservableList<String> list = FXCollections.observableArrayList("Camion","Om","Partner","semi remorque","autres");
-    ObservableList<String> liste = FXCollections.observableArrayList("Disponible");
+   
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         txtT.setItems(list);
-        txtE.setItems(liste);
+      
         // TODO
     }    
 
     @FXML
     private void AjoutVehicuel(ActionEvent event) throws IOException {
        ServiceVehicule sp = new  ServiceVehicule();
-       sp.ajouter(new Vehicule((String)txtE.getSelectionModel().getSelectedItem(), Integer.parseInt(txtM.getText()), Integer.parseInt(txtC.getText()),(String) txtT.getSelectionModel().getSelectedItem()));
+       sp.ajouter(new Vehicule(Integer.parseInt(txtM.getText()), Integer.parseInt(txtC.getText()),(String) txtT.getSelectionModel().getSelectedItem()));
         
         JOptionPane.showMessageDialog(null, "Vehicule ajoutée !");
     }

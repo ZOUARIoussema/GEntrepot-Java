@@ -30,6 +30,11 @@ public class DataSource {
             System.err.println(ex.getMessage());
         }
     }
+    
+    public Connection newConnection() throws SQLException {
+        return DriverManager.getConnection(URL, LOGIN, PASSWORD);
+    }
+    
 
     public static DataSource getInstance() {
         if (instance == null) {

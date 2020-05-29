@@ -93,5 +93,5 @@ public class ChefParcController implements Initializable {
     private void AffOrdre(MouseEvent event) {
          chargerpage("AfficherOrdre");
     }
-    
+     
 }

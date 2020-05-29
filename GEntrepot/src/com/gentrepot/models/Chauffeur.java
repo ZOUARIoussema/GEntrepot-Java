@@ -30,6 +30,16 @@ public class Chauffeur {
         this.etat = etat;
     }
 
+    public Chauffeur(String cin, String nom, String prenom, String adresse) {
+        this.cin = cin;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.adresse = adresse;
+    }
+ 
+    public Chauffeur() {
+    }
+
     public String getCin() {
         return cin;
     }

@@ -61,13 +61,14 @@ public class ServiceBonLivraison {
                 String adresseLivraison = rs.getString("adresseLivraison");
                 String etat = rs.getString("etat");
                 java.util.Date dateC = rs.getDate("dateCreation");
+                java.util.Date dates = rs.getDate("datesortie");
                 String nom = rs.getString("nom");
                 String prenom = rs.getString("prenom");
                 
 
                 
 
-                BonLivraison bl = new BonLivraison(id,adresseLivraison, etat, dateC, nom, prenom);
+                BonLivraison bl = new BonLivraison(id,adresseLivraison, etat, dateC,dates, nom, prenom);
                 
                 bl.setCommandeVente(serviceCommandeVente.findById(rs.getInt(9)));
                 
@@ -96,6 +97,24 @@ public class ServiceBonLivraison {
             System.err.println(ex.getMessage());
         }
 
+    }
+        public BonLivraison findById(int id){
+        
+        BonLivraison bo =null;
+        
+        
+        
+        for(BonLivraison b : this.afficherBon()){
+            
+            
+            if(b.getId()==id){
+                
+                bo=b;
+                return bo;
+            }
+        }
+        
+        return bo;
     }
     
     

@@ -107,6 +107,8 @@ public class AfficherVehicuelController implements Initializable {
     @FXML
     private void ModifierVehiculee(MouseEvent event) throws IOException {
         UpVehiculeController.chsel= table.getSelectionModel().getSelectedItem();
+        
+        
          Parent root = FXMLLoader.load(getClass().getResource("UpVehicule.fxml"));
                 Scene scene = new Scene(root);
                 Stage window=(Stage)((Node)event.getSource()).getScene().getWindow();
