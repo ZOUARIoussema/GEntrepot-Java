@@ -25,6 +25,10 @@ public class AideChauffeur {
         this.prenom = prenom;
         this.adresse = adresse;
     }
+
+    public AideChauffeur() {
+       
+    }
     
     
     

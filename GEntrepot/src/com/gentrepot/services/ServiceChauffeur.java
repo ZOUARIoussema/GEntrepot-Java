@@ -12,6 +12,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -90,7 +91,7 @@ public class ServiceChauffeur   implements IService<Chauffeur> {
             PreparedStatement pst = cnx.prepareStatement(requete);
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
-                c.add(new Chauffeur(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), 0, rs.getString(5)));
+                c.add(new Chauffeur(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getString(6)));
             }
 
         } catch (SQLException ex) {
@@ -105,6 +106,27 @@ public class ServiceChauffeur   implements IService<Chauffeur> {
     @Override
     public void modifier(Chauffeur t) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+   
+
+    public Chauffeur findByCin(String cin) {
+       
+        Chauffeur c = new Chauffeur();
+        boolean t = false ;
+        Iterator <Chauffeur>  it= afficher().iterator();
+        while((it.hasNext())&&(t==false))
+        {
+            if (it.next().getCin().equals(cin))
+            {
+                t=true;
+                c= it.next();
+                System.err.println("hhhh");
+            }
+            
+        }
+        
+        return c;
     }
     
 }

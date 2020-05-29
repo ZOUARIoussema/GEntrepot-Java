@@ -5,14 +5,24 @@
  */
 package com.gentrepot.views;
 
+import com.gentrepot.models.AideChauffeur;
+import com.gentrepot.models.Chauffeur;
+import com.gentrepot.models.OrdreMission;
+import com.gentrepot.models.Vehicule;
+import com.gentrepot.services.ServiceBonLivraison;
+import com.gentrepot.services.ServiceOrdreMission;
 import java.net.URL;
+import java.util.Date;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 
 /**
@@ -23,32 +33,39 @@ import javafx.scene.input.MouseEvent;
 public class AfficherOrdreController implements Initializable {
 
     @FXML
-    private TableColumn<?, ?> vehicule;
+    private TableColumn<Vehicule, Integer> vehicule;
     @FXML
-    private TableColumn<?, ?> chauffeur;
+    private TableColumn<Chauffeur, String> chauffeur;
     @FXML
-    private TableColumn<?, ?> aidechauffeur;
+    private TableColumn<AideChauffeur, String> aidechauffeur;
     @FXML
-    private TableColumn<?, ?> dateCreation;
+    private TableColumn<OrdreMission, Date> dateCreation;
     @FXML
-    private TableColumn<?, ?> dateSortie;
+    private TableColumn<OrdreMission, Date> dateSortie;
     @FXML
-    private TableColumn<?, ?> dateRetour;
+    private TableColumn<OrdreMission, Date> dateRetour;
     @FXML
     private TableColumn<?, ?> bonLivraison;
     @FXML
     private Button btn;
     @FXML
-    private TableView<?> table;
+    private TableView<OrdreMission> table;
     @FXML
     private TextField recherche;
+    
+    ServiceOrdreMission sb = new ServiceOrdreMission();
 
     /**
      * Initializes the controller class.
      */
+    
+    
+    ObservableList<AideChauffeur> dataList = FXCollections.observableArrayList();
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        vehicule.setCellValueFactory(new PropertyValueFactory<Vehicule,Integer>("matricule"));
+        table.setItems(sb.afficher());
     }    
 
     @FXML

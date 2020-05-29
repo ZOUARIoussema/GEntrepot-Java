@@ -66,8 +66,13 @@ public class UpVehiculeController implements Initializable {
     ServiceVehicule sp = new ServiceVehicule();
 
     @FXML
-    private void ModifierVehicule(MouseEvent event) {
+    private void ModifierVehicule(MouseEvent event) throws IOException {
         sp.modifier(chsel, E.getSelectionModel().getSelectedItem(),Integer.parseInt(txtM.getText()), Integer.parseInt(txtC.getText()), T.getSelectionModel().getSelectedItem() );
+        Parent root = FXMLLoader.load(getClass().getResource("ChefParc.fxml"));
+                Scene scene = new Scene(root);
+                Stage window=(Stage)((Node)event.getSource()).getScene().getWindow();
+                window.setScene(scene);
+                window.show();
     }
 
     @FXML

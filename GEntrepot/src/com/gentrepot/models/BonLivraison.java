@@ -7,6 +7,8 @@ package com.gentrepot.models;
 
 import java.util.Date;
 
+
+
 /**
  *
  * @author oussema
@@ -38,6 +40,16 @@ public class BonLivraison {
     }
 
     public BonLivraison() {
+    }
+
+    public BonLivraison(int id, String adresseLivraison, String etat, Date dateCreation, Date dateSortie, String nom, String prenom) {
+        this.id = id;
+        this.adresseLivraison = adresseLivraison;
+        this.etat = etat;
+        this.dateCreation = dateCreation;
+        this.dateSortie = dateSortie;
+        this.nom = nom;
+        this.prenom = prenom;
     }
     
     

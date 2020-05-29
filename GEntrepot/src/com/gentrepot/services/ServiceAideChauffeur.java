@@ -6,12 +6,14 @@
 package com.gentrepot.services;
 
 import com.gentrepot.models.AideChauffeur;
+import com.gentrepot.models.Chauffeur;
 import com.gentrepot.utils.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -106,7 +108,28 @@ public class ServiceAideChauffeur implements IService<AideChauffeur>{
 
     @Override
     public void modifier(AideChauffeur t) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        
+        
+
+    }
+
+   public AideChauffeur findByCin(String cin) {
+       
+         AideChauffeur c = new  AideChauffeur();
+        boolean t = false ;
+        Iterator <AideChauffeur>  it= afficher().iterator();
+        while((it.hasNext())&&t==false)
+        {
+            if (it.next().getCin().equals(cin))
+            {
+                t=true;
+                c=( AideChauffeur) it.next();
+            }
+            
+        }
+        
+        return c;
     }
     
 }
