@@ -187,7 +187,7 @@ public class GestionUtilisateurController implements Initializable {
         userG.setUsernamCanonical(textFNonUtilisateurM.getText());
         userG.setRole(AjouterUserComboboxM.getValue());
 
-        serviceUser.modifier(userG);
+       if( serviceUser.modifierU(userG)){
 
         userG = null;
 
@@ -197,6 +197,7 @@ public class GestionUtilisateurController implements Initializable {
         new ZoomIn(paneGuser).play();
         paneGuser.toFront();
 
+       }
     }
 
     @FXML
