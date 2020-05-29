@@ -23,6 +23,10 @@ public class CommandeVente {
     private double tauxRemise;
     private User user;
     private List<LigneCommande>ligneCommande;
+    
+    
+    int idUser;
+    
 
     public CommandeVente(int id, double totalC, Date dateC, String etat, double tauxRemise, User user) {
         this.id = id;
@@ -32,6 +36,8 @@ public class CommandeVente {
         this.tauxRemise = tauxRemise;
         this.user = user;
         this.ligneCommande= new ArrayList<>();
+        
+        idUser=user.getId();
     }
 
       public CommandeVente() {
@@ -62,6 +68,10 @@ public class CommandeVente {
         this.dateC = dateC;
         this.etat = etat;
         this.tauxRemise = tauxRemise;
+    }
+
+    public CommandeVente(int id, int totalC, Date dateC, String etat, int tauxRemise, String user) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     
@@ -119,6 +129,14 @@ public class CommandeVente {
 
     public void setLigneCommande(List<LigneCommande> ligneCommande) {
         this.ligneCommande = ligneCommande;
+    }
+
+    public int getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(int idUser) {
+        this.idUser = idUser;
     }
     
     
