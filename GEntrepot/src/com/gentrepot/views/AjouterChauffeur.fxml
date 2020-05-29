@@ -4,55 +4,48 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="622.0" prefWidth="844.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="com.gentrepot.views.AjouterChauffeurController">
+<AnchorPane id="AnchorPane" prefHeight="622.0" prefWidth="844.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gentrepot.views.AjouterChauffeurController">
     <stylesheets>
         <URL value="@ajouterchauffeur.css" />
     </stylesheets>
    <children>
-      <TextField fx:id="txtN" layoutX="348.0" layoutY="216.0" />
-      <TextField fx:id="txtP" layoutX="348.0" layoutY="268.0" />
-      <TextField fx:id="txtA" layoutX="348.0" layoutY="328.0" />
-      <TextField fx:id="txtE" layoutX="348.0" layoutY="385.0" />
-      <TextField fx:id="txtV" layoutX="348.0" layoutY="447.0" />
-      <TextField fx:id="txtcin" layoutX="348.0" layoutY="160.0" />
-      <Text layoutX="70.0" layoutY="165.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cin :">
+      <TextField fx:id="txtN" layoutX="333.0" layoutY="270.0" />
+      <TextField fx:id="txtP" layoutX="333.0" layoutY="322.0" />
+      <TextField fx:id="txtA" layoutX="333.0" layoutY="382.0" />
+      <TextField fx:id="txtcin" layoutX="333.0" layoutY="214.0" />
+      <Text layoutX="90.0" layoutY="235.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cin :">
          <font>
             <Font size="20.0" />
          </font>
       </Text>
-      <Text layoutX="70.0" layoutY="221.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom :">
+      <Text layoutX="90.0" layoutY="291.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom :">
          <font>
             <Font size="20.0" />
          </font>
       </Text>
-      <Text layoutX="70.0" layoutY="273.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prenom :">
+      <Text layoutX="90.0" layoutY="343.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prenom :">
          <font>
             <Font size="20.0" />
          </font>
       </Text>
-      <Text layoutX="70.0" layoutY="333.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Adresse :">
+      <Text layoutX="90.0" layoutY="403.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Adresse :">
          <font>
             <Font size="20.0" />
          </font>
       </Text>
-      <Text layoutX="70.0" layoutY="390.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Etat :">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Text>
-      <Text layoutX="70.0" layoutY="452.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Voyage :">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Text>
-      <Button fx:id="btn" layoutX="587.0" layoutY="529.0" mnemonicParsing="false" onAction="#AjouterChauffeur" prefHeight="44.0" prefWidth="166.0" text="Ajouter" />
-      <Text layoutX="248.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ajouter Chauffeur" textAlignment="CENTER" wrappingWidth="346.1368103027344">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Text>
+      <Button fx:id="btn" layoutX="332.0" layoutY="448.0" mnemonicParsing="false" onAction="#AjouterChauffeur" prefHeight="26.0" prefWidth="150.0" text="Ajouter" />
+      <StackPane prefHeight="81.0" prefWidth="844.0" style="-fx-background-color: #142199;">
+         <children>
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Ajouter Chauffeur" textAlignment="CENTER" wrappingWidth="346.1368103027344">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Text>
+         </children>
+      </StackPane>
    </children>
 </AnchorPane>

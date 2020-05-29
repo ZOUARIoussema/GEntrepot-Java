@@ -23,7 +23,7 @@
             <TableColumn fx:id="prenom" prefWidth="137.5999755859375" text="Penom" />
             <TableColumn fx:id="adresse" prefWidth="115.20001220703125" text="Adresse" />
             <TableColumn fx:id="etat" prefWidth="132.79998779296875" text="Etat" />
-            <TableColumn fx:id="voyage" prefWidth="136.800048828125" text="Voyage" />
+            <TableColumn fx:id="voyage" prefWidth="122.40004882812502" text="Nb Voyage" />
         </columns>
       </TableView>
       <Button layoutX="758.0" layoutY="573.0" mnemonicParsing="false" onMouseClicked="#modifier" prefHeight="26.0" prefWidth="124.0" text="modifier" />

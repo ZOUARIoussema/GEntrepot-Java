@@ -32,7 +32,7 @@ public class ServiceVehicule  implements IService<Vehicule> {
             String requete = "INSERT INTO vehicule (id,etat,matricule,capacite,type) VALUES (?,?,?,?,?)";
             PreparedStatement pst = cnx.prepareStatement(requete);
             pst.setInt(1, A.getId());
-            pst.setString(2, "disponnible");
+            pst.setString(2, "disponible");
              pst.setInt(3, A.getMatricule());
               pst.setInt(4, A.getCapacite());
                pst.setString(5, A.getType());
@@ -60,14 +60,14 @@ public class ServiceVehicule  implements IService<Vehicule> {
     }
 
   
-    public void modifier(Vehicule A,String E , Integer M ,Integer C , String T) {
+    public void modifier(Vehicule A, Integer M ,Integer C , String T) {
          try {
-            String requete = "UPDATE vehicule SET etat=?,matricule=?,type=?,capacite=? WHERE id=?";
+            String requete = "UPDATE vehicule SET matricule=?,capacite=?,type=? WHERE id=?";
             PreparedStatement pst = cnx.prepareStatement(requete);
-             pst.setInt(5, A.getId());
-            pst.setString(1,E);
-             pst.setInt(2,M);
-              pst.setInt(4,C);
+             pst.setInt(4, A.getId());
+           
+             pst.setInt(1,M);
+              pst.setInt(2,C);
                pst.setString(3,T);
             pst.executeUpdate();
             System.out.println("vehicule modifiée !");

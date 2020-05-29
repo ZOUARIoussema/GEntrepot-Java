@@ -37,7 +37,7 @@ public class ServiceChauffeur   implements IService<Chauffeur> {
              pst.setString(3, A.getPrenom());
               pst.setString(4, A.getAdresse());
                pst.setInt(5, A.getVoyage());
-                pst.setString(6, A.getEtat());
+                pst.setString(6,"disponible");
             pst.executeUpdate();
             System.out.println("chauffeur ajouté !");
 
@@ -62,15 +62,15 @@ public class ServiceChauffeur   implements IService<Chauffeur> {
     }
 
    
-    public void modifier(Chauffeur A,String n,String p,String a,String e) {
+    public void modifier(Chauffeur A,String n,String p,String a) {
         try {
-            String requete = "UPDATE chauffeur SET nom=?,prenom=?,adresse=?,etat=? WHERE cin=?";
+            String requete = "UPDATE chauffeur SET nom=?,prenom=?,adresse=? WHERE cin=?";
             PreparedStatement pst = cnx.prepareStatement(requete);
-            pst.setString(5, A.getCin());
+            pst.setString(4, A.getCin());
             pst.setString(1, n);
             pst.setString(2, p);
              pst.setString(3, a);
-          pst.setString(4, e);
+         
             pst.executeUpdate();
             System.out.println("chauffeur modifiée !");
 

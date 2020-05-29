@@ -4,41 +4,39 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="648.0" prefWidth="915.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="com.gentrepot.views.AjouterVehicuelController">
+<AnchorPane id="AnchorPane" prefHeight="648.0" prefWidth="915.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gentrepot.views.AjouterVehicuelController">
    <children>
       <TextField fx:id="txtM" layoutX="376.0" layoutY="248.0" />
       <TextField fx:id="txtC" layoutX="376.0" layoutY="312.0" />
-      <Text layoutX="325.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ajouter vehicuel">
-         <font>
-            <Font size="35.0" />
-         </font>
-      </Text>
-      <Text layoutX="63.0" layoutY="253.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Matricule :">
+      <Text layoutX="159.0" layoutY="264.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Matricule :">
          <font>
             <Font size="15.0" />
          </font>
       </Text>
-      <Text layoutX="63.0" layoutY="317.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Capacite :">
+      <Text layoutX="159.0" layoutY="328.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Capacite :">
          <font>
             <Font size="15.0" />
          </font>
       </Text>
-      <Text layoutX="63.0" layoutY="373.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Etat :">
+      <Text layoutX="166.0" layoutY="393.0" strokeType="OUTSIDE" strokeWidth="0.0" text="type :">
          <font>
             <Font size="15.0" />
          </font>
       </Text>
-      <Text layoutX="63.0" layoutY="439.0" strokeType="OUTSIDE" strokeWidth="0.0" text="type :">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Text>
-      <Button fx:id="btn" layoutX="661.0" layoutY="542.0" mnemonicParsing="false" onAction="#AjoutVehicuel" prefHeight="49.0" prefWidth="134.0" text="Ajouter" />
-      <ComboBox fx:id="txtT" layoutX="375.0" layoutY="430.0" prefWidth="150.0" promptText="Choisir type :" />
-      <ComboBox fx:id="txtE" layoutX="375.0" layoutY="364.0" prefWidth="150.0" />
+      <Button fx:id="btn" layoutX="388.0" layoutY="468.0" mnemonicParsing="false" onAction="#AjoutVehicuel" prefHeight="26.0" prefWidth="123.0" text="Ajouter" />
+      <ComboBox fx:id="txtT" layoutX="375.0" layoutY="375.0" prefWidth="150.0" promptText="Choisir type :" />
+      <StackPane prefHeight="81.0" prefWidth="915.0" style="-fx-background-color: #142199;">
+         <children>
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Ajouter vehicuel">
+               <font>
+                  <Font size="35.0" />
+               </font>
+            </Text>
+         </children>
+      </StackPane>
    </children>
 </AnchorPane>

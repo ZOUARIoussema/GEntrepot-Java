@@ -39,10 +39,8 @@ public class UpdateChauffeurController implements Initializable {
     private TextField txtN;
     @FXML
     private TextField txtP;
-    @FXML
-     private TextField txtV;
-    @FXML
-     private TextField txtE;
+  
+   
     @FXML
      private TextField txtA;
     @FXML
@@ -57,7 +55,7 @@ public class UpdateChauffeurController implements Initializable {
         txtN.setText(chsel.getNom());
         txtP.setText(chsel.getPrenom());
        txtA.setText(chsel.getAdresse());
-        txtE.setText(chsel.getEtat());
+        
         txtcin.setText(chsel.getCin());
         
         
@@ -76,7 +74,7 @@ public class UpdateChauffeurController implements Initializable {
     @FXML
     private void modifier(MouseEvent event) throws IOException {
         
-        sp.modifier(chsel,txtN.getText(), txtP.getText(), txtA.getText(), txtE.getText());
+        sp.modifier(chsel,txtN.getText(), txtP.getText(), txtA.getText());
         
         System.err.println(chsel.getCin());
                 Parent root = FXMLLoader.load(getClass().getResource("ChefParc.fxml"));
@@ -110,7 +108,8 @@ public class UpdateChauffeurController implements Initializable {
         
         fournisseurclear();*/
        sp.supprimer(chsel);
-        Parent root = FXMLLoader.load(getClass().getResource("ChefParc.fxml"));
+        
+       Parent root = FXMLLoader.load(getClass().getResource("ChefParc.fxml"));
                 Scene scene = new Scene(root);
                 Stage window=(Stage)((Node)event.getSource()).getScene().getWindow();
                 window.setScene(scene);
