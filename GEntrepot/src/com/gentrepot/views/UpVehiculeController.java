@@ -40,8 +40,7 @@ public class UpVehiculeController implements Initializable {
     private TextField txtM;
     @FXML
     private TextField txtC;
-    @FXML
-    private ComboBox<String> E;
+  
     @FXML
     private ComboBox<String> T;
 
@@ -49,7 +48,7 @@ public class UpVehiculeController implements Initializable {
      * Initializes the controller class.
      */
      ObservableList<String> list = FXCollections.observableArrayList("Camion","Om","Partner","semi remorque","autres");
-    ObservableList<String> liste = FXCollections.observableArrayList("Disponible");
+ 
 
 
     @Override
@@ -59,7 +58,7 @@ public class UpVehiculeController implements Initializable {
          Integer c = chsel.getCapacite();
         txtC.setText(c.toString());
          T.setItems(list);
-        E.setItems(liste);
+    
        
     }    
  
@@ -67,7 +66,8 @@ public class UpVehiculeController implements Initializable {
 
     @FXML
     private void ModifierVehicule(MouseEvent event) throws IOException {
-        sp.modifier(chsel, E.getSelectionModel().getSelectedItem(),Integer.parseInt(txtM.getText()), Integer.parseInt(txtC.getText()), T.getSelectionModel().getSelectedItem() );
+        sp.modifier(chsel,Integer.parseInt(txtM.getText()), Integer.parseInt(txtC.getText()), T.getSelectionModel().getSelectedItem() );
+        
         Parent root = FXMLLoader.load(getClass().getResource("ChefParc.fxml"));
                 Scene scene = new Scene(root);
                 Stage window=(Stage)((Node)event.getSource()).getScene().getWindow();
@@ -78,6 +78,7 @@ public class UpVehiculeController implements Initializable {
     @FXML
     private void SupV(MouseEvent event) throws IOException {
         sp.supprimer(chsel);
+        
         Parent root = FXMLLoader.load(getClass().getResource("ChefParc.fxml"));
                 Scene scene = new Scene(root);
                 Stage window=(Stage)((Node)event.getSource()).getScene().getWindow();

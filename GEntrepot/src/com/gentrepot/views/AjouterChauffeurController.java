@@ -31,10 +31,7 @@ public class AjouterChauffeurController implements Initializable {
     private TextField txtN;
     @FXML
     private TextField txtP;
-    @FXML
-     private TextField txtV;
-    @FXML
-     private TextField txtE;
+    
     @FXML
      private TextField txtA;
     @FXML
@@ -46,7 +43,7 @@ public class AjouterChauffeurController implements Initializable {
     @FXML
     private void AjouterChauffeur(ActionEvent event) throws IOException {
         ServiceChauffeur sp = new ServiceChauffeur();
-        sp.ajouter(new Chauffeur(txtcin.getText(), txtN.getText(), txtP.getText(), txtA.getText(),Integer.parseInt(txtcin.getText()), txtE.getText()));
+        sp.ajouter(new Chauffeur(txtcin.getText(), txtN.getText(), txtP.getText(), txtA.getText()));
         
         JOptionPane.showMessageDialog(null, "chauffeur ajoutée !");
     }
