@@ -220,67 +220,72 @@ public class ServiceUser implements IService<User> {
     @Override
     public void modifier(User u) {
 
-        try {
-            String requete = "update user  set username=?,email=?,password=?,roles=?,username_canonical=?,email_canonical=? where id=?  ";
+        if (this.verifValiditerMotPasse(u.getPassword())) {
 
-            PreparedStatement pst = cnx.prepareStatement(requete);
+            try {
+                String requete = "update user  set username=?,email=?,password=?,roles=?,username_canonical=?,email_canonical=? where id=?  ";
 
-            pst.setString(1, u.getUsername());
-            pst.setString(2, u.getEmail());
-            pst.setString(3, Password.hashPassword(u.getPassword()));
-            if (u.getRole().equals("Client")) {
-                pst.setString(4, "a:1:{i:0;s:10:\"ROLE_CLIEN\";}");
+                PreparedStatement pst = cnx.prepareStatement(requete);
 
+                pst.setString(1, u.getUsername());
+                pst.setString(2, u.getEmail());
+                pst.setString(3, Password.hashPassword(u.getPassword()));
+                if (u.getRole().equals("Client")) {
+                    pst.setString(4, "a:1:{i:0;s:10:\"ROLE_CLIEN\";}");
+
+                }
+                if (u.getRole().equals("Chef De Parc")) {
+                    pst.setString(4, "a:1:{i:0;s:10:\"ROLE_CPARC\";}");
+
+                }
+                if (u.getRole().equals("Agent Caisse")) {
+                    pst.setString(4, "a:1:{i:0;s:10:\"ROLE_ACAIS\";}");
+
+                }
+                if (u.getRole().equals("Responsable Vente")) {
+                    pst.setString(4, "a:1:{i:0;s:10:\"ROLE_RVENT\";}");
+
+                }
+                if (u.getRole().equals("Responsable Achat")) {
+                    pst.setString(4, "a:1:{i:0;s:10:\"ROLE_RACHA\";}");
+
+                }
+                if (u.getRole().equals("Admin")) {
+
+                    pst.setString(4, "a:1:{i:0;s:10:\"ROLE_ADMIN\";}");
+
+                }
+                if (u.getRole().equals("Responsable Stockage")) {
+
+                    pst.setString(4, "a:1:{i:0;s:10:\"ROLE_STOCK\";}");
+
+                }
+                pst.setString(5, u.getUsernamCanonical());
+                pst.setString(6, u.getEmailCanonical());
+                pst.setInt(7, u.getId());
+
+                pst.executeUpdate();
+                System.out.println("user modifiée !");
+
+            } catch (SQLException ex) {
+                System.err.println(ex.getMessage());
             }
-            if (u.getRole().equals("Chef De Parc")) {
-                pst.setString(4, "a:1:{i:0;s:10:\"ROLE_CPARC\";}");
 
-            }
-            if (u.getRole().equals("Agent Caisse")) {
-                pst.setString(4, "a:1:{i:0;s:10:\"ROLE_ACAIS\";}");
+            String title = " Utilisateur ";
+            String message = "compte utilisateur est modifié avec succes ";
 
-            }
-            if (u.getRole().equals("Responsable Vente")) {
-                pst.setString(4, "a:1:{i:0;s:10:\"ROLE_RVENT\";}");
+            TrayNotification tray = new TrayNotification();
+            AnimationType type = AnimationType.POPUP;
 
-            }
-            if (u.getRole().equals("Responsable Achat")) {
-                pst.setString(4, "a:1:{i:0;s:10:\"ROLE_RACHA\";}");
+            tray.setAnimationType(type);
+            tray.setTitle(title);
+            tray.setMessage(message);
+            tray.setNotificationType(NotificationType.SUCCESS);
+            tray.showAndDismiss(Duration.millis(3000));
 
-            }
-            if (u.getRole().equals("Admin")) {
-
-                pst.setString(4, "a:1:{i:0;s:10:\"ROLE_ADMIN\";}");
-
-            }
-            if (u.getRole().equals("Responsable Stockage")) {
-
-                pst.setString(4, "a:1:{i:0;s:10:\"ROLE_STOCK\";}");
-
-            }
-            pst.setString(5, u.getUsernamCanonical());
-            pst.setString(6, u.getEmailCanonical());
-            pst.setInt(7, u.getId());
-
-            pst.executeUpdate();
-            System.out.println("user modifiée !");
-
-        } catch (SQLException ex) {
-            System.err.println(ex.getMessage());
         }
-
-        String title = " Utilisateur ";
-        String message = "compte utilisateur est modifié avec succes ";
-
-        TrayNotification tray = new TrayNotification();
-        AnimationType type = AnimationType.POPUP;
-
-        tray.setAnimationType(type);
-        tray.setTitle(title);
-        tray.setMessage(message);
-        tray.setNotificationType(NotificationType.SUCCESS);
-        tray.showAndDismiss(Duration.millis(3000));
-
+        
+        
     }
 
     public boolean modifierU(User u) {
@@ -423,7 +428,7 @@ public class ServiceUser implements IService<User> {
 
     public User find(String nonU, String motPasse) {
 
-        User user = null;
+        User u = null;
 
         try {
             String requete = "SELECT * FROM user where username=? and password=? ";
@@ -432,15 +437,49 @@ public class ServiceUser implements IService<User> {
             pst.setString(2, motPasse);
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
+                u = new User(rs.getInt(1), rs.getString(2), rs.getString(4), rs.getString(3), rs.getString(5), rs.getString(8), rs.getString(12));
 
-                user = new User(rs.getInt(1), rs.getString(2), rs.getString(4), rs.getString(3), rs.getString(5), rs.getString(8), rs.getString(12));
+                if (u.getRole().equals("a:1:{i:0;s:10:\"ROLE_CLIEN\";}")) {
+                    u.setRole("Client");
+
+                }
+                if (u.getRole().equals("a:1:{i:0;s:10:\"ROLE_CPARC\";}")) {
+
+                    u.setRole("Chef De Parc");
+
+                }
+                if (u.getRole().equals("a:1:{i:0;s:10:\"ROLE_ACAIS\";}")) {
+
+                    u.setRole("Agent Caisse");
+
+                }
+                if (u.getRole().equals("a:1:{i:0;s:10:\"ROLE_RVENT\";}")) {
+
+                    u.setRole("Responsable Vente");
+
+                }
+                if (u.getRole().equals("a:1:{i:0;s:10:\"ROLE_RACHA\";}")) {
+
+                    u.setRole("Responsable Achat");
+
+                }
+                if (u.getRole().equals("a:1:{i:0;s:10:\"ROLE_ADMIN\";}")) {
+
+                    u.setRole("Admin");
+
+                }
+                if (u.getRole().equals("a:1:{i:0;s:10:\"ROLE_STOCK\";}")) {
+
+                    u.setRole("Responsable Stockage");
+                }
+
             }
 
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
         }
 
-        return user;
+        return u;
     }
 
     public User verifUser(String nonU, String motPasse) {
@@ -464,7 +503,7 @@ public class ServiceUser implements IService<User> {
 
     public User verifLoginMail(String login, String adresseMail) {
 
-        User user = null;
+        User u = null;
 
         System.out.println(login);
         System.out.println(adresseMail);
@@ -477,14 +516,49 @@ public class ServiceUser implements IService<User> {
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
 
-                user = new User(rs.getInt(1), rs.getString(2), rs.getString(4), rs.getString(3), rs.getString(5), rs.getString(8), rs.getString(12));
+                u = new User(rs.getInt(1), rs.getString(2), rs.getString(4), rs.getString(3), rs.getString(5), rs.getString(8), rs.getString(12));
+
+                if (u.getRole().equals("a:1:{i:0;s:10:\"ROLE_CLIEN\";}")) {
+                    u.setRole("Client");
+
+                }
+                if (u.getRole().equals("a:1:{i:0;s:10:\"ROLE_CPARC\";}")) {
+
+                    u.setRole("Chef De Parc");
+
+                }
+                if (u.getRole().equals("a:1:{i:0;s:10:\"ROLE_ACAIS\";}")) {
+
+                    u.setRole("Agent Caisse");
+
+                }
+                if (u.getRole().equals("a:1:{i:0;s:10:\"ROLE_RVENT\";}")) {
+
+                    u.setRole("Responsable Vente");
+
+                }
+                if (u.getRole().equals("a:1:{i:0;s:10:\"ROLE_RACHA\";}")) {
+
+                    u.setRole("Responsable Achat");
+
+                }
+                if (u.getRole().equals("a:1:{i:0;s:10:\"ROLE_ADMIN\";}")) {
+
+                    u.setRole("Admin");
+
+                }
+                if (u.getRole().equals("a:1:{i:0;s:10:\"ROLE_STOCK\";}")) {
+
+                    u.setRole("Responsable Stockage");
+                }
+
             }
 
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
         }
 
-        return user;
+        return u;
     }
 
     public boolean verifValiditerMotPasse(String mot) {
