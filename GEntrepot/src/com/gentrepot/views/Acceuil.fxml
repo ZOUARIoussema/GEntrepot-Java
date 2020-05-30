@@ -6,18 +6,19 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="669.0" prefWidth="886.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gentrepot.views.AcceuilController">
+<AnchorPane id="AnchorPane" prefHeight="703.0" prefWidth="886.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gentrepot.views.AcceuilController">
     <stylesheets>
         <URL value="@chefparc.css" />
     </stylesheets>
    <children>
       <BorderPane prefHeight="200.0" prefWidth="200.0">
          <top>
-            <VBox prefHeight="695.0" prefWidth="263.0" style="-fx-background-color: #ffff;" BorderPane.alignment="CENTER">
+            <VBox prefHeight="485.0" prefWidth="263.0" style="-fx-background-color: #0061B4;" BorderPane.alignment="CENTER">
                <children>
                   <ImageView fitHeight="29.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Fournisseur" textAlignment="CENTER" wrappingWidth="262.9367485046387">
@@ -26,10 +27,24 @@
                      </font>
                   </Text>
                   <ImageView fitHeight="1.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                  <Button mnemonicParsing="false" onMouseClicked="#AjoutFournisseur" prefHeight="28.0" prefWidth="263.0" text="Ajouter Fournisseur" />
+                  <Button mnemonicParsing="false" onMouseClicked="#AjoutFournisseur" prefHeight="28.0" prefWidth="265.0" style="-fx-background-color: transparent;" text="Ajouter Fournisseur" textFill="WHITE">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@ImageMenueCaisse/menu.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
                   <ImageView fitHeight="1.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
                   <ImageView fitHeight="1.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                  <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="263.0" text="Afficher Fournisseur" />
+                  <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="263.0" style="-fx-background-color: Tranparent;" text="Afficher Fournisseur">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@ImageMenueCaisse/menu.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
                   <ImageView fitHeight="24.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Produit" textAlignment="CENTER" wrappingWidth="261.3367118835449">
                      <font>
@@ -103,7 +118,8 @@
             </VBox>
          </top>
       </BorderPane>
-      <BorderPane fx:id="bp2" layoutX="265.0" layoutY="1.0" onMouseClicked="#AjouterProduit" prefHeight="698.0" prefWidth="613.0" />
+      <StackPane prefHeight="660.0" prefWidth="28.0" style="-fx-background-color: white;" />
+      <BorderPane fx:id="bp2" layoutX="265.0" layoutY="1.0" onMouseClicked="#AjouterProduit" prefHeight="702.0" prefWidth="613.0" style="-fx-background-color: white;" />
       <ImageView fitHeight="2.0" fitWidth="200.0" layoutX="10.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>
