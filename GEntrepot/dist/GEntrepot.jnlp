@@ -8,13 +8,14 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="GEntrepot.jar" size="11448820" download="eager" />
+    <jar href="GEntrepot.jar" size="11448842" download="eager" />
     <jar href="lib\AnimateFX-1.2.0.jar" size="85823" download="eager" />
     <jar href="lib\TrayTester.jar" size="52070" download="eager" />
     <jar href="lib\fontawesomefx-8.0.1.jar" size="65486" download="eager" />
     <jar href="lib\fontawesomefx-8.9.jar" size="571068" download="eager" />
     <jar href="lib\javax.mail.jar" size="659033" download="eager" />
     <jar href="lib\jfoenix-8.0.2.jar" size="2442326" download="eager" />
+    <jar href="lib\mysql-connector-java-5.1.23-bin.jar" size="834126" download="eager" />
   </resources>
   <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="GEntrepot" >
     <param name="requiredFXVersion" value="8.0+"/>
