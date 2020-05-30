@@ -17,7 +17,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="904.0" prefWidth="1319.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gentrepot.controllers.AdminController">
+<BorderPane prefHeight="904.0" prefWidth="1319.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gentrepot.controllers.AdminController">
    <center>
       <AnchorPane id="AnchorPane" prefHeight="414.0" prefWidth="620.0" styleClass="mainFxmlClass">
           <stylesheets>
@@ -91,6 +91,18 @@
                         </TableView>
                      </children>
                   </Pane>
+                  <Pane fx:id="paneStatistique" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #fff;">
+                     <children>
+                        <BarChart fx:id="ProduitChart" layoutX="36.0" layoutY="132.0" prefHeight="738.0" prefWidth="847.0" title="Produits">
+                          <xAxis>
+                            <CategoryAxis label="articles" side="BOTTOM" fx:id="x" />
+                          </xAxis>
+                          <yAxis>
+                            <NumberAxis fx:id="y" label="Nombre" side="LEFT" />
+                          </yAxis>
+                        </BarChart>
+                     </children>
+                  </Pane>
                   <Pane fx:id="paneCommande" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #fff;">
                      <children>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#0061b4" height="185.0" layoutX="-93.0" layoutY="69.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1082.0">
@@ -104,7 +116,7 @@
                               <TableColumn fx:id="col_date" prefWidth="158.0" text="Date" />
                               <TableColumn fx:id="col_taux" minWidth="0.0" prefWidth="198.0" text="Taux de remise" />
                               <TableColumn fx:id="col_etat" minWidth="0.0" prefWidth="78.0" text="Etat" />
-                              <TableColumn fx:id="col_user" minWidth="0.0" prefWidth="231.0" text="User" />
+                              <TableColumn fx:id="col_userr" minWidth="0.0" prefWidth="231.0" text="User" />
                            </columns>
                         </TableView>
                         <Label layoutX="32.0" layoutY="162.0" prefHeight="18.0" prefWidth="138.0" text="/home/commandes" textFill="WHITE">
@@ -117,18 +129,6 @@
                               <Font size="37.0" />
                            </font>
                         </Label>
-                     </children>
-                  </Pane>
-                  <Pane fx:id="paneStatistique" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #fff;">
-                     <children>
-                        <BarChart fx:id="ProduitChart" layoutX="36.0" layoutY="132.0" prefHeight="738.0" prefWidth="847.0" title="Produits">
-                          <xAxis>
-                            <CategoryAxis label="articles" side="BOTTOM" fx:id="x" />
-                          </xAxis>
-                          <yAxis>
-                            <NumberAxis fx:id="y" label="Nombre" side="LEFT" />
-                          </yAxis>
-                        </BarChart>
                      </children>
                   </Pane>
                </children>
@@ -144,6 +144,14 @@
                   <DropShadow />
                </effect>
             </AnchorPane>
+            <JFXButton fx:id="btnCommande" alignment="BASELINE_LEFT" buttonType="RAISED" graphicTextGap="40.0" layoutX="-17.0" layoutY="176.0" onAction="#CommandesAction" prefHeight="62.0" prefWidth="334.0" ripplerFill="#00d9fff0" text="Commandes" textFill="WHITE">
+               <font>
+                  <Font size="27.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIconView glyphName="ALIGN_JUSTIFY" size="20" text="" wrappingWidth="40.0" />
+               </graphic>
+            </JFXButton>
             <JFXButton fx:id="btnBoutique" alignment="BASELINE_LEFT" buttonType="RAISED" graphicTextGap="40.0" layoutX="-17.0" layoutY="124.0" onAction="#BoutiqueAction" prefHeight="62.0" prefWidth="334.0" ripplerFill="#00d9fff0" text="Boutique" textFill="WHITE">
                <font>
                   <Font size="27.0" />
@@ -163,14 +171,6 @@
                   <Font name="Arial Bold" size="16.0" />
                </font>
             </Label>
-            <JFXButton fx:id="btnCommande" alignment="BASELINE_LEFT" buttonType="RAISED" graphicTextGap="40.0" layoutX="-17.0" layoutY="176.0" onAction="#CommandesAction" prefHeight="62.0" prefWidth="334.0" ripplerFill="#00d9fff0" text="Commandes" textFill="WHITE">
-               <font>
-                  <Font size="27.0" />
-               </font>
-               <graphic>
-                  <FontAwesomeIconView glyphName="ALIGN_JUSTIFY" size="20" text="" wrappingWidth="31.0" />
-               </graphic>
-            </JFXButton>
             <JFXButton fx:id="btnBon" alignment="BASELINE_LEFT" buttonType="RAISED" graphicTextGap="40.0" layoutX="-17.0" layoutY="228.0" onAction="#BonAction" prefHeight="62.0" prefWidth="334.0" ripplerFill="#00d9fff0" text="Bons de livraison" textFill="WHITE">
                <font>
                   <Font size="27.0" />
@@ -187,14 +187,12 @@
                   <FontAwesomeIconView glyphName="ALIGN_JUSTIFY" size="20" text="" wrappingWidth="31.0" />
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="btnStat" alignment="BASELINE_LEFT" buttonType="RAISED" graphicTextGap="40.0" layoutX="-5.0" layoutY="352.0" onAction="#StatAction" prefHeight="62.0" prefWidth="345.0" ripplerFill="#00d9fff0" text="Statistique" textFill="WHITE">
+            <JFXButton fx:id="btnStat" alignment="BASELINE_LEFT" buttonType="RAISED" graphicTextGap="40.0" layoutX="-5.0" layoutY="352.0" onAction="#StatAction" prefHeight="62.0" prefWidth="345.0" ripplerFill="#00d9fff0" text="        Statistique" textFill="WHITE">
                <font>
                   <Font size="27.0" />
                </font>
-               <graphic>
-                  <FontAwesomeIconView glyphName="ALIGN_JUSTIFY" size="20" text="" wrappingWidth="31.0" />
-               </graphic>
             </JFXButton>
+            <FontAwesomeIconView glyphName="ALIGN_JUSTIFY" layoutX="6.0" layoutY="391.0" size="20" text="" wrappingWidth="31.0" />
          </children>
          <effect>
             <DropShadow />

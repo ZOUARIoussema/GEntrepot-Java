@@ -8,6 +8,7 @@ package com.gentrepot.services;
 import com.gentrepot.models.CommandeVente;
 import com.gentrepot.models.LigneCommande;
 import com.gentrepot.models.ProduitAchat;
+import com.gentrepot.models.User;
 import com.gentrepot.utils.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -135,10 +136,10 @@ public class ServiceCommandeVente {
                 String etat = rs.getString("etat");
 
                 int tauxRemise = rs.getInt("tauxRemise");
-
-                CommandeVente co = new CommandeVente(id, totalC, dateC, etat, tauxRemise);
+              int user = rs.getInt("user");
+                CommandeVente co = new CommandeVente(id, totalC, dateC, etat, tauxRemise,new User(user));
                 co.getLigneCommande().addAll(ligneService.RecupereParCommande(co));
-                commande.add(co);
+                commande.add(co); 
             }
 
         } catch (SQLException ex) {
@@ -163,8 +164,37 @@ public class ServiceCommandeVente {
         }
 
     }
-    
-    
+   
+     public List<CommandeVente> afficherCommandeByUser(User user) {
+        List<CommandeVente> commande = new ArrayList<>();
+        
+        
+        ServiceLigneCommande ligneService = new ServiceLigneCommande();
+
+        try {
+            String requete = "SELECT * FROM commande_vente where user ="+ user.getId();
+            PreparedStatement pst = cnx.prepareStatement(requete);
+            ResultSet rs = pst.executeQuery();
+
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                int totalC = rs.getInt("totalC");
+                java.util.Date dateC = rs.getDate("dateC");
+                String etat = rs.getString("etat");
+
+                int tauxRemise = rs.getInt("tauxRemise");
+               // String user = rs.getString("user");
+                CommandeVente co = new CommandeVente(id, totalC, dateC, etat, tauxRemise);
+                co.getLigneCommande().addAll(ligneService.RecupereParCommande(co));
+                commande.add(co); 
+            }
+
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+        return commande;
+
+    }
     
     
     
