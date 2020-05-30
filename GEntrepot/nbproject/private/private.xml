@@ -3,13 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/PiJAVA/GEntrepot-Java/GEntrepot/src/com/gentrepot/controllers/ValiderBLController.java</file>
-            <file>file:/D:/PiJAVA/GEntrepot-Java/GEntrepot/src/com/gentrepot/controllers/AjouterCommandeController.java</file>
-            <file>file:/D:/PiJAVA/GEntrepot-Java/GEntrepot/src/com/gentrepot/controllers/AjouterBLController.java</file>
-            <file>file:/D:/PiJAVA/GEntrepot-Java/GEntrepot/src/com/gentrepot/utils/DataSource.java</file>
-            <file>file:/D:/PiJAVA/GEntrepot-Java/GEntrepot/src/com/gentrepot/services/ServiceCommandeVente.java</file>
-            <file>file:/D:/PiJAVA/GEntrepot-Java/GEntrepot/src/com/gentrepot/controllers/AdminController.java</file>
-            <file>file:/D:/PiJAVA/GEntrepot-Java/GEntrepot/src/com/gentrepot/controllers/ValidationBController.java</file>
+            <file>file:/E:/Esprit/Semestre-2-2019/IntegrationFinalJavaMaster/GEntrepot-Java/GEntrepot/src/com/gentrepot/services/Password.java</file>
+            <file>file:/E:/Esprit/Semestre-2-2019/IntegrationFinalJavaMaster/GEntrepot-Java/GEntrepot/src/com/gentrepot/services/ServiceUser.java</file>
+            <file>file:/E:/Esprit/Semestre-2-2019/IntegrationFinalJavaMaster/GEntrepot-Java/GEntrepot/src/com/gentrepot/controllers/AuthentificationController.java</file>
         </group>
     </open-files>
 </project-private>
