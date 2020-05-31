@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="GEntrepot.jar" size="11451433" download="eager" />
+    <jar href="GEntrepot.jar" size="11451432" download="eager" />
     <jar href="lib\AnimateFX-1.2.0.jar" size="85823" download="eager" />
     <jar href="lib\TrayTester.jar" size="52070" download="eager" />
     <jar href="lib\fontawesomefx-8.0.1.jar" size="65486" download="eager" />
