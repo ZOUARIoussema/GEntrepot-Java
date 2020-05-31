@@ -14,6 +14,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.scene.control.Alert;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -40,6 +41,8 @@ public class ServiceFournisseur implements IService<Fournisseur> {
                 pst.executeUpdate();
                 System.out.println("Fournisseur ajouté !");
 
+                JOptionPane.showMessageDialog(null, "Fournissseur ajoutée !");
+
             } catch (SQLException ex) {
                 System.err.println(ex.getMessage());
             }
@@ -47,7 +50,7 @@ public class ServiceFournisseur implements IService<Fournisseur> {
 
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Ajouter Fournisseur");
-            alert.setHeaderText("matricule fiscale deja existe !");
+            alert.setHeaderText(" matricule fiscale deja existe !");
 
             alert.showAndWait();
 
@@ -111,7 +114,7 @@ public class ServiceFournisseur implements IService<Fournisseur> {
 
         for (Fournisseur f : this.afficher()) {
 
-            if (f.getMatriculeFiscale().equals(mt)) {
+            if (f.getMatriculeFiscale().toUpperCase().equals(mt.toUpperCase())) {
                 return true;
             }
 
