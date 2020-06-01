@@ -36,7 +36,7 @@ public class ServiceChauffeur   implements IService<Chauffeur> {
             pst.setString(2, A.getNom());
              pst.setString(3, A.getPrenom());
               pst.setString(4, A.getAdresse());
-               pst.setInt(5, A.getVoyage());
+               pst.setInt(5, 0);
                 pst.setString(6,"disponible");
             pst.executeUpdate();
             System.out.println("chauffeur ajouté !");
@@ -105,7 +105,7 @@ public class ServiceChauffeur   implements IService<Chauffeur> {
 
     @Override
     public void modifier(Chauffeur t) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
 
    
@@ -113,20 +113,29 @@ public class ServiceChauffeur   implements IService<Chauffeur> {
     public Chauffeur findByCin(String cin) {
        
         Chauffeur c = new Chauffeur();
-        boolean t = false ;
-        Iterator <Chauffeur>  it= afficher().iterator();
-        while((it.hasNext())&&(t==false))
-        {
-            if (it.next().getCin().equals(cin))
-            {
-                t=true;
-                c= it.next();
-                System.err.println("hhhh");
-            }
-            
-        }
-        
+     for(Chauffeur ch : afficher())
+     {if(ch.getCin().equals(cin))
+     {
+         c=ch;
+     }
+         
+     }
         return c;
     }
+    
+       public Chauffeur findBynom(String cin) {
+       
+        Chauffeur c = new Chauffeur();
+     for(Chauffeur ch : afficher())
+     {if(ch.getNom().equals(cin))
+     { System.out.println(ch.getCin());
+         c=ch;
+          
+     }
+         
+     }
+        return c;
+    }
+    
     
 }

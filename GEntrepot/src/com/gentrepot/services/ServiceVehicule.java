@@ -88,6 +88,7 @@ public class ServiceVehicule  implements IService<Vehicule> {
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
                 c.add(new Vehicule(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getInt(4), rs.getString(5)));
+               
             }
 
         } catch (SQLException ex) {
@@ -105,20 +106,35 @@ public class ServiceVehicule  implements IService<Vehicule> {
 
     public Vehicule findByMatricule(int matricule) {
            Vehicule c = new Vehicule();
-        boolean t = false ;
-        Iterator <Vehicule>  it= afficher().iterator();
-        while((it.hasNext())&&t==false)
-        {
-            if (it.next().getMatricule()==matricule)
-            {
-                t=true;
-                c=(Vehicule) it.next();
-            }
-            
-        }
-        
-        return c;
+      for (Vehicule v :afficher())
+      {Integer i = matricule;
+        System.err.println(i.toString());
+          if(v.getId()==matricule)
+          {System.err.println("oumayma");
+              c=v;
+              return v;
+          }
+          
+      }
+      
+      return c;
     }
+      public Vehicule findByMatriculeorder(int matricule) {
+           Vehicule c = new Vehicule();
+      for (Vehicule v :afficher())
+      {Integer i = matricule;
+        System.err.println(i.toString());
+          if(v.getMatricule()==matricule)
+          {System.err.println("oumayma");
+              c=v;
+              return v;
+          }
+          
+      }
+      
+      return c;
+    }
+    
 
     }
 
