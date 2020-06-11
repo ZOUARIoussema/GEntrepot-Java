@@ -3,25 +3,28 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.gentrepot.views;
+package com.gentrepot.controllers;
 
+
+import com.gentrepot.models.AideChauffeur;
 import com.gentrepot.models.Chauffeur;
-import com.gentrepot.services.ServiceChauffeur;
-import com.gentrepot.utils.DataSource;
+import com.gentrepot.models.OrdreMission;
+import com.gentrepot.models.Vehicule;
+import com.gentrepot.services.ServiceBonLivraison;
+import com.gentrepot.services.ServiceOrdreMission;
+import com.gentrepot.utils.PDF;
+import com.itextpdf.text.BadElementException;
+import com.itextpdf.text.DocumentException;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Date;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -34,59 +37,61 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import javax.swing.JOptionPane;
 
 /**
  * FXML Controller class
  *
  * @author Rym
  */
-public class AfficherChauffeurController implements Initializable {
-   ServiceChauffeur sc = new ServiceChauffeur();
-
-
-    @FXML private TableView<Chauffeur> table ;
-    @FXML private TableColumn<Chauffeur,String> cin ;
-     @FXML private TableColumn<Chauffeur,String> prenom ;
-      @FXML private TableColumn<Chauffeur,String> nom ;
-       @FXML private TableColumn<Chauffeur,String> adresse ;
-        @FXML private TableColumn<Chauffeur,String> etat ;
-        @FXML private TableColumn<Chauffeur,Integer> voyage ;
+public class AfficherOrdreController implements Initializable {
+  
+    @FXML
+    private TableColumn<OrdreMission, Integer> vehicule;
+    @FXML
+    private TableColumn<Chauffeur, String> chauffeur;
+    @FXML
+    private TableColumn<AideChauffeur, String> aidechauffeur;
+    @FXML
+    private TableColumn<OrdreMission, Date> dateCreation;
+    @FXML
+    private TableColumn<OrdreMission, Date> dateSortie;
+    @FXML
+    private TableColumn<OrdreMission, Date> dateRetour;
+    @FXML
+    private TableColumn<?, ?> bonLivraison;
+    @FXML
+    private Button btn;
+    @FXML
+    private TableView<OrdreMission> table;
     @FXML
     private TextField recherche;
-        
-       
-          public void AfficherChauffeur() {
-      
+    
+    ServiceOrdreMission sb = new ServiceOrdreMission();
+    
+    PDF pdf = new PDF();
+    
 
-        /*try {
-            String requete = "SELECT * FROM chauffeur";
-            PreparedStatement pst = cnx.prepareStatement(requete);
-            ResultSet rs = pst.executeQuery();
-            while (rs.next()) {
-                data.add(new Chauffeur(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), 0, rs.getString(5)));
-            }
-            cnx.close();
-        } catch (SQLException ex) {
-         
-        }*/
-       
-    }
-          
-          ObservableList<Chauffeur> dataList = FXCollections.observableArrayList();
+    /**
+     * Initializes the controller class.
+     */
+    
+    
+    ObservableList<OrdreMission> dataList = FXCollections.observableArrayList();
+    @FXML
+    private TableColumn<OrdreMission, Integer> id;
+    private TableColumn<OrdreMission, String> cin;
+     private TableColumn<OrdreMission, String> nom;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-         cin.setCellValueFactory(new PropertyValueFactory<Chauffeur,String>("cin"));
-        prenom.setCellValueFactory(new PropertyValueFactory<Chauffeur,String>("prenom"));
-        nom.setCellValueFactory(new PropertyValueFactory<Chauffeur,String>("nom"));
-        adresse.setCellValueFactory(new PropertyValueFactory<Chauffeur,String>("adresse"));
-        etat.setCellValueFactory(new PropertyValueFactory<Chauffeur,String>("etat")); 
-        voyage.setCellValueFactory(new PropertyValueFactory<Chauffeur,Integer>("voyage")); 
-        table.setItems(sc.afficher());
-            dataList.addAll(sc.afficher());
-                 FilteredList<Chauffeur> filteredData = new FilteredList<>(dataList, b -> true);
+        // TODO
+        vehicule.setCellValueFactory(new PropertyValueFactory<OrdreMission,Integer>("id_vehicule"));
+        id.setCellValueFactory(new PropertyValueFactory<OrdreMission,Integer>("id"));
+          
+        table.setItems(sb.afficher());
+         dataList.addAll(sb.afficher());
+         
+         /* FilteredList<OrdreMission> filteredData = new FilteredList<>(dataList, b -> true);
 		
 		// 2. Set the filter Predicate whenever the filter changes.
 		recherche.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -100,7 +105,7 @@ public class AfficherChauffeurController implements Initializable {
 				// Compare first name and last name of every person with filter text.
 				String lowerCaseFilter = newValue.toLowerCase();
 				
-				if (F.getNom().toLowerCase().indexOf(lowerCaseFilter) != -1 ) {
+				if (F.get.toLowerCase().indexOf(lowerCaseFilter) != -1 ) {
 					return true; // Filter matches first name.
 				} 
                                 else if (String.valueOf(F.getCin()).indexOf(lowerCaseFilter)!=-1)
@@ -120,30 +125,33 @@ public class AfficherChauffeurController implements Initializable {
 		});
 		
 		// 3. Wrap the FilteredList in a SortedList. 
-		SortedList<Chauffeur> sortedData = new SortedList<>(filteredData);
+		SortedList<OrdreMission> sortedData = new SortedList<>(filteredData);
 		
 		// 4. Bind the SortedList comparator to the TableView comparator.
 		// 	  Otherwise, sorting the TableView would have no effect.
 		sortedData.comparatorProperty().bind(table.comparatorProperty());
 		
 		// 5. Add sorted (and filtered) data to the table.
-		table.setItems(sortedData);
+		table.setItems(sortedData);*/
       
        
 
     }    
 
     @FXML
-    private void modifier(MouseEvent event) throws IOException {
-        UpdateChauffeurController.chsel=table.getSelectionModel().getSelectedItem();
-       // System.err.println(UpdateChauffeurController.chsel.getCin());    
-        
-                Parent root = FXMLLoader.load(getClass().getResource("UpdateChauffeur.fxml"));
+    private void ModifierOrdred(MouseEvent event) throws IOException {
+      //  ModifierOrdreController.chsel=table.getSelectionModel().getSelectedItem();
+         Parent root = FXMLLoader.load(getClass().getResource("UpdateChauffeur.fxml"));
                 Scene scene = new Scene(root);
                 Stage window=(Stage)((Node)event.getSource()).getScene().getWindow();
                 window.setScene(scene);
                 window.show();
-              
+    }
+
+    @FXML
+    private void impOrdre(MouseEvent event) throws DocumentException, BadElementException, IOException, FileNotFoundException, InterruptedException, SQLException {
+        pdf.GeneratePdf("oumayma", table.getSelectionModel().getSelectedItem());
         
     }
+    
 }

@@ -3,15 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.gentrepot.views;
+package com.gentrepot.controllers;
 
-import com.gentrepot.models.Vehicule;
-import com.gentrepot.services.ServiceVehicule;
+import com.gentrepot.models.AideChauffeur;
+import com.gentrepot.services.ServiceAideChauffeur;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -19,7 +17,6 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -29,46 +26,39 @@ import javafx.stage.Stage;
  *
  * @author Rym
  */
-public class UpVehiculeController implements Initializable {
-    ObservableList<Vehicule> cls = FXCollections.observableArrayList();
-     public static Vehicule chsel ;
-
-
+public class ModifierAideChauffeurController implements Initializable {
+public static AideChauffeur chsel ;
+    @FXML
+    private TextField txtcin;
+    @FXML
+    private TextField txtN;
+    @FXML
+    private TextField txtP;
+    @FXML
+    private TextField txtA;
     @FXML
     private Button btn;
-    @FXML
-    private TextField txtM;
-    @FXML
-    private TextField txtC;
-  
-    @FXML
-    private ComboBox<String> T;
 
     /**
      * Initializes the controller class.
      */
-     ObservableList<String> list = FXCollections.observableArrayList("Camion","Om","Partner","semi remorque","autres");
- 
-
-
+    
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        Integer m = chsel.getMatricule();
-         txtM.setText(m.toString());
-         Integer c = chsel.getCapacite();
-        txtC.setText(c.toString());
-         T.setItems(list);
-    
-       
+       txtN.setText(chsel.getNom());
+        txtP.setText(chsel.getPrenom());
+       txtA.setText(chsel.getAdresse());
+        txtcin.setText(chsel.getCin());
     }    
- 
-    ServiceVehicule sp = new ServiceVehicule();
-
+ ServiceAideChauffeur sp = new ServiceAideChauffeur();
     @FXML
-    private void ModifierVehicule(MouseEvent event) throws IOException {
-        sp.modifier(chsel,Integer.parseInt(txtM.getText()), Integer.parseInt(txtC.getText()), T.getSelectionModel().getSelectedItem() );
+    private void ModifeAideChauffeur(MouseEvent event) throws IOException {
+         
+        sp.modifier(chsel,txtN.getText(), txtP.getText(), txtA.getText());
         
-        Parent root = FXMLLoader.load(getClass().getResource("ChefParc.fxml"));
+        System.err.println(chsel.getCin());
+                Parent root = FXMLLoader.load(getClass().getResource("ChefParc.fxml"));
                 Scene scene = new Scene(root);
                 Stage window=(Stage)((Node)event.getSource()).getScene().getWindow();
                 window.setScene(scene);
@@ -76,13 +66,14 @@ public class UpVehiculeController implements Initializable {
     }
 
     @FXML
-    private void SupV(MouseEvent event) throws IOException {
-        sp.supprimer(chsel);
-        
+    private void suppAide(MouseEvent event) throws IOException {
+          sp.supprimer(chsel);
         Parent root = FXMLLoader.load(getClass().getResource("ChefParc.fxml"));
                 Scene scene = new Scene(root);
                 Stage window=(Stage)((Node)event.getSource()).getScene().getWindow();
                 window.setScene(scene);
                 window.show();
     }
-}
+    }
+    
+

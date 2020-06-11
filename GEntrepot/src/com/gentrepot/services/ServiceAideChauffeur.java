@@ -115,21 +115,33 @@ public class ServiceAideChauffeur implements IService<AideChauffeur>{
     }
 
    public AideChauffeur findByCin(String cin) {
-       
-         AideChauffeur c = new  AideChauffeur();
-        boolean t = false ;
-        Iterator <AideChauffeur>  it= afficher().iterator();
-        while((it.hasNext())&&t==false)
-        {
-            if (it.next().getCin().equals(cin))
-            {
-                t=true;
-                c=( AideChauffeur) it.next();
-            }
-            
-        }
-        
+   
+            AideChauffeur c = new AideChauffeur();
+     for(AideChauffeur ch : afficher())
+     {if(ch.getCin().equals(cin))
+     {
+         c=ch;
+     }
+         
+     }
         return c;
+       
     }
+   
+   
+    public AideChauffeur findBynom(String cin) {
+   
+            AideChauffeur c = new AideChauffeur();
+     for(AideChauffeur ch : afficher())
+     {if(ch.getNom().equals(cin))
+     {
+         c=ch;
+     }
+         
+     }
+        return c;
+       
+    }
+   
     
 }

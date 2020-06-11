@@ -13,6 +13,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -45,6 +46,14 @@ public class ServiceBonLivraison {
             System.err.println(ex.getMessage());
         }
     }
+    
+    
+    
+   
+    
+    
+    
+    
     
       public List<BonLivraison> afficherBon() {
         List<BonLivraison> bon = new ArrayList<>();
@@ -98,6 +107,24 @@ public class ServiceBonLivraison {
         }
 
     }
+        
+               public void modifierBonLivordre(BonLivraison b) {
+        try {
+            String requete
+                    = "UPDATE bon_livraison SET id_ordremission=? WHERE id=?";
+            PreparedStatement pst
+                    = cnx.prepareStatement(requete);
+            pst.setInt(1, b.getOrdreMission().getId());
+             pst.setInt(2, b.getId());
+
+            pst.executeUpdate();
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+
+    }
+        
+        
         public BonLivraison findById(int id){
         
         BonLivraison bo =null;
@@ -116,6 +143,26 @@ public class ServiceBonLivraison {
         
         return bo;
     }
+        
+                public BonLivraison findBydates(Date ds){
+        
+        BonLivraison bo =null;
+        
+        
+        
+        for(BonLivraison b : this.afficherBon()){
+            
+            
+            if(b.getDateSortie().equals(ds)){
+                
+                bo=b;
+                return bo;
+            }
+        }
+        
+        return bo;
+    }
+        
     
     
 }
