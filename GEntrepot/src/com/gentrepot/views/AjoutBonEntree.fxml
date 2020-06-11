@@ -1,21 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gentrepot.views.AjoutBonEntreeController">
    <children>
       <Label layoutX="238.0" layoutY="43.0" text="Ajouter un bon d'entree" />
       <Label layoutX="50.0" layoutY="120.0" text="Date :" />
       <Label layoutX="50.0" layoutY="160.0" text="Date de Production :" />
       <Label layoutX="50.0" layoutY="200.0" text="Date d'expiration :" />
       <Label layoutX="50.0" layoutY="240.0" text="Commande d'approvisionnement :" />
-      <TextField layoutX="240.0" layoutY="116.0" />
-      <TextField layoutX="240.0" layoutY="156.0" />
-      <TextField layoutX="240.0" layoutY="196.0" />
-      <TextField layoutX="240.0" layoutY="236.0" />
-      <Button layoutX="446.0" layoutY="308.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="68.0" text="Ajouter" />
+      <TextField fx:id="d" layoutX="240.0" layoutY="236.0" />
+      <Button fx:id="aj" layoutX="446.0" layoutY="308.0" mnemonicParsing="false" onMouseClicked="#ajoutbe" prefHeight="34.0" prefWidth="68.0" text="Ajouter" />
+      <DatePicker fx:id="a" layoutX="228.0" layoutY="116.0" />
+      <DatePicker fx:id="b" layoutX="228.0" layoutY="156.0" />
+      <DatePicker fx:id="c" layoutX="228.0" layoutY="196.0" />
    </children>
 </AnchorPane>

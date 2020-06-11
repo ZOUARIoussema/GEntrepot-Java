@@ -10,10 +10,12 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
@@ -29,6 +31,10 @@ public class AcceuilController implements Initializable {
     private BorderPane bp2;
     @FXML
     private ImageView imageMail;
+    @FXML
+    private Button abe;
+    @FXML
+    private Button ajbe;
         public void chargerpage (String page) 
     {
         Parent root = null ;
@@ -76,6 +82,16 @@ public class AcceuilController implements Initializable {
     private void envoyerMail(MouseEvent event) {
         
          chargerpage("EnvoyerMAilForm");
+    }
+
+    @FXML
+    private void afficherbe(ActionEvent event) {
+        chargerpage("AffichageBonEntree");
+    }
+
+    @FXML
+    private void ajoutBE(ActionEvent event) {
+        chargerpage("AjoutBonEntree");
     }
     
 }

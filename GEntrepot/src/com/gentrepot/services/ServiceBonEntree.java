@@ -24,12 +24,12 @@ public class ServiceBonEntree implements IService<BonEntree> {
     @Override
     public void ajouter(BonEntree t) {
         try {
-            String requete = "INSERT INTO bon_entree (date,dateProduction,dateExpiration,numeroC_commandeAp) VALUES (?,?,?,?)";
+            String requete = "INSERT INTO bon_entree (date,dateProduction,dateExpiration) VALUES (?,?,?)";
             PreparedStatement pst = cnx.prepareStatement(requete);
             pst.setDate(1, new java.sql.Date(t.getDate().getTime()));
             pst.setDate(2, new java.sql.Date(t.getDateProduction().getTime()));
             pst.setDate(3, new java.sql.Date(t.getDateExpiration().getTime()));
-            pst.setInt(4, t.getCommandeDApprovisionnement().getNumeroC());
+           // pst.setInt(4, t.getCommandeDApprovisionnement().getNumeroC());
             pst.executeUpdate();
             System.out.println("Bon d'entree ajouté !");
 

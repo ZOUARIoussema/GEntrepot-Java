@@ -12,6 +12,19 @@ import java.util.Date;
  * @author oussema
  */
 public class BonEntree {
+
+    public BonEntree(Date date, Date dateProduction, Date dateExpiration, CommandeDApprovisionnement commandeDApprovisionnement) {
+        this.date = date;
+        this.dateProduction = dateProduction;
+        this.dateExpiration = dateExpiration;
+        this.commandeDApprovisionnement = commandeDApprovisionnement;
+    }
+
+    public BonEntree(Date date, Date dateProduction, Date dateExpiration) {
+        this.date = date;
+        this.dateProduction = dateProduction;
+        this.dateExpiration = dateExpiration;
+    }
     
     
     

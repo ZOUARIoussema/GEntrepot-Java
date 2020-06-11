@@ -84,10 +84,10 @@
                      </font>
                   </Text>
                   <ImageView fitHeight="1.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                  <Button mnemonicParsing="false" prefHeight="28.0" prefWidth="263.0" text="Ajouter Bon D'entree" />
+                  <Button fx:id="ajbe" mnemonicParsing="false" onAction="#ajoutBE" prefHeight="28.0" prefWidth="263.0" text="Ajouter Bon D'entree" />
                   <ImageView fitHeight="1.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
                   <ImageView fitHeight="1.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                  <Button mnemonicParsing="false" prefHeight="28.0" prefWidth="263.0" text="Afficher Bon D'entree" />
+                  <Button fx:id="abe" mnemonicParsing="false" onAction="#afficherbe" prefHeight="28.0" prefWidth="263.0" text="Afficher Bon D'entree" />
                   <ImageView fitHeight="24.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Bon De Retour" textAlignment="CENTER" wrappingWidth="262.1367301940918">
                      <font>
