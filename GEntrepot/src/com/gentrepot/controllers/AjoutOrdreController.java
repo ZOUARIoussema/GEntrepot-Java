@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.gentrepot.views;
+package com.gentrepot.controllers;
 
 import com.gentrepot.models.AideChauffeur;
 import com.gentrepot.models.BonLivraison;
@@ -63,7 +63,7 @@ public class AjoutOrdreController implements Initializable {
     private DatePicker s;
     @FXML
     private DatePicker r;
-    ZoneId defaultZoneId = ZoneId.systemDefault();
+   // ZoneId defaultZoneId = ZoneId.systemDefault();
     
     //public ArrayList<BonLivraison> oumayma = new ArrayList<BonLivraison>();
    // BonLivraison b1 = new BonLivraison();
@@ -73,6 +73,7 @@ public class AjoutOrdreController implements Initializable {
      ServiceChauffeur sc = new ServiceChauffeur();
      ServiceAideChauffeur sa = new ServiceAideChauffeur();
      ServiceOrdreMission so = new ServiceOrdreMission();
+     
     @FXML
     private ComboBox<Date> txtB;
     @FXML
@@ -140,65 +141,23 @@ public class AjoutOrdreController implements Initializable {
 
     @FXML
     private void AjoutOrdre(MouseEvent event) throws SQLException {
-         ServiceOrdreMission sp = new ServiceOrdreMission();
-         
-         
-                  String req1 = "select * from aide_chauffeur where nom like ? ;";
-                  PreparedStatement pst1 = cnx.prepareStatement(req1);
-                  pst1.setString(1, (String)txtA.getSelectionModel().getSelectedItem());
-                  ResultSet rs1 =pst1.executeQuery();
-                  while(rs1.next()){
-                      System.out.println("fffffffff");
-                    AideChauffeur   c1= new AideChauffeur(rs1.getString(1),rs1.getString(2),rs1.getString(3),rs1.getString(4));
-                    System.out.println(c1.getCin());
+        
                   
-       // sp.ajouter(new OrdreMission(txtV.getSelectionModel().getSelectedItem(),txtC.getSelectionModel().getSelectedItem(), txtA.getSelectionModel().getSelectedItem(), c.getDayCellFactory(),s.getDayCellFactory(),r.getDayCellFactory(), bon.get);
-           String req = "select * from vehicule where matricule = ? ;";
-                  PreparedStatement pst = cnx.prepareStatement(req);
-                  pst.setInt(1, txtV.getSelectionModel().getSelectedItem());
-                  ResultSet rs =pst.executeQuery();
-                  while(rs.next()){
-                    Vehicule   c= new Vehicule(rs.getInt(1),rs.getString(2),rs.getInt(3),rs.getInt(4),rs.getString(5));
-                       System.out.println(c.getType());
-              
-                     String req3 = "select * from bon_livraison where datesortie = ? ;";
-                  PreparedStatement pst3 = cnx.prepareStatement(req3);
-                  pst3.setDate(1, (java.sql.Date) txtB.getSelectionModel().getSelectedItem());
-                  List<BonLivraison> lbo = new ArrayList();
-                  ResultSet rs3 =pst3.executeQuery();
-                  while(rs3.next()){
-                      
-                    BonLivraison c3= new BonLivraison(rs1.getInt(1), rs3.getString(3), rs3.getString(4), rs3.getDate(5),rs3.getDate(6), rs3.getString(7), rs3.getString(8));
-                       lbo.add(c3);
-                    System.out.println("nadia");
-                  String req2 = "select * from chauffeur where nom like ? ;";
-                  PreparedStatement pst2 = cnx.prepareStatement(req2);
-                  pst2.setString(1,(String)txtC.getSelectionModel().getSelectedItem());
-                  ResultSet rs2 =pst2.executeQuery();
-                  while(rs2.next()){
-                      System.out.println("com");
-                    Chauffeur   c2= new Chauffeur(rs2.getString(1),rs2.getString(2),rs2.getString(3),rs2.getString(4),rs2.getInt(5),rs2.getString(6));
-                       System.out.println("bachir");
-                     /* Date s1=  Date.from(s.getValue().atStartOfDay(defaultZoneId).toInstant());
-                     Date s2=  Date.from(cr.getValue().atStartOfDay(defaultZoneId).toInstant());
-                     Date s3=  Date.from(r.getValue().atStartOfDay(defaultZoneId).toInstant());*/
-                     Date s1=java.sql.Date.valueOf(s.getValue());
+       AideChauffeur ai = sa.findBynom((String)txtA.getSelectionModel().getSelectedItem());
+       Chauffeur ch=sc.findBynom((String)txtC.getSelectionModel().getSelectedItem());
+       Vehicule v = sv.findByMatriculeorder(txtV.getSelectionModel().getSelectedItem());
+      List <BonLivraison> b= new ArrayList<>();
+             b.add( b1.findBydates((java.sql.Date) txtB.getSelectionModel().getSelectedItem()));
+       
+         Date s1=java.sql.Date.valueOf(s.getValue());
                      Date s2=java.sql.Date.valueOf(cr.getValue());
                     Date s3=java.sql.Date.valueOf(r.getValue());
-
-                     OrdreMission o = new OrdreMission(c, c2, c1, s2, s1, s3, lbo);
-                     System.out.println("yaya");
-                     sp.ajouter(o);
-                  System.out.println("hama");
-                  }}}}
-                  
-       
-       
-      //  JOptionPane.showMessageDialog(null, "ordre de mission ajoutée !");
+                     OrdreMission o = new OrdreMission(v, ch, ai, s2, s1, s3, b);
+                     so.ajouter(o);
+                     
+       JOptionPane.showMessageDialog(null, "ordre de mission ajoutée !");
     }
 
-    @FXML
-    private void hama(MouseEvent event) {
-    }
+   
     
     }

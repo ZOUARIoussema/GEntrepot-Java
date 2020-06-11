@@ -40,27 +40,36 @@ Connection cnx = DataSource.getInstance().getCnx();
     @Override
     public void ajouter(OrdreMission A) {
 try {
-            String requete = "INSERT INTO ordremission (id_vehicule  ,id_chauffeur ,id_aidechauff, bondelivraison,datecreation,datesortie,dateretour ) VALUES (?,?,?,?,?,?,?);";
+            String requete = "INSERT INTO ordremission (id_vehicule  ,id_chauffeur ,id_aidechauff,datecreation,datesortie,dateretour ) VALUES (?,?,?,?,?,?);";
             PreparedStatement pst = cnx.prepareStatement(requete);
-            pst.setInt(1, A.getVehicule().getId());
-            pst.setInt(2, A.getChauffeur().getId());
-             pst.setInt(3, A.getAideChauffeur().getId());
-              pst.setDate(5, A.getDateCreation());
-               pst.setDate(7,  A.getDateRetour());
-                pst.setDate(6,  A.getDateSortie()); 
+            pst.setInt(1, A.getVehicule().getMatricule());
+            System.err.println("1");
+            pst.setString(2, A.getChauffeur().getCin());
+             pst.setString(3, A.getAideChauffeur().getCin());
+             System.err.println("2");
+              pst.setDate(4, A.getDateCreation());
+               pst.setDate(6,  A.getDateRetour());
+                pst.setDate(5,  A.getDateSortie()); 
+                System.err.println("3");
                 //Object [] ob = new Object[A.getBonLivraisons().size()];
-                Object [] ob = new Object[]{"hama"};
-                 System.out.println("0");
-                Array hama = cnx.createArrayOf("bon_livraison", A.getBonLivraisons().toArray());
-                System.out.println("1");
-              pst.setArray(4,hama);    
- System.out.println("2");
+                
+               
+              //  Array hama = cnx.createArrayOf("bon_livraison", A.getBonLivraisons().toArray());
+              
+               
             pst.executeUpdate();
             System.out.println("ordre de mission ajouté !");
 
         } catch (SQLException ex) {
-           // System.err.println(ex.getMessage());
+            System.err.println(ex.getMessage());
         }
+
+       ServiceBonLivraison sb = new ServiceBonLivraison();
+       for(BonLivraison b :A.getBonLivraisons())
+       {    b.setOrdreMission(A);
+           sb.modifierBonLivordre(b);
+       }
+
     }
 
     @Override
@@ -81,7 +90,7 @@ try {
     public void modifier(OrdreMission A) {
         try {
             String requete = "UPDATE ordremission SET vehicule=?,chauffeur"
-                    + "=?,aidechauff=?,datecreation=?,datesortie=?,dateretour=? WHERE cin=?";
+                    + "=?,aidechauff=?,datecreation=?,datesortie=?,dateretour=? WHERE id=?";
             PreparedStatement pst = cnx.prepareStatement(requete);
              pst.setObject(1, A.getVehicule());
             pst.setObject(2, A.getAideChauffeur());
@@ -118,6 +127,7 @@ try {
                 OrdreMission o = new OrdreMission(rs.getInt(1), dateC, dateS, dateR);
                 
                 o.setVehicule(sv.findByMatricule(rs.getInt(2)));
+              
                 o.setChauffeur(sch.findByCin(rs.getString(3)));
                 o.setAideChauffeur(sa.findByCin(rs.getString(4)));
                 ////o.setBonLivraisons((List<BonLivraison>) sb.findById(rs.getInt()));

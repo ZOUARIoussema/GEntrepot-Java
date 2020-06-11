@@ -12,7 +12,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="685.0" prefWidth="891.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gentrepot.views.AfficherOrdreController">
    <children>
-      <TableView fx:id="table" layoutX="118.0" layoutY="174.0" prefHeight="351.0" prefWidth="666.0">
+      <TableView fx:id="table" layoutX="118.0" layoutY="174.0" prefHeight="351.0" prefWidth="671.0">
         <columns>
           <TableColumn fx:id="vehicule" prefWidth="86.40003204345703" text="Vehicule" />
           <TableColumn fx:id="chauffeur" prefWidth="77.5999755859375" text="chauffeur" />
@@ -21,7 +21,7 @@
             <TableColumn fx:id="dateSortie" prefWidth="73.60000610351562" text="DateSortie" />
             <TableColumn fx:id="dateRetour" prefWidth="84.0" text="DateRetour" />
             <TableColumn fx:id="bonLivraison" prefWidth="88.79998779296875" text="Bonlivraison" />
-            <TableColumn prefWidth="84.0" text="Action" />
+            <TableColumn fx:id="id" prefWidth="85.60001220703123" text="id" visible="false" />
         </columns>
       </TableView>
       <Button fx:id="btn" layoutX="668.0" layoutY="525.0" mnemonicParsing="false" onMouseClicked="#ModifierOrdred" prefHeight="26.0" prefWidth="116.0" text="Modifier" />
@@ -40,5 +40,6 @@
             </Label>
          </children>
       </StackPane>
+      <Button layoutX="527.0" layoutY="525.0" mnemonicParsing="false" onMouseClicked="#impOrdre" prefHeight="26.0" prefWidth="105.0" text="imprimer" />
    </children>
 </AnchorPane>

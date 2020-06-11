@@ -14,6 +14,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 
@@ -26,6 +27,8 @@ public class AcceuilController implements Initializable {
 
     @FXML
     private BorderPane bp2;
+    @FXML
+    private ImageView imageMail;
         public void chargerpage (String page) 
     {
         Parent root = null ;
@@ -67,6 +70,12 @@ public class AcceuilController implements Initializable {
     @FXML
     private void afficherproduits(MouseEvent event) {
         chargerpage("AffichageProduit");
+    }
+
+    @FXML
+    private void envoyerMail(MouseEvent event) {
+        
+         chargerpage("EnvoyerMAilForm");
     }
     
 }
