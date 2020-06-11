@@ -2,14 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/D:/PiJAVA/GEntrepot-Java/GEntrepot/src/com/gentrepot/controllers/ValiderBLController.java</file>
-            <file>file:/D:/PiJAVA/GEntrepot-Java/GEntrepot/src/com/gentrepot/controllers/AjouterCommandeController.java</file>
-            <file>file:/D:/PiJAVA/GEntrepot-Java/GEntrepot/src/com/gentrepot/controllers/AjouterBLController.java</file>
-            <file>file:/D:/PiJAVA/GEntrepot-Java/GEntrepot/src/com/gentrepot/utils/DataSource.java</file>
-            <file>file:/D:/PiJAVA/GEntrepot-Java/GEntrepot/src/com/gentrepot/services/ServiceCommandeVente.java</file>
-            <file>file:/D:/PiJAVA/GEntrepot-Java/GEntrepot/src/com/gentrepot/controllers/AdminController.java</file>
-            <file>file:/D:/PiJAVA/GEntrepot-Java/GEntrepot/src/com/gentrepot/controllers/ValidationBController.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>

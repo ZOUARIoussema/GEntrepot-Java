@@ -28,8 +28,6 @@ import javafx.fxml.Initializable;
 public class FactureVenteController implements Initializable {
 
     @FXML
-    private JFXTextField text_totalfac;
-    @FXML
     private JFXTextField text_frais;
     @FXML
     private JFXTextField text_timbre;

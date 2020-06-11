@@ -10,7 +10,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="794.0" prefWidth="1047.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="com.gentrepot.controllers.FactureVenteController">
+<AnchorPane id="AnchorPane" prefHeight="794.0" prefWidth="1047.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gentrepot.controllers.FactureVenteController">
     <stylesheets>
         <URL value="@facturevente.css" />
     </stylesheets>
@@ -21,11 +21,6 @@
             <DropShadow />
          </effect>
       </Rectangle>
-      <Label layoutX="241.0" layoutY="167.0" prefHeight="30.0" prefWidth="60.0" text="Total">
-         <font>
-            <Font size="21.0" />
-         </font>
-      </Label>
       <Label layoutX="242.0" layoutY="296.0" prefHeight="47.0" prefWidth="144.0" text="Timbre fiscale" textAlignment="JUSTIFY">
          <font>
             <Font size="21.0" />
@@ -36,11 +31,6 @@
             <Font size="21.0" />
          </font>
       </Label>
-      <JFXTextField fx:id="text_totalfac" focusColor="#2762ab" layoutX="533.0" layoutY="175.0" prefHeight="25.0" prefWidth="349.0" unFocusColor="BLACK">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </JFXTextField>
       <JFXTextField fx:id="text_frais" focusColor="#2762ab" layoutX="536.0" layoutY="413.0" prefHeight="25.0" prefWidth="349.0" />
       <JFXTextField fx:id="text_timbre" focusColor="#2762ab" layoutX="536.0" layoutY="296.0" prefHeight="25.0" prefWidth="349.0" />
       <JFXButton fx:id="btnValiderF" layoutX="449.0" layoutY="679.0" onAction="#ValiderFacture" prefHeight="35.0" prefWidth="225.0" ripplerFill="WHITE" style="-fx-background-color: #2762ab; -fx-background-radius: 100;" text="Valider" textFill="WHITE">
