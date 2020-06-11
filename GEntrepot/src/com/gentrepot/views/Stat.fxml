@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="683.0" prefWidth="1385.0" style="-fx-background-color: #F0F0F0;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gentrepot.views.StatController">
+   <children>
+      <Label layoutX="359.0" layoutY="22.0" prefHeight="93.0" prefWidth="657.0" text="Pourcentage des produits par quantité">
+         <font>
+            <Font name="Calibri Bold Italic" size="40.0" />
+         </font>
+      </Label>
+      <JFXButton fx:id="load" layoutX="14.0" layoutY="14.0" onAction="#loaddata" prefHeight="42.0" prefWidth="110.0" style="-fx-background-color: #2E59D9;" styleClass="btn-login" stylesheets="@../../../IntegrationPI1/src/CascadingSteelsSheets/Style.css" text="Load Data" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="close" layoutX="1332.0" layoutY="12.0" onAction="#close" prefHeight="20.0" prefWidth="39.0" style="-fx-background-color: E12717;" styleClass="btn-login" stylesheets="@../../../IntegrationPI1/src/CascadingSteelsSheets/Style.css" text="X" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+      </JFXButton>
+      <BarChart fx:id="barCh" layoutX="15.0" layoutY="147.0" legendSide="RIGHT" prefHeight="524.0" prefWidth="1347.0">
+         <xAxis>
+            <CategoryAxis side="BOTTOM">
+               <tickLabelFont>
+                  <Font name="System Bold" size="17.0" />
+               </tickLabelFont>
+            </CategoryAxis>
+         </xAxis>
+         <yAxis>
+            <NumberAxis side="LEFT">
+               <tickLabelFont>
+                  <Font name="System Bold Italic" size="17.0" />
+               </tickLabelFont>
+            </NumberAxis>
+         </yAxis>
+      </BarChart>
+   </children>
+</AnchorPane>

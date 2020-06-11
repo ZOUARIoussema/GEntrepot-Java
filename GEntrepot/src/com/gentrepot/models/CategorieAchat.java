@@ -11,14 +11,16 @@ package com.gentrepot.models;
  */
 public class CategorieAchat {
     
+     private int id;
+    private String nom;
+    
     
     public CategorieAchat(int id) {
         this.id = id;
     }
     
     
-    private int id;
-    private String nom;
+   
 
     public CategorieAchat(int id, String nom) {
         this.id = id;

@@ -4,10 +4,14 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gentrepot.views.AjoutFournisseurController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gentrepot.views.AjoutFournisseurController">
    <children>
-      <Label alignment="CENTER" layoutX="229.0" layoutY="35.0" prefHeight="33.0" prefWidth="176.0" text="Ajouter un fournisseur" textAlignment="CENTER" />
+      <Label alignment="CENTER" layoutX="136.0" layoutY="25.0" prefHeight="40.0" prefWidth="328.0" text="Ajouter un fournisseur" textAlignment="CENTER" textFill="#5c87bf" underline="true">
+         <font>
+            <Font name="System Bold" size="28.0" />
+         </font></Label>
       <Label layoutX="44.0" layoutY="100.0" text="Raison Sociale :" />
       <Label layoutX="44.0" layoutY="140.0" text="Numero De Telephone :" />
       <Label layoutX="44.0" layoutY="180.0" text="Adresse :" />
@@ -20,6 +24,6 @@
       <TextField fx:id="txtAdresse" layoutX="195.0" layoutY="215.0" />
       <TextField fx:id="txtM" layoutX="195.0" layoutY="255.0" />
       <TextField fx:id="txtC" layoutX="195.0" layoutY="295.0" />
-      <Button fx:id="btn" layoutX="446.0" layoutY="336.0" mnemonicParsing="false" onAction="#AjoutFournisseur" prefHeight="33.0" prefWidth="74.0" text="Ajouter" />
+      <Button fx:id="btn" layoutX="410.0" layoutY="336.0" mnemonicParsing="false" onAction="#AjoutFournisseur" prefHeight="40.0" prefWidth="110.0" style="-fx-background-color: #90c3e7;" text="Ajouter" textFill="WHITE" />
    </children>
 </AnchorPane>

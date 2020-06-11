@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTabPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="514.0" prefWidth="965.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gentrepot.views.AfficheFrontController">
+   <children>
+      <JFXTabPane prefHeight="514.0" prefWidth="965.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <tabs>
+            <Tab text="produits ">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <AnchorPane>
+                           <children>
+                              <Label layoutX="375.0" prefHeight="50.0" prefWidth="182.0" text="Produit " textFill="#5c87bf">
+                                 <font>
+                                    <Font name="Britannic Bold" size="39.0" />
+                                 </font>
+                              </Label>
+                              <AnchorPane fx:id="Paneeventsfx" layoutX="3.0" layoutY="100.0" prefHeight="268.0" prefWidth="256.0" style="-fx-background-color: white;" visible="false">
+                                 <children>
+                                    <Pane prefHeight="44.0" prefWidth="256.0" style="-fx-background-color: white;">
+                                       <effect>
+                                          <DropShadow blurType="ONE_PASS_BOX" color="#575555" />
+                                       </effect>
+                                       <children>
+                                          <ImageView fx:id="imageeventspanefx" fitHeight="115.0" fitWidth="256.0" opacity="0.89" pickOnBounds="true" />
+                                          <Label layoutX="7.0" layoutY="4.0" text="" textFill="#c9c4c4">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                             <effect>
+                                                <Glow level="1.0" />
+                                             </effect>
+                                          </Label>
+                                       </children>
+                                    </Pane>
+                                    <Label fx:id="subjecteventspanefx" layoutX="14.0" layoutY="124.0" underline="true">
+                                       <effect>
+                                          <Glow />
+                                       </effect>
+                                    </Label>
+                                    <Label fx:id="texteventspanefx" layoutX="7.0" layoutY="147.0" prefHeight="65.0" prefWidth="242.0" />
+                                    <Label fx:id="DateeventsInteface" layoutX="77.0" layoutY="124.0" underline="true" />
+                                    
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane fx:id="Paneeventsfx1" layoutX="315.0" layoutY="100.0" prefHeight="270.0" prefWidth="256.0" style="-fx-background-color: white;" visible="false">
+                                 <children>
+                                    <Pane prefHeight="44.0" prefWidth="256.0" style="-fx-background-color: white;">
+                                       <effect>
+                                          <DropShadow blurType="ONE_PASS_BOX" color="#575555" />
+                                       </effect>
+                                       <children>
+                                          <ImageView fx:id="imageeventspanefx1" fitHeight="115.0" fitWidth="256.0" opacity="0.89" pickOnBounds="true" />
+                                          <Label layoutX="7.0" layoutY="4.0" text="Event" textFill="#c9c4c4">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                             <effect>
+                                                <Glow level="1.0" />
+                                             </effect>
+                                          </Label>
+                                       </children>
+                                    </Pane>
+                                    <Label fx:id="subjecteventspanefx1" layoutX="14.0" layoutY="124.0" underline="true">
+                                       <effect>
+                                          <Glow />
+                                       </effect>
+                                    </Label>
+                                    <Label fx:id="texteventspanefx1" layoutX="7.0" layoutY="147.0" prefHeight="65.0" prefWidth="242.0" />
+                                    <Label fx:id="DateeventsInteface1" layoutX="77.0" layoutY="124.0" underline="true" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane fx:id="Paneeventsfx11" layoutX="626.0" layoutY="99.0" prefHeight="269.0" prefWidth="256.0" style="-fx-background-color: white;" visible="false">
+                                 <children>
+                                    <Pane prefHeight="44.0" prefWidth="256.0" style="-fx-background-color: white;">
+                                       <effect>
+                                          <DropShadow blurType="ONE_PASS_BOX" color="#575555" />
+                                       </effect>
+                                       <children>
+                                          <ImageView fx:id="imageeventspanefx11" fitHeight="115.0" fitWidth="256.0" opacity="0.89" pickOnBounds="true" />
+                                          <Label layoutX="7.0" layoutY="4.0" text="Event" textFill="#c9c4c4">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                             <effect>
+                                                <Glow level="1.0" />
+                                             </effect>
+                                          </Label>
+                                       </children>
+                                    </Pane>
+                                    <Label fx:id="subjecteventspanefx11" layoutX="14.0" layoutY="124.0" underline="true">
+                                       <effect>
+                                          <Glow />
+                                       </effect>
+                                    </Label>
+                                    <Label fx:id="texteventspanefx11" layoutX="7.0" layoutY="147.0" prefHeight="65.0" prefWidth="242.0" />
+                                    <Label fx:id="DateeventsInteface11" layoutX="77.0" layoutY="124.0" underline="true" />
+                                 </children>
+                              </AnchorPane>
+                              <JFXButton layoutX="105.0" layoutY="38.0" onAction="#viewmore" text="View More" />
+                           </children>
+                        </AnchorPane>
+                        
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+         </tabs>
+      </JFXTabPane>
+   </children>
+</AnchorPane>

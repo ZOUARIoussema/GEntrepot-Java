@@ -161,8 +161,10 @@ public class AuthentificationController implements Initializable {
                     primaryStage.setScene(scene);
                     primaryStage.setTitle("Menue Responsable Achat");
                     primaryStage.show();
+                     System.out.println("nnnnnnnnnnnnnnnnn");
                 } catch (Exception e) {
                     System.out.println(e.getMessage());
+                    System.out.println("bbbbbbbbbbbbbbbbbbb");
                 }
 
             }

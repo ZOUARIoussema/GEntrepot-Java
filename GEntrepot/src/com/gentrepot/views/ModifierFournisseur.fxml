@@ -6,26 +6,42 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gentrepot.views.ModifierFournisseurController">
    <children>
-      <Label layoutX="210.0" layoutY="48.0" text="Modifier le fournisseur">
+      <Label alignment="CENTER" layoutX="146.0" layoutY="23.0" prefHeight="40.0" prefWidth="326.0" text="Modifier un fournisseur" textAlignment="CENTER" textFill="#5c87bf" underline="true">
          <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <Label layoutX="54.0" layoutY="110.0" text="Raison Sociale :" />
-      <Label layoutX="54.0" layoutY="150.0" text="Numero De Telephone :" />
-      <Label layoutX="54.0" layoutY="190.0" text="Adresse :" />
-      <Label layoutX="54.0" layoutY="230.0" text="Adresse Mail :" />
-      <Label layoutX="54.0" layoutY="270.0" text="Matricule Fiscale :" />
-      <Label layoutX="54.0" layoutY="310.0" text="Code Postale :" />
-      <TextField layoutX="205.0" layoutY="105.0" />
-      <TextField layoutX="205.0" layoutY="145.0" />
-      <TextField layoutX="205.0" layoutY="185.0" />
-      <TextField layoutX="205.0" layoutY="225.0" />
-      <TextField layoutX="205.0" layoutY="265.0" />
-      <TextField layoutX="205.0" layoutY="305.0" />
-      <Button layoutX="456.0" layoutY="346.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="74.0" text="Modifier" />
+            <Font name="System Bold" size="28.0" />
+         </font></Label>
+      <Label layoutX="44.0" layoutY="100.0" text="Raison Sociale :">
+         <font>
+            <Font size="15.0" />
+         </font></Label>
+      <Label layoutX="44.0" layoutY="140.0" text="Numero De Telephone :">
+         <font>
+            <Font size="15.0" />
+         </font></Label>
+      <Label layoutX="44.0" layoutY="180.0" text="Adresse :">
+         <font>
+            <Font size="15.0" />
+         </font></Label>
+      <Label layoutX="44.0" layoutY="220.0" text="Adresse Mail :">
+         <font>
+            <Font size="15.0" />
+         </font></Label>
+      <Label layoutX="44.0" layoutY="260.0" text="Matricule Fiscale :">
+         <font>
+            <Font size="15.0" />
+         </font></Label>
+      <Label layoutX="44.0" layoutY="300.0" text="Code Postale :">
+         <font>
+            <Font size="15.0" />
+         </font></Label>
+      <TextField fx:id="txtR" layoutX="210.0" layoutY="95.0" />
+      <TextField fx:id="txtN" layoutX="210.0" layoutY="135.0" />
+      <TextField fx:id="txtA" layoutX="210.0" layoutY="175.0" />
+      <TextField fx:id="txtAdresse" layoutX="210.0" layoutY="215.0" />
+      <TextField fx:id="txtM" layoutX="210.0" layoutY="255.0" />
+      <TextField fx:id="txtC" layoutX="210.0" layoutY="295.0" />
+      <Button fx:id="btn" layoutX="446.0" layoutY="336.0" mnemonicParsing="false" onAction="#ModifierFournisseur" prefHeight="40.0" prefWidth="109.0" style="-fx-background-color: #90c3e7;" text="Modifier" textFill="WHITE" />
    </children>
 </AnchorPane>

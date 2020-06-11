@@ -900,7 +900,7 @@ public class STOCKAGEController implements Initializable {
         ca.setNumeroC(sca.lastCmd().getNumeroC());
         for(int i=0;i<panierDonne.size();i++){
             Double t = panierDonne.get(i).getPrix()*panierDonne.get(i).getQuantite(); //sp.rechercher(sp.afficher(), panierDonne.get(i).getProduit())
-            LigneCommandeDApprovisionnement lc = new LigneCommandeDApprovisionnement(ca,new ProduitAchat("aa44","laptop",8,"A",5,5000,1.2,42,"fff","j",50,"h","i","ii","ih","f",new SousCategorieAchat(1,"jdj",new CategorieAchat(1,"jfh"))),panierDonne.get(i).getPrix(),panierDonne.get(i).getQuantite(),t,panierDonne.get(i).getTva());
+            LigneCommandeDApprovisionnement lc = new LigneCommandeDApprovisionnement(ca,new ProduitAchat("aa44","laptop",8,"A",5,5000,1.2,42,"fff","j",50,"h","i","ii","ih","f",1),panierDonne.get(i).getPrix(),panierDonne.get(i).getQuantite(),t,panierDonne.get(i).getTva());
             slc.ajouter(lc);
         }
         //sf.rechercher(sf.afficher(),fournisseur.getValue())
@@ -1059,7 +1059,7 @@ public class STOCKAGEController implements Initializable {
         ca.setId(sca.lastPert().getId());
         for(int i=0;i<lperteDonne.size();i++){
             //sp.rechercher(sp.afficher(), panierDonne.get(i).getProduit())
-            LignePerte lc = new LignePerte(ca,new ProduitAchat("aa44","laptop",8,"A",5,5000,1.2,42,"fff","j",50,"h","i","ii","ih","f",new SousCategorieAchat(1,"jdj",new CategorieAchat(1,"jfh"))),lperteDonne.get(i).getQuantite(),lperteDonne.get(i).getRaisonPerte());
+            LignePerte lc = new LignePerte(ca,new ProduitAchat("aa44","laptop",8,"A",5,5000,1.2,42,"fff","j",50,"h","i","ii","ih","f",1),lperteDonne.get(i).getQuantite(),lperteDonne.get(i).getRaisonPerte());
             slc.ajouter(lc);
         }
         //sf.rechercher(sf.afficher(),fournisseur.getValue())
@@ -1153,7 +1153,7 @@ public class STOCKAGEController implements Initializable {
     private void enregistrerInventaire(ActionEvent event) {
         ServiceInventaireStock se = new ServiceInventaireStock();
         ServiceEmplacement sp = new ServiceEmplacement();
-        InventaireStock ca = new InventaireStock(new ProduitAchat(produitIv.getValue(),"laptop",8,"A",5,5000,1.2,42,"fff","j",50,"h","i","ii","ih","f",new SousCategorieAchat(1,"jdj",new CategorieAchat(1,"jfh"))),new Emplacement(emplaceIv.getValue(),9,3,"tt",new Entrepot("A2D708","tot","tit","@","55454544")),dateIv.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")),Integer.valueOf(qteIv.getText()),5,3);        
+        InventaireStock ca = new InventaireStock(new ProduitAchat(produitIv.getValue(),"laptop",8,"A",5,5000,1.2,42,"fff","j",50,"h","i","ii","ih","f",1),new Emplacement(emplaceIv.getValue(),9,3,"tt",new Entrepot("A2D708","tot","tit","@","55454544")),dateIv.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")),Integer.valueOf(qteIv.getText()),5,3);        
         se.ajouter(ca);
         tabEmp.getItems().clear();
         actualiserTableEmp();

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.gentrepot.views;
+package com.gentrepot.controllers;
 
 import com.gentrepot.models.BonEntree;
 import com.gentrepot.models.Fournisseur;
@@ -103,7 +103,7 @@ public class AffichageBonEntreeController implements Initializable {
         table.setItems(data);
     }
 
-  /*  @FXML
+    @FXML
     private void Modifier(ActionEvent event) throws IOException {
         
                 ModifierBonEntreeController.entre=table.getSelectionModel().getSelectedItem();
@@ -113,6 +113,6 @@ public class AffichageBonEntreeController implements Initializable {
                 Stage window=(Stage)((Node)event.getSource()).getScene().getWindow();
                 window.setScene(scene);
                 window.show();
-    }*/
+    }
     
 }

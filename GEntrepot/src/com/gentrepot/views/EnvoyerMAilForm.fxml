@@ -4,17 +4,50 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.141" fx:controller="com.gentrepot.controllers.EnvoyerMAilFormController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gentrepot.controllers.EnvoyerMAilFormController">
    <children>
-      <Label layoutX="70.0" layoutY="64.0" text="Adresse mail" />
-      <Label layoutX="70.0" layoutY="167.0" text="Sujet" />
-      <Label layoutX="70.0" layoutY="125.0" text="Objet" />
-      <TextArea fx:id="txtSujet" layoutX="170.0" layoutY="167.0" prefHeight="133.0" prefWidth="372.0" />
-      <TextField fx:id="txtObjet" layoutX="170.0" layoutY="121.0" />
-      <TextField fx:id="txtAdressMail" layoutX="170.0" layoutY="60.0" />
-      <Button fx:id="btnValider" layoutX="419.0" layoutY="322.0" mnemonicParsing="false" onAction="#validerEnvoyerMail" text="Valider" />
+      <Label layoutX="66.0" layoutY="91.0" text="Adresse mail">
+         <font>
+            <Font size="16.0" />
+         </font></Label>
+      <Label layoutX="73.0" layoutY="200.0" text="Sujet">
+         <font>
+            <Font size="16.0" />
+         </font></Label>
+      <Label layoutX="71.0" layoutY="142.0" text="Objet">
+         <font>
+            <Font size="16.0" />
+         </font></Label>
+      <TextArea fx:id="txtSujet" layoutX="170.0" layoutY="184.0" prefHeight="133.0" prefWidth="372.0" />
+      <TextField fx:id="txtObjet" layoutX="170.0" layoutY="142.0" />
+      <TextField fx:id="txtAdressMail" layoutX="170.0" layoutY="91.0" />
+      <Button fx:id="btnValider" layoutX="421.0" layoutY="340.0" mnemonicParsing="false" onAction="#validerEnvoyerMail" prefHeight="33.0" prefWidth="131.0" style="-fx-background-color: transparent;" text="Envoyer">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
+      <AnchorPane prefHeight="42.0" prefWidth="600.0" style="-fx-background-color: #f40707;">
+         <children>
+            <Label layoutX="141.0" layoutY="1.0" prefHeight="40.0" prefWidth="233.0" text=" Nouveau Message">
+               <font>
+                  <Font name="System Bold" size="21.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="29.0" fitWidth="63.0" layoutX="14.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@imagenad/clip-159092640608702581.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="431.0" layoutY="342.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@imagenad/téléchargement%20(6).png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

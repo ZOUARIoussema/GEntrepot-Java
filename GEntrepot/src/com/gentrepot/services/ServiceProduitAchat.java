@@ -12,8 +12,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -23,6 +26,7 @@ import javafx.collections.ObservableList;
  */
 public class ServiceProduitAchat  implements IService<ProduitAchat>{
        
+    private Statement ste;
     
     
     
@@ -50,7 +54,7 @@ public class ServiceProduitAchat  implements IService<ProduitAchat>{
             pst.setString(14, t.getImage2());
             pst.setString(15, t.getImage3());
             pst.setString(16, t.getImage4());
-            pst.setInt(17, t.getSousCategorieAchat().getId());
+            pst.setInt(17, t.getSousCategorieAchat());
             pst.executeUpdate();
             System.out.println("Personne ajoutée !");
 
@@ -73,33 +77,29 @@ public class ServiceProduitAchat  implements IService<ProduitAchat>{
         }
     }
 
-  
-    public void modifier(ProduitAchat t,String l,Integer s,Integer stcs, Double d,Double tv,Double Dim ,String des ,String type , Double pv , String im , String im1 ,String im2 , String im3 , String im4) {
+   @Override
+    public void modifier(ProduitAchat t) {
        try {
-            String requete = "UPDATE produit_achat SET libelle=?,quantiteStock=?,classe=?,quantiteStockSecurite=?,dernierPrixAchat=?,tva=?,dimension=?,description=?,typeDeConditionnement=?,prixVente=?,image=?,image1=?,image2=?,image3=?,image4=?,sousCategorieAchat=? WHERE reference like ?";
+            String requete = "UPDATE produit_achat SET libelle=?,quantiteEnStock=?,classe=?,quantiteStockSecurite=?,dernierPrixAchat=?,tva=?,dimension=?,description=?,typeDeConditionnement=?,prixVente=? WHERE reference ='"+t.getReference()+"'";
             PreparedStatement pst = cnx.prepareStatement(requete);
-            pst.setString(17, t.getReference());
-            pst.setString(1,l);
-            pst.setInt(2,s);
+            pst.setString(1,t.getLibelle());
+            pst.setInt(2,t.getQuantiteStock());
             pst.setString(3, t.getClasse());
-            pst.setInt(4,stcs );
-            pst.setDouble(5,d);
-            pst.setDouble(6, tv);
-            pst.setDouble(7, Dim);
-            pst.setString(8,des);
-            pst.setString(9,type);
-            pst.setDouble(10,pv);
-            pst.setString(11,im);
-            pst.setString(12,im1);
-            pst.setString(13, im2);
-            pst.setString(14, im3);
-            pst.setString(15,im4);
-            pst.setInt(16, t.getSousCategorieAchat().getId());
+            pst.setInt(4,t.getQuantiteStockSecurite() );
+            pst.setDouble(5,t.getDernierPrixAchat());
+            pst.setDouble(6, t.getPrixVente());
+            pst.setDouble(7, t.getTva());
+            pst.setString(8,t.getDescription());
+                        System.out.println("kkk !");
+
+            pst.setString(9,t.getTypeDeConditionnement());
+            pst.setDouble(10,t.getPrixVente());
+                        System.out.println("Personne modifiée !");
+
             pst.executeUpdate();
-            System.out.println("Personne modifiée !");
 
         } catch (SQLException ex) {
-            System.err.println(ex.getMessage());
+               Logger.getLogger(ServiceProduitAchat.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -113,7 +113,8 @@ public class ServiceProduitAchat  implements IService<ProduitAchat>{
             PreparedStatement pst = cnx.prepareStatement(requete);
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
-               c.add(new ProduitAchat(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getInt(5), rs.getDouble(6), rs.getDouble(7), rs.getDouble(8), rs.getString(9), rs.getString(10), rs.getDouble(11), rs.getString(12), rs.getString(13), rs.getString(14), rs.getString(15), rs.getString(16), new SousCategorieAchat(rs.getString(17))));
+                System.out.println("com.gentrepot.services.ServiceProduitAchat.afficher()"+rs.getInt(17) );
+               c.add(new ProduitAchat(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getInt(5), rs.getDouble(6), rs.getDouble(7), rs.getDouble(8), rs.getString(9), rs.getString(10), rs.getDouble(11), rs.getString(12), rs.getString(13), rs.getString(14), rs.getString(15), rs.getString(16), new SousCategorieAchat(rs.getInt(17)).getId()));
             }
 
         } catch (SQLException ex) {
@@ -123,14 +124,40 @@ public class ServiceProduitAchat  implements IService<ProduitAchat>{
         return c;
     }
 
-    @Override
-    public void modifier(ProduitAchat t) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
+    
+     public List<ProduitAchat> readAll() {
+
+        List<ProduitAchat> arr = new ArrayList<>();
+        try {
+            ste = cnx.createStatement();
+            ResultSet rs = ste.executeQuery("select * from produit_achat ");
+            while (rs.next()) {
+           arr.add(new ProduitAchat(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getInt(5), rs.getDouble(6), rs.getDouble(7), rs.getDouble(8), rs.getString(9), rs.getString(10), rs.getDouble(11), rs.getString(12), rs.getString(13), rs.getString(14), rs.getString(15), rs.getString(16), new SousCategorieAchat(rs.getInt(17)).getId()));
+                System.out.println("com.gentrepot.services.ServiceProduitAchat.readAll()"+arr);
+
+
+            }
+        } catch (SQLException ex) {
+                      ex.printStackTrace();        
+        }
+        return arr;
     }
     
-    
-    
-    
+         public int numberevent () throws SQLException{
+         int y=0;
+          ste=cnx.createStatement() ;
+           ResultSet rs=ste.executeQuery("SELECT COUNT(*) as total FROM produit_achat ");
+           while(rs.next())
+           {
+                y = rs.getInt("total");
+               
+               
+           }
+           System.out.println("total number : "+y);
+           return y;
+         
+     }
     
     
     

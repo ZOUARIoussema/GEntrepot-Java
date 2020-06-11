@@ -19,6 +19,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  *
@@ -173,6 +175,25 @@ public class ServiceCommandeDApprovisionnment implements IService<CommandeDAppro
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
         }
+    
+    }
+    
+    public ObservableList<CommandeDApprovisionnement> afficherCommande() {
+        ObservableList<CommandeDApprovisionnement> list = FXCollections.observableArrayList();
+        ServiceFournisseur f = new ServiceFournisseur();
+        try {
+            String requete = "SELECT * FROM commande_d_aprovisionnement";
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(requete);
+            while (rs.next()) {
+                list.add(new CommandeDApprovisionnement(rs.getInt(2), rs.getDouble(3), rs.getString(4), rs.getString(5), rs.getDouble(6), rs.getDouble(7), new Fournisseur(rs.getInt(1),"SA",56562222,"Alger","Apple@gmail.com","AG441",65)));
+            }
+
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+
+        return list;
     
     }
     
