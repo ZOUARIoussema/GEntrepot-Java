@@ -18,7 +18,7 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.scene.control.TextFormatter;
+//import javafx.scene.control.TextFormatter;
 import javafx.util.converter.IntegerStringConverter;
 import javax.swing.JOptionPane;
 

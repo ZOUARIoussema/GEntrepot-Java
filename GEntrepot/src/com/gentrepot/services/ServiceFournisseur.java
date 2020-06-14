@@ -126,19 +126,17 @@ public class ServiceFournisseur implements IService<Fournisseur>{
         
 }
         
-
-
  }
-   
-   
-    
-    
-    
-    
-    
-    
-    
-    
+   public Fournisseur rechercherf(List<Fournisseur> et, String m){
+        int a = 0;
+        for(int i=0;i<et.size();i++){
+            if(et.get(i).getAdresseMail().equals(m)){
+                a = i;
+            }
+        }
+        return et.get(a);
+    }
+ 
       public Fournisseur rechercher(List<Fournisseur> et, int in){
         int a = 0;
         for(int i=0;i<et.size();i++){
