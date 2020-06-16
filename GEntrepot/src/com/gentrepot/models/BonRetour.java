@@ -17,9 +17,9 @@ public class BonRetour {
     private int id;
     private Date date;
     private String motifDeRetour;
-    private CommandeDApprovisionnement commandeDApprovisionnement;
+    private int commandeDApprovisionnement;
 
-    public BonRetour(int id, Date date, String motifDeRetour, CommandeDApprovisionnement commandeDApprovisionnement) {
+    public BonRetour(int id, Date date, String motifDeRetour, int commandeDApprovisionnement) {
         this.id = id;
         this.date = date;
         this.motifDeRetour = motifDeRetour;
@@ -50,13 +50,32 @@ public class BonRetour {
         this.motifDeRetour = motifDeRetour;
     }
 
-    public CommandeDApprovisionnement getCommandeDApprovisionnement() {
+    public int getCommandeDApprovisionnement() {
         return commandeDApprovisionnement;
     }
 
-    public void setCommandeDApprovisionnement(CommandeDApprovisionnement commandeDApprovisionnement) {
+    public void setCommandeDApprovisionnement(int commandeDApprovisionnement) {
         this.commandeDApprovisionnement = commandeDApprovisionnement;
     }
+
+    public BonRetour(Date date, String motifDeRetour, int commandeDApprovisionnement) {
+        this.date = date;
+        this.motifDeRetour = motifDeRetour;
+        this.commandeDApprovisionnement = commandeDApprovisionnement;
+    }
+
+    public BonRetour(int id, String motifDeRetour, int commandeDApprovisionnement) {
+        this.id = id;
+        this.motifDeRetour = motifDeRetour;
+        this.commandeDApprovisionnement = commandeDApprovisionnement;
+    }
+
+    @Override
+    public String toString() {
+        return "BonRetour{" + "id=" + id + ", date=" + date + ", motifDeRetour=" + motifDeRetour + ", commandeDApprovisionnement=" + commandeDApprovisionnement + '}';
+    }
+    
+    
     
     
     

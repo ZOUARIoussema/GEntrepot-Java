@@ -4,26 +4,41 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="665.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gentrepot.views.AffichageBonEntreeController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="665.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gentrepot.views.AffichageBonEntreeController">
    <children>
-      <Label layoutX="245.0" layoutY="51.0" text="Les bons d'entree">
+      <Label layoutX="188.0" layoutY="26.0" prefHeight="62.0" prefWidth="270.0" text="Les bons d'entree" textFill="#5c87bf" textOverrun="CLIP" underline="true">
          <font>
-            <Font size="14.0" />
+            <Font name="System Bold" size="32.0" />
          </font>
       </Label>
-      <TableView fx:id="table" layoutX="26.0" layoutY="110.0" prefHeight="200.0" prefWidth="613.0">
+      <TableView fx:id="table" layoutX="26.0" layoutY="110.0" prefHeight="200.0" prefWidth="572.0" style="-fx-background-color: white;">
         <columns>
-          <TableColumn fx:id="id" prefWidth="54.0" text="Id" />
           <TableColumn fx:id="date" prefWidth="98.0" text="Date" />
             <TableColumn fx:id="datep" prefWidth="132.0" text="Date de production" />
             <TableColumn fx:id="datee" prefWidth="115.0" text="Date d'expiration" />
             <TableColumn fx:id="commande" prefWidth="225.0" text="commandeDApprovisionnement" />
         </columns>
       </TableView>
-      <Button layoutX="141.0" layoutY="340.0" mnemonicParsing="false" onAction="#supprimer" text="Supprimer" />
-      <Button layoutX="429.0" layoutY="340.0" mnemonicParsing="false" onAction="#Modifier" text="Modifier" />
+      <Button layoutX="514.0" layoutY="334.0" mnemonicParsing="false" onAction="#supprimer" prefHeight="38.0" prefWidth="106.0" style="-fx-background-color: #90c3e7;" text="Supprimer" textFill="WHITE">
+         <graphic>
+            <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@imagenad/imageedit_15_9431214007.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
+      <Button layoutX="385.0" layoutY="334.0" mnemonicParsing="false" onAction="#Modifier" prefHeight="38.0" prefWidth="106.0" style="-fx-background-color: #90c3e7;" text="Modifier" textFill="WHITE">
+         <graphic>
+            <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@imagenad/imageedit_22_9745897698.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
    </children>
 </AnchorPane>

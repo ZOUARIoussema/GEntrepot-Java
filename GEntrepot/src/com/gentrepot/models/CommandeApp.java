@@ -12,13 +12,13 @@ package com.gentrepot.models;
 public class CommandeApp {
     private int numero;
     private String date;    
-    private int fournisseur;
+    private String fournisseur;
     private double remise;
     private double ptht;
     private double pttc;
     private String etat;
 
-    public CommandeApp(int numero, String date, int fournisseur, double remise, double ptht, double pttc, String etat) {
+    public CommandeApp(int numero, String date, String fournisseur, double remise, double ptht, double pttc, String etat) {
         this.numero = numero;
         this.date = date;
         this.fournisseur = fournisseur;
@@ -44,11 +44,11 @@ public class CommandeApp {
         this.date = date;
     }
 
-    public int getFournisseur() {
+    public String getFournisseur() {
         return fournisseur;
     }
 
-    public void setFournisseur(int fournisseur) {
+    public void setFournisseur(String fournisseur) {
         this.fournisseur = fournisseur;
     }
 

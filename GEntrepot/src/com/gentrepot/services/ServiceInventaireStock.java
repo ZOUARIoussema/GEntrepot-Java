@@ -45,7 +45,7 @@ public class ServiceInventaireStock   implements IService<InventaireStock>{
             pst.setInt(5, iv.getEcart());
             pst.setInt(6, iv.getQuantiteTheorique());
             pst.executeUpdate();
-            System.out.println("commande ajoutée !");
+            System.out.println("inventaire ajoutée !");
             
             
   

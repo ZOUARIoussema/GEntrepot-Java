@@ -4,27 +4,67 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gentrepot.views.AffichageProduitController">
+<AnchorPane id="AnchorPane" prefHeight="450.0" prefWidth="664.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gentrepot.views.AffichageProduitController">
    <children>
-      <Label layoutX="258.0" layoutY="42.0" text="Les produits">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <TableView fx:id="table" layoutX="3.0" layoutY="100.0" prefHeight="200.0" prefWidth="590.0">
+      <TableView fx:id="table" layoutX="3.0" layoutY="153.0" prefHeight="197.0" prefWidth="650.0">
         <columns>
           <TableColumn fx:id="ref" prefWidth="75.0" text="Reference" />
           <TableColumn fx:id="lib" prefWidth="75.0" text="Libelle" />
             <TableColumn fx:id="qte" prefWidth="108.0" text="Quantite enStock" />
             <TableColumn fx:id="c" prefWidth="56.0" text="Classe" />
             <TableColumn fx:id="pa" prefWidth="90.0" text="Prix d'Achat" />
-            <TableColumn fx:id="pv" prefWidth="86.0" text="Prix de Vente" />
-            <TableColumn fx:id="sc" prefWidth="99.0" text="Sous Categorie" />
+            <TableColumn fx:id="pv" minWidth="0.0" prefWidth="111.0" text="Prix de Vente" />
+            <TableColumn fx:id="sc" minWidth="0.0" prefWidth="134.0" text="Sous Categorie" />
         </columns>
       </TableView>
-      <Button layoutX="244.0" layoutY="328.0" mnemonicParsing="false" onMouseClicked="#ModifProduit" prefHeight="51.0" prefWidth="136.0" text="Modifier" />
+      <Button layoutX="517.0" layoutY="386.0" mnemonicParsing="false" onAction="#SupprimerProd" prefHeight="38.0" prefWidth="106.0" style="-fx-background-color: #90c3e7;" text="Supprimer" textFill="WHITE">
+         <graphic>
+            <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@imagenad/imageedit_15_9431214007.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
+      <Button layoutX="384.0" layoutY="386.0" mnemonicParsing="false" onAction="#ModifierProd" prefHeight="38.0" prefWidth="106.0" style="-fx-background-color: #90c3e7;" text="Modifier" textFill="WHITE">
+         <graphic>
+            <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@imagenad/imageedit_22_9745897698.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
+      <TextField fx:id="recherche" layoutX="474.0" layoutY="114.0" />
+      <Button layoutX="14.0" layoutY="95.0" mnemonicParsing="false" onAction="#stat" prefHeight="38.0" prefWidth="133.0" style="-fx-background-color: white;" text="Stat" textFill="#378ce1">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="32.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@imagenad/téléchargement%20(5).jpg" />
+               </image>
+            </ImageView>
+         </graphic></Button>
+      <Label layoutX="240.0" layoutY="30.0" text="Les produits" textFill="#5c87bf" underline="true">
+         <font>
+            <Font name="System Bold" size="32.0" />
+         </font>
+      </Label>
+      <Label layoutX="384.0" layoutY="114.0" text="Recherche :" textFill="#378ce1">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="31.0" fitWidth="25.0" layoutX="623.0" layoutY="114.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@imagenad/images%20(5).jpg" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

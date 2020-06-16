@@ -24,11 +24,11 @@ public class ServiceBonRetour  implements IService<BonRetour> {
     @Override
     public void ajouter(BonRetour t) {
         try {
-            String requete = "INSERT INTO bon_retour (date,motifDeRetour,commandeDApprovisionnement) VALUES (?,?,?)";
+            String requete = "INSERT INTO bon_retour (date,motifDeRetour,numeroC_commandeAp) VALUES (?,?,?)";
             PreparedStatement pst = cnx.prepareStatement(requete);
             pst.setDate(1, new java.sql.Date(t.getDate().getTime()));
             pst.setString(2, t.getMotifDeRetour());
-            pst.setInt(3, t.getCommandeDApprovisionnement().getNumeroC());
+            pst.setInt(3, t.getCommandeDApprovisionnement());
             pst.executeUpdate();
             System.out.println("Bon de retour ajouté !");
 
@@ -54,12 +54,11 @@ public class ServiceBonRetour  implements IService<BonRetour> {
     @Override
     public void modifier(BonRetour t) {
         try {
-            String requete = "UPDATE bon_retour SET date=?,motifDeRetour=?,commandeDApprovisionnement=? WHERE id=?";
+            String requete = "UPDATE bon_retour SET motifDeRetour=?,numeroC_commandeAp=? WHERE id=?";
             PreparedStatement pst = cnx.prepareStatement(requete);
-            pst.setInt(4, t.getId());
-            pst.setDate(1, new java.sql.Date(t.getDate().getTime()));
-            pst.setString(2, t.getMotifDeRetour());
-            pst.setInt(3, t.getCommandeDApprovisionnement().getNumeroC());
+            pst.setInt(3, t.getId());
+            pst.setString(1, t.getMotifDeRetour());
+            pst.setInt(2, t.getCommandeDApprovisionnement());
             pst.executeUpdate();
             System.out.println("Bon d'entree modifié !");
 
@@ -77,7 +76,7 @@ public class ServiceBonRetour  implements IService<BonRetour> {
             PreparedStatement pst = cnx.prepareStatement(requete);
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
-             //   list.add(new BonRetour(rs.getInt(1), rs.getDate(2), rs.getString(3), rs.getString(4)));
+               list.add(new BonRetour(rs.getInt(1), rs.getDate(2), rs.getString(3), rs.getInt(4)));
             }
 
         } catch (SQLException ex) {

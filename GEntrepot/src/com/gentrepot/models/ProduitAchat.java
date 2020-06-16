@@ -27,9 +27,9 @@ public class ProduitAchat {
     private String image2;
     private String image3;
     private String image4;
-    private SousCategorieAchat sousCategorieAchat;
+    private int sousCategorieAchat;
 
-    public ProduitAchat(String reference, String libelle, int quantiteStock, String classe, int quantiteStockSecurite, double dernierPrixAchat, double tva, double dimension, String description, String typeDeConditionnement, double prixVente, String image, String image1, String image2, String image3, String image4, SousCategorieAchat sousCategorieAchat) {
+    public ProduitAchat(String reference, String libelle, int quantiteStock, String classe, int quantiteStockSecurite, double dernierPrixAchat, double tva, double dimension, String description, String typeDeConditionnement, double prixVente, String image, String image1, String image2, String image3, String image4, int sousCategorieAchat) {
         this.reference = reference;
         this.libelle = libelle;
         this.quantiteStock = quantiteStock;
@@ -212,12 +212,17 @@ public class ProduitAchat {
         this.image4 = image4;
     }
 
-    public SousCategorieAchat getSousCategorieAchat() {
+    public int getSousCategorieAchat() {
         return sousCategorieAchat;
     }
 
-    public void setSousCategorieAchat(SousCategorieAchat sousCategorieAchat) {
+    public void setSousCategorieAchat(int sousCategorieAchat) {
         this.sousCategorieAchat = sousCategorieAchat;
+    }
+
+    @Override
+    public String toString() {
+        return "ProduitAchat{" + "reference=" + reference + ", libelle=" + libelle + ", quantiteStock=" + quantiteStock + ", classe=" + classe + ", quantiteStockSecurite=" + quantiteStockSecurite + ", dernierPrixAchat=" + dernierPrixAchat + ", tva=" + tva + ", dimension=" + dimension + ", description=" + description + ", typeDeConditionnement=" + typeDeConditionnement + ", prixVente=" + prixVente + ", image=" + image + ", image1=" + image1 + ", image2=" + image2 + ", image3=" + image3 + ", image4=" + image4 + ", sousCategorieAchat=" + sousCategorieAchat + '}';
     }
     
     

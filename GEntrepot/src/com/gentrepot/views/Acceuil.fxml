@@ -2,131 +2,204 @@
 
 <?import java.net.URL?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="703.0" prefWidth="886.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gentrepot.views.AcceuilController">
+<AnchorPane id="AnchorPane" prefHeight="669.0" prefWidth="886.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gentrepot.views.AcceuilController">
     <stylesheets>
         <URL value="@chefparc.css" />
     </stylesheets>
    <children>
       <BorderPane prefHeight="200.0" prefWidth="200.0">
          <top>
-            <VBox prefHeight="485.0" prefWidth="263.0" style="-fx-background-color: #0061B4;" BorderPane.alignment="CENTER">
+            <VBox prefHeight="712.0" prefWidth="263.0" style="-fx-background-color: #0061B4;" BorderPane.alignment="CENTER">
                <children>
+                  <ImageView fitHeight="27.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
                   <ImageView fitHeight="29.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Fournisseur" textAlignment="CENTER" wrappingWidth="262.9367485046387">
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Fournisseur" textAlignment="CENTER" wrappingWidth="262.9367485046387">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Text>
                   <ImageView fitHeight="1.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                  <Button mnemonicParsing="false" onMouseClicked="#AjoutFournisseur" prefHeight="28.0" prefWidth="265.0" style="-fx-background-color: transparent;" text="Ajouter Fournisseur" textFill="WHITE">
+                  <Button fx:id="ajoutF" mnemonicParsing="false" onMouseClicked="#AjoutFournisseur" prefHeight="28.0" prefWidth="263.0" style="-fx-background-color: #348cd3;" text="Ajouter Fournisseur" textAlignment="CENTER" textFill="#f8f8f8">
                      <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@ImageMenueCaisse/menu.png" />
+                              <Image url="@imagenad/imageedit_34_2398450978.png" />
                            </image>
                         </ImageView>
                      </graphic></Button>
                   <ImageView fitHeight="1.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
                   <ImageView fitHeight="1.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                  <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="263.0" style="-fx-background-color: Tranparent;" text="Afficher Fournisseur">
+                  <Button fx:id="affFournisseur" mnemonicParsing="false" onAction="#AfficherFournisseur" prefHeight="27.0" prefWidth="263.0" style="-fx-background-color: #348cd3;" text="Afficher Fournisseur" textFill="WHITE">
                      <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@ImageMenueCaisse/menu.png" />
+                              <Image url="@imagenad/imageedit_31_6006205253.png" />
                            </image>
                         </ImageView>
                      </graphic></Button>
                   <ImageView fitHeight="24.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Produit" textAlignment="CENTER" wrappingWidth="261.3367118835449">
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Produit" textAlignment="CENTER" wrappingWidth="261.3367118835449">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Text>
                   <ImageView fitHeight="1.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                  <Button mnemonicParsing="false" onMouseClicked="#AjouterProduit" prefHeight="28.0" prefWidth="263.0" text="Ajouter Produit" />
+                  <Button fx:id="ajoutP" mnemonicParsing="false" onMouseClicked="#AjouterProduit" prefHeight="28.0" prefWidth="263.0" style="-fx-background-color: #348cd3;" text="Ajouter Produit" textFill="WHITE">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@imagenad/imageedit_34_2398450978.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
                   <ImageView fitHeight="1.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
                   <ImageView fitHeight="1.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                  <Button mnemonicParsing="false" onMouseClicked="#afficherproduits" prefHeight="28.0" prefWidth="263.0" text="Afficher Produit" />
+                  <Button fx:id="affichP" mnemonicParsing="false" onMouseClicked="#afficherproduits" prefHeight="28.0" prefWidth="263.0" style="-fx-background-color: #348cd3;" text="Afficher Produit" textFill="WHITE">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@imagenad/imageedit_31_6006205253.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
                   <ImageView fitHeight="24.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="sous categorie" textAlignment="CENTER" wrappingWidth="262.85704040527344">
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="sous categorie" textAlignment="CENTER" wrappingWidth="262.85704040527344">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Text>
                   <ImageView fitHeight="1.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                  <Button mnemonicParsing="false" onMouseClicked="#AjoutSousC" prefHeight="28.0" prefWidth="263.0" text="Ajouter sous categorie" />
+                  <Button fx:id="ajoutSC" mnemonicParsing="false" onMouseClicked="#AjoutSousC" prefHeight="28.0" prefWidth="263.0" style="-fx-background-color: #348cd3;" text="Ajouter sous categorie" textFill="WHITE">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@imagenad/imageedit_34_2398450978.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
                   <ImageView fitHeight="1.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
                   <ImageView fitHeight="1.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                  <Button mnemonicParsing="false" onMouseClicked="#affichersouscat" prefHeight="28.0" prefWidth="263.0" text="Afficher sous categorie" />
+                  <Button fx:id="afficheSC" mnemonicParsing="false" onMouseClicked="#affichersouscat" prefHeight="28.0" prefWidth="263.0" style="-fx-background-color: #348cd3;" text="Afficher sous categorie" textFill="WHITE">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@imagenad/imageedit_31_6006205253.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
                   <ImageView fitHeight="24.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Categorie" textAlignment="CENTER" wrappingWidth="262.1367301940918">
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Categorie" textAlignment="CENTER" wrappingWidth="262.1367301940918">
                      <font>
                         <Font size="21.0" />
                      </font>
                   </Text>
                   <ImageView fitHeight="1.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                  <Button mnemonicParsing="false" prefHeight="28.0" prefWidth="263.0" text="Ajouter Categorie" />
-                  <ImageView fitHeight="1.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                  <ImageView fitHeight="1.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                  <Button mnemonicParsing="false" prefHeight="28.0" prefWidth="263.0" text="Afficher Categorie" />
-                  <ImageView fitHeight="24.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Bon D'entree" textAlignment="CENTER" wrappingWidth="262.1367301940918">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Text>
-                  <ImageView fitHeight="1.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                  <Button mnemonicParsing="false" prefHeight="28.0" prefWidth="263.0" text="Ajouter Bon D'entree" />
-                  <ImageView fitHeight="1.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                  <ImageView fitHeight="1.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                  <Button mnemonicParsing="false" prefHeight="28.0" prefWidth="263.0" text="Afficher Bon D'entree" />
-                  <ImageView fitHeight="24.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Bon De Retour" textAlignment="CENTER" wrappingWidth="262.1367301940918">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Text>
-                  <ImageView fitHeight="1.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                  <ImageView fitHeight="1.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                  <Button mnemonicParsing="false" prefHeight="28.0" prefWidth="263.0" text="Ajouter Bon De Retour" />
-                  <ImageView fitHeight="1.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                  <ImageView fitHeight="1.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                  <Button mnemonicParsing="false" prefHeight="28.0" prefWidth="263.0" text="Afficher Bon De Retour" />
-                  <ImageView fitHeight="27.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                  <Button mnemonicParsing="false" prefHeight="23.0" prefWidth="263.0" text="Log-out" textFill="#c52020">
-                     <font>
-                        <Font name="System Bold Italic" size="20.0" />
-                     </font>
+                  <Button fx:id="ajoutC" mnemonicParsing="false" onAction="#AjouterCategorie" prefHeight="28.0" prefWidth="263.0" style="-fx-background-color: #348cd3;" text="Ajouter Categorie" textFill="WHITE">
                      <graphic>
-                        <ImageView fitHeight="25.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../../../../../Users/Rym/Downloads/gris%20log%20out.jpg" />
+                              <Image url="@imagenad/imageedit_34_2398450978.png" />
                            </image>
                         </ImageView>
-                     </graphic>
-                  </Button>
+                     </graphic></Button>
+                  <ImageView fitHeight="1.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fitHeight="1.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                  <Button fx:id="afficheC" mnemonicParsing="false" onAction="#AfficherCategorie" prefHeight="28.0" prefWidth="263.0" style="-fx-background-color: #348cd3;" text="Afficher Categorie" textFill="WHITE">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@imagenad/imageedit_31_6006205253.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
+                  <ImageView fitHeight="24.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Bon D'entree" textAlignment="CENTER" wrappingWidth="262.1367301940918">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Text>
+                  <ImageView fitHeight="1.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                  <Button fx:id="ajoutBE" mnemonicParsing="false" onAction="#AjouterBonEntre" prefHeight="28.0" prefWidth="263.0" style="-fx-background-color: #348cd3;" text="Ajouter Bon D'entree" textFill="WHITE">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@imagenad/imageedit_34_2398450978.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
+                  <ImageView fitHeight="1.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fitHeight="1.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                  <Button fx:id="afficheBE" mnemonicParsing="false" onAction="#AfficherBonEntre" prefHeight="28.0" prefWidth="263.0" style="-fx-background-color: #348cd3;" text="Afficher Bon D'entree" textFill="WHITE">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@imagenad/imageedit_31_6006205253.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
+                  <ImageView fitHeight="24.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Bon De Retour" textAlignment="CENTER" wrappingWidth="262.1367301940918">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Text>
+                  <ImageView fitHeight="1.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fitHeight="1.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                  <Button fx:id="ajoutBR" mnemonicParsing="false" onAction="#AjouterBonRetour" prefHeight="28.0" prefWidth="263.0" style="-fx-background-color: #348cd3;" text="Ajouter Bon De Retour" textFill="WHITE">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@imagenad/imageedit_34_2398450978.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
+                  <ImageView fitHeight="1.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fitHeight="1.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                  <Button fx:id="afficheBR" mnemonicParsing="false" onAction="#AfficherBonretour" prefHeight="28.0" prefWidth="263.0" style="-fx-background-color: #348cd3;" text="Afficher Bon De Retour" textFill="WHITE">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@imagenad/imageedit_31_6006205253.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
                </children>
             </VBox>
          </top>
       </BorderPane>
-      <AnchorPane prefHeight="660.0" prefWidth="45.0" style="-fx-background-color: white;">
+      <AnchorPane prefHeight="712.0" prefWidth="44.0" style="-fx-background-color: white;">
          <children>
-            <ImageView fx:id="imageMail" fitHeight="38.0" fitWidth="51.0" layoutX="3.0" layoutY="31.0" onMouseClicked="#envoyerMail" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="imageMail" fitHeight="54.0" fitWidth="44.0" layoutY="92.0" onMouseClicked="#envoyerMail" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@ImageMenueCaisse/téléchargement%20(2).jpg" />
                </image>
             </ImageView>
+            <ImageView fitHeight="27.0" fitWidth="147.0" layoutX="9.0" layoutY="671.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@ImageMenueCaisse/exit-clipart-png-transparent-circle-11564085809zptaij3zvv.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
-      <BorderPane fx:id="bp2" layoutX="265.0" layoutY="1.0" prefHeight="702.0" prefWidth="613.0" style="-fx-background-color: white;" />
+      <StackPane prefHeight="54.0" prefWidth="263.0" style="-fx-background-color: #142199;">
+         <children>
+            <Label text="Responsable Achat" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font></Label>
+         </children>
+      </StackPane>
+      <BorderPane fx:id="bp2" layoutX="265.0" layoutY="1.0" prefHeight="708.0" prefWidth="613.0" />
       <ImageView fitHeight="2.0" fitWidth="200.0" layoutX="10.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>

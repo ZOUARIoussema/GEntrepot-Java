@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.gentrepot.views;
+package com.gentrepot.controllers;
 
 import com.gentrepot.models.CategorieAchat;
 import com.gentrepot.models.SousCategorieAchat;
@@ -34,9 +34,7 @@ import javax.swing.JOptionPane;
  */
 public class AjoutSousCategorieController implements Initializable {
     
-                   Connection cnx = DataSource.getInstance().getCnx();
-
-    
+    Connection cnx = DataSource.getInstance().getCnx();
     ServiceCategorieAchat cs = new ServiceCategorieAchat();
     @FXML
     private TextField nom;
@@ -81,7 +79,7 @@ public class AjoutSousCategorieController implements Initializable {
                   while(rs.next()){
                     CategorieAchat   c= new CategorieAchat(rs.getInt(1),rs.getString(2));
                      String t = nom.getText();
-                     SousCategorieAchat l = new SousCategorieAchat(t,c);
+                     SousCategorieAchat l = new SousCategorieAchat(t,c.getId());
                       sp.ajouter(l);
                       System.out.println(c.getId());
                       System.out.println(c.getNom());

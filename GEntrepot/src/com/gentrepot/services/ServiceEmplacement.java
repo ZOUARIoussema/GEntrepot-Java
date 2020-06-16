@@ -30,13 +30,13 @@ public class ServiceEmplacement  implements IService<Emplacement>{
     @Override
     public void ajouter(Emplacement ep) {
         try {
-            String requete = "INSERT INTO emplacement (adresse,capaciteStockage,quantiteStocker,classe,matriculeFiscal_Entrepot) VALUES (?,?,?,?,?)";
+            String requete = "INSERT INTO emplacement (adresse,capaciteStockage,quantiteStocker,classe) VALUES (?,?,?,?)";
             PreparedStatement pst = cnx.prepareStatement(requete);
             pst.setString(1, ep.getAdresse());
             pst.setInt(2, ep.getCapaciteStockage());
             pst.setInt(3, ep.getQuantiteStocker());
             pst.setString(4, ep.getClasse());
-            pst.setString(5, ep.getEntrepot().getMatriculeFiscale());
+            //pst.setString(5, ep.getEntrepot().getMatriculeFiscale());
             pst.executeUpdate();
             System.out.println("emplacement ajouté !");
            
@@ -64,7 +64,7 @@ public class ServiceEmplacement  implements IService<Emplacement>{
             String requete = "UPDATE emplacement SET adresse='" + ep.getAdresse() + "',capaciteStockage='" + ep.getCapaciteStockage() + "',classe='" + ep.getClasse() + "',matriculeFiscal_Entrepot='" + ep.getEntrepot().getMatriculeFiscale() + "' WHERE id=" + ep.getId();
             Statement st = cnx.createStatement();
             st.executeUpdate(requete);
-            System.out.println("Ligne Perte modifiée !");
+            System.out.println("Ligne Emplacement modifiée !");
 
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
@@ -90,6 +90,15 @@ public class ServiceEmplacement  implements IService<Emplacement>{
 
         return list;
     
+    }
+    public Emplacement rechercher(List<Emplacement> l, String in){
+        int a = 0;
+        for(int i=0;i<l.size();i++){
+            if(l.get(i).getAdresse().equals(in)){
+                a = i;
+            }
+        }
+        return l.get(a);
     }
     public Emplacement rechercher(List<Emplacement> l, int in){
         int a = 0;

@@ -64,6 +64,9 @@ public class CommandeDApprovisionnement {
         this.fournisseur = fournisseur;
         this.ligneCommandeDApprovisionnements= new ArrayList<>();
     }
+
+    public CommandeDApprovisionnement() {
+    }
        
     
     

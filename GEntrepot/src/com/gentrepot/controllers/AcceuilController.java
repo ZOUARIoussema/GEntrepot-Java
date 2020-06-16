@@ -3,17 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.gentrepot.views;
+package com.gentrepot.controllers;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
@@ -29,6 +31,30 @@ public class AcceuilController implements Initializable {
     private BorderPane bp2;
     @FXML
     private ImageView imageMail;
+    @FXML
+    private Button ajoutF;
+    @FXML
+    private Button affFournisseur;
+    @FXML
+    private Button ajoutP;
+    @FXML
+    private Button affichP;
+    @FXML
+    private Button ajoutSC;
+    @FXML
+    private Button afficheSC;
+    @FXML
+    private Button ajoutC;
+    @FXML
+    private Button afficheC;
+    @FXML
+    private Button ajoutBE;
+    @FXML
+    private Button afficheBE;
+    @FXML
+    private Button ajoutBR;
+    @FXML
+    private Button afficheBR;
         public void chargerpage (String page) 
     {
         Parent root = null ;
@@ -72,10 +98,52 @@ public class AcceuilController implements Initializable {
         chargerpage("AffichageProduit");
     }
 
+   
+
+    @FXML
+    private void AjouterCategorie(ActionEvent event) {
+             chargerpage("AjouterCategorie");
+
+    }
+
+    @FXML
+    private void AfficherCategorie(ActionEvent event) {
+             chargerpage("AfficherCategorie");
+
+    }
+
+    @FXML
+    private void AjouterBonEntre(ActionEvent event) {
+             chargerpage("AjoutBonEntree");
+
+    }
+
+    @FXML
+    private void AfficherBonEntre(ActionEvent event) {
+             chargerpage("AffichageBonEntree");
+
+    }
+
+    @FXML
+    private void AjouterBonRetour(ActionEvent event) {
+             chargerpage("AjoutBonRetour");
+
+    }
+
+    @FXML
+    private void AfficherBonretour(ActionEvent event) {
+             chargerpage("AfficherBonRetour");
+
+    }
+
     @FXML
     private void envoyerMail(MouseEvent event) {
-        
-         chargerpage("EnvoyerMAilForm");
+        chargerpage("EnvoyerMAilForm");
+    }
+
+    @FXML
+    private void AfficherFournisseur(ActionEvent event) {
+        chargerpage("AffichageFournisseur");
     }
     
 }

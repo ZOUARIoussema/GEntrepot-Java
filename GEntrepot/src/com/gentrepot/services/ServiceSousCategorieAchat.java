@@ -32,7 +32,7 @@ public class ServiceSousCategorieAchat  implements IService<SousCategorieAchat> 
             String requete = "INSERT INTO sous_categorie_achat (name,Categorie_id ) VALUES (?,?)";
             PreparedStatement pst = cnx.prepareStatement(requete);
             pst.setString(1, t.getNom());
-            pst.setInt(2, t.getCategorieAchat().getId());
+            pst.setInt(2, t.getCategorieAchat());
             pst.executeUpdate();
             System.out.println("Sous categorie ajoutée !");
 
@@ -62,7 +62,7 @@ public class ServiceSousCategorieAchat  implements IService<SousCategorieAchat> 
             PreparedStatement pst = cnx.prepareStatement(requete);
             pst.setInt(3, t.getId());
             pst.setString(1, t.getNom());
-            pst.setInt(2, t.getCategorieAchat().getId());
+            pst.setInt(2, t.getCategorieAchat());
             pst.executeUpdate();
             System.out.println("Sous categorie modifiée !");
 
@@ -81,7 +81,7 @@ public class ServiceSousCategorieAchat  implements IService<SousCategorieAchat> 
             PreparedStatement pst = cnx.prepareStatement(requete);
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
-                c.add(new SousCategorieAchat(rs.getInt(1), rs.getString(2), new CategorieAchat(rs.getInt(3))));
+                c.add(new SousCategorieAchat(rs.getInt(1), rs.getString(2), new CategorieAchat(rs.getInt(3)).getId()));
             }
 
         } catch (SQLException ex) {

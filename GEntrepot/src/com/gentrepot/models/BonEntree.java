@@ -19,9 +19,9 @@ public class BonEntree {
     private Date date;
     private Date dateProduction;
     private Date dateExpiration;
-    private CommandeDApprovisionnement commandeDApprovisionnement;
+    private int commandeDApprovisionnement;
 
-    public BonEntree(int id, Date date, Date dateProduction, Date dateExpiration, CommandeDApprovisionnement commandeDApprovisionnement) {
+    public BonEntree(int id, Date date, Date dateProduction, Date dateExpiration, int commandeDApprovisionnement) {
         this.id = id;
         this.date = date;
         this.dateProduction = dateProduction;
@@ -49,6 +49,11 @@ public class BonEntree {
         return dateProduction;
     }
 
+    @Override
+    public String toString() {
+        return "BonEntree{" + "id=" + id + ", date=" + date + ", dateProduction=" + dateProduction + ", dateExpiration=" + dateExpiration + ", commandeDApprovisionnement=" + commandeDApprovisionnement + '}';
+    }
+
     public void setDateProduction(Date dateProduction) {
         this.dateProduction = dateProduction;
     }
@@ -61,13 +66,21 @@ public class BonEntree {
         this.dateExpiration = dateExpiration;
     }
 
-    public CommandeDApprovisionnement getCommandeDApprovisionnement() {
+    public int getCommandeDApprovisionnement() {
         return commandeDApprovisionnement;
     }
 
-    public void setCommandeDApprovisionnement(CommandeDApprovisionnement commandeDApprovisionnement) {
+    public void setCommandeDApprovisionnement(int commandeDApprovisionnement) {
         this.commandeDApprovisionnement = commandeDApprovisionnement;
     }
+
+    public BonEntree(Date date, Date dateProduction, Date dateExpiration, int commandeDApprovisionnement) {
+        this.date = date;
+        this.dateProduction = dateProduction;
+        this.dateExpiration = dateExpiration;
+        this.commandeDApprovisionnement = commandeDApprovisionnement;
+    }
+    
     
     
     

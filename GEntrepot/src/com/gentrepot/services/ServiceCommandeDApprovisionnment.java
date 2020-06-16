@@ -7,6 +7,7 @@ package com.gentrepot.services;
 
 import com.gentrepot.models.CommandeDApprovisionnement;
 import com.gentrepot.models.Fournisseur;
+import com.gentrepot.models.LigneCommandeDApprovisionnement;
 import com.gentrepot.utils.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -19,6 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.ObservableList;
 
 /**
  *
@@ -96,23 +98,28 @@ public class ServiceCommandeDApprovisionnment implements IService<CommandeDAppro
             Logger.getLogger(ServiceCommandeDApprovisionnment.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    public ObservableList<CommandeDApprovisionnement> afficherCommande(){
+        return null;
+    }
     @Override
     public List<CommandeDApprovisionnement> afficher() {
+        ServiceLigneCommandeDApprovisionnement slc = new ServiceLigneCommandeDApprovisionnement();
+        List<LigneCommandeDApprovisionnement> lc = new ArrayList<>();
         List<CommandeDApprovisionnement> list = new ArrayList<>();
         ServiceFournisseur f = new ServiceFournisseur();
         try {
             String requete = "SELECT * FROM commande_d_aprovisionnement";
             Statement st = cnx.createStatement();
-            ResultSet rs = st.executeQuery(requete);
+            ResultSet rs = st.executeQuery(requete);           
             while (rs.next()) {
-                list.add(new CommandeDApprovisionnement(rs.getInt(2), rs.getDouble(3), rs.getString(4), rs.getString(5), rs.getDouble(6), rs.getDouble(7), new Fournisseur(rs.getInt(1),"SA",56562222,"Alger","Apple@gmail.com","AG441",65)));
+                
+                list.add(new CommandeDApprovisionnement(rs.getInt(2), rs.getDouble(3), rs.getString(4), rs.getString(5), rs.getDouble(6), rs.getDouble(7), f.rechercher(f.afficher(),rs.getInt(1))));
             }
-
+            
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
         }
-
+       
         return list;
     
     }
@@ -142,22 +149,6 @@ public class ServiceCommandeDApprovisionnment implements IService<CommandeDAppro
         return l.get(a);
     }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    /*oussema*/
     
     public void modifierEtatCommande(CommandeDApprovisionnement c){
     
