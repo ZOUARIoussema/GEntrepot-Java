@@ -101,7 +101,7 @@ public class ServiceVehicule  implements IService<Vehicule> {
 
     @Override
     public void modifier(Vehicule t) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
 
     public Vehicule findByMatricule(int matricule) {

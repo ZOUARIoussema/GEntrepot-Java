@@ -110,7 +110,7 @@ public class AfficherVehicuelController implements Initializable {
         UpVehiculeController.chsel= table.getSelectionModel().getSelectedItem();
         
         
-         Parent root = FXMLLoader.load(getClass().getResource("UpVehicule.fxml"));
+         Parent root = FXMLLoader.load(getClass().getResource("/com/gentrepot/views/UpVehicule.fxml"));
                 Scene scene = new Scene(root);
                 Stage window=(Stage)((Node)event.getSource()).getScene().getWindow();
                 window.setScene(scene);

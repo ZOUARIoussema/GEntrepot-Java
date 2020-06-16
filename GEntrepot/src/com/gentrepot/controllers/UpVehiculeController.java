@@ -32,7 +32,7 @@ import javafx.stage.Stage;
 public class UpVehiculeController implements Initializable {
     ObservableList<Vehicule> cls = FXCollections.observableArrayList();
      public static Vehicule chsel ;
-
+ ServiceVehicule sp = new ServiceVehicule();
 
     @FXML
     private Button btn;
@@ -62,13 +62,13 @@ public class UpVehiculeController implements Initializable {
        
     }    
  
-    ServiceVehicule sp = new ServiceVehicule();
+   
 
     @FXML
     private void ModifierVehicule(MouseEvent event) throws IOException {
         sp.modifier(chsel,Integer.parseInt(txtM.getText()), Integer.parseInt(txtC.getText()), T.getSelectionModel().getSelectedItem() );
         
-        Parent root = FXMLLoader.load(getClass().getResource("ChefParc.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/com/gentrepot/views/ChefParc.fxml"));
                 Scene scene = new Scene(root);
                 Stage window=(Stage)((Node)event.getSource()).getScene().getWindow();
                 window.setScene(scene);
@@ -79,7 +79,7 @@ public class UpVehiculeController implements Initializable {
     private void SupV(MouseEvent event) throws IOException {
         sp.supprimer(chsel);
         
-        Parent root = FXMLLoader.load(getClass().getResource("ChefParc.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/com/gentrepot/views/ChefParc.fxml"));
                 Scene scene = new Scene(root);
                 Stage window=(Stage)((Node)event.getSource()).getScene().getWindow();
                 window.setScene(scene);

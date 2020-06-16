@@ -127,58 +127,14 @@ public class AfficherAideChauffeurController implements Initializable {
     @FXML
     private void MdfAideChauffeur(MouseEvent event) throws IOException {
         ModifierAideChauffeurController.chsel=table.getSelectionModel().getSelectedItem();
-          Parent root = FXMLLoader.load(getClass().getResource("ModifierAideChauffeur.fxml"));
+          Parent root = FXMLLoader.load(getClass().getResource("/com/gentrepot/views/ModifierAideChauffeur.fxml"));
                 Scene scene = new Scene(root);
                 Stage window=(Stage)((Node)event.getSource()).getScene().getWindow();
                 window.setScene(scene);
                 window.show();
     }
     
-    /* public void RechercheAV(){
-                // Wrap the ObservableList in a FilteredList (initially display all data).
-        FilteredList<AideChauffeur> filteredData = new FilteredList<>(bb, b -> true);
-		
-		// 2. Set the filter Predicate whenever the filter changes.
-		recherche.textProperty().addListener((observable, oldValue, newValue) -> {
-			filteredData.setPredicate(F -> {
-				// If filter text is empty, display all persons.
-								
-				if (newValue == null || newValue.isEmpty()) {
-					return true;
-				}
-				
-				// Compare first name and last name of every person with filter text.
-				String lowerCaseFilter = newValue.toLowerCase();
-				
-				if (F.getNom().toLowerCase().indexOf(lowerCaseFilter) != -1 ) {
-					return true; // Filter matches first name.
-				} 
-                                else if (String.valueOf(F.getCin()).indexOf(lowerCaseFilter)!=-1)
-                                {
-                                    return true;
-                                }
-				else if (F.getPrenom().toLowerCase().indexOf(lowerCaseFilter) != -1 )
-                                {
-                                    return true;
-                                }    
-				else
-                                {
-                                    return false; // Does not match.
-                                }
-				    	 
-			});
-		});
-		
-		// 3. Wrap the FilteredList in a SortedList. 
-		SortedList<AideChauffeur> sortedData = new SortedList<>(filteredData);
-		
-		// 4. Bind the SortedList comparator to the TableView comparator.
-		// 	  Otherwise, sorting the TableView would have no effect.
-		sortedData.comparatorProperty().bind(table.comparatorProperty());
-		
-		// 5. Add sorted (and filtered) data to the table.
-		table.setItems(sortedData);
-    */
+   
 
     
 }

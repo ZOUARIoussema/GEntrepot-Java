@@ -77,7 +77,7 @@ public class UpdateChauffeurController implements Initializable {
         sp.modifier(chsel,txtN.getText(), txtP.getText(), txtA.getText());
         
         System.err.println(chsel.getCin());
-                Parent root = FXMLLoader.load(getClass().getResource("ChefParc.fxml"));
+                Parent root = FXMLLoader.load(getClass().getResource("/com/gentrepot/views/ChefParc.fxml"));
                 Scene scene = new Scene(root);
                 Stage window=(Stage)((Node)event.getSource()).getScene().getWindow();
                 window.setScene(scene);
@@ -109,7 +109,7 @@ public class UpdateChauffeurController implements Initializable {
         fournisseurclear();*/
        sp.supprimer(chsel);
         
-       Parent root = FXMLLoader.load(getClass().getResource("ChefParc.fxml"));
+       Parent root = FXMLLoader.load(getClass().getResource("/com/gentrepot/views/ChefParc.fxml"));
                 Scene scene = new Scene(root);
                 Stage window=(Stage)((Node)event.getSource()).getScene().getWindow();
                 window.setScene(scene);

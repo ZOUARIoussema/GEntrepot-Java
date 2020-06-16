@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="685.0" prefWidth="891.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gentrepot.views.AfficherOrdreController">
+<AnchorPane id="AnchorPane" prefHeight="685.0" prefWidth="891.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gentrepot.controllers.AfficherOrdreController">
    <children>
       <TableView fx:id="table" layoutX="118.0" layoutY="174.0" prefHeight="351.0" prefWidth="671.0">
         <columns>

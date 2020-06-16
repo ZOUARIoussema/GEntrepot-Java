@@ -16,6 +16,12 @@ import com.gentrepot.services.ServiceChauffeur;
 import com.gentrepot.services.ServiceOrdreMission;
 import com.gentrepot.services.ServiceVehicule;
 import com.gentrepot.utils.DataSource;
+import com.gentrepot.utils.PDF;
+import com.itextpdf.text.BadElementException;
+import com.itextpdf.text.DocumentException;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.Date;
@@ -63,10 +69,8 @@ public class AjoutOrdreController implements Initializable {
     private DatePicker s;
     @FXML
     private DatePicker r;
-   // ZoneId defaultZoneId = ZoneId.systemDefault();
-    
-    //public ArrayList<BonLivraison> oumayma = new ArrayList<BonLivraison>();
-   // BonLivraison b1 = new BonLivraison();
+      PDF pdf = new PDF();
+  
      Connection cnx = DataSource.getInstance().getCnx();
      ServiceBonLivraison b1 =new ServiceBonLivraison();
      ServiceVehicule sv = new ServiceVehicule();
@@ -140,7 +144,7 @@ public class AjoutOrdreController implements Initializable {
     }    
 
     @FXML
-    private void AjoutOrdre(MouseEvent event) throws SQLException {
+    private void AjoutOrdre(MouseEvent event) throws SQLException, DocumentException, BadElementException, IOException, FileNotFoundException, InterruptedException {
         
                   
        AideChauffeur ai = sa.findBynom((String)txtA.getSelectionModel().getSelectedItem());
@@ -154,6 +158,7 @@ public class AjoutOrdreController implements Initializable {
                     Date s3=java.sql.Date.valueOf(r.getValue());
                      OrdreMission o = new OrdreMission(v, ch, ai, s2, s1, s3, b);
                      so.ajouter(o);
+                      pdf.GeneratePdf("ordreMission", o);
                      
        JOptionPane.showMessageDialog(null, "ordre de mission ajoutée !");
     }

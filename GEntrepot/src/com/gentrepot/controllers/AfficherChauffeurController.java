@@ -139,7 +139,7 @@ public class AfficherChauffeurController implements Initializable {
         UpdateChauffeurController.chsel=table.getSelectionModel().getSelectedItem();
        // System.err.println(UpdateChauffeurController.chsel.getCin());    
         
-                Parent root = FXMLLoader.load(getClass().getResource("UpdateChauffeur.fxml"));
+                Parent root = FXMLLoader.load(getClass().getResource("/com/gentrepot/views/UpdateChauffeur.fxml"));
                 Scene scene = new Scene(root);
                 Stage window=(Stage)((Node)event.getSource()).getScene().getWindow();
                 window.setScene(scene);

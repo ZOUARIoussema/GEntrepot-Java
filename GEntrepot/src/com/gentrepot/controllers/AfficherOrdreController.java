@@ -49,9 +49,9 @@ public class AfficherOrdreController implements Initializable {
     @FXML
     private TableColumn<OrdreMission, Integer> vehicule;
     @FXML
-    private TableColumn<Chauffeur, String> chauffeur;
+    private TableColumn<OrdreMission, String> chauffeur;
     @FXML
-    private TableColumn<AideChauffeur, String> aidechauffeur;
+    private TableColumn<OrdreMission, String> aidechauffeur;
     @FXML
     private TableColumn<OrdreMission, Date> dateCreation;
     @FXML
@@ -81,13 +81,18 @@ public class AfficherOrdreController implements Initializable {
     @FXML
     private TableColumn<OrdreMission, Integer> id;
     private TableColumn<OrdreMission, String> cin;
-     private TableColumn<OrdreMission, String> nom;
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         vehicule.setCellValueFactory(new PropertyValueFactory<OrdreMission,Integer>("id_vehicule"));
         id.setCellValueFactory(new PropertyValueFactory<OrdreMission,Integer>("id"));
-          
+            chauffeur.setCellValueFactory(new PropertyValueFactory<OrdreMission,String>("id_chauffeur"));
+             //cin.setCellValueFactory(new PropertyValueFactory<OrdreMission,String>("cin"));
+            aidechauffeur.setCellValueFactory(new PropertyValueFactory<OrdreMission,String>("id_aidechauff"));
+             //cin.setCellValueFactory(new PropertyValueFactory<OrdreMission,String>("cin"));
+           //  OrdreMission.(new PropertyValueFactory<OrdreMission,Date>("datecreation"));
+             
         table.setItems(sb.afficher());
          dataList.addAll(sb.afficher());
          
@@ -141,7 +146,7 @@ public class AfficherOrdreController implements Initializable {
     @FXML
     private void ModifierOrdred(MouseEvent event) throws IOException {
       //  ModifierOrdreController.chsel=table.getSelectionModel().getSelectedItem();
-         Parent root = FXMLLoader.load(getClass().getResource("UpdateChauffeur.fxml"));
+         Parent root = FXMLLoader.load(getClass().getResource(".fxml"));
                 Scene scene = new Scene(root);
                 Stage window=(Stage)((Node)event.getSource()).getScene().getWindow();
                 window.setScene(scene);
@@ -150,7 +155,7 @@ public class AfficherOrdreController implements Initializable {
 
     @FXML
     private void impOrdre(MouseEvent event) throws DocumentException, BadElementException, IOException, FileNotFoundException, InterruptedException, SQLException {
-        pdf.GeneratePdf("oumayma", table.getSelectionModel().getSelectedItem());
+        pdf.GeneratePdf("ordreMission", table.getSelectionModel().getSelectedItem());
         
     }
     

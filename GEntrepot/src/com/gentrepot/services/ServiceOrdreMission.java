@@ -5,8 +5,11 @@
  */
 package com.gentrepot.services;
 
+import com.gentrepot.models.AideChauffeur;
 import com.gentrepot.models.BonLivraison;
+import com.gentrepot.models.Chauffeur;
 import com.gentrepot.models.OrdreMission;
+import com.gentrepot.models.Vehicule;
 import com.gentrepot.utils.DataSource;
 import java.sql.Array;
 import java.sql.Connection;
@@ -86,18 +89,15 @@ try {
         }
     }
 
-    @Override
-    public void modifier(OrdreMission A) {
+    public void modifier(OrdreMission A,Vehicule v,Chauffeur c, AideChauffeur aid) {
         try {
             String requete = "UPDATE ordremission SET vehicule=?,chauffeur"
-                    + "=?,aidechauff=?,datecreation=?,datesortie=?,dateretour=? WHERE id=?";
+                    + "=?,aidechauff=? WHERE id=?";
             PreparedStatement pst = cnx.prepareStatement(requete);
-             pst.setObject(1, A.getVehicule());
-            pst.setObject(2, A.getAideChauffeur());
-             pst.setObject(3, A.getAideChauffeur());
-              pst.setDate(4, (java.sql.Date) (Date) A.getDateCreation());
-               pst.setDate(6, (java.sql.Date) (Date) A.getDateRetour());
-                pst.setDate(5, (java.sql.Date) (Date) A.getDateSortie());     
+             pst.setObject(1, v);
+            pst.setObject(2, c);
+             pst.setObject(3, aid); 
+              pst.setObject(4, A.getId()); 
             pst.executeUpdate();
             System.out.println("ordre de mission modifiée !");
 
@@ -177,6 +177,11 @@ try {
         }
         return bon;
 
+    }
+
+    @Override
+    public void modifier(OrdreMission t) {
+        
     }
     
     

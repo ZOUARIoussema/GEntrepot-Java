@@ -5,9 +5,13 @@
  */
 package com.gentrepot.controllers;
 
+import com.gentrepot.models.OrdreMission;
+import com.gentrepot.services.ServiceOrdreMission;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -28,13 +32,11 @@ import javafx.stage.Stage;
  * @author Rym
  */
 public class ModifierOrdreController implements Initializable {
-
+   
     @FXML
     private ComboBox<?> txtC;
     @FXML
     private ComboBox<?> txtA;
-    @FXML
-    private DatePicker c;
     @FXML
     private DatePicker r;
     @FXML
@@ -46,20 +48,21 @@ public class ModifierOrdreController implements Initializable {
     @FXML
     private Button btn;
     @FXML
-    private Text txtV;
+    private ComboBox<?> txtV;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+       
+          
     }    
 
     @FXML
     private void SuOrdre(MouseEvent event)throws IOException {
         
-         Parent root = FXMLLoader.load(getClass().getResource("ChefParc.fxml"));
+         Parent root = FXMLLoader.load(getClass().getResource("/com/gentrepot/views/ChefParc.fxml"));
                 Scene scene = new Scene(root);
                 Stage window=(Stage)((Node)event.getSource()).getScene().getWindow();
                 window.setScene(scene);
@@ -68,8 +71,8 @@ public class ModifierOrdreController implements Initializable {
 
     @FXML
     private void ModOr(MouseEvent event) throws IOException {
-         
-                Parent root = FXMLLoader.load(getClass().getResource("ChefParc.fxml"));
+        
+                Parent root = FXMLLoader.load(getClass().getResource("/com/gentrepot/views/ChefParc.fxml"));
                 Scene scene = new Scene(root);
                 Stage window=(Stage)((Node)event.getSource()).getScene().getWindow();
                 window.setScene(scene);
